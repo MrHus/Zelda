@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 public class Controller implements Runnable
 {
 	private Thread thread;
-	private int gameSpeed = 45;
 
 	private Game game;
 	private View view;
@@ -34,9 +33,7 @@ public class Controller implements Runnable
 		{
 			try
 			{
-				Thread.sleep(gameSpeed);
-
-				link.handleInput();
+				Thread.sleep(game.getGameSpeed());
 
 				for(GObject obj : game.getGObjects())
 				{

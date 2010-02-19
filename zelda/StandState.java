@@ -36,7 +36,7 @@ public class StandState extends LinkState
 	}
 
 	@Override
-	public void handleInput()
+	public void handleAnimation()
 	{
 		if (link.isjPressed())
 		{

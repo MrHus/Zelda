@@ -43,11 +43,11 @@ public class SwordState extends LinkState
 
 		if(link.getDirection() == Direction.DOWN)
 		{
-			link.setAnimationInterval(25);
+			link.modAnimationInterval(3);
 		}
 		else
 		{
-			link.setAnimationInterval(10);
+			link.modAnimationInterval(2);
 		}
 	}
 
@@ -158,11 +158,5 @@ public class SwordState extends LinkState
 				}
 			}
 		}
-	}
-
-	@Override
-	public void handleInput()
-	{
-		// empty
 	}
 }

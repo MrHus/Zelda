@@ -20,9 +20,9 @@ public class Link extends GObject
 
 	private Direction direction = Direction.DOWN;
 
-	public Link(int x, int y)
+	public Link(Game game, int x, int y)
 	{
-		super(x, y, "images/link.png");
+		super(game, x, y, "images/link.png");
 		spriteLoc.put("Link walk down 1",		new Rectangle(0, 0, 16, 23));
 		spriteLoc.put("Link walk down 2",		new Rectangle(25, 0, 16, 23));
 		spriteLoc.put("Link walk down 3",		new Rectangle(50, 0, 16, 23));
@@ -97,11 +97,6 @@ public class Link extends GObject
 		animation[0] = "Link stand down";
 
 		linkState = new StandState(this);
-	}
-
-	public void handleInput()
-	{
-		linkState.handleInput();
 	}
 
 	@Override

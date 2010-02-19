@@ -8,8 +8,9 @@ import java.util.ArrayList;
  */
 public class Game
 {
+	private int gameSpeed = 10;
 	private ArrayList<GObject> gameObjects = new ArrayList<GObject>();
-	private Link link = new Link(100, 100);
+	private Link link = new Link(this, 100, 100);
 
 	public Game()
 	{
@@ -24,5 +25,15 @@ public class Game
 	public Link getLink()
 	{
 		return link;
+	}
+
+	public int getGameSpeed()
+	{
+		return gameSpeed;
+	}
+
+	public void setGameSpeed(int gameSpeed)
+	{
+		this.gameSpeed = gameSpeed;
 	}
 }
