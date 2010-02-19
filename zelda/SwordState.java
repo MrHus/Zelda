@@ -49,6 +49,8 @@ public class SwordState extends LinkState
 		{
 			link.modAnimationInterval(2);
 		}
+
+		handleAnimation();
 	}
 
 	@Override

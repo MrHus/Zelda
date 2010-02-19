@@ -44,10 +44,11 @@ public abstract class GObject implements DrawAble
 			{
 				animationCounter = 0;
 			}
-			
+
 			sprite.setSprite(spriteLoc.get(animation[animationCounter]));
 			animationCounter += 1;
 			lastAnimation = System.currentTimeMillis();
+
 			postAnimation();
 		}
 	}
