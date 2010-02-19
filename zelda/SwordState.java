@@ -66,6 +66,10 @@ public class SwordState extends LinkState
 		}
 		else
 		{
+			// This section of the code corrects the position of link when he's striking.
+			// If you don't do this link appears to be moving when he swings his sword.
+			// Go ahead and remove the entire body of this else statement. You'll see what i mean.
+
 			Direction dir = link.getDirection();
 
 			if (dir == Direction.UP)
