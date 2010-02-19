@@ -102,6 +102,11 @@ public class Link extends GObject
 		linkState = new StandState(this);
 	}
 
+	public void handleInput()
+	{
+		linkState.handleInput();
+	}
+
 	@Override
 	public void preAnimation()
 	{

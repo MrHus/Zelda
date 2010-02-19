@@ -14,5 +14,6 @@ public abstract class LinkState
 		link.resetAnimationCounter();
 	}
 
-	public abstract void handleAnimation();
+	public void handleInput(){};
+	public void handleAnimation(){};
 }
