@@ -10,7 +10,7 @@ import zelda.link.Link;
  */
 public class Game
 {
-	private int gameSpeed = 10;
+	private int gameSpeed = 20;
 	private ArrayList<GObject> gameObjects = new ArrayList<GObject>();
 	private Link link = new Link(this, 100, 100);
 

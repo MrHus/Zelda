@@ -27,7 +27,7 @@ public abstract class GObject implements DrawAble
 
 	public GObject(Game game, int x, int y, String image)
 	{
-		animationInterval = game.getGameSpeed() * 5;
+		animationInterval = game.getGameSpeed() * 3;
 		this.game = game;
 		this.x = x;
 		this.y = y;
@@ -115,6 +115,6 @@ public abstract class GObject implements DrawAble
 
 	public void modAnimationInterval(int modifier)
 	{
-		this.animationInterval = game.getGameSpeed() * modifier;
+		this.animationInterval = game.getGameSpeed() + (5 * modifier);
 	}
 }

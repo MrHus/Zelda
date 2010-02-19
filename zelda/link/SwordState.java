@@ -45,11 +45,11 @@ public class SwordState extends LinkState
 
 		if(link.getDirection() == Direction.DOWN)
 		{
-			link.modAnimationInterval(3);
+			link.modAnimationInterval(0);
 		}
 		else
 		{
-			link.modAnimationInterval(2);
+			link.modAnimationInterval(-1);
 		}
 
 		handleAnimation();
