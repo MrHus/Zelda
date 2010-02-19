@@ -1,8 +1,10 @@
 package zelda;
 
+import zelda.Game;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+import zelda.engine.GObject;
 
 /**
  *

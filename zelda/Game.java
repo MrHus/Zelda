@@ -1,6 +1,8 @@
 package zelda;
 
 import java.util.ArrayList;
+import zelda.engine.GObject;
+import zelda.link.Link;
 
 /**
  *

@@ -1,6 +1,10 @@
 package zelda;
 
+import zelda.Game;
 import javax.swing.JFrame;
+import zelda.engine.GObject;
+import zelda.link.Link;
+import zelda.link.LinkController;
 
 /**
  *
