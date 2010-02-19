@@ -30,7 +30,7 @@ public abstract class GObject implements DrawAble
 		this.game = game;
 		this.x = x;
 		this.y = y;
-		sprite = new Sprite(image);
+		sprite = Sprite.getSprite(image);
 	}
 
 	public void animate()
