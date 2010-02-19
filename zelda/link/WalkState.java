@@ -19,6 +19,7 @@ public class WalkState extends LinkState
 		super(link);
 	}
 
+	@Override
 	public void handleInput()
 	{
 		if(link.isjPressed())

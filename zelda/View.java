@@ -1,6 +1,5 @@
 package zelda;
 
-import zelda.Game;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
@@ -30,6 +29,7 @@ public class View extends JPanel
 
 		for (GObject obj : game.getGObjects())
 		{
+			obj.animate();
 			obj.draw(g2);
 		}
 	}

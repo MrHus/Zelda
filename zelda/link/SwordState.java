@@ -45,20 +45,20 @@ public class SwordState extends LinkState
 
 		if(link.getDirection() == Direction.DOWN)
 		{
-			link.modAnimationInterval(0);
+			link.setAnimationInterval(20);
 		}
 		else
 		{
-			link.modAnimationInterval(-1);
+			link.setAnimationInterval(10);
 		}
-
-		handleAnimation();
 	}
 
 	@Override
 	public void handleAnimation()
 	{
 		int animationCounter = link.getAnimationCounter();
+
+		//System.out.println("Animation Counter is " + animationCounter);
 
 		//sword is done swinging revert back to former state
 		if (animationCounter == link.getAnimation().length)

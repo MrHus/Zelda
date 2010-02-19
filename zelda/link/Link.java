@@ -21,6 +21,9 @@ public class Link extends GObject
 	private boolean kPressed = false;
 	private boolean lPressed = false;
 
+	private long inputInterval = 50;
+	private long lastInput = System.currentTimeMillis();
+
 	private Direction direction = Direction.DOWN;
 
 	public Link(Game game, int x, int y)
@@ -104,7 +107,11 @@ public class Link extends GObject
 
 	public void handleInput()
 	{
-		linkState.handleInput();
+		if (System.currentTimeMillis() > lastInput + inputInterval)
+		{
+			linkState.handleInput();
+			lastInput = System.currentTimeMillis();
+		}
 	}
 
 	@Override

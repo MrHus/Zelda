@@ -34,19 +34,12 @@ public class Controller implements Runnable
 	{
 		while (true)
 		{
+			link.handleInput();
+			view.repaint();
+
 			try
 			{
 				Thread.sleep(game.getGameSpeed());
-
-				link.handleInput();
-
-				for(GObject obj : game.getGObjects())
-				{
-					obj.animate();
-				}
-				
-				view.repaint();
-				//System.out.println("repaint");
 			}
 			catch(InterruptedException e){}
 		}
