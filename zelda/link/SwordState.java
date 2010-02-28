@@ -19,6 +19,7 @@ public class SwordState extends LinkState
 	public SwordState(Link link)
 	{
 		super(link);
+		name = "SwordState";
 
 		switch (link.getDirection())
 		{

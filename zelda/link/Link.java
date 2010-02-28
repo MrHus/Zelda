@@ -229,4 +229,9 @@ public class Link extends GObject
 	{
 		return linkState;
 	}
+
+	public String getStateString()
+	{
+		return linkState.toString();
+	}
 }

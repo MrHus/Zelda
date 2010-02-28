@@ -14,6 +14,7 @@ public class StandState extends LinkState
 	public StandState(Link link)
 	{
 		super(link);
+		name = "StandState";
 
 		switch (link.getDirection())
 		{

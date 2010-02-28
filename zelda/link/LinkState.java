@@ -7,6 +7,7 @@ package zelda.link;
 public abstract class LinkState
 {
 	protected Link link;
+	protected String name;
 
 	public LinkState(Link link)
 	{
@@ -16,4 +17,10 @@ public abstract class LinkState
 
 	public void handleInput(){};
 	public void handleAnimation(){};
+
+	@Override
+	public String toString()
+	{
+		return name;
+	}
 }
