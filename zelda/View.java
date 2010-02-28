@@ -27,10 +27,14 @@ public class View extends JPanel
 
 		g2.fillRect(0, 0, getWidth(), getHeight());
 
+		game.getScene().draw(g2);
+
 		for (GObject obj : game.getGObjects())
 		{
 			obj.animate();
 			obj.draw(g2);
 		}
+
+		g2.dispose();
 	}
 }

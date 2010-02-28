@@ -11,7 +11,8 @@ public class Main extends JFrame
 	public Main()
 	{
 		setContentPane(view);
-		setSize(500, 500);
+		setSize(game.getWidth(), game.getHeight());
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
