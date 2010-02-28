@@ -1,6 +1,7 @@
 package zelda;
 
 import javax.swing.JFrame;
+import zelda.engine.Scene;
 import zelda.link.Link;
 import zelda.link.LinkController;
 
@@ -12,16 +13,18 @@ public class Controller implements Runnable
 {
 	private Thread thread;
 
-	private Game game;
+	private ZeldaGame game;
 	private View view;
 	private JFrame frame;
 	private Link link;
+	private Scene scene;
 
-	public Controller(Game game, View view, JFrame frame)
+	public Controller(ZeldaGame game, View view, JFrame frame)
 	{
 		this.game = game;
 		this.view = view;
 		link = game.getLink();
+		scene = game.getScene();
 
 		frame.addKeyListener(new LinkController(link));
 
@@ -33,6 +36,7 @@ public class Controller implements Runnable
 	{
 		while (true)
 		{
+			scene.handleInput();
 			link.handleInput();
 			view.repaint();
 

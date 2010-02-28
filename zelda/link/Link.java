@@ -1,7 +1,7 @@
 package zelda.link;
 
 import zelda.engine.GObject;
-import zelda.Game;
+import zelda.ZeldaGame;
 import java.awt.Rectangle;
 import zelda.character.Direction;
 
@@ -26,7 +26,7 @@ public class Link extends GObject
 
 	private Direction direction = Direction.DOWN;
 
-	public Link(Game game, int x, int y)
+	public Link(ZeldaGame game, int x, int y)
 	{
 		super(game, x, y, "../images/link.png");
 		spriteLoc.put("Link walk down 1",		new Rectangle(0, 0, 16, 23));

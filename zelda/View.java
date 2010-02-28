@@ -11,9 +11,9 @@ import zelda.engine.GObject;
  */
 public class View extends JPanel
 {
-	private Game game;
+	private ZeldaGame game;
 	
-	public View(Game game)
+	public View(ZeldaGame game)
 	{
 		this.game = game;
 		setDoubleBuffered(true);

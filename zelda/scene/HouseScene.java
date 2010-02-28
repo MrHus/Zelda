@@ -1,7 +1,7 @@
 package zelda.scene;
 
 import java.awt.Rectangle;
-import zelda.Game;
+import zelda.ZeldaGame;
 import zelda.engine.Scene;
 
 /**
@@ -10,9 +10,14 @@ import zelda.engine.Scene;
  */
 public class HouseScene extends Scene
 {
-	public HouseScene(Game game)
+	public HouseScene(ZeldaGame game)
 	{
 		super(game, "../images/link-house.png");
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
+	}
+
+	public void handleInput()
+	{
+		
 	}
 }

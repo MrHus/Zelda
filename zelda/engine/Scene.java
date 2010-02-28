@@ -2,13 +2,12 @@ package zelda.engine;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import zelda.Game;
 
 /**
  *
  * @author maartenhus
  */
-public class Scene implements DrawAble
+public abstract class Scene implements DrawAble
 {
 	protected Sprite sprite;
 	protected Game game;
@@ -18,6 +17,8 @@ public class Scene implements DrawAble
 		this.game = game;
 		sprite = Sprite.getSprite(img);
 	}
+
+	public abstract void handleInput();
 
 	public void draw(Graphics2D g)
 	{
