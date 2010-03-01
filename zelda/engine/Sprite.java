@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
+import zelda.Main;
 
 /**
  * @author maartenhus
@@ -19,7 +20,7 @@ public class Sprite
 
 	private Sprite(String img)
 	{
-		URL imageUrl = Sprite.class.getResource(img);
+		URL imageUrl = Main.class.getResource(img);
 
 		try
 		{

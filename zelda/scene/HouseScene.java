@@ -15,7 +15,7 @@ public class HouseScene extends Scene
 
 	public HouseScene(ZeldaGame game)
 	{
-		super(game, "../images/link-house.png");
+		super(game, "images/link-house.png");
 		link = game.getLink();
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 	}
@@ -28,7 +28,6 @@ public class HouseScene extends Scene
 			int currentMaxY = sprite.getY() + sprite.getHeight();
 
 			int mod = 1;
-			int sens = 10;
 			int box = 200;
 
 			if ((link.getX()) > (currentMaxX - box))

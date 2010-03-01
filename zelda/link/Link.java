@@ -28,7 +28,7 @@ public class Link extends GObject
 
 	public Link(ZeldaGame game, int x, int y)
 	{
-		super(game, x, y, "../images/link.png");
+		super(game, x, y, "images/link.png");
 		spriteLoc.put("Link walk down 1",		new Rectangle(0, 0, 16, 23));
 		spriteLoc.put("Link walk down 2",		new Rectangle(25, 0, 16, 23));
 		spriteLoc.put("Link walk down 3",		new Rectangle(50, 0, 16, 23));
