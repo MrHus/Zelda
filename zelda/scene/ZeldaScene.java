@@ -1,5 +1,6 @@
 package zelda.scene;
 
+import java.awt.Polygon;
 import java.awt.Rectangle;
 import zelda.ZeldaGame;
 import zelda.engine.Scene;
@@ -36,6 +37,7 @@ public class ZeldaScene extends Scene
 				if ((newX + game.getWidth()) <= sprite.getImageWidth())
 				{
 					link.setX(link.getX() - mod);
+					modShapes(-mod, 0);
 					sprite.setX(newX);
 				}
 			}
@@ -47,6 +49,7 @@ public class ZeldaScene extends Scene
 				if (newX > 0)
 				{
 					link.setX(link.getX() + mod);
+					modShapes(mod, 0);
 					sprite.setX(newX);
 				}
 			}
@@ -57,6 +60,7 @@ public class ZeldaScene extends Scene
 				if ((newY + game.getHeight()) <= sprite.getImageHeight())
 				{
 					link.setY(link.getY() - mod);
+					modShapes(0, -mod);
 					sprite.setY(newY);
 				}
 			}
@@ -68,9 +72,18 @@ public class ZeldaScene extends Scene
 				if (newY > 0)
 				{
 					link.setY(link.getY() + mod);
+					modShapes(0, mod);
 					sprite.setY(newY);
 				}
 			}
+		}
+	}
+
+	public void modShapes(int modX, int modY)
+	{
+		for (Polygon poly : solids)
+		{
+			poly.translate(modX, modY);
 		}
 	}
 }

@@ -2,6 +2,7 @@ package zelda;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Shape;
 import javax.swing.JPanel;
 import zelda.engine.GObject;
 
@@ -33,6 +34,11 @@ public class View extends JPanel
 		{
 			obj.animate();
 			obj.draw(g2);
+		}
+
+		for (Shape s : game.getScene().getSolids())
+		{
+			g2.draw(s);
 		}
 		
 		g2.dispose();

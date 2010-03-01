@@ -12,7 +12,6 @@ import java.util.HashMap;
 public abstract class GObject implements DrawAble
 {
 	protected Game game;
-
 	protected int x;
 	protected int y;
 

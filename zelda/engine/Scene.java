@@ -2,6 +2,7 @@ package zelda.engine;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Polygon;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +14,7 @@ public abstract class Scene implements DrawAble
 	protected Sprite sprite;
 	protected Game game;
 	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
+	protected ArrayList<Polygon> solids = new ArrayList<Polygon>();
 
 	public Scene(Game game, String img)
 	{
@@ -31,6 +33,11 @@ public abstract class Scene implements DrawAble
 	public void addGObject(GObject gObject)
 	{
 		gameObjects.add(gObject);
+	}
+
+	public ArrayList<Polygon> getSolids()
+	{
+		return solids;
 	}
 
 	public ArrayList<GObject> getGObjects()
