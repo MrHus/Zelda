@@ -1,7 +1,5 @@
 package zelda.engine;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author maartenhus
@@ -9,15 +7,10 @@ import java.util.ArrayList;
 public abstract class Game
 {
 	protected int gameSpeed = 10;
-	protected int width = 400;
+	protected int width = 500;
 	protected int height = 400;
-	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
+	
 	protected Scene scene;
-
-	public ArrayList<GObject> getGObjects()
-	{
-		return gameObjects;
-	}
 
 	public int getGameSpeed()
 	{

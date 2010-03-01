@@ -36,8 +36,8 @@ public class Controller implements Runnable
 	{
 		while (true)
 		{
-			scene.handleInput();
 			link.handleInput();
+			scene.handleInput();
 			view.repaint();
 
 			try

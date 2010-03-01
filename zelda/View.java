@@ -29,7 +29,7 @@ public class View extends JPanel
 
 		game.getScene().draw(g2);
 
-		for (GObject obj : game.getGObjects())
+		for (GObject obj : game.getScene().getGObjects())
 		{
 			obj.animate();
 			obj.draw(g2);
