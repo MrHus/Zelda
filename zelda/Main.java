@@ -13,6 +13,7 @@ public class Main extends JFrame
 		setContentPane(view);
 		setSize(game.getWidth(), game.getHeight());
 		setResizable(false);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
