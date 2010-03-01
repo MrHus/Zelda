@@ -67,7 +67,7 @@ public class SwordState extends LinkState
 			link.setY(oldY);
 			link.setX(oldX);
 			link.setAnimationInterval(oldAnimationInterval);
-			link.setState(new StandState(link));
+			link.setLinkState(new StandState(link));
 		}
 		else
 		{

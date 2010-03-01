@@ -99,8 +99,6 @@ public class Link extends GObject
 		spriteLoc.put("Link sword left 9",		new Rectangle(153, 250, 22, 31));
 		
 		sprite.setSprite(spriteLoc.get("Link stand down"));
-		animation = new String[1];
-		animation[0] = "Link stand down";
 
 		linkState = new StandState(this);
 	}
@@ -155,11 +153,6 @@ public class Link extends GObject
 		this.lPressed = lPressed;
 	}
 
-	public void setLinkState(LinkState linkState)
-	{
-		this.linkState = linkState;
-	}
-
 	public void setsPressed(boolean sPressed)
 	{
 		this.sPressed = sPressed;
@@ -195,11 +188,6 @@ public class Link extends GObject
 		return lPressed;
 	}
 
-	public LinkState getLinkState()
-	{
-		return linkState;
-	}
-
 	public boolean issPressed()
 	{
 		return sPressed;
@@ -220,12 +208,7 @@ public class Link extends GObject
 		this.direction = direction;
 	}
 
-	public void setState(LinkState linkState)
-	{
-		this.linkState = linkState;
-	}
-
-	public LinkState getState()
+	public LinkState getLinkState()
 	{
 		return linkState;
 	}
@@ -233,5 +216,10 @@ public class Link extends GObject
 	public String getStateString()
 	{
 		return linkState.toString();
+	}
+
+	public void setLinkState(LinkState linkState)
+	{
+		this.linkState = linkState;
 	}
 }

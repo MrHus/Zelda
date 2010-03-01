@@ -1,8 +1,6 @@
 package zelda.link;
 
-import java.awt.Polygon;
 import zelda.character.Direction;
-import zelda.engine.Scene;
 
 /**
  *
@@ -27,13 +25,13 @@ public class WalkState extends LinkState
 	{
 		if(link.isjPressed())
 		{
-			link.setState(new SwordState(link));
+			link.setLinkState(new SwordState(link));
 		}
 		else
 		{
 			if (link.noMoveinput())
 			{
-				link.setState(new StandState(link));
+				link.setLinkState(new StandState(link));
 			}
 			else
 			{
