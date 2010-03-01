@@ -12,7 +12,7 @@ import zelda.engine.GObject;
 public class View extends JPanel
 {
 	private ZeldaGame game;
-	
+
 	public View(ZeldaGame game)
 	{
 		this.game = game;
@@ -34,7 +34,7 @@ public class View extends JPanel
 			obj.animate();
 			obj.draw(g2);
 		}
-
+		
 		g2.dispose();
 	}
 }
