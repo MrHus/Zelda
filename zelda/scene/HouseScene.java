@@ -1,7 +1,10 @@
 package zelda.scene;
 
 import java.awt.Polygon;
+import java.net.URL;
+import zelda.Main;
 import zelda.ZeldaGame;
+import zelda.engine.Music;
 
 /**
  *
@@ -56,5 +59,8 @@ public class HouseScene extends ZeldaScene
 		solids.add(right);
 		solids.add(down);
 		solids.add(house);
+
+		Music music = new Music("sounds/overworld.mp3", true);
+		music.play();
 	}
 }
