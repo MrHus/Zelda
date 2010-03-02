@@ -13,11 +13,12 @@ import zelda.link.Link;
 public class ZeldaScene extends Scene
 {
 	protected Link link;
+	private ZeldaGame game;
 
 	public ZeldaScene(ZeldaGame game, String img)
 	{
 		super(game, img);
-		link = game.getLink();
+		this.game = game;
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 	}
 
@@ -77,6 +78,12 @@ public class ZeldaScene extends Scene
 				}
 			}
 		}
+	}
+
+	@Override
+	public void initScene()
+	{
+		link = game.getLink();
 	}
 
 	public void modShapes(int modX, int modY)

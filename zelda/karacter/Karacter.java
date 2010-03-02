@@ -11,9 +11,9 @@ public class Karacter extends GObject
 {
 	protected Direction direction;
 
-	public Karacter(ZeldaGame game, int x, int y, Direction dir, String image)
+	public Karacter(ZeldaGame game, int x, int y, int width, int height, Direction dir, String image)
 	{
-		super(game, x, y, image);
+		super(game, x, y, width, height, image);
 		direction = dir;
 	}
 

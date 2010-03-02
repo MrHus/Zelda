@@ -32,6 +32,7 @@ public class View extends JPanel
 
 		for (GObject obj : game.getScene().getGObjects())
 		{
+			g2.draw(obj.getRectangle());
 			obj.animate();
 			obj.draw(g2);
 		}

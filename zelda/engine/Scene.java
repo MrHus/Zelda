@@ -3,6 +3,7 @@ package zelda.engine;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Polygon;
+import java.awt.geom.Area;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +22,8 @@ public abstract class Scene implements DrawAble
 		this.game = game;
 		sprite = Sprite.getSprite(img);
 	}
+
+	public void initScene(){}
 
 	public abstract void handleInput();
 

@@ -10,11 +10,14 @@ import zelda.scene.HouseScene;
  */
 public class ZeldaGame extends Game
 {
-	private Link link = new Link(this, 100, 100);
+	private Link link;
 
 	public ZeldaGame()
 	{
 		scene = new HouseScene(this);
+		link = new Link(this, 100, 100);
+
+		scene.initScene();
 		scene.addGObject(link);
 	}
 

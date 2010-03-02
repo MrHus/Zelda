@@ -2,7 +2,9 @@ package zelda.engine;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.geom.Area;
 import java.util.HashMap;
 
 /**
@@ -12,8 +14,11 @@ import java.util.HashMap;
 public abstract class GObject implements DrawAble
 {
 	protected Game game;
+	protected Scene scene;
 	protected int x;
 	protected int y;
+	protected int width;
+	protected int height;
 
 	protected Sprite sprite;
 	protected HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
@@ -23,12 +28,17 @@ public abstract class GObject implements DrawAble
 	protected long animationInterval;
 	protected long lastAnimation = System.currentTimeMillis();
 
-	public GObject(Game game, int x, int y, String image)
+	public GObject(Game game, int x, int y, int width, int height, String image)
 	{
 		animationInterval = 90;
 		this.game = game;
+		this.scene = game.getScene();
+
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
+
 		sprite = Sprite.getSprite(image);
 	}
 
@@ -61,14 +71,36 @@ public abstract class GObject implements DrawAble
 		g.drawImage(img, x, y, sprite.getWidth(), sprite.getHeight(), null);
 	}
 
+	private boolean collision(int newX, int newY)
+	{
+		Rectangle rect = new Rectangle(newX, newY, width, height);
+
+		for (Polygon poly : scene.getSolids())
+		{
+			final Area area = new Area();
+			area.add(new Area(rect));
+			area.intersect(new Area(poly));
+
+			if(!area.isEmpty())
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public int getX()
 	{
 		return x;
 	}
 
-	public void setX(int x)
+	public void setX(int newX)
 	{
-		this.x = x;
+		if (!collision(newX, y))
+		{
+			x = newX;
+		}
 	}
 
 	public int getY()
@@ -76,9 +108,37 @@ public abstract class GObject implements DrawAble
 		return y;
 	}
 
-	public void setY(int y)
+	public void setY(int newY)
 	{
-		this.y = y;
+		if(!collision(x, newY))
+		{
+			y = newY;
+		}
+	}
+
+	public int getHeight()
+	{
+		return height;
+	}
+
+	public void setHeight(int height)
+	{
+		this.height = height;
+	}
+
+	public int getWidth()
+	{
+		return width;
+	}
+
+	public Rectangle getRectangle()
+	{
+		return new Rectangle(x, y, width, height);
+	}
+
+	public void setWidth(int width)
+	{
+		this.width = width;
 	}
 
 	public String[] getAnimation()
