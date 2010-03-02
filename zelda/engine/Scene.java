@@ -3,7 +3,6 @@ package zelda.engine;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Polygon;
-import java.awt.geom.Area;
 import java.util.ArrayList;
 
 /**
@@ -46,5 +45,11 @@ public abstract class Scene implements DrawAble
 	public ArrayList<GObject> getGObjects()
 	{
 		return gameObjects;
+	}
+
+	//remove after done with PolyCreator
+	public Sprite getSprite()
+	{
+		return sprite;
 	}
 }

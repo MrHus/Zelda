@@ -18,6 +18,7 @@ public class Controller implements Runnable
 	private JFrame frame;
 	private Link link;
 	private Scene scene;
+	private PolyCreator polyCreator;
 
 	public Controller(ZeldaGame game, View view, JFrame frame)
 	{
@@ -26,6 +27,7 @@ public class Controller implements Runnable
 		link = game.getLink();
 		scene = game.getScene();
 
+		frame.addMouseListener(new PolyCreator(scene));
 		frame.addKeyListener(new LinkController(link));
 
 		thread = new Thread(this);
