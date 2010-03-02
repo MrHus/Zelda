@@ -1,15 +1,15 @@
 package zelda.link;
 
-import zelda.engine.GObject;
 import zelda.ZeldaGame;
 import java.awt.Rectangle;
-import zelda.character.Direction;
+import zelda.karacter.Direction;
+import zelda.karacter.Karacter;
 
 /**
  *
  * @author maartenhus
  */
-public class Link extends GObject
+public class Link extends Karacter
 {
 	private LinkState linkState;
 
@@ -24,11 +24,9 @@ public class Link extends GObject
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
-	private Direction direction = Direction.DOWN;
-
 	public Link(ZeldaGame game, int x, int y)
 	{
-		super(game, x, y, "images/link.png");
+		super(game, x, y, Direction.DOWN, "images/link.png");
 		spriteLoc.put("Link walk down 1",		new Rectangle(0, 0, 16, 23));
 		spriteLoc.put("Link walk down 2",		new Rectangle(25, 0, 16, 23));
 		spriteLoc.put("Link walk down 3",		new Rectangle(50, 0, 16, 23));
@@ -196,16 +194,6 @@ public class Link extends GObject
 	public boolean iswPressed()
 	{
 		return wPressed;
-	}
-
-	public Direction getDirection()
-	{
-		return direction;
-	}
-
-	public void setDirection(Direction direction)
-	{
-		this.direction = direction;
 	}
 
 	public LinkState getLinkState()

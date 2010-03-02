@@ -1,6 +1,6 @@
 package zelda.link;
 
-import zelda.character.Direction;
+import zelda.karacter.Direction;
 
 /**
  *
