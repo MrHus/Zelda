@@ -52,6 +52,8 @@ public class SwordState extends LinkState
 		{
 			link.setAnimationInterval(10);
 		}
+
+		link.setCheckcollision(false);
 	}
 
 	@Override
@@ -67,6 +69,7 @@ public class SwordState extends LinkState
 			link.setY(oldY);
 			link.setX(oldX);
 			link.setAnimationInterval(oldAnimationInterval);
+			link.setCheckcollision(true);
 			link.setLinkState(new StandState(link));
 		}
 		else

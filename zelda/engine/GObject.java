@@ -15,10 +15,12 @@ public abstract class GObject implements DrawAble
 {
 	protected Game game;
 	protected Scene scene;
+
 	protected int x;
 	protected int y;
 	protected int width;
 	protected int height;
+	protected boolean checkcollision = true;
 
 	protected Sprite sprite;
 	protected HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
@@ -97,7 +99,7 @@ public abstract class GObject implements DrawAble
 
 	public void setX(int newX)
 	{
-		if (!collision(newX, y))
+		if (!checkcollision || !collision(newX, y))
 		{
 			x = newX;
 		}
@@ -110,7 +112,7 @@ public abstract class GObject implements DrawAble
 
 	public void setY(int newY)
 	{
-		if(!collision(x, newY))
+		if(!checkcollision || !collision(x, newY))
 		{
 			y = newY;
 		}
@@ -169,5 +171,15 @@ public abstract class GObject implements DrawAble
 	public void setAnimationInterval(long animationInterval)
 	{
 		this.animationInterval = animationInterval;
+	}
+
+	public boolean isCheckcollision()
+	{
+		return checkcollision;
+	}
+
+	public void setCheckcollision(boolean checkcollision)
+	{
+		this.checkcollision = checkcollision;
 	}
 }
