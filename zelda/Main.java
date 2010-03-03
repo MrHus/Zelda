@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 
 public class Main extends JFrame
 {
-
 	private ZeldaGame game = new ZeldaGame();
 	private View view;
 	private Controller ctl;

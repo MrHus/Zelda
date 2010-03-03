@@ -2,27 +2,22 @@ package zelda.engine;
 
 import java.net.URL;
 import javazoom.jl.player.Player;
-import zelda.Main;
 
 public class Music implements Runnable
 {
 
+	private Game game;
 	private Player player;
 	private Thread th = new Thread(this);
 	private URL mp3;
 	private boolean play = true;
 	private boolean loop;
 
-	public Music(URL mp3, boolean loop)
+	public Music(Game game, URL mp3, boolean loop)
 	{
+		this.game = game;
 		this.loop = loop;
 		this.mp3 = mp3;
-	}
-
-	public Music(String mp3file, boolean loop)
-	{
-		this.loop = loop;
-		mp3 = Main.class.getResource(mp3file);
 	}
 
 	public void play()
@@ -41,36 +36,29 @@ public class Music implements Runnable
 
 	public void run()
 	{
-		while (play)
+		System.out.println(play);
+
+		while (!player.isComplete())
 		{
-			if (!player.isComplete())
+			try
 			{
-				try
-				{
-
-					player.play();
-					Thread.sleep(1000);
-
-				}
-				catch (Exception ee)
-				{
-					ee.printStackTrace();
-				}
+				player.play();
+				Thread.sleep(1000);
 			}
-			else
+			catch (Exception ee)
 			{
-				if (loop)
-				{
-					stop();
-					Music music = new Music(mp3, true);
-					music.play();
-				}
+				ee.printStackTrace();
 			}
+		}
+
+		if (loop)
+		{
+			game.playMusic(mp3, true);
 		}
 	}
 
 	public void stop()
 	{
-		play = false;
+		player.close();
 	}
 }

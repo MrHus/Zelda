@@ -1,5 +1,10 @@
 package zelda.engine;
 
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import zelda.Main;
+
 /**
  *
  * @author maartenhus
@@ -12,11 +17,25 @@ public abstract class Game
 	protected int height = 400;
 	
 	protected Scene scene;
+	protected Music music;
 
 	public void quit()
 	{
-		//do other stuff like stop music.
+		music.stop();
 		System.exit(0);
+	}
+
+	public void playMusic(String mp3file, boolean loop)
+	{
+		URL mp3 = Main.class.getResource(mp3file);
+		music = new Music(this, mp3, loop);
+		music.play();
+	}
+
+	public void playMusic(URL mp3, boolean loop)
+	{
+		music = new Music(this, mp3, loop);
+		music.play();
 	}
 
 	public boolean isRunning()
