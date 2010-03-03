@@ -1,32 +1,25 @@
 package zelda;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Shape;
-import javax.swing.JPanel;
 import zelda.engine.GObject;
 
 /**
  *
  * @author maartenhus
  */
-public class View extends JPanel
+public class View
 {
 	private ZeldaGame game;
+	private boolean background = true;
 
 	public View(ZeldaGame game)
 	{
 		this.game = game;
-		setDoubleBuffered(true);
-	}
+	}	
 
-	@Override
-	public void paintComponent(Graphics g)
+	public void draw(Graphics2D g2)
 	{
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D) g;
-
-		g2.fillRect(0, 0, getWidth(), getHeight());
+		//System.out.println("draw");
 
 		game.getScene().draw(g2);
 
@@ -41,7 +34,5 @@ public class View extends JPanel
 		//{
 			//g2.draw(s);
 		//}
-		
-		g2.dispose();
 	}
 }

@@ -28,8 +28,7 @@ public abstract class Scene implements DrawAble
 
 	public void draw(Graphics2D g)
 	{
-		Image img = sprite.getImage();
-		g.drawImage(img, 0, 0, game.getWidth(), game.getHeight(), null);
+		g.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
 	}
 
 	public void addGObject(GObject gObject)
