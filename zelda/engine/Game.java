@@ -13,6 +13,12 @@ public abstract class Game
 	
 	protected Scene scene;
 
+	public void quit()
+	{
+		//do other stuff like stop music.
+		System.exit(0);
+	}
+
 	public boolean isRunning()
 	{
 		return running;

@@ -1,41 +1,23 @@
 package zelda;
 
-import java.awt.Color;
-import java.awt.DisplayMode;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import zelda.engine.Scene;
 import zelda.link.Link;
-import zelda.link.LinkController;
 
 /**
  *
  * @author maartenhus
  */
-public class Controller implements Runnable
+public class Controller implements Runnable, KeyListener
 {
-
 	private Thread thread;
 	private ZeldaGame game;
 	private View view;
 	private Link link;
 	private Scene scene;
 	//private PolyCreator polyCreator;
-	private BufferStrategy buffer;
-	private BufferedImage bi;
-	private GraphicsDevice gd;
-
-	private int displayWidth   = 640;
-	private int displayHeight  = 480;
-
-	private int x;
-	private int y;
 
 	public Controller(ZeldaGame game, View view, final JFrame frame)
 	{
@@ -45,26 +27,7 @@ public class Controller implements Runnable
 		scene = game.getScene();//handles input
 
 		//frame.addMouseListener(new PolyCreator(scene));
-		frame.addKeyListener(new LinkController(link));
-
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		gd = ge.getDefaultScreenDevice();
-		GraphicsConfiguration gc = gd.getDefaultConfiguration();
-		
-		gd.setFullScreenWindow(frame);
-
-		if (gd.isDisplayChangeSupported())
-		{
-			gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
-		}
-
-		frame.createBufferStrategy(2);
-		frame.setBackground(Color.BLACK);
-		buffer = frame.getBufferStrategy();
-		bi = gc.createCompatibleImage(game.getWidth(), game.getHeight());
-
-		x = (displayWidth - game.getWidth()) /2;
-		y = (displayHeight - game.getHeight()) /2;
+		frame.addKeyListener(this);
 
 		thread = new Thread(this);
 		thread.start();
@@ -79,29 +42,77 @@ public class Controller implements Runnable
 				scene.handleInput();
 				link.handleInput();
 
-				Graphics graphics = buffer.getDrawGraphics();
-				Graphics2D g2d = bi.createGraphics();
-
-				g2d.setColor(Color.black);
-
-				view.draw(g2d);
-
-				graphics.drawImage(bi, x, y, null);
-
-				if (!buffer.contentsLost())
-				{
-					buffer.show();
-				}
-
-				graphics.dispose();
-				g2d.dispose();
+				view.draw();
 
 				Thread.sleep(game.getGameSpeed());
 			}
 			catch (InterruptedException e){}
 		}
 
-		gd.setFullScreenWindow(null);
-		System.exit(0);
+		view.exitFullScreen();
+		game.quit();
 	}
+
+	public void keyPressed(KeyEvent e)
+	{
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		{
+			game.setRunning(false);
+		}
+
+		switch(e.getKeyCode())
+		{
+			case KeyEvent.VK_A:
+				link.setaPressed(true);
+				break;
+			case KeyEvent.VK_D:
+				link.setdPressed(true);
+				break;
+			case KeyEvent.VK_W:
+				link.setwPressed(true);
+				break;
+			case KeyEvent.VK_S:
+				link.setsPressed(true);
+				break;
+			case KeyEvent.VK_J:
+				link.setjPressed(true);
+				break;
+			case KeyEvent.VK_K:
+				link.setkPressed(true);
+				break;
+			case KeyEvent.VK_L:
+				link.setlPressed(true);
+				break;
+		}
+	}
+
+	public void keyReleased(KeyEvent e)
+	{
+		switch(e.getKeyCode())
+		{
+			case KeyEvent.VK_A:
+				link.setaPressed(false);
+				break;
+			case KeyEvent.VK_D:
+				link.setdPressed(false);
+				break;
+			case KeyEvent.VK_W:
+				link.setwPressed(false);
+				break;
+			case KeyEvent.VK_S:
+				link.setsPressed(false);
+				break;
+			case KeyEvent.VK_J:
+				link.setjPressed(false);
+				break;
+			case KeyEvent.VK_K:
+				link.setkPressed(false);
+				break;
+			case KeyEvent.VK_L:
+				link.setlPressed(false);
+				break;
+		}
+	}
+
+	public void keyTyped(KeyEvent e){}
 }
