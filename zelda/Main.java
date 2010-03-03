@@ -11,13 +11,9 @@ public class Main extends JFrame
 
 	public Main()
 	{
-		setSize(game.getWidth(), game.getHeight());
 		setIgnoreRepaint(true);
 		setUndecorated(true);
-		setResizable(false);
-		//setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
 
 		view = new View(game, this);
 		ctl = new Controller(game, view, this);
