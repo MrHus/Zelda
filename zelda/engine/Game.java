@@ -6,11 +6,22 @@ package zelda.engine;
  */
 public abstract class Game
 {
+	protected boolean running = true;
 	protected int gameSpeed = 10;
 	protected int width = 500;
 	protected int height = 400;
 	
 	protected Scene scene;
+
+	public boolean isRunning()
+	{
+		return running;
+	}
+
+	public void setRunning(boolean running)
+	{
+		this.running = running;
+	}
 
 	public int getGameSpeed()
 	{

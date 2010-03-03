@@ -1,7 +1,6 @@
 package zelda.engine;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
@@ -26,9 +25,9 @@ public abstract class Scene implements DrawAble
 
 	public abstract void handleInput();
 
-	public void draw(Graphics2D g)
+	public void draw(Graphics2D g2)
 	{
-		g.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
+		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
 	}
 
 	public void addGObject(GObject gObject)
