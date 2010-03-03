@@ -1,6 +1,7 @@
 package zelda;
 
 import java.awt.Graphics2D;
+import java.awt.Shape;
 import zelda.engine.GObject;
 
 /**
@@ -20,7 +21,6 @@ public class View
 	public void draw(Graphics2D g2)
 	{
 		//System.out.println("draw");
-
 		game.getScene().draw(g2);
 
 		for (GObject obj : game.getScene().getGObjects())
