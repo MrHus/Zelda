@@ -7,9 +7,10 @@ import zelda.engine.GObject;
  *
  * @author maartenhus
  */
-public class Karacter extends GObject
+public abstract class Karacter extends GObject
 {
 	protected Direction direction;
+	protected KaracterState state;
 
 	public Karacter(ZeldaGame game, int x, int y, int width, int height, Direction dir, String image)
 	{
@@ -25,5 +26,20 @@ public class Karacter extends GObject
 	public void setDirection(Direction direction)
 	{
 		this.direction = direction;
+	}
+
+	public KaracterState getState()
+	{
+		return state;
+	}
+
+	public String getStateString()
+	{
+		return state.toString();
+	}
+
+	public void setState(KaracterState state)
+	{
+		this.state = state;
 	}
 }

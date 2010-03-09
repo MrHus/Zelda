@@ -2,6 +2,8 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import zelda.ZeldaGame;
+import zelda.enemy.BlueSoldier;
+import zelda.karacter.Direction;
 
 /**
  *
@@ -58,6 +60,7 @@ public class HouseScene extends ZeldaScene
 		solids.add(house);
 
 		gameObjects.add(game.getLink());
+		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 90));
 		game.playMusic("sounds/overworld.mp3", true);
 	}
 }

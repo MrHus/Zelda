@@ -41,12 +41,12 @@ public class StandState extends LinkState
 	{
 		if (link.isjPressed())
 		{
-			link.setLinkState(new SwordState(link));
+			link.setState(new SwordState(link));
 		}
 		else
 		{
 			if (link.moveinput())
-				link.setLinkState(new WalkState(link));
+				link.setState(new WalkState(link));
 		}
 	}
 }

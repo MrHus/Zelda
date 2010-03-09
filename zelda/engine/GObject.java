@@ -22,7 +22,6 @@ public abstract class GObject implements DrawAble
 	protected boolean checkcollision = true;
 
 	protected Sprite sprite;
-	protected HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 	protected String[] animation;
 
 	protected int animationCounter = 0;
@@ -54,7 +53,15 @@ public abstract class GObject implements DrawAble
 				animationCounter = 0;
 			}
 
-			sprite.setSprite(spriteLoc.get(animation[animationCounter]));
+			try
+			{
+				sprite.setSprite(getSpriteLoc().get(animation[animationCounter]));
+			}
+			catch(Exception e)
+			{
+				System.out.println("Animation " + animationCounter + " == " + animation.length);
+				animationCounter = 0;
+			}
 			animationCounter += 1;
 			lastAnimation = System.currentTimeMillis();
 
@@ -62,8 +69,10 @@ public abstract class GObject implements DrawAble
 		}
 	}
 
+	public void doInLoop(){};
 	public void preAnimation(){}
 	public void postAnimation(){}
+	public abstract HashMap<String, Rectangle> getSpriteLoc();
 
 	public void draw(Graphics2D g)
 	{

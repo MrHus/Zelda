@@ -3,6 +3,7 @@ package zelda.scene;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import zelda.ZeldaGame;
+import zelda.engine.GObject;
 import zelda.engine.Scene;
 import zelda.link.Link;
 
@@ -91,6 +92,15 @@ public class ZeldaScene extends Scene
 		for (Polygon poly : solids)
 		{
 			poly.translate(modX, modY);
+		}
+
+		for (GObject obj : gameObjects)
+		{
+			if (!(obj instanceof Link))
+			{
+				obj.setX(obj.getX() + modX);
+				obj.setY(obj.getY() + modY);
+			}
 		}
 	}
 }

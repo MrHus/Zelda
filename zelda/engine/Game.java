@@ -1,6 +1,8 @@
 package zelda.engine;
 
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import zelda.Main;
 
 /**
@@ -20,6 +22,13 @@ public abstract class Game
 	public void quit()
 	{
 		music.stop();
+
+		try
+		{
+			Thread.sleep(1000);
+		}
+		catch (InterruptedException ex){}
+
 		System.exit(0);
 	}
 

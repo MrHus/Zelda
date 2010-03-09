@@ -2,6 +2,7 @@ package zelda.link;
 
 import zelda.ZeldaGame;
 import java.awt.Rectangle;
+import java.util.HashMap;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -11,7 +12,7 @@ import zelda.karacter.Karacter;
  */
 public class Link extends Karacter
 {
-	private LinkState linkState;
+	private final HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 
 	private boolean aPressed = false;
 	private boolean	sPressed = false;
@@ -98,14 +99,14 @@ public class Link extends Karacter
 		
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
-		linkState = new StandState(this);
+		state = new StandState(this);
 	}
 
 	public void handleInput()
 	{
 		if (System.currentTimeMillis() > lastInput + inputInterval)
 		{
-			linkState.handleInput();
+			state.handleInput();
 			lastInput = System.currentTimeMillis();
 		}
 	}
@@ -113,7 +114,7 @@ public class Link extends Karacter
 	@Override
 	public void preAnimation()
 	{
-		linkState.handleAnimation();
+		state.handleAnimation();
 	}
 
 	public boolean moveinput()
@@ -196,18 +197,8 @@ public class Link extends Karacter
 		return wPressed;
 	}
 
-	public LinkState getLinkState()
+	public HashMap<String, Rectangle> getSpriteLoc()
 	{
-		return linkState;
-	}
-
-	public String getStateString()
-	{
-		return linkState.toString();
-	}
-
-	public void setLinkState(LinkState linkState)
-	{
-		this.linkState = linkState;
+		return spriteLoc;
 	}
 }

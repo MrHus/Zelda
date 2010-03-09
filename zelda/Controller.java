@@ -3,6 +3,7 @@ package zelda;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import zelda.engine.GObject;
 import zelda.engine.Scene;
 import zelda.link.Link;
 
@@ -41,6 +42,11 @@ public class Controller implements Runnable, KeyListener
 			{
 				scene.handleInput();
 				link.handleInput();
+
+				for(GObject obj : scene.getGObjects())
+				{
+					obj.doInLoop();
+				}
 
 				view.draw();
 

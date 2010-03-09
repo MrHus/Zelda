@@ -70,7 +70,7 @@ public class SwordState extends LinkState
 			link.setX(oldX);
 			link.setAnimationInterval(oldAnimationInterval);
 			link.setCheckcollision(true);
-			link.setLinkState(new StandState(link));
+			link.setState(new StandState(link));
 		}
 		else
 		{

@@ -17,7 +17,7 @@ public class WalkState extends LinkState
 	public WalkState(Link link)
 	{
 		super(link);
-		name = "WalksState";
+		name = "WalkState";
 	}
 
 	@Override
@@ -25,13 +25,13 @@ public class WalkState extends LinkState
 	{
 		if(link.isjPressed())
 		{
-			link.setLinkState(new SwordState(link));
+			link.setState(new SwordState(link));
 		}
 		else
 		{
 			if (link.noMoveinput())
 			{
-				link.setLinkState(new StandState(link));
+				link.setState(new StandState(link));
 			}
 			else
 			{
