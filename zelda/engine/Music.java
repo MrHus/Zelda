@@ -36,8 +36,6 @@ public class Music implements Runnable
 
 	public void run()
 	{
-		System.out.println(play);
-
 		while (!player.isComplete())
 		{
 			try

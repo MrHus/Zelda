@@ -1,26 +1,18 @@
 package zelda.link;
 
+import zelda.karacter.KaracterState;
+
 /**
  *
  * @author maartenhus
  */
-public abstract class LinkState
+public class LinkState extends KaracterState
 {
 	protected Link link;
-	protected String name;
 
 	public LinkState(Link link)
 	{
+		super(link);
 		this.link = link;
-		link.resetAnimationCounter();
-	}
-
-	public void handleInput(){};
-	public void handleAnimation(){};
-
-	@Override
-	public String toString()
-	{
-		return name;
 	}
 }

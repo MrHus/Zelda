@@ -12,6 +12,6 @@ public class BlueSoldier extends Karacter
 {
 	public BlueSoldier(ZeldaGame game, int x, int y)
 	{
-		super(game, x, y, 10, 20, Direction.DOWN, "images/soldier-blue.png");
+		super(game, x, y, 10, 20, Direction.DOWN, "images/blue-soldier.png");
 	}
 }

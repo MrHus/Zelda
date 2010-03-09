@@ -6,10 +6,10 @@ package zelda.link;
  */
 public class StandState extends LinkState
 {
-	private static String[] downAnimation	= {"Link stand down"};
-	private static String[] upAnimation		= {"Link stand up"};
-	private static String[] leftAnimation	= {"Link stand left"};
-	private static String[] rightAnimation	= {"Link stand right"};
+	private final static String[] downAnimation	= {"Link stand down"};
+	private final static String[] upAnimation	= {"Link stand up"};
+	private final static String[] leftAnimation	= {"Link stand left"};
+	private final static String[] rightAnimation= {"Link stand right"};
 
 	public StandState(Link link)
 	{

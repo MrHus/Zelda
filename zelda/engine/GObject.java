@@ -14,7 +14,6 @@ import java.util.HashMap;
 public abstract class GObject implements DrawAble
 {
 	protected Game game;
-	protected Scene scene;
 
 	protected int x;
 	protected int y;
@@ -34,7 +33,6 @@ public abstract class GObject implements DrawAble
 	{
 		animationInterval = 90;
 		this.game = game;
-		this.scene = game.getScene();
 
 		this.x = x;
 		this.y = y;
@@ -77,7 +75,7 @@ public abstract class GObject implements DrawAble
 	{
 		Rectangle rect = new Rectangle(newX, newY, width, height);
 
-		for (Polygon poly : scene.getSolids())
+		for (Polygon poly : game.getScene().getSolids())
 		{
 			final Area area = new Area();
 			area.add(new Area(rect));

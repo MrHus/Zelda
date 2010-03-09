@@ -14,8 +14,8 @@ public class ZeldaGame extends Game
 
 	public ZeldaGame()
 	{
-		scene = new HouseScene(this);
 		link = new Link(this, 100, 100);
+		scene = new HouseScene(this);
 
 		scene.initScene();
 	}
