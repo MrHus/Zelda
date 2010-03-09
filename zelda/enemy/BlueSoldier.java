@@ -13,10 +13,12 @@ import zelda.karacter.Karacter;
 public class BlueSoldier extends Karacter
 {
 	private Behavior behavior;
+	private long inputInterval = 50;
+	private long lastInput = System.currentTimeMillis();
 
-	private static final HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
+	//private static final HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 
-	public BlueSoldier(ZeldaGame game, int x, int y, Direction direction, int destinationY)
+	public BlueSoldier(ZeldaGame game, int x, int y, Direction direction, int ticks)
 	{
 		super(game, x, y, 10, 20, Direction.DOWN, "images/blue-soldier.png");
 
@@ -42,14 +44,18 @@ public class BlueSoldier extends Karacter
 		this.direction = direction;
 
 		state = new StandState(this);
-		behavior = new PatrolBehavior(this, 15);
+		behavior = new PatrolBehavior(this, ticks);
 	}
 
 	@Override
 	public void doInLoop()
 	{
-		state.handleInput();
-		behavior.behave();
+		if (System.currentTimeMillis() > lastInput + inputInterval)
+		{
+			state.handleInput();
+			behavior.behave();
+			lastInput = System.currentTimeMillis();
+		}
 	}
 
 	public Behavior getBehavior()

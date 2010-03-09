@@ -60,7 +60,8 @@ public class HouseScene extends ZeldaScene
 		solids.add(house);
 
 		gameObjects.add(game.getLink());
-		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 90));
+		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
+		gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
 		game.playMusic("sounds/overworld.mp3", true);
 	}
 }

@@ -24,9 +24,9 @@ public class PatrolBehavior extends Behavior
 		move();
 	}
 
-	public void doAction()
+	public void behave()
 	{
-		//System.out.println(ticks);
+		System.out.println(ticks);
 
 		if (soldier.getStateString().equals("WalkState"))
 		{

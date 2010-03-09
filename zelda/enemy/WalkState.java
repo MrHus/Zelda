@@ -13,7 +13,7 @@ public class WalkState extends KaracterState
 	private final String[] upAnimation		= {"Stand up", "Walk up 1", "Walk up 2"};
 	private final String[] leftAnimation	= {"Stand left", "Walk left 1", "Walk left 2"};
 	private final String[] rightAnimation	= {"Stand right", "Walk right 1", "Walk right 2"};
-	private final static int WALK_SPEED	= 1;
+	private final static int WALK_SPEED	= 2;
 
 	public WalkState(BlueSoldier soldier)
 	{

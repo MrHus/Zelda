@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
 import javax.imageio.ImageIO;
 import zelda.Main;
 
@@ -14,13 +13,12 @@ import zelda.Main;
  */
 public class Sprite
 {
-	private static HashMap<String, Sprite> sprites = new HashMap<String, Sprite>();
 	private BufferedImage image;
 	private int x, y, width, height;
 
 	private boolean spriteChanged;
 
-	private Sprite(String img)
+	public Sprite(String img)
 	{
 		URL imageUrl = Main.class.getResource(img);
 
@@ -29,20 +27,6 @@ public class Sprite
 			image = ImageIO.read(imageUrl);
 		}
 		catch(IOException e){}
-	}
-
-	public static Sprite getSprite(String img)
-	{
-		if(sprites.containsKey(img))
-		{
-			return sprites.get(img);
-		}
-		else
-		{
-			Sprite sprite = new Sprite(img);
-			sprites.put(img, sprite);
-			return sprite;
-		}
 	}
 
 	public void setSprite(Rectangle rect)

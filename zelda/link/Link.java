@@ -12,7 +12,7 @@ import zelda.karacter.Karacter;
  */
 public class Link extends Karacter
 {
-	private final HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
+	//private final HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 
 	private boolean aPressed = false;
 	private boolean	sPressed = false;

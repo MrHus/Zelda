@@ -18,7 +18,7 @@ public abstract class Scene implements DrawAble
 	public Scene(Game game, String img)
 	{
 		this.game = game;
-		sprite = Sprite.getSprite(img);
+		sprite = new Sprite(img);
 	}
 
 	public void initScene(){}
