@@ -18,7 +18,6 @@ public class ZeldaGame extends Game
 		link = new Link(this, 100, 100);
 
 		scene.initScene();
-		scene.addGObject(link);
 	}
 
 	public Link getLink()

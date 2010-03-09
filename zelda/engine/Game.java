@@ -1,8 +1,6 @@
 package zelda.engine;
 
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import zelda.Main;
 
 /**

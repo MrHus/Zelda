@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Shape;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
@@ -64,17 +65,19 @@ public class View
 		//System.out.println("draw");
 		game.getScene().draw(g2);
 
+		g2.setColor(Color.red);
+
 		for (GObject obj : game.getScene().getGObjects())
 		{
-			//g2.draw(obj.getRectangle());
+			g2.draw(obj.getRectangle());
 			obj.animate();
 			obj.draw(g2);
 		}
 
-		//for (Shape s : game.getScene().getSolids())
-		//{
-			//g2.draw(s);
-		//}
+		for (Shape s : game.getScene().getSolids())
+		{
+			g2.draw(s);
+		}
 
 		graphics.drawImage(bi, x, y, null);
 
