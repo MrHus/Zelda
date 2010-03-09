@@ -39,11 +39,11 @@ public class View
 		gd = ge.getDefaultScreenDevice();
 		GraphicsConfiguration gc = gd.getDefaultConfiguration();
 
-		gd.setFullScreenWindow(frame);
+		//gd.setFullScreenWindow(frame);
 
 		if (gd.isDisplayChangeSupported())
 		{
-			gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
+			//gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
 		}
 
 		frame.createBufferStrategy(2);
@@ -79,7 +79,8 @@ public class View
 			g2.draw(s);
 		}
 
-		graphics.drawImage(bi, x, y, null);
+		//graphics.drawImage(bi, x, y, null);
+		graphics.drawImage(bi, 0, 0, null);
 
 		if (!buffer.contentsLost())
 			buffer.show();
