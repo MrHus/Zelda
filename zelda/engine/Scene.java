@@ -3,6 +3,7 @@ package zelda.engine;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -10,6 +11,7 @@ import java.util.ArrayList;
  */
 public abstract class Scene implements DrawAble
 {
+
 	protected Sprite sprite;
 	protected Game game;
 	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
@@ -21,9 +23,21 @@ public abstract class Scene implements DrawAble
 		sprite = new Sprite(img);
 	}
 
-	public void initScene(){}
+	public void initScene()
+	{
+	}
 
-	public abstract void handleInput();
+	public void handleInput()
+	{
+		for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();)
+		{
+			GObject obj = it.next();
+			if (!obj.isAlive())
+			{
+				it.remove();
+			}
+		}
+	}
 
 	public void draw(Graphics2D g2)
 	{

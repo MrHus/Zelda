@@ -23,8 +23,11 @@ public class ZeldaScene extends Scene
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 	}
 
+	@Override
 	public void handleInput()
 	{
+		super.handleInput();
+
 		if (!link.getStateString().equals("SwordState"))
 		{
 			int currentMaxX = sprite.getX() + sprite.getWidth();

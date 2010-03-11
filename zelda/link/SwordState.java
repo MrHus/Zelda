@@ -1,5 +1,10 @@
 package zelda.link;
 
+import collision.Hittable;
+import collision.Weapon;
+import java.awt.Rectangle;
+import java.awt.geom.Area;
+import zelda.engine.GObject;
 import zelda.karacter.Direction;
 
 /**
@@ -13,6 +18,8 @@ public class SwordState extends LinkState
 	private final static String[] leftAnimation	= {"Link sword left 1", "Link sword left 2", "Link sword left 3", "Link sword left 4", "Link sword left 5", "Link sword left 6", "Link sword left 7", "Link sword left 8", "Link sword left 9"};
 	private final static String[] rightAnimation= {"Link sword right 1", "Link sword right 2", "Link sword right 3", "Link sword right 4", "Link sword right 5", "Link sword right 6", "Link sword right 7", "Link sword right 8"};
 
+	private Rectangle sword;
+
 	private int oldX, oldY;
 	private long oldAnimationInterval;
 
@@ -21,39 +28,60 @@ public class SwordState extends LinkState
 		super(link);
 		name = "SwordState";
 
+		oldX = link.getX();
+		oldY = link.getY();
+		oldAnimationInterval = link.getAnimationInterval();
+		link.setCheckcollision(false);
+
 		switch (link.getDirection())
 		{
 			case UP:
 				link.setAnimation(upAnimation);
+				link.setAnimationInterval(20);
+				sword = new Rectangle(oldX - 10, oldY - 10, 30, 10);
 				break;
 
 			case DOWN:
 				link.setAnimation(downAnimation);
+				link.setAnimationInterval(30);
+				sword = new Rectangle(oldX, oldY + link.getHeight(), 25, 10);
 				break;
 
 			case LEFT:
 				link.setAnimation(leftAnimation);
+				link.setAnimationInterval(20);
+				sword = new Rectangle(oldX - 10, oldY, 20, 30);
 				break;
 
 			case RIGHT:
 				link.setAnimation(rightAnimation);
+				link.setAnimationInterval(20);
+				sword = new Rectangle(oldX + link.getWidth(), oldY, 13, 28);
 				break;
 		}
 
-		oldX = link.getX();
-		oldY = link.getY();
-		oldAnimationInterval = link.getAnimationInterval();
+	}
 
-		if(link.getDirection() == Direction.DOWN)
-		{
-			link.setAnimationInterval(20);
-		}
-		else
-		{
-			link.setAnimationInterval(10);
-		}
+	public Rectangle getSword()
+	{
+		return sword;
+	}
 
-		link.setCheckcollision(false);
+	@Override
+	public void handleInput()
+	{
+		for (GObject obj : link.getGame().getScene().getGObjects())
+		{
+			final Area area = new Area();
+			area.add(new Area(sword));
+			area.intersect(new Area(obj.getRectangle()));
+
+			if((obj instanceof Hittable) && !area.isEmpty() && link != obj)
+			{
+				Hittable hittable = (Hittable)obj;
+				hittable.hitBy(Weapon.SWORD);
+			}
+		}
 	}
 
 	@Override

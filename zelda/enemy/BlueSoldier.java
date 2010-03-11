@@ -1,5 +1,7 @@
 package zelda.enemy;
 
+import collision.Hittable;
+import collision.Weapon;
 import java.awt.Rectangle;
 import java.util.HashMap;
 import zelda.ZeldaGame;
@@ -10,7 +12,7 @@ import zelda.karacter.Karacter;
  *
  * @author maartenhus
  */
-public class BlueSoldier extends Karacter
+public class BlueSoldier extends Karacter implements Hittable
 {
 	private Behavior behavior;
 	private long inputInterval = 50;
@@ -55,6 +57,16 @@ public class BlueSoldier extends Karacter
 			state.handleInput();
 			behavior.behave();
 			lastInput = System.currentTimeMillis();
+		}
+	}
+
+	public void hitBy(Weapon weapon)
+	{
+		switch(weapon)
+		{
+			case SWORD:
+				alive = false;
+				break;
 		}
 	}
 

@@ -1,7 +1,6 @@
 package zelda;
 
 import java.awt.Color;
-import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -12,6 +11,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
+import zelda.link.SwordState;
 
 /**
  *
@@ -77,6 +77,12 @@ public class View
 		for (Shape s : game.getScene().getSolids())
 		{
 			g2.draw(s);
+		}
+
+		if (game.getLink().getStateString().equals("SwordState"))
+		{
+			g2.setColor(Color.blue);
+			g2.draw(((SwordState)game.getLink().getState()).getSword());
 		}
 
 		//graphics.drawImage(bi, x, y, null);

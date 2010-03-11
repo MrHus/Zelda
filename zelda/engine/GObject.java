@@ -14,6 +14,7 @@ import java.util.HashMap;
 public abstract class GObject implements DrawAble
 {
 	protected Game game;
+	protected boolean alive = true;
 
 	protected int x;
 	protected int y;
@@ -60,7 +61,7 @@ public abstract class GObject implements DrawAble
 			}
 			catch(Exception e)
 			{
-				System.out.println("Animation " + animationCounter + " == " + animation.length);
+				//System.out.println("Animation " + animationCounter + " == " + animation.length);
 				animationCounter = 0;
 			}
 			animationCounter += 1;
@@ -80,7 +81,7 @@ public abstract class GObject implements DrawAble
 		g.drawImage(img, x, y, sprite.getWidth(), sprite.getHeight(), null);
 	}
 
-	private boolean collision(int newX, int newY)
+	private boolean isCollision(int newX, int newY)
 	{
 		Rectangle rect = new Rectangle(newX, newY, width, height);
 
@@ -96,8 +97,24 @@ public abstract class GObject implements DrawAble
 			}
 		}
 
+		for (GObject obj : game.getScene().getGObjects())
+		{
+			final Area area = new Area();
+			area.add(new Area(rect));
+			area.intersect(new Area(obj.getRectangle()));
+
+			if(!area.isEmpty() && this != obj)
+			{
+				collision(obj);
+				return true;
+			}
+		}
+
 		return false;
 	}
+
+	
+	protected void collision(GObject hitObject){}
 
 	public int getX()
 	{
@@ -106,7 +123,7 @@ public abstract class GObject implements DrawAble
 
 	public void setX(int newX)
 	{
-		if (!checkcollision || !collision(newX, y))
+		if (!checkcollision || !isCollision(newX, y))
 		{
 			x = newX;
 		}
@@ -119,7 +136,7 @@ public abstract class GObject implements DrawAble
 
 	public void setY(int newY)
 	{
-		if(!checkcollision || !collision(x, newY))
+		if(!checkcollision || !isCollision(x, newY))
 		{
 			y = newY;
 		}
@@ -138,6 +155,16 @@ public abstract class GObject implements DrawAble
 	public int getWidth()
 	{
 		return width;
+	}
+
+	public Game getGame()
+	{
+		return game;
+	}
+
+	public boolean isAlive()
+	{
+		return alive;
 	}
 
 	public Rectangle getRectangle()

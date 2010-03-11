@@ -30,7 +30,7 @@ public class Controller implements Runnable, KeyListener
 		//frame.addMouseListener(new PolyCreator(scene));
 		frame.addKeyListener(this);
 
-		thread = new Thread(this);
+		thread = new Thread(this, "GameLoop");
 		thread.start();
 	}
 

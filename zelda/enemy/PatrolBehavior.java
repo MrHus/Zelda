@@ -8,7 +8,6 @@ import zelda.karacter.Direction;
  */
 public class PatrolBehavior extends Behavior
 {
-
 	private BlueSoldier soldier;
 	private int ticks = 0;
 	private int max;
@@ -17,17 +16,12 @@ public class PatrolBehavior extends Behavior
 	public PatrolBehavior(BlueSoldier soldier, int ticks)
 	{
 		this.soldier = soldier;
-
-		
 		this.max = ticks;
-
 		move();
 	}
 
 	public void behave()
 	{
-		System.out.println(ticks);
-
 		if (soldier.getStateString().equals("WalkState"))
 		{
 			ticks += step;

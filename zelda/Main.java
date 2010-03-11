@@ -12,6 +12,7 @@ public class Main extends JFrame
 	{
 		setIgnoreRepaint(true);
 		//setUndecorated(true);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(game.getWidth(), game.getHeight());
 		setVisible(true);

@@ -2,7 +2,8 @@ package zelda.link;
 
 import zelda.ZeldaGame;
 import java.awt.Rectangle;
-import java.util.HashMap;
+import zelda.enemy.BlueSoldier;
+import zelda.engine.GObject;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -12,8 +13,6 @@ import zelda.karacter.Karacter;
  */
 public class Link extends Karacter
 {
-	//private final HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
-
 	private boolean aPressed = false;
 	private boolean	sPressed = false;
 	private boolean dPressed = false;
@@ -117,6 +116,17 @@ public class Link extends Karacter
 		state.handleAnimation();
 	}
 
+	@Override
+	protected void collision(GObject hitObject)
+	{
+		if (hitObject instanceof BlueSoldier)
+		{
+
+		}
+	}
+
+	//Handy dandy stuff that handles input
+
 	public boolean moveinput()
 	{
 		return (aPressed || dPressed || wPressed || sPressed);
@@ -195,10 +205,5 @@ public class Link extends Karacter
 	public boolean iswPressed()
 	{
 		return wPressed;
-	}
-
-	public HashMap<String, Rectangle> getSpriteLoc()
-	{
-		return spriteLoc;
 	}
 }
