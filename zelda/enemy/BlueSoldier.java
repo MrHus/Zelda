@@ -1,7 +1,7 @@
 package zelda.enemy;
 
-import collision.Hittable;
-import collision.Weapon;
+import zelda.collision.Hittable;
+import zelda.collision.Weapon;
 import java.awt.Rectangle;
 import java.util.HashMap;
 import zelda.ZeldaGame;
