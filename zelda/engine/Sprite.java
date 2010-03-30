@@ -14,9 +14,10 @@ import zelda.Main;
 public class Sprite
 {
 	private BufferedImage image;
-	private int x, y, width, height;
-
-	private boolean spriteChanged;
+	private int x;
+	private int y;
+	private int width;
+	private int height;
 
 	public Sprite(String img)
 	{
@@ -35,7 +36,6 @@ public class Sprite
 		this.y = (int)rect.getY();
 		this.width = (int)rect.getWidth();
 		this.height = (int)rect.getHeight();
-		spriteChanged = true;
 	}
 
 	public Image getImage()
@@ -51,13 +51,11 @@ public class Sprite
 	public void setX(int x)
 	{
 		this.x = x;
-		spriteChanged = true;
 	}
 
 	public void setY(int y)
 	{
 		this.y = y;
-		spriteChanged = true;
 	}
 
 	public int getY()
@@ -83,15 +81,5 @@ public class Sprite
 	public int getImageHeight()
 	{
 		return image.getHeight();
-	}
-
-	public boolean isSpriteChanged()
-	{
-		return spriteChanged;
-	}
-
-	public void setSpriteChanged(boolean spriteChanged)
-	{
-		this.spriteChanged = spriteChanged;
 	}
 }
