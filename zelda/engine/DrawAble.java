@@ -3,6 +3,7 @@ package zelda.engine;
 import java.awt.Graphics2D;
 
 /**
+ * Can the View draw this?
  *
  * @author maartenhus
  */

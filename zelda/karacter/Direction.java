@@ -1,6 +1,7 @@
 package zelda.karacter;
 
 /**
+ * These are the directions link can face.
  *
  * @author maartenhus
  */

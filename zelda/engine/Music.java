@@ -3,14 +3,17 @@ package zelda.engine;
 import java.net.URL;
 import javazoom.jl.player.Player;
 
+/**
+ * This class plays Music.
+ *
+ * @author maartenhus
+ */
 public class Music implements Runnable
 {
-
 	private Game game;
 	private Player player;
 	private Thread th = new Thread(this);
 	private URL mp3;
-	private boolean play = true;
 	private boolean loop;
 
 	public Music(Game game, URL mp3, boolean loop)
@@ -36,7 +39,7 @@ public class Music implements Runnable
 
 	public void run()
 	{
-		while (!player.isComplete())
+		while (!player.isComplete()) // if song is not over
 		{
 			try
 			{
@@ -49,7 +52,7 @@ public class Music implements Runnable
 			}
 		}
 
-		if (loop)
+		if (loop) //if song is over but its on a loop replay the song.
 		{
 			game.playMusic(mp3, true);
 		}

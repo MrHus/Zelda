@@ -1,6 +1,7 @@
 package zelda.link;
 
 /**
+ * State for when link is standing still.
  *
  * @author maartenhus
  */

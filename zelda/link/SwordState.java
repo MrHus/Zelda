@@ -8,6 +8,7 @@ import zelda.engine.GObject;
 import zelda.karacter.Direction;
 
 /**
+ * State for when link is swinging his sword.
  *
  * @author maartenhus
  */

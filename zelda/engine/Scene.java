@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
+ * This represents a level in the game.
  *
  * @author maartenhus
  */
 public abstract class Scene implements DrawAble
 {
-
 	protected Sprite sprite;
 	protected Game game;
 	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
@@ -23,13 +23,11 @@ public abstract class Scene implements DrawAble
 		sprite = new Sprite(img);
 	}
 
-	public void initScene()
-	{
-	}
+	public void initScene(){}
 
 	public void handleInput()
 	{
-		for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();)
+		for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();) // remove dead objects
 		{
 			GObject obj = it.next();
 			if (!obj.isAlive())

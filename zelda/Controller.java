@@ -8,6 +8,8 @@ import zelda.engine.Scene;
 import zelda.link.Link;
 
 /**
+ * The Controller is reponsible for the gameloop.
+ * And it handles user keyinput for the game.
  *
  * @author maartenhus
  */
@@ -34,18 +36,22 @@ public class Controller implements Runnable, KeyListener
 		thread.start();
 	}
 
+	/**
+	 * This function represents the gameloop, it does stuff like make objects
+	 * react on input and draw the game.
+	 */
 	public void run()
 	{
 		while (game.isRunning())
 		{
 			try
 			{
-				scene.handleInput();
-				link.handleInput();
+				scene.handleInput(); // let scene handle user input for menu's etc.
+				link.handleInput(); // let link handle key input.
 
 				for(GObject obj : scene.getGObjects())
 				{
-					obj.doInLoop();
+					obj.doInLoop(); // this lets the GObject hook in on the gameloop
 				}
 
 				view.draw();
@@ -55,6 +61,7 @@ public class Controller implements Runnable, KeyListener
 			catch (InterruptedException e){}
 		}
 
+		// if the game is not running close up.
 		view.exitFullScreen();
 		game.quit();
 	}

@@ -3,7 +3,8 @@ package zelda.link;
 import zelda.karacter.KaracterState;
 
 /**
- *
+ * Superclass for link's state.
+ * 
  * @author maartenhus
  */
 public class LinkState extends KaracterState

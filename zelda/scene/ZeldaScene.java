@@ -8,6 +8,7 @@ import zelda.engine.Scene;
 import zelda.link.Link;
 
 /**
+ * A specialised Scene object for the Zelda game.
  *
  * @author maartenhus
  */
@@ -28,13 +29,14 @@ public class ZeldaScene extends Scene
 	{
 		super.handleInput();
 
-		if (!link.getStateString().equals("SwordState"))
+		// If links walks to the border of the screen it should scroll.
+		if (!link.getStateString().equals("SwordState")) //ignore swordstate
 		{
-			int currentMaxX = sprite.getX() + sprite.getWidth();
-			int currentMaxY = sprite.getY() + sprite.getHeight();
+			final int currentMaxX = sprite.getX() + sprite.getWidth();
+			final int currentMaxY = sprite.getY() + sprite.getHeight();
 
-			int mod = 1;
-			int box = 200;
+			final int mod = 1;
+			final int box = 200;
 
 			if ((link.getX()) > (currentMaxX - box))
 			{
@@ -90,7 +92,14 @@ public class ZeldaScene extends Scene
 		link = game.getLink();
 	}
 
-	public void modShapes(int modX, int modY)
+	/**
+	 * When the screen moves everything else should move in the opposite direction.
+	 * otherwise they won't sit still.
+	 *
+	 * @param modX
+	 * @param modY
+	 */
+	private void modShapes(int modX, int modY)
 	{
 		for (Polygon poly : solids)
 		{
@@ -99,7 +108,7 @@ public class ZeldaScene extends Scene
 
 		for (GObject obj : gameObjects)
 		{
-			if (!(obj instanceof Link))
+			if (!(obj instanceof Link)) // ignore link
 			{
 				obj.setX(obj.getX() + modX);
 				obj.setY(obj.getY() + modY);

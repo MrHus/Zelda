@@ -9,6 +9,8 @@ import javax.imageio.ImageIO;
 import zelda.Main;
 
 /**
+ * Represents a spritesheet.
+ *
  * @author maartenhus
  */
 public class Sprite

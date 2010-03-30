@@ -4,6 +4,7 @@ import zelda.ZeldaGame;
 import zelda.engine.GObject;
 
 /**
+ * A GObject that has a state and a direction.
  *
  * @author maartenhus
  */

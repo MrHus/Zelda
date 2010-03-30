@@ -8,6 +8,7 @@ import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
 /**
+ * The players avatar in the game.
  *
  * @author maartenhus
  */

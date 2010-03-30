@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import zelda.Main;
 
 /**
+ * This represents a Game.
  *
  * @author maartenhus
  */
@@ -25,13 +26,19 @@ public abstract class Game
 
 		try
 		{
-			Thread.sleep(1000);
+			Thread.sleep(1000); // give it some time to shutdown the music nicely.
 		}
 		catch (InterruptedException ex){}
 
 		System.exit(0);
 	}
 
+	/**
+	 * Make the game play music.
+	 * 
+	 * @param mp3file
+	 * @param loop
+	 */
 	public void playMusic(String mp3file, boolean loop)
 	{
 		URL mp3 = Main.class.getResource(mp3file);
@@ -39,6 +46,12 @@ public abstract class Game
 		music.play();
 	}
 
+	/**
+	 * Make the game play music.
+	 * 
+	 * @param mp3
+	 * @param loop
+	 */
 	public void playMusic(URL mp3, boolean loop)
 	{
 		music = new Music(this, mp3, loop);

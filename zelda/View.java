@@ -14,6 +14,7 @@ import zelda.engine.GObject;
 import zelda.link.SwordState;
 
 /**
+ * This class handles all the drawing.
  *
  * @author maartenhus
  */
@@ -51,8 +52,9 @@ public class View
 		buffer = frame.getBufferStrategy();
 		bi = gc.createCompatibleImage(game.getWidth(), game.getHeight());
 
-		x = (displayWidth - game.getWidth()) /2;
-		y = (displayHeight - game.getHeight()) /2;
+		//calculate the x and y for centering in fullscreen mode.
+		//x = (displayWidth - game.getWidth()) /2;
+		//y = (displayHeight - game.getHeight()) /2;
 	}	
 
 	public void draw()
@@ -60,6 +62,7 @@ public class View
 		Graphics graphics = buffer.getDrawGraphics();
 		Graphics2D g2 = bi.createGraphics();
 
+		//for background in fullscreen.
 		g2.setColor(Color.black);
 
 		//System.out.println("draw");
@@ -67,6 +70,7 @@ public class View
 
 		g2.setColor(Color.red);
 
+		//animate, and draw every GObject from Scene
 		for (GObject obj : game.getScene().getGObjects())
 		{
 			g2.draw(obj.getRectangle());
@@ -74,11 +78,13 @@ public class View
 			obj.draw(g2);
 		}
 
+		//Draw solids on the map
 		for (Shape s : game.getScene().getSolids())
 		{
 			g2.draw(s);
 		}
 
+		//draw blue box when link strikes debug
 		if (game.getLink().getStateString().equals("SwordState"))
 		{
 			g2.setColor(Color.blue);

@@ -3,6 +3,7 @@ package zelda.link;
 import zelda.karacter.Direction;
 
 /**
+ * State for when link is walking.
  *
  * @author maartenhus
  */

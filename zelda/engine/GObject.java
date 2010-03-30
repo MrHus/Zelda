@@ -8,6 +8,7 @@ import java.awt.geom.Area;
 import java.util.HashMap;
 
 /**
+ * A GObject is something that gets drawn on the View, checks if it collides and animates itself.
  *
  * @author maartenhus
  */
@@ -45,18 +46,20 @@ public abstract class GObject implements DrawAble
 
 	public void animate()
 	{
-		if (System.currentTimeMillis() > lastAnimation + animationInterval)
+		if (System.currentTimeMillis() > lastAnimation + animationInterval) // if it time to reanimate
 		{
 			preAnimation();
 
 			//System.out.println("Animation " + animationCounter + " == " + animation.length);
-			if (animationCounter == animation.length)
+			if (animationCounter == animation.length) // if all animations are done.
 			{
+				//reset the counter.
 				animationCounter = 0;
 			}
 
 			try
 			{
+				// Set the next animation image of the GObject.
 				sprite.setSprite(spriteLoc.get(animation[animationCounter]));
 			}
 			catch(Exception e)
@@ -64,6 +67,7 @@ public abstract class GObject implements DrawAble
 				//System.out.println("Animation " + animationCounter + " == " + animation.length);
 				animationCounter = 0;
 			}
+			
 			animationCounter += 1;
 			lastAnimation = System.currentTimeMillis();
 
@@ -85,13 +89,13 @@ public abstract class GObject implements DrawAble
 	{
 		Rectangle rect = new Rectangle(newX, newY, width, height);
 
-		for (Polygon poly : game.getScene().getSolids())
+		for (Polygon poly : game.getScene().getSolids()) //for each solid object
 		{
 			final Area area = new Area();
 			area.add(new Area(rect));
-			area.intersect(new Area(poly));
+			area.intersect(new Area(poly)); //check if there is a collision
 
-			if(!area.isEmpty())
+			if(!area.isEmpty()) // if isEmpty is false there is a collision
 			{
 				return true;
 			}
@@ -103,9 +107,9 @@ public abstract class GObject implements DrawAble
 			area.add(new Area(rect));
 			area.intersect(new Area(obj.getRectangle()));
 
-			if(!area.isEmpty() && this != obj)
+			if(!area.isEmpty() && this != obj) // if area is empty, and the obj is not isself. (Self-collision)
 			{
-				collision(obj);
+				collision(obj); //report collision to self, with the object that hit it.
 				return true;
 			}
 		}

@@ -9,6 +9,7 @@ import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
 /**
+ * A Blue soldier.
  *
  * @author maartenhus
  */
@@ -17,8 +18,6 @@ public class BlueSoldier extends Karacter implements Hittable
 	private Behavior behavior;
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
-
-	//private static final HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 
 	public BlueSoldier(ZeldaGame game, int x, int y, Direction direction, int ticks)
 	{

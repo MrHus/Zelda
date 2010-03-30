@@ -6,6 +6,7 @@ import zelda.enemy.BlueSoldier;
 import zelda.karacter.Direction;
 
 /**
+ * Links house.
  *
  * @author maartenhus
  */

@@ -5,6 +5,7 @@ import zelda.link.Link;
 import zelda.scene.HouseScene;
 
 /**
+ * This class represents the Game: Legend of Zelda: a Link to the Past!
  *
  * @author maartenhus
  */

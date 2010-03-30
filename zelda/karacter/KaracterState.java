@@ -1,6 +1,7 @@
 package zelda.karacter;
 
 /**
+ * This is the superclass for states. 
  *
  * @author maartenhus
  */
