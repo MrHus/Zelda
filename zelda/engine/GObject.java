@@ -14,19 +14,17 @@ import java.util.HashMap;
  */
 public abstract class GObject implements DrawAble
 {
+
 	protected Game game;
 	protected boolean alive = true;
-
 	protected int x;
 	protected int y;
 	protected int width;
 	protected int height;
 	protected boolean checkcollision = true;
-
 	protected Sprite sprite;
 	protected HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 	protected String[] animation;
-
 	protected int animationCounter = 0;
 	protected long animationInterval;
 	protected long lastAnimation = System.currentTimeMillis();
@@ -62,12 +60,12 @@ public abstract class GObject implements DrawAble
 				// Set the next animation image of the GObject.
 				sprite.setSprite(spriteLoc.get(animation[animationCounter]));
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				//System.out.println("Animation " + animationCounter + " == " + animation.length);
 				animationCounter = 0;
 			}
-			
+
 			animationCounter += 1;
 			lastAnimation = System.currentTimeMillis();
 
@@ -75,18 +73,28 @@ public abstract class GObject implements DrawAble
 		}
 	}
 
-    public void setAlive(boolean alive)
-    {
-        this.alive = alive;
-    }
+	public void setAlive(boolean alive)
+	{
+		this.alive = alive;
+	}
 
-	public void doInLoop(){};
-	public void preAnimation(){}
-	public void postAnimation(){}
+	public void doInLoop()
+	{
+	}
+
+	;
+
+	public void preAnimation()
+	{
+	}
+
+	public void postAnimation()
+	{
+	}
 
 	public void draw(Graphics2D g)
 	{
-		Image img = sprite.getImage();		
+		Image img = sprite.getImage();
 		g.drawImage(img, x, y, sprite.getWidth(), sprite.getHeight(), null);
 	}
 
@@ -100,30 +108,34 @@ public abstract class GObject implements DrawAble
 			area.add(new Area(rect));
 			area.intersect(new Area(poly)); //check if there is a collision
 
-			if(!area.isEmpty()) // if isEmpty is false there is a collision
+			if (!area.isEmpty()) // if isEmpty is false there is a collision
 			{
-                            return true;
+				return true;
 			}
 		}
 
 		for (GObject obj : game.getScene().getGObjects())
 		{
-                    final Area area = new Area();
-                    area.add(new Area(rect));
-                    area.intersect(new Area(obj.getRectangle()));
+			if(obj.isCheckcollision())
+			{
+				final Area area = new Area();
+				area.add(new Area(rect));
+				area.intersect(new Area(obj.getRectangle()));
 
-                    if(!area.isEmpty() && this != obj) // if area is empty, and the obj is not isself. (Self-collision)
-                    {
-                        collision(obj); //report collision to self, with the object that hit it.
-                        return true;
-                    }
+				if (!area.isEmpty() && this != obj) // if area is empty, and the obj is not isself. (Self-collision)
+				{
+					collision(obj); //report collision to self, with the object that hit it.
+					return true;
+				}
+			}
 		}
 
 		return false;
 	}
 
-	
-	protected void collision(GObject hitObject){}
+	protected void collision(GObject hitObject)
+	{
+	}
 
 	public int getX()
 	{
@@ -145,7 +157,7 @@ public abstract class GObject implements DrawAble
 
 	public void setY(int newY)
 	{
-		if(!checkcollision || !isCollision(x, newY))
+		if (!checkcollision || !isCollision(x, newY))
 		{
 			y = newY;
 		}

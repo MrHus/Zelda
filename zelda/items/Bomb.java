@@ -28,9 +28,9 @@ public class Bomb extends GObject {
         setAnimation(bombAnimation);
 
         behavior = new BombBehavior(this);
+
+		setCheckcollision(false); //don't check for collisions
     }
-
-
 
     public void doInLoop()
     {
