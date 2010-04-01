@@ -14,7 +14,6 @@ import java.util.HashMap;
  */
 public abstract class GObject implements DrawAble
 {
-
 	protected Game game;
 	protected boolean alive = true;
 	protected int x;
@@ -41,6 +40,27 @@ public abstract class GObject implements DrawAble
 
 		sprite = new Sprite(image);
 	}
+
+	/**
+	 * What the GObject is supposed to do in the loop.
+	 */
+	public void doInLoop(){}
+
+	/**
+	 * What the GObject needs to do pre animation.
+	 */
+	protected void preAnimation(){}
+
+	/**
+	 * What the GObject needs to do post animation.
+	 */
+	protected void postAnimation(){}
+
+	/**
+	 * What the GObject does when it has a collision.
+	 * @param hitObject
+	 */
+	protected void collision(GObject hitObject){}
 
 	public void animate()
 	{
@@ -72,15 +92,6 @@ public abstract class GObject implements DrawAble
 			postAnimation();
 		}
 	}
-
-	public void setAlive(boolean alive)
-	{
-		this.alive = alive;
-	}
-
-	public void doInLoop(){}
-	public void preAnimation(){}
-	public void postAnimation(){}
 
 	public void draw(Graphics2D g)
 	{
@@ -124,8 +135,6 @@ public abstract class GObject implements DrawAble
 		return false;
 	}
 
-	protected void collision(GObject hitObject){}
-
 	public int getX()
 	{
 		return x;
@@ -167,6 +176,11 @@ public abstract class GObject implements DrawAble
 		return width;
 	}
 
+	public void setWidth(int width)
+	{
+		this.width = width;
+	}
+
 	public Game getGame()
 	{
 		return game;
@@ -177,14 +191,14 @@ public abstract class GObject implements DrawAble
 		return alive;
 	}
 
+	public void setAlive(boolean alive)
+	{
+		this.alive = alive;
+	}
+
 	public Rectangle getRectangle()
 	{
 		return new Rectangle(x, y, width, height);
-	}
-
-	public void setWidth(int width)
-	{
-		this.width = width;
 	}
 
 	public String[] getAnimation()
