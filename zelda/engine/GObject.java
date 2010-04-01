@@ -22,7 +22,7 @@ public abstract class GObject implements DrawAble
 	protected int height;
 	protected boolean checkcollision = true;
 	protected Sprite sprite;
-	protected HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
+	protected static HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 	protected String[] animation;
 	protected int animationCounter = 0;
 	protected long animationInterval;
