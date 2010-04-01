@@ -35,45 +35,44 @@ public class BombBehavior extends Behavior
             bomb.setAlive(false);
             }*/
 
-            /*if(loopertegenaan)
-            {
+          
             if(ticks >= 1 && ticks <= 3 )
             {
-            bomb.setX(bomb.getX() + 5);
-            bomb.setY(bomb.getY() - 4);
+                bomb.setX(bomb.getX() + 5);
+                bomb.setY(bomb.getY() - 4);
             }
 
             if(ticks == 4)
             {
-            bomb.setX(bomb.getX() + 5);
-            bomb.setY(bomb.getY() - 1);
+                bomb.setX(bomb.getX() + 5);
+                bomb.setY(bomb.getY() - 1);
             }
 
             if(ticks == 5)
             {
-            bomb.setX(bomb.getX() + 5);
+                bomb.setX(bomb.getX() + 5);
             }
 
             if(ticks == 6)
             {
-            bomb.setX(bomb.getX() + 5);
-            bomb.setY(bomb.getY() + 1);
+                bomb.setX(bomb.getX() + 5);
+                bomb.setY(bomb.getY() + 1);
             }
 
             if(ticks >= 7 && ticks <= 9 )
             {
-            bomb.setX(bomb.getX() + 5);
-            bomb.setY(bomb.getY() + 4);
+                bomb.setX(bomb.getX() + 5);
+                bomb.setY(bomb.getY() + 4);
             }
 
-            if(ticks == 10)
+            if(ticks == 87)
             {
-            ticks = 0;
+                ticks = 0;
             }
 
             lastAnimation = System.currentTimeMillis();
             ticks++;
-            }*/
+          
         }
     }
 
