@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import zelda.ZeldaGame;
 import zelda.enemy.Behavior;
 import zelda.engine.GObject;
+import zelda.link.Link;
 
 /**
  *
@@ -28,13 +29,23 @@ public class Bomb extends GObject {
         setAnimation(bombAnimation);
 
         behavior = new BombBehavior(this);
-
-		setCheckcollision(false); //don't check for collisions
     }
 
+	@Override
     public void doInLoop()
     {
         behavior.behave();
     }
+
+	@Override
+	public void collision(GObject obj)
+	{
+		System.out.println("Collision");
+
+		if (obj instanceof Link)
+		{
+			alive = false;
+		}
+	}
 
 }

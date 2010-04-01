@@ -78,19 +78,9 @@ public abstract class GObject implements DrawAble
 		this.alive = alive;
 	}
 
-	public void doInLoop()
-	{
-	}
-
-	;
-
-	public void preAnimation()
-	{
-	}
-
-	public void postAnimation()
-	{
-	}
+	public void doInLoop(){}
+	public void preAnimation(){}
+	public void postAnimation(){}
 
 	public void draw(Graphics2D g)
 	{
@@ -125,6 +115,7 @@ public abstract class GObject implements DrawAble
 				if (!area.isEmpty() && this != obj) // if area is empty, and the obj is not isself. (Self-collision)
 				{
 					collision(obj); //report collision to self, with the object that hit it.
+					obj.collision(this); //report collision to object that got hit with itself.
 					return true;
 				}
 			}
@@ -133,9 +124,7 @@ public abstract class GObject implements DrawAble
 		return false;
 	}
 
-	protected void collision(GObject hitObject)
-	{
-	}
+	protected void collision(GObject hitObject){}
 
 	public int getX()
 	{
