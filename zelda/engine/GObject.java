@@ -75,6 +75,11 @@ public abstract class GObject implements DrawAble
 		}
 	}
 
+    public void setAlive(boolean alive)
+    {
+        this.alive = alive;
+    }
+
 	public void doInLoop(){};
 	public void preAnimation(){}
 	public void postAnimation(){}
@@ -97,21 +102,21 @@ public abstract class GObject implements DrawAble
 
 			if(!area.isEmpty()) // if isEmpty is false there is a collision
 			{
-				return true;
+                            return true;
 			}
 		}
 
 		for (GObject obj : game.getScene().getGObjects())
 		{
-			final Area area = new Area();
-			area.add(new Area(rect));
-			area.intersect(new Area(obj.getRectangle()));
+                    final Area area = new Area();
+                    area.add(new Area(rect));
+                    area.intersect(new Area(obj.getRectangle()));
 
-			if(!area.isEmpty() && this != obj) // if area is empty, and the obj is not isself. (Self-collision)
-			{
-				collision(obj); //report collision to self, with the object that hit it.
-				return true;
-			}
+                    if(!area.isEmpty() && this != obj) // if area is empty, and the obj is not isself. (Self-collision)
+                    {
+                        collision(obj); //report collision to self, with the object that hit it.
+                        return true;
+                    }
 		}
 
 		return false;
