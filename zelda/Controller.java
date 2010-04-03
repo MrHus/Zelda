@@ -46,14 +46,16 @@ public class Controller implements Runnable, KeyListener
 		{
 			try
 			{
-				scene.handleInput(); // let scene handle user input for menu's etc.
-				link.handleInput(); // let link handle key input.
-
-				for(GObject obj : scene.getGObjects())
+				if(!game.isPaused())
 				{
-					obj.doInLoop(); // this lets the GObject hook in on the gameloop
-				}
+					scene.handleInput(); // let scene handle user input for menu's etc.
+					link.handleInput(); // let link handle key input.
 
+					for(GObject obj : scene.getGObjects())
+					{
+						obj.doInLoop(); // this lets the GObject hook in on the gameloop
+					}
+				}
 				view.draw();
 
 				Thread.sleep(game.getGameSpeed());
@@ -70,7 +72,12 @@ public class Controller implements Runnable, KeyListener
 	{
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
-			game.setRunning(false);
+			game.setRunning(false); //quit game
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_P)
+		{
+			game.setPaused(!game.isPaused()); //pauze game
 		}
 
 		switch(e.getKeyCode())
