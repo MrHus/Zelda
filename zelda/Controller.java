@@ -76,25 +76,25 @@ public class Controller implements Runnable, KeyListener
 		switch(e.getKeyCode())
 		{
 			case KeyEvent.VK_A:
-				link.setaPressed(true);
+				game.setaPressed(true);
 				break;
 			case KeyEvent.VK_D:
-				link.setdPressed(true);
+				game.setdPressed(true);
 				break;
 			case KeyEvent.VK_W:
-				link.setwPressed(true);
+				game.setwPressed(true);
 				break;
 			case KeyEvent.VK_S:
-				link.setsPressed(true);
+				game.setsPressed(true);
 				break;
 			case KeyEvent.VK_J:
-				link.setjPressed(true);
+				game.setjPressed(true);
 				break;
 			case KeyEvent.VK_K:
-				link.setkPressed(true);
+				game.setkPressed(true);
 				break;
 			case KeyEvent.VK_L:
-				link.setlPressed(true);
+				game.setlPressed(true);
 				break;
 		}
 	}
@@ -104,25 +104,25 @@ public class Controller implements Runnable, KeyListener
 		switch(e.getKeyCode())
 		{
 			case KeyEvent.VK_A:
-				link.setaPressed(false);
+				game.setaPressed(false);
 				break;
 			case KeyEvent.VK_D:
-				link.setdPressed(false);
+				game.setdPressed(false);
 				break;
 			case KeyEvent.VK_W:
-				link.setwPressed(false);
+				game.setwPressed(false);
 				break;
 			case KeyEvent.VK_S:
-				link.setsPressed(false);
+				game.setsPressed(false);
 				break;
 			case KeyEvent.VK_J:
-				link.setjPressed(false);
+				game.setjPressed(false);
 				break;
 			case KeyEvent.VK_K:
-				link.setkPressed(false);
+				game.setkPressed(false);
 				break;
 			case KeyEvent.VK_L:
-				link.setlPressed(false);
+				game.setlPressed(false);
 				break;
 		}
 	}

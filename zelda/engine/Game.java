@@ -13,12 +13,21 @@ import zelda.Main;
 public abstract class Game
 {
 	protected boolean running = true;
+	protected boolean paused  = false;
 	protected int gameSpeed = 10;
 	protected int width = 500;
 	protected int height = 400;
 	
 	protected Scene scene;
 	protected Music music;
+
+	protected boolean aPressed = false;
+	protected boolean sPressed = false;
+	protected boolean dPressed = false;
+	protected boolean wPressed = false;
+	protected boolean jPressed = false;
+	protected boolean kPressed = false;
+	protected boolean lPressed = false;
 
 	public void quit()
 	{
@@ -68,6 +77,16 @@ public abstract class Game
 		this.running = running;
 	}
 
+	public boolean isPaused()
+	{
+		return paused;
+	}
+
+	public void setPaused(boolean paused)
+	{
+		this.paused = paused;
+	}
+
 	public int getGameSpeed()
 	{
 		return gameSpeed;
@@ -96,5 +115,75 @@ public abstract class Game
 	public int getWidth()
 	{
 		return width;
+	}
+
+	public void setaPressed(boolean aPressed)
+	{
+		this.aPressed = aPressed;
+	}
+
+	public void setdPressed(boolean dPressed)
+	{
+		this.dPressed = dPressed;
+	}
+
+	public void setjPressed(boolean jPressed)
+	{
+		this.jPressed = jPressed;
+	}
+
+	public void setkPressed(boolean kPressed)
+	{
+		this.kPressed = kPressed;
+	}
+
+	public void setlPressed(boolean lPressed)
+	{
+		this.lPressed = lPressed;
+	}
+
+	public void setsPressed(boolean sPressed)
+	{
+		this.sPressed = sPressed;
+	}
+
+	public void setwPressed(boolean wPressed)
+	{
+		this.wPressed = wPressed;
+	}
+
+	public boolean isaPressed()
+	{
+		return aPressed;
+	}
+
+	public boolean isdPressed()
+	{
+		return dPressed;
+	}
+
+	public boolean isjPressed()
+	{
+		return jPressed;
+	}
+
+	public boolean iskPressed()
+	{
+		return kPressed;
+	}
+
+	public boolean islPressed()
+	{
+		return lPressed;
+	}
+
+	public boolean issPressed()
+	{
+		return sPressed;
+	}
+
+	public boolean iswPressed()
+	{
+		return wPressed;
 	}
 }
