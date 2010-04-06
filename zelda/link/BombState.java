@@ -5,7 +5,10 @@
 
 package zelda.link;
 
+import zelda.ZeldaGame;
+import zelda.engine.Game;
 import zelda.items.Bomb;
+
 /**
  *
  * @author vincentklarholz
@@ -13,6 +16,8 @@ import zelda.items.Bomb;
 public class BombState extends LinkState
 {
 	private int oldX, oldY;
+    private Game game;
+    private ZeldaGame game2;  // variable moet nog worden gevuld.
 
     public BombState(Link link)
     {
@@ -25,27 +30,31 @@ public class BombState extends LinkState
 		switch (link.getDirection())
 		{
 			case UP:
-                gameObjects.add(new Bomb(game, oldX, oldY - 16));
-                link.setState(new StandState(link));
+                //gameObjects.add(new Bomb(game, oldX, oldY - 16));
+                game.getScene().addGObject(new Bomb(game2, oldX, oldY - 16));
+                System.out.println("L pressed, up");
 				break;
 
 			case DOWN:
-				gameObjects.add(new Bomb(game, oldX, oldY + link.getHeight()));
-                link.setState(new StandState(link));
+				//gameObjects.add(new Bomb(game, oldX, oldY + link.getHeight()));
+                System.out.println("L pressed, down");
 				break;
 
 			case LEFT:
-				gameObjects.add(new Bomb(game, oldX - 13, oldY));
-                link.setState(new StandState(link));
+				//gameObjects.add(new Bomb(game, oldX - 13, oldY));
+                System.out.println("L pressed, left");
 				break;
 
 			case RIGHT:
-				gameObjects.add(new Bomb(game, oldX + link.getWidth(), oldY));
-                link.setState(new StandState(link));
+				//gameObjects.add(new Bomb(game, oldX + link.getWidth(), oldY));
+                System.out.println("L pressed, right");
 				break;
 		}
     }
 
-
-	
+    @Override
+	public void handleInput()
+	{
+        link.setState(new StandState(link));
+    }
 }
