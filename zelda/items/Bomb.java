@@ -12,7 +12,7 @@ import zelda.link.Link;
  */
 public class Bomb extends GObject {
 
-    //Bomb animation is 5 sec so 50 items in array.
+    //Bomb animation is 2.5 sec so 50 items in array.
     private final static String[] bombAnimation	= { "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4",
                                                     "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1",
                                                     "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1", "bomb1", "bomb1",
@@ -36,7 +36,7 @@ public class Bomb extends GObject {
 
         sprite.setSprite(spriteLoc.get("bomb1"));
         setAnimation(bombAnimation);
-        this.setAnimationInterval(100); //keep on 100 for 5 sec bomb countdown.
+        this.setAnimationInterval(50); //keep on 50 for 2.5 sec bomb countdown.
 
         behavior = new BombBehavior(this);
     }

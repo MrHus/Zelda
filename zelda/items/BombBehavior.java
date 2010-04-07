@@ -30,12 +30,12 @@ public class BombBehavior extends Behavior
     {
         if (System.currentTimeMillis() > lastAnimation + animationInterval) // if it time to reanimate
 	{
-            /*if(ticks == 3)
+            if(ticks == 50)
             {
             bomb.setAlive(false);
-            }*/
+            }
 
-          
+            /*
             if(ticks >= 1 && ticks <= 3 )
             {
                 bomb.setX(bomb.getX() + 5);
@@ -68,11 +68,10 @@ public class BombBehavior extends Behavior
             if(ticks == 87)
             {
                 ticks = 0;
-            }
-
+            }           
+            */
             lastAnimation = System.currentTimeMillis();
             ticks++;
-          
         }
     }
 

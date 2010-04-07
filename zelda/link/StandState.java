@@ -46,7 +46,7 @@ public class StandState extends LinkState
 		}
         else if(game.islPressed())
         {
-            link.setState(new BombState(link));
+            link.dropBomb();
         }
 		else
 		{
