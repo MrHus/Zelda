@@ -1,9 +1,9 @@
 package zelda.link;
 
-import zelda.ZeldaGame;
 import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -14,19 +14,10 @@ import zelda.karacter.Karacter;
  */
 public class Link extends Karacter
 {
-	private boolean aPressed = false;
-	private boolean	sPressed = false;
-	private boolean dPressed = false;
-	private boolean wPressed = false;
-	private boolean jPressed = false;
-	private boolean kPressed = false;
-	private boolean lPressed = false;
-    private boolean mPressed = false;
-
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
-	public Link(ZeldaGame game, int x, int y)
+	public Link(Game game, int x, int y)
 	{
 		super(game, x, y, 17, 20, Direction.DOWN, "images/link.png");
 		spriteLoc.put("Link walk down 1",		new Rectangle(0, 0, 16, 23));
@@ -144,94 +135,13 @@ public class Link extends Karacter
 	}
 
 	//Handy dandy stuff that handles input
-
 	public boolean moveinput()
 	{
-		return (aPressed || dPressed || wPressed || sPressed);
+		return (game.isaPressed() || game.isdPressed() || game.iswPressed() || game.issPressed());
 	}
 
 	public boolean noMoveinput()
 	{
-		return (!aPressed && !dPressed && !wPressed && !sPressed);
-	}
-
-	public void setaPressed(boolean aPressed)
-	{
-		this.aPressed = aPressed;
-	}
-
-	public void setdPressed(boolean dPressed)
-	{
-		this.dPressed = dPressed;
-	}
-
-	public void setjPressed(boolean jPressed)
-	{
-		this.jPressed = jPressed;
-	}
-
-	public void setkPressed(boolean kPressed)
-	{
-		this.kPressed = kPressed;
-	}
-
-	public void setlPressed(boolean lPressed)
-	{
-		this.lPressed = lPressed;
-	}
-
-	public void setsPressed(boolean sPressed)
-	{
-		this.sPressed = sPressed;
-	}
-
-	public void setwPressed(boolean wPressed)
-	{
-		this.wPressed = wPressed;
-	}
-
-    public void setmPressed(boolean mPressed)
-	{
-		this.mPressed = mPressed;
-	}
-
-	public boolean isaPressed()
-	{
-		return aPressed;
-	}
-
-	public boolean isdPressed()
-	{
-		return dPressed;
-	}
-
-	public boolean isjPressed()
-	{
-		return jPressed;
-	}
-
-    public boolean ismPressed()
-	{
-		return mPressed;
-	}
-
-	public boolean iskPressed()
-	{
-		return kPressed;
-	}
-
-	public boolean islPressed()
-	{
-		return lPressed;
-	}
-
-	public boolean issPressed()
-	{
-		return sPressed;
-	}
-
-	public boolean iswPressed()
-	{
-		return wPressed;
+        return (!game.isaPressed() && !game.isdPressed() && !game.iswPressed() && !game.issPressed());
 	}
 }

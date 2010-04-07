@@ -183,7 +183,7 @@ public class BowState extends LinkState
 	@Override
 	public void handleInput()
 	{
-		if (link.ismPressed())
+		if (game.iskPressed())
 		{
 			link.setState(new BowState(link));
 		}
