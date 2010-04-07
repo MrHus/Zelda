@@ -15,8 +15,7 @@ import zelda.link.Link;
 public class ZeldaScene extends Scene
 {
 	protected Link link;
-	private Game game;
-
+	
 	public ZeldaScene(Game game, String img)
 	{
 		super(game, img);

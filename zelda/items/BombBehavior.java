@@ -24,8 +24,7 @@ public class BombBehavior extends Behavior
     {
         this.bomb = bomb;
     }
-
-
+	
     public void behave()
     {
         if (System.currentTimeMillis() > lastAnimation + animationInterval) // if it time to reanimate

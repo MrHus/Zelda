@@ -17,7 +17,7 @@ public class Bomb extends GObject {
                                                     "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1",
                                                     "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1", "bomb1", "bomb1",
                                                     "bomb1", "bomb2", "bomb3", "bomb4", "bomb2", "bomb3", "bomb2", "bomb8", "bomb4", "bomb2",
-                                                    "bomb3", "bomb2", "bomb8", "bomb4", "bomb8", "bomb4", "bomb9", "bomb9", "bomb10", "bomb10"};
+                                                    "bomb3", "bomb2", "bomb8", "bomb4", "bomb8", "bomb4", "bomb9", "bomb9", "bomb10", "bomb10", "bomb10"};
     private Behavior behavior;
 
     public Bomb(Game game, int x, int y)
@@ -38,6 +38,7 @@ public class Bomb extends GObject {
         setAnimation(bombAnimation);
         this.setAnimationInterval(50); //keep on 50 for 2.5 sec bomb countdown.
 
+		liquid = true;
         behavior = new BombBehavior(this);
     }
 

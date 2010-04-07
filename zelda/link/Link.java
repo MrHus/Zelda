@@ -89,6 +89,22 @@ public class Link extends Karacter
 		spriteLoc.put("Link sword left 7",		new Rectangle(94, 254, 28, 21));
 		spriteLoc.put("Link sword left 8",		new Rectangle(125, 253, 28, 28));
 		spriteLoc.put("Link sword left 9",		new Rectangle(153, 250, 22, 31));
+
+        spriteLoc.put("Link bow down 1",		new Rectangle(100, 225, 16, 23));
+		spriteLoc.put("Link bow down 2",		new Rectangle(125, 225, 18, 23));
+		spriteLoc.put("Link bow down 3",		new Rectangle(150, 225, 23, 24));
+
+        spriteLoc.put("Link bow left 1",		new Rectangle(100, 225, 16, 23));
+		spriteLoc.put("Link bow left 2",		new Rectangle(125, 225, 18, 23));
+		spriteLoc.put("Link bow left 3",		new Rectangle(150, 225, 23, 24));
+
+        spriteLoc.put("Link bow right 1",		new Rectangle(100, 225, 16, 23));
+		spriteLoc.put("Link bow right 2",		new Rectangle(125, 225, 18, 23));
+
+        spriteLoc.put("Link bow up 1",          new Rectangle(100, 225, 16, 23));
+		spriteLoc.put("Link bow up 2",          new Rectangle(125, 225, 18, 23));
+		spriteLoc.put("Link bow up 3",          new Rectangle(150, 225, 23, 24));
+
 		
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
@@ -153,6 +169,6 @@ public class Link extends Karacter
 
 	public boolean noMoveinput()
 	{
-		return (!game.isaPressed() && !game.isdPressed() && !game.iswPressed() && !game.issPressed());
+        return (!game.isaPressed() && !game.isdPressed() && !game.iswPressed() && !game.issPressed());
 	}
 }
