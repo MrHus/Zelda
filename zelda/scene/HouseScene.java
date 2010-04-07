@@ -62,14 +62,8 @@ public class HouseScene extends ZeldaScene
 		solids.add(down);
 		solids.add(house);
 
-<<<<<<< HEAD
-                gameObjects.add(new Bomb(game, 220, 50));
-=======
-<<<<<<< HEAD
->>>>>>> master
                 gameObjects.add(new Heart(game, 180, 40));
-=======
->>>>>>> 8bdb825fd7e6611872db502e482672a5181b04e0
+
 		gameObjects.add(game.getLink());
 		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
 		gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
