@@ -16,8 +16,8 @@ import zelda.items.Bomb;
 public class BombState extends LinkState
 {
 	private int oldX, oldY;
-    private Game game;
-    private ZeldaGame game2;  // variable moet nog worden gevuld.
+    protected Game game; // variable moet nog worden gevuld.
+    protected ZeldaGame game2;  // variable moet nog worden gevuld.
 
     public BombState(Link link)
     {
