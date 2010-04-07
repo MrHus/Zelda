@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import zelda.engine.GObject;
 import zelda.ZeldaGame;
 import zelda.enemy.Behavior;
+import zelda.link.Link;
 
 /**
  *
@@ -31,4 +32,14 @@ public class Heart extends GObject
         behavior.behave();
     }
 
+    @Override
+	public void collision(GObject obj)
+	{
+		System.out.println("Collision");
+
+		if (obj instanceof Link)
+		{
+			alive = false;
+		}
+	}
 }

@@ -15,7 +15,8 @@ import zelda.link.Link;
  *
  * @author vincentklarholz
  */
-public class Bomb extends GObject {
+public class Bomb extends GObject
+{
 
     private final static String[] bombAnimation	= { "bomb" };
     private Behavior behavior;
