@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.engine.Scene;
 import zelda.link.Link;
 
@@ -16,13 +17,13 @@ import zelda.link.Link;
 public class Controller implements Runnable, KeyListener
 {
 	private Thread thread;
-	private ZeldaGame game;
+	private Game game;
 	private View view;
 	private Link link;
 	private Scene scene;
 	//private PolyCreator polyCreator;
 
-	public Controller(ZeldaGame game, View view, final JFrame frame)
+	public Controller(Game game, View view, final JFrame frame)
 	{
 		this.game = game;
 		this.view = view;

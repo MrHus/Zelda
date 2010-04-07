@@ -1,9 +1,9 @@
 package zelda.link;
 
-import zelda.ZeldaGame;
 import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -17,7 +17,7 @@ public class Link extends Karacter
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
-	public Link(ZeldaGame game, int x, int y)
+	public Link(Game game, int x, int y)
 	{
 		super(game, x, y, 17, 20, Direction.DOWN, "images/link.png");
 		spriteLoc.put("Link walk down 1",		new Rectangle(0, 0, 16, 23));

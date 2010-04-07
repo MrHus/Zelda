@@ -1,14 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package zelda.items;
 
 import java.awt.Rectangle;
-import zelda.ZeldaGame;
 import zelda.enemy.Behavior;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.link.Link;
 
 /**
@@ -20,7 +15,7 @@ public class Bomb extends GObject {
     private final static String[] bombAnimation	= { "bomb" };
     private Behavior behavior;
 
-    public Bomb(ZeldaGame game, int x, int y)
+    public Bomb(Game game, int x, int y)
     {
         super(game, x, y, 18, 21, "images/bomb.png");
         spriteLoc.put("bomb", new Rectangle(0, 0, 18, 21));
