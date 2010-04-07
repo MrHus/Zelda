@@ -1,7 +1,7 @@
 package zelda.karacter;
 
-import zelda.ZeldaGame;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 
 /**
  * A GObject that has a state and a direction.
@@ -13,7 +13,7 @@ public abstract class Karacter extends GObject
 	protected Direction direction;
 	protected KaracterState state;
 
-	public Karacter(ZeldaGame game, int x, int y, int width, int height, Direction dir, String image)
+	public Karacter(Game game, int x, int y, int width, int height, Direction dir, String image)
 	{
 		super(game, x, y, width, height, image);
 		direction = dir;

@@ -1,24 +1,42 @@
 package zelda.engine;
 
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import zelda.Main;
+import zelda.link.Link;
+import zelda.scene.HouseScene;
 
 /**
- * This represents a Game.
+ * This class represents the Game: Legend of Zelda: a Link to the Past!
  *
  * @author maartenhus
  */
-public abstract class Game
+public class Game
 {
-	protected boolean running = true;
-	protected int gameSpeed = 10;
-	protected int width = 500;
-	protected int height = 400;
+	private boolean running = true;
+	private boolean paused  = false;
+	private int gameSpeed = 10;
+	private int width = 500;
+	private int height = 400;
 	
-	protected Scene scene;
-	protected Music music;
+	private Scene scene;
+	private Music music;
+	private Link link;
+
+	private boolean aPressed = false;
+	private boolean sPressed = false;
+	private boolean dPressed = false;
+	private boolean wPressed = false;
+	private boolean jPressed = false;
+	private boolean kPressed = false;
+	private boolean lPressed = false;
+
+	public Game()
+	{
+		link = new Link(this, 100, 100);
+		scene = new HouseScene(this);
+
+		scene.initScene();
+	}
 
 	public void quit()
 	{
@@ -58,6 +76,11 @@ public abstract class Game
 		music.play();
 	}
 
+	public Link getLink()
+	{
+		return link;
+	}
+
 	public boolean isRunning()
 	{
 		return running;
@@ -66,6 +89,16 @@ public abstract class Game
 	public void setRunning(boolean running)
 	{
 		this.running = running;
+	}
+
+	public boolean isPaused()
+	{
+		return paused;
+	}
+
+	public void setPaused(boolean paused)
+	{
+		this.paused = paused;
 	}
 
 	public int getGameSpeed()
@@ -96,5 +129,75 @@ public abstract class Game
 	public int getWidth()
 	{
 		return width;
+	}
+
+	public void setaPressed(boolean aPressed)
+	{
+		this.aPressed = aPressed;
+	}
+
+	public void setdPressed(boolean dPressed)
+	{
+		this.dPressed = dPressed;
+	}
+
+	public void setjPressed(boolean jPressed)
+	{
+		this.jPressed = jPressed;
+	}
+
+	public void setkPressed(boolean kPressed)
+	{
+		this.kPressed = kPressed;
+	}
+
+	public void setlPressed(boolean lPressed)
+	{
+		this.lPressed = lPressed;
+	}
+
+	public void setsPressed(boolean sPressed)
+	{
+		this.sPressed = sPressed;
+	}
+
+	public void setwPressed(boolean wPressed)
+	{
+		this.wPressed = wPressed;
+	}
+
+	public boolean isaPressed()
+	{
+		return aPressed;
+	}
+
+	public boolean isdPressed()
+	{
+		return dPressed;
+	}
+
+	public boolean isjPressed()
+	{
+		return jPressed;
+	}
+
+	public boolean iskPressed()
+	{
+		return kPressed;
+	}
+
+	public boolean islPressed()
+	{
+		return lPressed;
+	}
+
+	public boolean issPressed()
+	{
+		return sPressed;
+	}
+
+	public boolean iswPressed()
+	{
+		return wPressed;
 	}
 }

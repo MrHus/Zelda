@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.engine.Scene;
 import zelda.link.Link;
 
@@ -16,13 +17,13 @@ import zelda.link.Link;
 public class Controller implements Runnable, KeyListener
 {
 	private Thread thread;
-	private ZeldaGame game;
+	private Game game;
 	private View view;
 	private Link link;
 	private Scene scene;
 	//private PolyCreator polyCreator;
 
-	public Controller(ZeldaGame game, View view, final JFrame frame)
+	public Controller(Game game, View view, final JFrame frame)
 	{
 		this.game = game;
 		this.view = view;
@@ -46,14 +47,16 @@ public class Controller implements Runnable, KeyListener
 		{
 			try
 			{
-				scene.handleInput(); // let scene handle user input for menu's etc.
-				link.handleInput(); // let link handle key input.
-
-				for(GObject obj : scene.getGObjects())
+				if(!game.isPaused())
 				{
-					obj.doInLoop(); // this lets the GObject hook in on the gameloop
-				}
+					scene.handleInput(); // let scene handle user input for menu's etc.
+					link.handleInput(); // let link handle key input.
 
+					for(GObject obj : scene.getGObjects())
+					{
+						obj.doInLoop(); // this lets the GObject hook in on the gameloop
+					}
+				}
 				view.draw();
 
 				Thread.sleep(game.getGameSpeed());
@@ -70,31 +73,36 @@ public class Controller implements Runnable, KeyListener
 	{
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
-			game.setRunning(false);
+			game.setRunning(false); //quit game
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_P)
+		{
+			game.setPaused(!game.isPaused()); //pauze game
 		}
 
 		switch(e.getKeyCode())
 		{
 			case KeyEvent.VK_A:
-				link.setaPressed(true);
+				game.setaPressed(true);
 				break;
 			case KeyEvent.VK_D:
-				link.setdPressed(true);
+				game.setdPressed(true);
 				break;
 			case KeyEvent.VK_W:
-				link.setwPressed(true);
+				game.setwPressed(true);
 				break;
 			case KeyEvent.VK_S:
-				link.setsPressed(true);
+				game.setsPressed(true);
 				break;
 			case KeyEvent.VK_J:
-				link.setjPressed(true);
+				game.setjPressed(true);
 				break;
 			case KeyEvent.VK_K:
-				link.setkPressed(true);
+				game.setkPressed(true);
 				break;
 			case KeyEvent.VK_L:
-				link.setlPressed(true);
+				game.setlPressed(true);
 				break;
 		}
 	}
@@ -104,25 +112,25 @@ public class Controller implements Runnable, KeyListener
 		switch(e.getKeyCode())
 		{
 			case KeyEvent.VK_A:
-				link.setaPressed(false);
+				game.setaPressed(false);
 				break;
 			case KeyEvent.VK_D:
-				link.setdPressed(false);
+				game.setdPressed(false);
 				break;
 			case KeyEvent.VK_W:
-				link.setwPressed(false);
+				game.setwPressed(false);
 				break;
 			case KeyEvent.VK_S:
-				link.setsPressed(false);
+				game.setsPressed(false);
 				break;
 			case KeyEvent.VK_J:
-				link.setjPressed(false);
+				game.setjPressed(false);
 				break;
 			case KeyEvent.VK_K:
-				link.setkPressed(false);
+				game.setkPressed(false);
 				break;
 			case KeyEvent.VK_L:
-				link.setlPressed(false);
+				game.setlPressed(false);
 				break;
 		}
 	}

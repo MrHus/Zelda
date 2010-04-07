@@ -1,10 +1,10 @@
 package zelda.scene;
 
 import java.awt.Polygon;
-import zelda.ZeldaGame;
 import zelda.enemy.BlueSoldier;
-import zelda.items.Bomb;
 import zelda.items.Heart;
+import zelda.engine.Game;
+import zelda.items.Bomb;
 import zelda.karacter.Direction;
 
 /**
@@ -21,7 +21,7 @@ public class HouseScene extends ZeldaScene
 	private Polygon down;
 	private Polygon trees;
 
-	public HouseScene(ZeldaGame game)
+	public HouseScene(Game game)
 	{
 		super(game, "images/link-house.png");
 
@@ -62,8 +62,14 @@ public class HouseScene extends ZeldaScene
 		solids.add(down);
 		solids.add(house);
 
+<<<<<<< HEAD
                 gameObjects.add(new Bomb(game, 220, 50));
+=======
+<<<<<<< HEAD
+>>>>>>> master
                 gameObjects.add(new Heart(game, 180, 40));
+=======
+>>>>>>> 8bdb825fd7e6611872db502e482672a5181b04e0
 		gameObjects.add(game.getLink());
 		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
 		gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));

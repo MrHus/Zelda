@@ -1,10 +1,11 @@
 package zelda;
 
 import javax.swing.JFrame;
+import zelda.engine.Game;
 
 public class Main extends JFrame
 {
-	private ZeldaGame game = new ZeldaGame();
+	private Game game = new Game();
 	private View view;
 	private Controller ctl;
 

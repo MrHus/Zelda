@@ -2,6 +2,7 @@ package zelda.engine;
 
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -14,8 +15,10 @@ public abstract class Scene implements DrawAble
 {
 	protected Sprite sprite;
 	protected Game game;
+
 	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
 	protected ArrayList<Polygon> solids = new ArrayList<Polygon>();
+	protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
 
 	public Scene(Game game, String img)
 	{
@@ -55,6 +58,21 @@ public abstract class Scene implements DrawAble
 	public ArrayList<GObject> getGObjects()
 	{
 		return gameObjects;
+	}
+
+	public void addHitter(Rectangle rect)
+	{
+		hitters.add(rect);
+	}
+
+	public void removeHitter(Rectangle rect)
+	{
+		hitters.remove(rect);
+	}
+
+	public ArrayList<Rectangle> getHitters()
+	{
+		return hitters;
 	}
 
 	//remove after done with PolyCreator

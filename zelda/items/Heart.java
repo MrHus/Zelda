@@ -2,7 +2,6 @@ package zelda.items;
 
 import java.awt.Rectangle;
 import zelda.engine.GObject;
-import zelda.ZeldaGame;
 import zelda.enemy.Behavior;
 import zelda.link.Link;
 

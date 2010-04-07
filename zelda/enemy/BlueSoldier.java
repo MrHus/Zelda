@@ -4,7 +4,7 @@ import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import java.awt.Rectangle;
 import java.util.HashMap;
-import zelda.ZeldaGame;
+import zelda.engine.Game;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -19,7 +19,7 @@ public class BlueSoldier extends Karacter implements Hittable
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
-	public BlueSoldier(ZeldaGame game, int x, int y, Direction direction, int ticks)
+	public BlueSoldier(Game game, int x, int y, Direction direction, int ticks)
 	{
 		super(game, x, y, 10, 20, Direction.DOWN, "images/blue-soldier.png");
 
@@ -66,6 +66,10 @@ public class BlueSoldier extends Karacter implements Hittable
 			case SWORD:
 				alive = false;
 				break;
+
+            case BOMB:
+                alive = false;
+                break;
 		}
 	}
 
