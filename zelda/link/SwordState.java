@@ -60,11 +60,8 @@ public class SwordState extends LinkState
 				sword = new Rectangle(oldX + link.getWidth(), oldY, 13, 28);
 				break;
 		}
-	}
 
-	public Rectangle getSword()
-	{
-		return sword;
+		game.getScene().addHitter(sword);
 	}
 
 	@Override
@@ -99,6 +96,7 @@ public class SwordState extends LinkState
 			link.setAnimationInterval(oldAnimationInterval);
 			link.setCheckcollision(true);
 			link.setState(new StandState(link));
+			game.getScene().removeHitter(sword);
 		}
 		else
 		{
