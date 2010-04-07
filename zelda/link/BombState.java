@@ -5,8 +5,6 @@
 
 package zelda.link;
 
-import zelda.ZeldaGame;
-import zelda.engine.Game;
 import zelda.items.Bomb;
 
 /**
@@ -16,8 +14,6 @@ import zelda.items.Bomb;
 public class BombState extends LinkState
 {
 	private int oldX, oldY;
-    protected Game game; // variable moet nog worden gevuld.
-    protected ZeldaGame game2;  // variable moet nog worden gevuld.
 
     public BombState(Link link)
     {
@@ -31,7 +27,7 @@ public class BombState extends LinkState
 		{
 			case UP:
                 //gameObjects.add(new Bomb(game, oldX, oldY - 16));
-                game.getScene().addGObject(new Bomb(game2, oldX, oldY - 16));
+                game.getScene().addGObject(new Bomb(game, oldX, oldY - 16));
                 System.out.println("L pressed, up");
 				break;
 

@@ -6,9 +6,9 @@
 package zelda.items;
 
 import java.awt.Rectangle;
-import zelda.ZeldaGame;
 import zelda.enemy.Behavior;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.link.Link;
 
 /**
@@ -25,7 +25,7 @@ public class Bomb extends GObject {
                                                     "bomb3", "bomb2", "bomb8", "bomb4", "bomb8", "bomb4", "bomb9", "bomb9", "bomb10", "bomb10"};
     private Behavior behavior;
 
-    public Bomb(ZeldaGame game, int x, int y)
+    public Bomb(Game game, int x, int y)
     {
         super(game, x, y, 13, 16, "images/bombs.png");
         spriteLoc.put("bomb1", new Rectangle(0, 0, 13, 16));
