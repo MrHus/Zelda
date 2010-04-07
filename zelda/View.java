@@ -6,12 +6,13 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
-import zelda.link.SwordState;
+import zelda.engine.Game;
 
 /**
  * This class handles all the drawing.
@@ -20,7 +21,7 @@ import zelda.link.SwordState;
  */
 public class View
 {
-	private ZeldaGame game;
+	private Game game;
 
 	private BufferStrategy buffer;
 	private BufferedImage bi;
@@ -32,7 +33,7 @@ public class View
 	private int x;
 	private int y;
 
-	public View(ZeldaGame game, JFrame frame)
+	public View(Game game, JFrame frame)
 	{
 		this.game = game;
 
@@ -74,7 +75,17 @@ public class View
 		for (GObject obj : game.getScene().getGObjects())
 		{
 			g2.draw(obj.getRectangle());
-			obj.animate();
+			if (!game.isPaused())
+			{
+				obj.animate();
+			}
+			else
+			{
+				g2.setColor(Color.white);
+				g2.drawString("-- Pauzed --", game.getWidth() / 2 - 30, game.getHeight() / 2);
+				g2.setColor(Color.red);
+			}
+
 			obj.draw(g2);
 		}
 
@@ -85,10 +96,10 @@ public class View
 		}
 
 		//draw blue box when link strikes debug
-		if (game.getLink().getStateString().equals("SwordState"))
+		for (Rectangle r : game.getScene().getHitters())
 		{
 			g2.setColor(Color.blue);
-			g2.draw(((SwordState)game.getLink().getState()).getSword());
+			g2.draw(r);
 		}
 
 		//graphics.drawImage(bi, x, y, null);

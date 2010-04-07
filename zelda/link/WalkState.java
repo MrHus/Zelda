@@ -24,7 +24,7 @@ public class WalkState extends LinkState
 	@Override
 	public void handleInput()
 	{
-		if(link.isjPressed())
+		if(game.isjPressed())
 		{
 			link.setState(new SwordState(link));
 		}
@@ -34,18 +34,22 @@ public class WalkState extends LinkState
 			{
 				link.setState(new StandState(link));
 			}
+            else if(game.islPressed())
+            {
+                link.dropBomb();
+            }
 			else
 			{
-				if (link.isaPressed())
+				if (game.isaPressed())
 					left();
 
-				if (link.isdPressed())
+				if (game.isdPressed())
 					right();
 
-				if (link.iswPressed())
+				if (game.iswPressed())
 					up();
 
-				if (link.issPressed())
+				if (game.issPressed())
 					down();
 			}
 		}
