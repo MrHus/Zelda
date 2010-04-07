@@ -30,46 +30,11 @@ public class BombBehavior extends Behavior
     {
         if (System.currentTimeMillis() > lastAnimation + animationInterval) // if it time to reanimate
 	{
-            if(ticks == 50)
+            if(ticks == 49)
             {
-            bomb.setAlive(false);
+                bomb.setAlive(false);
             }
 
-            /*
-            if(ticks >= 1 && ticks <= 3 )
-            {
-                bomb.setX(bomb.getX() + 5);
-                bomb.setY(bomb.getY() - 4);
-            }
-
-            if(ticks == 4)
-            {
-                bomb.setX(bomb.getX() + 5);
-                bomb.setY(bomb.getY() - 1);
-            }
-
-            if(ticks == 5)
-            {
-                bomb.setX(bomb.getX() + 5);
-            }
-
-            if(ticks == 6)
-            {
-                bomb.setX(bomb.getX() + 5);
-                bomb.setY(bomb.getY() + 1);
-            }
-
-            if(ticks >= 7 && ticks <= 9 )
-            {
-                bomb.setX(bomb.getX() + 5);
-                bomb.setY(bomb.getY() + 4);
-            }
-
-            if(ticks == 87)
-            {
-                ticks = 0;
-            }           
-            */
             lastAnimation = System.currentTimeMillis();
             ticks++;
         }

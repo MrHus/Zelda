@@ -41,6 +41,16 @@ public class Bomb extends GObject {
         behavior = new BombBehavior(this);
     }
 
+    @Override
+	public void preAnimation()
+	{
+        if(animationCounter == 48)
+        {
+            x -= 8;
+            y -= 6;
+        }
+    }
+
 	@Override
     public void doInLoop()
     {
