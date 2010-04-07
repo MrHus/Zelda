@@ -74,7 +74,17 @@ public class View
 		for (GObject obj : game.getScene().getGObjects())
 		{
 			g2.draw(obj.getRectangle());
-			obj.animate();
+			if (!game.isPaused())
+			{
+				obj.animate();
+			}
+			else
+			{
+				g2.setColor(Color.white);
+				g2.drawString("-- Pauzed --", game.getWidth() / 2 - 30, game.getHeight() / 2);
+				g2.setColor(Color.red);
+			}
+
 			obj.draw(g2);
 		}
 

@@ -40,7 +40,7 @@ public class StandState extends LinkState
 	@Override
 	public void handleInput()
 	{
-		if (link.isjPressed())
+		if (game.isjPressed())
 		{
 			link.setState(new SwordState(link));
 		}
