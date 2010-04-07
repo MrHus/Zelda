@@ -23,6 +23,7 @@ public class Bomb extends GObject {
         sprite.setSprite(spriteLoc.get("bomb"));
         setAnimation(bombAnimation);
 
+		liquid = true;
         behavior = new BombBehavior(this);
     }
 

@@ -60,7 +60,6 @@ public class SwordState extends LinkState
 				sword = new Rectangle(oldX + link.getWidth(), oldY, 13, 28);
 				break;
 		}
-
 	}
 
 	public Rectangle getSword()

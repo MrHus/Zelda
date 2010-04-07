@@ -16,11 +16,14 @@ public abstract class GObject implements DrawAble
 {
 	protected Game game;
 	protected boolean alive = true;
+
 	protected int x;
 	protected int y;
 	protected int width;
 	protected int height;
 	protected boolean checkcollision = true;
+	protected boolean liquid = false;
+
 	protected Sprite sprite;
 	protected static HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
 	protected String[] animation;
@@ -127,7 +130,8 @@ public abstract class GObject implements DrawAble
 				{
 					collision(obj); //report collision to self, with the object that hit it.
 					obj.collision(this); //report collision to object that got hit with itself.
-					return true;
+
+					return !obj.isLiquid();
 				}
 			}
 		}
@@ -239,5 +243,15 @@ public abstract class GObject implements DrawAble
 	public void setCheckcollision(boolean checkcollision)
 	{
 		this.checkcollision = checkcollision;
+	}
+
+	public boolean isLiquid()
+	{
+		return liquid;
+	}
+
+	public void setLiquid(boolean liquid)
+	{
+		this.liquid = liquid;
 	}
 }
