@@ -2,8 +2,8 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import zelda.ZeldaGame;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.engine.Scene;
 import zelda.link.Link;
 
@@ -15,9 +15,9 @@ import zelda.link.Link;
 public class ZeldaScene extends Scene
 {
 	protected Link link;
-	private ZeldaGame game;
+	private Game game;
 
-	public ZeldaScene(ZeldaGame game, String img)
+	public ZeldaScene(Game game, String img)
 	{
 		super(game, img);
 		this.game = game;

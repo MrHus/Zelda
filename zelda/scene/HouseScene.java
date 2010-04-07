@@ -1,8 +1,8 @@
 package zelda.scene;
 
 import java.awt.Polygon;
-import zelda.ZeldaGame;
 import zelda.enemy.BlueSoldier;
+import zelda.engine.Game;
 import zelda.items.Bomb;
 import zelda.karacter.Direction;
 
@@ -20,7 +20,7 @@ public class HouseScene extends ZeldaScene
 	private Polygon down;
 	private Polygon trees;
 
-	public HouseScene(ZeldaGame game)
+	public HouseScene(Game game)
 	{
 		super(game, "images/link-house.png");
 

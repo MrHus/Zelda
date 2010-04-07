@@ -11,6 +11,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
+import zelda.engine.Game;
 import zelda.link.SwordState;
 
 /**
@@ -20,7 +21,7 @@ import zelda.link.SwordState;
  */
 public class View
 {
-	private ZeldaGame game;
+	private Game game;
 
 	private BufferStrategy buffer;
 	private BufferedImage bi;
@@ -32,7 +33,7 @@ public class View
 	private int x;
 	private int y;
 
-	public View(ZeldaGame game, JFrame frame)
+	public View(Game game, JFrame frame)
 	{
 		this.game = game;
 

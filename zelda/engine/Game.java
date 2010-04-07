@@ -1,33 +1,42 @@
 package zelda.engine;
 
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import zelda.Main;
+import zelda.link.Link;
+import zelda.scene.HouseScene;
 
 /**
- * This represents a Game.
+ * This class represents the Game: Legend of Zelda: a Link to the Past!
  *
  * @author maartenhus
  */
-public abstract class Game
+public class Game
 {
-	protected boolean running = true;
-	protected boolean paused  = false;
-	protected int gameSpeed = 10;
-	protected int width = 500;
-	protected int height = 400;
+	private boolean running = true;
+	private boolean paused  = false;
+	private int gameSpeed = 10;
+	private int width = 500;
+	private int height = 400;
 	
-	protected Scene scene;
-	protected Music music;
+	private Scene scene;
+	private Music music;
+	private Link link;
 
-	protected boolean aPressed = false;
-	protected boolean sPressed = false;
-	protected boolean dPressed = false;
-	protected boolean wPressed = false;
-	protected boolean jPressed = false;
-	protected boolean kPressed = false;
-	protected boolean lPressed = false;
+	private boolean aPressed = false;
+	private boolean sPressed = false;
+	private boolean dPressed = false;
+	private boolean wPressed = false;
+	private boolean jPressed = false;
+	private boolean kPressed = false;
+	private boolean lPressed = false;
+
+	public Game()
+	{
+		link = new Link(this, 100, 100);
+		scene = new HouseScene(this);
+
+		scene.initScene();
+	}
 
 	public void quit()
 	{
@@ -65,6 +74,11 @@ public abstract class Game
 	{
 		music = new Music(this, mp3, loop);
 		music.play();
+	}
+
+	public Link getLink()
+	{
+		return link;
 	}
 
 	public boolean isRunning()
