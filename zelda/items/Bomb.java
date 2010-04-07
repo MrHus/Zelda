@@ -56,6 +56,12 @@ public class Bomb extends GObject {
     public void doInLoop()
     {
         behavior.behave();
+
+        if(animationCounter >= 48)
+        {
+
+        }
+
     }
 
 	@Override
