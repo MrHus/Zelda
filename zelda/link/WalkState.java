@@ -34,6 +34,10 @@ public class WalkState extends LinkState
 			{
 				link.setState(new StandState(link));
 			}
+            else if(game.islPressed())
+            {
+                link.dropBomb();
+            }
 			else
 			{
 				if (game.isaPressed())

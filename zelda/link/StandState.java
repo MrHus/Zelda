@@ -44,6 +44,10 @@ public class StandState extends LinkState
 		{
 			link.setState(new SwordState(link));
 		}
+        else if(game.islPressed())
+        {
+            link.dropBomb();
+        }
 		else
 		{
 			if (link.moveinput())

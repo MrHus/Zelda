@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
 import zelda.engine.GObject;
 import zelda.engine.Game;
+import zelda.items.Bomb;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -109,6 +110,32 @@ public class Link extends Karacter
 
 		state = new StandState(this);
 	}
+
+    public void dropBomb()
+    {
+        switch (direction)
+		{
+			case UP:
+                game.getScene().addGObject(new Bomb(game, x, y - 16));
+                System.out.println("L pressed, up");
+				break;
+
+			case DOWN:
+                game.getScene().addGObject(new Bomb(game, x, y + getHeight()));
+                System.out.println("L pressed, down");
+				break;
+
+			case LEFT:
+                game.getScene().addGObject(new Bomb(game, x - 13, y));
+                System.out.println("L pressed, left");
+				break;
+
+			case RIGHT:
+                game.getScene().addGObject(new Bomb(game, x + getWidth(), y));
+                System.out.println("L pressed, right");
+				break;
+		}
+    }
 
 	public void handleInput()
 	{

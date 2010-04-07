@@ -6,13 +6,13 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
 import zelda.engine.Game;
-import zelda.link.SwordState;
 
 /**
  * This class handles all the drawing.
@@ -96,10 +96,10 @@ public class View
 		}
 
 		//draw blue box when link strikes debug
-		if (game.getLink().getStateString().equals("SwordState"))
+		for (Rectangle r : game.getScene().getHitters())
 		{
 			g2.setColor(Color.blue);
-			g2.draw(((SwordState)game.getLink().getState()).getSword());
+			g2.draw(r);
 		}
 
 		//graphics.drawImage(bi, x, y, null);
