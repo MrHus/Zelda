@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.engine.Scene;
+import zelda.items.GuiHeart;
 import zelda.link.Link;
 
 /**
@@ -21,8 +22,10 @@ public class ZeldaScene extends Scene
 		super(game, img);
 		this.game = game;
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
-	}
+        GuiHeart heart = new GuiHeart(game, 200, 40, true);
+        gameObjects.add(heart);
 
+	}
 
 	@Override
 	public void handleInput()
@@ -108,16 +111,11 @@ public class ZeldaScene extends Scene
 
 		for (GObject obj : gameObjects)
 		{
-			if (!(obj instanceof Link)) // ignore link
+			if (obj.isCheckcollision()) // ignore link
 			{
 				obj.setX(obj.getX() + modX);
 				obj.setY(obj.getY() + modY);
 			}
 		}
-	}
-
-        public interface life
-        {
-
-        }
+	}    
 }
