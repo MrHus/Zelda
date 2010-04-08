@@ -43,7 +43,7 @@ public class Bomb extends GObject
         setAnimation(bombAnimation);
         this.setAnimationInterval(50); //keep on 50 for 2.5 sec bomb countdown.
 
-		//liquid = true;
+		liquid = true;
 		checkcollision = false;
         
         behavior = new BombBehavior(this);

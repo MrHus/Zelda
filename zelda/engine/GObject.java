@@ -21,8 +21,10 @@ public abstract class GObject implements DrawAble
 	protected int y;
 	protected int width;
 	protected int height;
-	protected boolean checkcollision = true;
-	protected boolean liquid = false;
+
+	protected boolean checkcollision = true; // Should the objects check for collisions when x or y moves.
+	protected boolean liquid = false;		 // Can other GObjects move through the object.
+	protected boolean screenAdjust = true;    // Does this object adjust its position when the screen moves.
 
 	protected Sprite sprite;
 	protected static HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
@@ -105,6 +107,7 @@ public abstract class GObject implements DrawAble
 	private boolean isCollision(int newX, int newY)
 	{
 		Rectangle rect = new Rectangle(newX, newY, width, height);
+		boolean collision = false;
 
 		for (Polygon poly : game.getScene().getSolids()) //for each solid object
 		{
@@ -114,7 +117,7 @@ public abstract class GObject implements DrawAble
 
 			if (!area.isEmpty()) // if isEmpty is false there is a collision
 			{
-				return true;
+				collision = true;
 			}
 		}
 
@@ -131,12 +134,16 @@ public abstract class GObject implements DrawAble
 					collision(obj); //report collision to self, with the object that hit it.
 					obj.collision(this); //report collision to object that got hit with itself.
 
-					return !obj.isLiquid();
+					if (!obj.isLiquid())
+					{
+						collision = true;
+					}
+					
 				}
 			}
 		}
 
-		return false;
+		return collision;
 	}
 
 	public int getX()
@@ -253,5 +260,15 @@ public abstract class GObject implements DrawAble
 	public void setLiquid(boolean liquid)
 	{
 		this.liquid = liquid;
+	}
+
+	public boolean isScreenAdjust()
+	{
+		return screenAdjust;
+	}
+
+	public void setScreenAdjust(boolean screenAdjust)
+	{
+		this.screenAdjust = screenAdjust;
 	}
 }
