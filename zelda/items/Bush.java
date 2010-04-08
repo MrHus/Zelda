@@ -33,7 +33,7 @@ public class Bush extends GObject implements Hittable {
             case SWORD:
                 String[] bushani = {"stump"};
                 setAnimation(bushani);
-                alive = false;
+                liquid = true;
                 break;
         }
     }
