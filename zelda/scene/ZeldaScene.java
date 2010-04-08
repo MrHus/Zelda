@@ -23,6 +23,7 @@ public class ZeldaScene extends Scene
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 	}
 
+
 	@Override
 	public void handleInput()
 	{
@@ -114,4 +115,9 @@ public class ZeldaScene extends Scene
 			}
 		}
 	}
+
+        public interface life
+        {
+
+        }
 }

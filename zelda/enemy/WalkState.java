@@ -15,15 +15,23 @@ public class WalkState extends KaracterState
 	private final String[] rightAnimation	= {"Stand right", "Walk right 1", "Walk right 2"};
 	private final static int WALK_SPEED	= 2;
 
-	public WalkState(BlueSoldier soldier)
+        private int oldX, oldY;
+        private long oldAnimationInterval;
+
+        public WalkState(BlueSoldier soldier)
 	{
 		super(soldier);
 		name = "WalkState";
+
+                oldX = karacter.getX();
+		oldY = karacter.getY();
+                oldAnimationInterval = karacter.getAnimationInterval();
 	}
 
 	@Override
 	public void handleInput()
 	{
+
 		switch (karacter.getDirection())
 		{
 			case UP:
@@ -87,4 +95,120 @@ public class WalkState extends KaracterState
 
 		karacter.setY(karacter.getY() + WALK_SPEED);
 	}
+
+        @Override
+	public void handleAnimation()
+	{
+		int animationCounter = karacter.getAnimationCounter();
+
+		//System.out.println("Animation Counter is " + animationCounter);
+
+		//sword is done swinging revert back to former state
+		if (animationCounter == karacter.getAnimation().length)
+		{
+			karacter.setY(oldY);
+			karacter.setX(oldX);
+			karacter.setAnimationInterval(oldAnimationInterval);
+			karacter.setCheckcollision(true);
+			//karacter.setState(new StandState(karacter));
+		}
+		else
+                {
+		// This section of the code corrects the position of karacter when he's striking.
+			// If you don't do this karacter appears to be moving when he swings his sword.
+			// Go ahead and remove the entire body of this else statement. You'll see what i mean.
+
+			Direction dir = karacter.getDirection();
+
+			if (dir == Direction.UP)
+			{
+				switch(animationCounter)
+				{
+					case 0:
+						karacter.setY(karacter.getY() + 1);
+						break;
+
+					case 2:
+						karacter.setY(karacter.getY() - 2);
+						break;
+
+					case 3:
+						karacter.setY(karacter.getY() - 6);
+						break;
+
+					case 4:
+						karacter.setY(karacter.getY() - 1);
+						break;
+
+					case 6:
+						karacter.setY(karacter.getY() + 2);
+						karacter.setX(karacter.getX() - 4);
+						break;
+
+					case 7:
+						karacter.setY(karacter.getY() + 2);
+						karacter.setX(karacter.getX() - 6);
+						break;
+
+					case 8:
+						karacter.setY(karacter.getY() + 3);
+						karacter.setX(karacter.getX() - 2);
+						break;
+				}
+			}
+			else if (dir == Direction.LEFT)
+			{
+				switch(animationCounter)
+				{
+					case 0:
+						karacter.setY(karacter.getY() - 1);
+						karacter.setX(karacter.getX() + 3);
+						break;
+
+					case 1:
+						karacter.setX(karacter.getX() - 2);
+						break;
+
+					case 2:
+						karacter.setY(karacter.getY() - 1);
+						karacter.setX(karacter.getX() - 5);
+						break;
+
+					case 3:
+						karacter.setX(karacter.getX() - 2);
+						break;
+
+					case 4:
+						karacter.setY(karacter.getY() + 2);
+						karacter.setX(karacter.getX() - 4);
+						break;
+
+					case 6:
+						karacter.setX(karacter.getX() + 1);
+						break;
+
+					case 8:
+						karacter.setX(karacter.getX() + 6);
+						break;
+				}
+			}
+			else if(dir == Direction.DOWN)
+			{
+				switch(animationCounter)
+				{
+					case 0:
+						karacter.setX(karacter.getX() - 4);
+						break;
+
+					case 1:
+						karacter.setX(karacter.getX() - 1);
+						break;
+
+					case 2:
+						karacter.setX(karacter.getX() + 1);
+						break;
+				}
+                        }
+        }
+        }
 }
