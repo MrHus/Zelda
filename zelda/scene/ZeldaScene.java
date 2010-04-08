@@ -24,7 +24,6 @@ public class ZeldaScene extends Scene
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
         GuiHeart heart = new GuiHeart(game, 200, 40, true);
         gameObjects.add(heart);
-
 	}
 
 	@Override
@@ -111,7 +110,7 @@ public class ZeldaScene extends Scene
 
 		for (GObject obj : gameObjects)
 		{
-			if (obj.isCheckcollision()) // ignore link
+			if (obj.isScreenAdjust()) // should it adjust when screen moves.
 			{
 				obj.setX(obj.getX() + modX);
 				obj.setY(obj.getY() + modY);
