@@ -138,7 +138,6 @@ public abstract class GObject implements DrawAble
 					{
 						collision = true;
 					}
-					
 				}
 			}
 		}
