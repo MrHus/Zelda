@@ -1,6 +1,9 @@
 package zelda.items;
 
 import java.awt.Rectangle;
+import java.awt.geom.Area;
+import zelda.collision.Hittable;
+import zelda.collision.Weapon;
 import zelda.enemy.Behavior;
 import zelda.engine.GObject;
 import zelda.engine.Game;
@@ -10,7 +13,8 @@ import zelda.link.Link;
  *
  * @author vincentklarholz
  */
-public class Bomb extends GObject {
+public class Bomb extends GObject
+{
 
     //Bomb animation is 2.5 sec so 50 items in array.
     private final static String[] bombAnimation	= { "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4",
@@ -19,6 +23,8 @@ public class Bomb extends GObject {
                                                     "bomb1", "bomb2", "bomb3", "bomb4", "bomb2", "bomb3", "bomb2", "bomb8", "bomb4", "bomb2",
                                                     "bomb3", "bomb2", "bomb8", "bomb4", "bomb8", "bomb4", "bomb9", "bomb9", "bomb10", "bomb10", "bomb10"};
     private Behavior behavior;
+
+    private Rectangle bomb;
 
     public Bomb(Game game, int x, int y)
     {
@@ -38,7 +44,9 @@ public class Bomb extends GObject {
         setAnimation(bombAnimation);
         this.setAnimationInterval(50); //keep on 50 for 2.5 sec bomb countdown.
 
-		liquid = true;
+		//liquid = true;
+		checkcollision = false;
+        
         behavior = new BombBehavior(this);
     }
 
@@ -49,6 +57,9 @@ public class Bomb extends GObject {
         {
             x -= 8;
             y -= 6;
+
+            bomb = new Rectangle(x , y, 30, 30);
+            game.getScene().addHitter(bomb);
         }
     }
 
@@ -56,17 +67,29 @@ public class Bomb extends GObject {
     public void doInLoop()
     {
         behavior.behave();
+
+        if(animationCounter > 48)
+        {
+            for (GObject obj : game.getScene().getGObjects())
+            {
+                final Area area = new Area();
+                area.add(new Area(bomb));
+                area.intersect(new Area(obj.getRectangle()));
+
+                if((obj instanceof Hittable) && !area.isEmpty() && this != obj)
+                {
+                    Hittable hittable = (Hittable)obj;
+                    hittable.hitBy(Weapon.BOMB);
+                }
+            }
+
+            game.getScene().removeHitter(bomb);
+        }
     }
 
 	@Override
 	public void collision(GObject obj)
 	{
-		System.out.println("Collision");
-
-		if (obj instanceof Link)
-		{
-			alive = false;
-		}
+		
 	}
-
 }

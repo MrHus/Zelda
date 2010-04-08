@@ -90,20 +90,20 @@ public class Link extends Karacter
 		spriteLoc.put("Link sword left 8",		new Rectangle(125, 253, 28, 28));
 		spriteLoc.put("Link sword left 9",		new Rectangle(153, 250, 22, 31));
 
-        spriteLoc.put("Link bow down 1",		new Rectangle(100, 225, 16, 23));
-		spriteLoc.put("Link bow down 2",		new Rectangle(125, 225, 18, 23));
-		spriteLoc.put("Link bow down 3",		new Rectangle(150, 225, 23, 24));
+        spriteLoc.put("Link bow down 1",		new Rectangle(0, 300, 17, 25));
+		spriteLoc.put("Link bow down 2",		new Rectangle(25, 300, 18, 21));
+		spriteLoc.put("Link bow down 3",		new Rectangle(50, 300, 18, 22));
 
-        spriteLoc.put("Link bow left 1",		new Rectangle(100, 225, 16, 23));
-		spriteLoc.put("Link bow left 2",		new Rectangle(125, 225, 18, 23));
-		spriteLoc.put("Link bow left 3",		new Rectangle(150, 225, 23, 24));
+        spriteLoc.put("Link bow left 1",		new Rectangle(0, 325, 17, 22));
+		spriteLoc.put("Link bow left 2",		new Rectangle(25, 325, 19, 21));
+		spriteLoc.put("Link bow left 3",		new Rectangle(50, 325, 20, 20));
 
-        spriteLoc.put("Link bow right 1",		new Rectangle(100, 225, 16, 23));
-		spriteLoc.put("Link bow right 2",		new Rectangle(125, 225, 18, 23));
+        spriteLoc.put("Link bow right 1",		new Rectangle(0, 350, 17, 23));
+		spriteLoc.put("Link bow right 2",		new Rectangle(25, 350, 22, 23));
 
-        spriteLoc.put("Link bow up 1",          new Rectangle(100, 225, 16, 23));
-		spriteLoc.put("Link bow up 2",          new Rectangle(125, 225, 18, 23));
-		spriteLoc.put("Link bow up 3",          new Rectangle(150, 225, 23, 24));
+        spriteLoc.put("Link bow up 1",          new Rectangle(0, 375, 18, 22));
+		spriteLoc.put("Link bow up 2",          new Rectangle(25, 375, 21, 21));
+		spriteLoc.put("Link bow up 3",          new Rectangle(50, 375, 21, 22));
 
 		
 		sprite.setSprite(spriteLoc.get("Link stand down"));
@@ -117,22 +117,18 @@ public class Link extends Karacter
 		{
 			case UP:
                 game.getScene().addGObject(new Bomb(game, x, y - 16));
-                System.out.println("L pressed, up");
 				break;
 
 			case DOWN:
                 game.getScene().addGObject(new Bomb(game, x, y + getHeight()));
-                System.out.println("L pressed, down");
 				break;
 
 			case LEFT:
                 game.getScene().addGObject(new Bomb(game, x - 13, y));
-                System.out.println("L pressed, left");
 				break;
 
 			case RIGHT:
                 game.getScene().addGObject(new Bomb(game, x + getWidth(), y));
-                System.out.println("L pressed, right");
 				break;
 		}
     }
