@@ -105,6 +105,7 @@ public abstract class GObject implements DrawAble
 	private boolean isCollision(int newX, int newY)
 	{
 		Rectangle rect = new Rectangle(newX, newY, width, height);
+		boolean collision = false;
 
 		for (Polygon poly : game.getScene().getSolids()) //for each solid object
 		{
@@ -114,7 +115,7 @@ public abstract class GObject implements DrawAble
 
 			if (!area.isEmpty()) // if isEmpty is false there is a collision
 			{
-				return true;
+				collision = true;
 			}
 		}
 
@@ -131,12 +132,16 @@ public abstract class GObject implements DrawAble
 					collision(obj); //report collision to self, with the object that hit it.
 					obj.collision(this); //report collision to object that got hit with itself.
 
-					return !obj.isLiquid();
+					if (!obj.isLiquid())
+					{
+						collision = true;
+					}
+					
 				}
 			}
 		}
 
-		return false;
+		return collision;
 	}
 
 	public int getX()
