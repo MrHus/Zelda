@@ -7,7 +7,6 @@ import zelda.collision.Weapon;
 import zelda.enemy.Behavior;
 import zelda.engine.GObject;
 import zelda.engine.Game;
-import zelda.link.Link;
 
 /**
  *
