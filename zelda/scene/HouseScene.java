@@ -3,6 +3,7 @@ package zelda.scene;
 import java.awt.Polygon;
 import zelda.ZeldaGame;
 import zelda.enemy.BlueSoldier;
+import zelda.items.Bush;
 import zelda.karacter.Direction;
 
 /**
@@ -59,6 +60,9 @@ public class HouseScene extends ZeldaScene
 		solids.add(right);
 		solids.add(down);
 		solids.add(house);
+
+                Bush bush = new Bush(game, 160, 50);
+                gameObjects.add(bush);
 
 		gameObjects.add(game.getLink());
 		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
