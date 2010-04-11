@@ -19,6 +19,7 @@ public abstract class Scene implements DrawAble
 	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
 	protected ArrayList<Polygon> solids = new ArrayList<Polygon>();
 	protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
+    protected ArrayList<Polygon> eyeViews = new ArrayList<Polygon>();
 
 	public Scene(Game game, String img)
 	{
@@ -73,6 +74,21 @@ public abstract class Scene implements DrawAble
 	public ArrayList<Rectangle> getHitters()
 	{
 		return hitters;
+	}
+
+    public void addEyeView(Polygon poly)
+	{
+		eyeViews.add(poly);
+	}
+
+	public void removeEyeView(Polygon poly)
+	{
+		eyeViews.remove(poly);
+	}
+
+	public ArrayList<Polygon> getEyeViews()
+	{
+		return eyeViews;
 	}
 
 	//remove after done with PolyCreator
