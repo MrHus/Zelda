@@ -64,7 +64,7 @@ public class WalkState extends KaracterState
 
 			case RIGHT:
                 int[] evxposright = {karacter.getX() + karacter.getWidth(), karacter.getX() + karacter.getWidth() + 40, karacter.getX() + karacter.getWidth() + 50, karacter.getX() + karacter.getWidth() + 50, karacter.getX() + karacter.getWidth() + 40, karacter.getX() + karacter.getWidth()};
-                int[] evyposright = {karacter.getY() + 20, karacter.getY() + 50, karacter.getY() + 40, karacter.getY() - 15, karacter.getY() - 25, oldY + 5};
+                int[] evyposright = {karacter.getY() + 20, karacter.getY() + 50, karacter.getY() + 40, karacter.getY() - 15, karacter.getY() - 25, karacter.getY() + 5};
                 eyeView = new Polygon(evxposright, evyposright, evxposright.length);
 				right();
                 break;
