@@ -39,29 +39,29 @@ public class StandState extends KaracterState
 		{
 			case UP:
 				soldier.setAnimation(upAnimation);
-                int[] evxposup = {oldX, oldX - 30, oldX - 20, oldX + 35, oldX + 45, oldX + 15};
-                int[] evyposup = {oldY, oldY - 40, oldY - 50, oldY - 50, oldY - 40, oldY};
+                int[] evxposup = {karacter.getX(), karacter.getX() - 30, karacter.getX() - 20, karacter.getX() + 35, karacter.getX() + 45, karacter.getX() + 15};
+                int[] evyposup = {karacter.getY(), karacter.getY() - 40, karacter.getY() - 50, karacter.getY() - 50, karacter.getY() - 40, karacter.getY()};
                 eyeView = new Polygon(evxposup, evyposup, evxposup.length);
 				break;
 
 			case DOWN:
 				soldier.setAnimation(downAnimation);
-                int[] evxposdown = {oldX, oldX - 30, oldX - 20, oldX + 35, oldX + 45, oldX + 15};
-                int[] evyposdown = {oldY + karacter.getHeight(), oldY + karacter.getHeight() + 40, oldY + karacter.getHeight() + 50, oldY + karacter.getHeight() + 50, oldY + karacter.getHeight() + 40, oldY + karacter.getHeight()};
+                int[] evxposdown = {karacter.getX(), karacter.getX() - 30, karacter.getX() - 20, karacter.getX() + 35, karacter.getX() + 45, karacter.getX() + 15};
+                int[] evyposdown = {karacter.getY() + karacter.getHeight(), karacter.getY() + karacter.getHeight() + 40, karacter.getY() + karacter.getHeight() + 50, karacter.getY() + karacter.getHeight() + 50, karacter.getY() + karacter.getHeight() + 40, karacter.getY() + karacter.getHeight()};
                 eyeView = new Polygon(evxposdown, evyposdown, evxposdown.length);
 				break;
 
 			case LEFT:
 				soldier.setAnimation(leftAnimation);
-                int[] evxposleft = {oldX, oldX - 40, oldX - 50, oldX - 50, oldX - 40, oldX};
-                int[] evyposleft = {oldY + 20 , oldY + 50, oldY + 40, oldY - 15, oldY - 25, oldY + 5};
+                int[] evxposleft = {karacter.getX(), karacter.getX() - 40, karacter.getX() - 50, karacter.getX() - 50, karacter.getX() - 40, karacter.getX()};
+                int[] evyposleft = {karacter.getY() + 20 , karacter.getY() + 50, karacter.getY() + 40, karacter.getY() - 15, karacter.getY() - 25, karacter.getY() + 5};
                 eyeView = new Polygon(evxposleft, evyposleft, evxposleft.length);
 				break;
 
 			case RIGHT:
 				soldier.setAnimation(rightAnimation);
-                int[] evxposright = {oldX + karacter.getWidth(), oldX + karacter.getWidth() + 40, oldX + karacter.getWidth() + 50, oldX + karacter.getWidth() + 50, oldX + karacter.getWidth() + 40, oldX + karacter.getWidth()};
-                int[] evyposright = {oldY + 20, oldY + 50, oldY + 40, oldY - 15, oldY - 25, oldY + 5};
+                int[] evxposright = {karacter.getX() + karacter.getWidth(), karacter.getX() + karacter.getWidth() + 40, karacter.getX() + karacter.getWidth() + 50, karacter.getX() + karacter.getWidth() + 50, karacter.getX() + karacter.getWidth() + 40, karacter.getX() + karacter.getWidth()};
+                int[] evyposright = {karacter.getY() + 20, karacter.getY() + 50, karacter.getY() + 40, karacter.getY() - 15, karacter.getY() - 25, karacter.getY() + 5};
                 eyeView = new Polygon(evxposright, evyposright, evxposright.length);
 				break;
 		}
