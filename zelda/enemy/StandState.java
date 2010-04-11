@@ -65,13 +65,14 @@ public class StandState extends KaracterState
                 eyeView = new Polygon(evxposright, evyposright, evxposright.length);
 				break;
 		}
-
-
 	}
 
 	@Override
 	public void handleInput()
 	{
+        //Add Eye View
+        soldier.getGame().getScene().addEyeView(eyeView);
+        
         for (GObject obj : soldier.getGame().getScene().getGObjects())
 		{
             final Area area = new Area();
@@ -88,6 +89,7 @@ public class StandState extends KaracterState
 		if (oldDirection != karacter.getDirection())
         {
             karacter.setState(new WalkState(soldier));
+            soldier.getGame().getScene().removeEyeView(eyeView);
         }
 	}
 }

@@ -19,12 +19,14 @@ public class WalkState extends KaracterState
 	private final String[] rightAnimation	= {"Stand right", "Walk right 1", "Walk right 2"};
 	private final static int WALK_SPEED	= 2;
 
-        private int oldX, oldY;
-        private long oldAnimationInterval;
+    private BlueSoldier soldier;
+    
+    private int oldX, oldY;
+    private long oldAnimationInterval;
 
-        private Polygon eyeView;
+    private Polygon eyeView;
 
-        public WalkState(BlueSoldier soldier)
+    public WalkState(BlueSoldier soldier)
 	{
 		super(soldier);
 		name = "WalkState";
