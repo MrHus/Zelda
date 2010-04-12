@@ -7,7 +7,6 @@ import zelda.collision.Weapon;
 import zelda.enemy.Behavior;
 import zelda.engine.GObject;
 import zelda.engine.Game;
-import zelda.link.Link;
 
 /**
  *
@@ -45,9 +44,7 @@ public class Bomb extends GObject
         this.setAnimationInterval(50); //keep on 50 for 2.5 sec bomb countdown.
 
 		liquid = true;
-
-        
-        
+		checkcollision = false;
         
         behavior = new BombBehavior(this);
     }
@@ -87,18 +84,12 @@ public class Bomb extends GObject
 
             game.getScene().removeHitter(bomb);
         }
-
     }
 
 	@Override
 	public void collision(GObject obj)
 	{
-		System.out.println("Collision");
-
-		/*if (obj instanceof Link)
-		{
-			alive = false;
-		}*/
+		
 	}
-
 }
+

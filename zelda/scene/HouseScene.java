@@ -3,6 +3,10 @@ package zelda.scene;
 import java.awt.Polygon;
 import zelda.enemy.BlueSoldier;
 import zelda.items.Heart;
+<<<<<<< HEAD
+=======
+import zelda.items.Bush;
+>>>>>>> master
 import zelda.engine.Game;
 import zelda.karacter.Direction;
 
@@ -61,9 +65,18 @@ public class HouseScene extends ZeldaScene
 		solids.add(down);
 		solids.add(house);
 
+<<<<<<< HEAD
         gameObjects.add(new Heart(game, 180, 40));
         gameObjects.add(new Heart(game, 280, 140));
         gameObjects.add(new Heart(game, 340, 30));
+=======
+
+        gameObjects.add(new Heart(game, 180, 40));
+
+        Bush bush = new Bush(game, 160, 50);
+        gameObjects.add(bush);
+
+>>>>>>> master
 		gameObjects.add(game.getLink());
 		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
 		gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));

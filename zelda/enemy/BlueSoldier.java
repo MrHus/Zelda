@@ -1,5 +1,6 @@
 package zelda.enemy;
 
+import java.awt.Polygon;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import java.awt.Rectangle;
@@ -49,6 +50,12 @@ public class BlueSoldier extends Karacter implements Hittable
 	}
 
 	@Override
+	public void preAnimation()
+	{
+		state.handleAnimation();
+	}
+
+	@Override
 	public void doInLoop()
 	{
 		if (System.currentTimeMillis() > lastInput + inputInterval)
@@ -68,6 +75,9 @@ public class BlueSoldier extends Karacter implements Hittable
 				break;
 
             case BOMB:
+                alive = false;
+                break;
+            case ARROW:
                 alive = false;
                 break;
 		}
