@@ -2,6 +2,7 @@ package zelda.enemy;
 
 import java.awt.Polygon;
 import java.awt.geom.Area;
+import zelda.collision.Weapon;
 import zelda.engine.GObject;
 import zelda.karacter.Direction;
 import zelda.karacter.KaracterState;
@@ -133,7 +134,7 @@ public class WalkState extends KaracterState
         karacter.getGame().getScene().addEyeView(eyeView);
 	}
 
-        @Override
+    @Override
 	public void handleAnimation()
 	{
 		int animationCounter = karacter.getAnimationCounter();
