@@ -15,9 +15,11 @@ public class GuiHeart extends GObject
 
     public GuiHeart(Game game, int x, int y, boolean full)
     {
-        super(game, x, y, 18, 15, "images/guihearts.png");
-        spriteLoc.put("full", new Rectangle(0, 0, 18, 15));
-        spriteLoc.put("empty", new Rectangle(20, 0, 18, 15));
+        super(game, x, y, 11, 10, "images/guihearts2.png");
+        spriteLoc.put("full", new Rectangle(0, 0, 11, 10));
+        spriteLoc.put("empty", new Rectangle(11, 0, 22, 10));
+
+        
 
         if(full)
         {

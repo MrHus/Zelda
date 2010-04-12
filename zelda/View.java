@@ -115,6 +115,7 @@ public class View
 		if (!buffer.contentsLost())
 			buffer.show();
 
+
 		graphics.dispose();
 		g2.dispose();
 	}
