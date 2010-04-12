@@ -7,7 +7,6 @@ import zelda.engine.Game;
 import zelda.items.Bomb;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
-import zelda.items.Arrow;
 
 /**
  * The players avatar in the game.
