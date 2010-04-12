@@ -3,9 +3,7 @@ package zelda.scene;
 import java.awt.Polygon;
 import zelda.enemy.BlueSoldier;
 import zelda.items.Heart;
-
 import zelda.items.Bush;
-
 import zelda.engine.Game;
 import zelda.karacter.Direction;
 
