@@ -22,8 +22,11 @@ public class ZeldaScene extends Scene
 		super(game, img);
 		this.game = game;
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
-        GuiHeart heart = new GuiHeart(game, 370, 50, true);
+        for(int i = 0; i < 5; i++)
+        {
+        GuiHeart heart = new GuiHeart(game, 370+i*12, 50, true);
         gameObjects.add(heart);
+        }
 	}
 
 	@Override
