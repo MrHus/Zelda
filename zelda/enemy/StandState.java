@@ -17,6 +17,8 @@ public class StandState extends KaracterState
 	private Direction oldDirection;
 	private BlueSoldier soldier;
 
+    private int oldX, oldY;
+
 	public StandState(BlueSoldier soldier)
 	{
 		super(soldier);
@@ -24,6 +26,9 @@ public class StandState extends KaracterState
 		name = "StandState";
 
 		oldDirection = soldier.getDirection();
+
+        oldX = karacter.getX();
+        oldY = karacter.getY();
 
 		switch (oldDirection)
 		{
@@ -49,8 +54,9 @@ public class StandState extends KaracterState
 	public void handleInput()
 	{
 		//System.out.println("oldDirection " + oldDirection + " new " + karacter.getDirection());
-
 		if (oldDirection != karacter.getDirection())
-			karacter.setState(new WalkState(soldier));
+        {
+            karacter.setState(new WalkState(soldier));
+        }
 	}
 }

@@ -1,5 +1,6 @@
 package zelda.enemy;
 
+import java.awt.Polygon;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import java.awt.Rectangle;
