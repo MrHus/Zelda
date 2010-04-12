@@ -1,7 +1,10 @@
 package zelda.scene;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Graphics2D;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.engine.Scene;
@@ -15,7 +18,8 @@ import zelda.link.Link;
  */
 public class ZeldaScene extends Scene
 {
-	protected Link link;
+	protected Link link;   
+
 	
 	public ZeldaScene(Game game, String img)
 	{
@@ -119,5 +123,15 @@ public class ZeldaScene extends Scene
 				obj.setY(obj.getY() + modY);
 			}
 		}
-	}    
+	}
+
+    @Override
+    public void draw(Graphics2D g2)
+	{
+		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
+        g2.setColor(Color.white);
+        Font f = new Font ("Serif", Font.BOLD, 12);
+        g2.setFont (f);
+        g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
+	}
 }
