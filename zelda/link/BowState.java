@@ -28,22 +28,28 @@ public class BowState extends LinkState
 		{
 			case UP:
 				link.setAnimation(upAnimation);
+                game.getScene().addGObject(new Arrow(game, link.getX() + 7, link.getY()));
 				break;
 
 			case DOWN:
 				link.setAnimation(downAnimation);
+                game.getScene().addGObject(new Arrow(game, link.getX() + 7, link.getY()));
 				break;
 
 			case LEFT:
 				link.setAnimation(leftAnimation);
+                game.getScene().addGObject(new Arrow(game, link.getX(), link.getY() + 9));
 				break;
 
 			case RIGHT:
 				link.setAnimation(rightAnimation);
+                game.getScene().addGObject(new Arrow(game, link.getX(), link.getY() + 9));
 				break;
 		}
 
-        game.getScene().addGObject(new Arrow(game, link.getX(), link.getY()));
+        
+
+        //game.getScene().addGObject(new Arrow(game, link.getX(), link.getY()));
 	}
 
     @Override

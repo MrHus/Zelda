@@ -1,10 +1,12 @@
 package zelda.items;
 
 import java.awt.Rectangle;
+import java.awt.geom.Area;
+import zelda.collision.Hittable;
+import zelda.collision.Weapon;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.karacter.Direction;
-import zelda.link.Link;
 
 /**
  *
@@ -19,40 +21,50 @@ public class Arrow extends GObject
 	private final static String[] arrowDown     = {"arrowDown"};
 	private final static String[] arrowUp       = {"arrowUp"};
     private Direction direction;
+    
+    private Rectangle arrow;
 
     public Arrow(Game game, int x, int y)
     {
         super(game, x, y, 13, 16, "images/arrows.png");
 
-        spriteLoc.put("arrowRight", new Rectangle(0, 0, 24, 5));
-        spriteLoc.put("arrowLeft", new Rectangle(25, 0, 24, 5));
-        spriteLoc.put("arrowDown", new Rectangle(50, 0, 5, 24));
-        spriteLoc.put("arrowUp", new Rectangle(75, 0, 5, 24));
+        spriteLoc.put("arrowRight", new Rectangle(75, 0, 17, 6));
+        spriteLoc.put("arrowLeft", new Rectangle(50, 0, 17, 6));
+        spriteLoc.put("arrowDown", new Rectangle(0, 0, 6, 17));
+        spriteLoc.put("arrowUp", new Rectangle(25, 0, 6, 17));
 
-        sprite.setSprite(spriteLoc.get("arrowRight"));
 
 		liquid = true;
+
+        checkcollision = false;
 
         direction = game.getLink().getDirection();
 
         switch (direction)
 		{
 			case UP:
+                sprite.setSprite(spriteLoc.get("arrowUp"));
                 this.setAnimation(arrowUp);
 				break;
 
 			case DOWN:
+                sprite.setSprite(spriteLoc.get("arrowDown"));
                 this.setAnimation(arrowDown);
 				break;
 
 			case LEFT:
+                sprite.setSprite(spriteLoc.get("arrowLeft"));
                 this.setAnimation(arrowLeft);
 				break;
 
 			case RIGHT:
+                sprite.setSprite(spriteLoc.get("arrowRight"));
                 this.setAnimation(arrowRight);
 				break;
 		}
+
+       arrow = new Rectangle(x , y, 17, 6);
+       game.getScene().addHitter(arrow);
     }
 
     public void doInLoop()
@@ -60,26 +72,42 @@ public class Arrow extends GObject
         switch (direction)
 		{
 			case UP:
-                setY(getY() - 1);
+                setY(getY() - 2);
 				break;
 
 			case DOWN:
-                setY(getY() + 1);
+                setY(getY() + 2);
 				break;
 
 			case LEFT:
-                setX(getX() - 1);
+                setX(getX() - 2);
 				break;
 
 			case RIGHT:
-                setX(getX() + 1);
+                setX(getX() + 2);
 				break;
 		}
+
+        for (GObject obj : game.getScene().getGObjects())
+            {
+                final Area area = new Area();
+                area.add(new Area(arrow));
+                area.intersect(new Area(obj.getRectangle()));
+
+                if((obj instanceof Hittable) && !area.isEmpty() && this != obj)
+                {
+                    Hittable hittable = (Hittable)obj;
+                    hittable.hitBy(Weapon.ARROW);
+                    System.out.println("blaat");
+                }
+            }
+
+            game.getScene().removeHitter(arrow);
     }
 
 
 
-	@Override
+	/*@Override
 	public void collision(GObject obj)
 	{
 		System.out.println("Collision");
@@ -88,7 +116,7 @@ public class Arrow extends GObject
 		{
 			alive = false;
 		}
-	}
+	}*/
 
 
 
