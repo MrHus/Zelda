@@ -109,6 +109,8 @@ public class Link extends Karacter
 		
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
+		screenAdjust = false;
+
 		state = new StandState(this);
 	}
 

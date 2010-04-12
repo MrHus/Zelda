@@ -49,6 +49,12 @@ public class BlueSoldier extends Karacter implements Hittable
 	}
 
 	@Override
+	public void preAnimation()
+	{
+		state.handleAnimation();
+	}
+
+	@Override
 	public void doInLoop()
 	{
 		if (System.currentTimeMillis() > lastInput + inputInterval)

@@ -13,12 +13,19 @@ public class WalkState extends KaracterState
 	private final String[] upAnimation		= {"Stand up", "Walk up 1", "Walk up 2"};
 	private final String[] leftAnimation	= {"Stand left", "Walk left 1", "Walk left 2"};
 	private final String[] rightAnimation	= {"Stand right", "Walk right 1", "Walk right 2"};
-	private final static int WALK_SPEED	= 2;
+	
+	private final static int WALK_SPEED = 2;
+	private int oldX, oldY;
+	private long oldAnimationInterval;
 
 	public WalkState(BlueSoldier soldier)
 	{
 		super(soldier);
 		name = "WalkState";
+		
+		oldX = karacter.getX();
+		oldY = karacter.getY();
+		oldAnimationInterval = karacter.getAnimationInterval();
 	}
 
 	@Override
@@ -46,45 +53,168 @@ public class WalkState extends KaracterState
 
 	public void left()
 	{
-		if(karacter.getAnimation() != leftAnimation)
+		if (karacter.getAnimation() != leftAnimation)
+		{
 			karacter.setAnimation(leftAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.LEFT)
+		if (karacter.getDirection() != Direction.LEFT)
+		{
 			karacter.setDirection(Direction.LEFT);
+		}
 
 		karacter.setX(karacter.getX() - WALK_SPEED);
 	}
 
 	public void right()
 	{
-		if(karacter.getAnimation() != rightAnimation)
+		if (karacter.getAnimation() != rightAnimation)
+		{
 			karacter.setAnimation(rightAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.RIGHT)
+		if (karacter.getDirection() != Direction.RIGHT)
+		{
 			karacter.setDirection(Direction.RIGHT);
+		}
 
 		karacter.setX(karacter.getX() + WALK_SPEED);
 	}
 
 	public void up()
 	{
-		if(karacter.getAnimation() != upAnimation)
+		if (karacter.getAnimation() != upAnimation)
+		{
 			karacter.setAnimation(upAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.UP)
+		if (karacter.getDirection() != Direction.UP)
+		{
 			karacter.setDirection(Direction.UP);
+		}
 
 		karacter.setY(karacter.getY() - WALK_SPEED);
 	}
 
 	public void down()
 	{
-		if(karacter.getAnimation() != downAnimation)
+		if (karacter.getAnimation() != downAnimation)
+		{
 			karacter.setAnimation(downAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.DOWN)
+		if (karacter.getDirection() != Direction.DOWN)
+		{
 			karacter.setDirection(Direction.DOWN);
+		}
 
 		karacter.setY(karacter.getY() + WALK_SPEED);
+	}
+
+	@Override
+	public void handleAnimation()
+	{
+		int animationCounter = karacter.getAnimationCounter();
+
+		if (animationCounter == karacter.getAnimation().length)
+		{
+			karacter.setY(oldY);
+			karacter.setX(oldX);
+		}
+		else
+		{
+			Direction dir = karacter.getDirection();
+
+			if (dir == Direction.UP)
+			{
+				switch (animationCounter)
+				{
+					case 0:
+						karacter.setY(karacter.getY() + 1);
+						break;
+
+					case 2:
+						karacter.setY(karacter.getY() - 2);
+						break;
+
+					case 3:
+						karacter.setY(karacter.getY() - 6);
+						break;
+
+					case 4:
+						karacter.setY(karacter.getY() - 1);
+						break;
+
+					case 6:
+						karacter.setY(karacter.getY() + 2);
+						karacter.setX(karacter.getX() - 4);
+						break;
+
+					case 7:
+						karacter.setY(karacter.getY() + 2);
+						karacter.setX(karacter.getX() - 6);
+						break;
+
+					case 8:
+						karacter.setY(karacter.getY() + 3);
+						karacter.setX(karacter.getX() - 2);
+						break;
+				}
+			}
+			else if (dir == Direction.LEFT)
+			{
+				switch (animationCounter)
+				{
+					case 0:
+						karacter.setY(karacter.getY() - 1);
+						karacter.setX(karacter.getX() + 3);
+						break;
+
+					case 1:
+						karacter.setX(karacter.getX() - 2);
+						break;
+
+					case 2:
+						karacter.setY(karacter.getY() - 1);
+						karacter.setX(karacter.getX() - 5);
+						break;
+
+					case 3:
+						karacter.setX(karacter.getX() - 2);
+						break;
+
+					case 4:
+						karacter.setY(karacter.getY() + 2);
+						karacter.setX(karacter.getX() - 4);
+						break;
+
+					case 6:
+						karacter.setX(karacter.getX() + 1);
+						break;
+
+					case 8:
+						karacter.setX(karacter.getX() + 6);
+						break;
+				}
+			}
+			else if (dir == Direction.DOWN)
+			{
+					switch (animationCounter)
+					{
+						case 0:
+							karacter.setX(karacter.getX() - 4);
+							break;
+
+						case 1:
+							karacter.setX(karacter.getX() - 1);
+							break;
+
+						case 2:
+							karacter.setX(karacter.getX() + 1);
+							break;
+					}
+
+			}
+		}
 	}
 }

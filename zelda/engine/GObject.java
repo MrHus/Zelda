@@ -21,8 +21,10 @@ public abstract class GObject implements DrawAble
 	protected int y;
 	protected int width;
 	protected int height;
-	protected boolean checkcollision = true;
-	protected boolean liquid = false;
+
+	protected boolean checkcollision = true; // Should the objects check for collisions when x or y moves.
+	protected boolean liquid = false;		 // Can other GObjects move through the object.
+	protected boolean screenAdjust = true;    // Does this object adjust its position when the screen moves.
 
 	protected Sprite sprite;
 	protected static HashMap<String, Rectangle> spriteLoc = new HashMap<String, Rectangle>();
@@ -136,7 +138,6 @@ public abstract class GObject implements DrawAble
 					{
 						collision = true;
 					}
-					
 				}
 			}
 		}
@@ -258,5 +259,15 @@ public abstract class GObject implements DrawAble
 	public void setLiquid(boolean liquid)
 	{
 		this.liquid = liquid;
+	}
+
+	public boolean isScreenAdjust()
+	{
+		return screenAdjust;
+	}
+
+	public void setScreenAdjust(boolean screenAdjust)
+	{
+		this.screenAdjust = screenAdjust;
 	}
 }
