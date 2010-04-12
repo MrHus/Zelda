@@ -47,9 +47,6 @@ public class BowState extends LinkState
 				break;
 		}
 
-        
-
-        //game.getScene().addGObject(new Arrow(game, link.getX(), link.getY()));
 	}
 
     @Override
@@ -57,9 +54,7 @@ public class BowState extends LinkState
 	{
 		int animationCounter = link.getAnimationCounter();
 
-		//System.out.println("Animation Counter is " + animationCounter);
 
-		//sword is done swinging revert back to former state
 		if (animationCounter == link.getAnimation().length)
 		{
 			link.setCheckcollision(true);
