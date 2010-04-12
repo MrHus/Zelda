@@ -1,12 +1,7 @@
 package zelda.enemy;
 
-import java.awt.Polygon;
-import java.awt.geom.Area;
-import zelda.collision.Weapon;
-import zelda.engine.GObject;
 import zelda.karacter.Direction;
 import zelda.karacter.KaracterState;
-import zelda.link.Link;
 
 /**
  *
@@ -18,12 +13,12 @@ public class WalkState extends KaracterState
 	private final String[] upAnimation		= {"Stand up", "Walk up 1", "Walk up 2"};
 	private final String[] leftAnimation	= {"Stand left", "Walk left 1", "Walk left 2"};
 	private final String[] rightAnimation	= {"Stand right", "Walk right 1", "Walk right 2"};
-	private final static int WALK_SPEED	= 2;
+	
+	private final static int WALK_SPEED = 2;
+	private int oldX, oldY;
+	private long oldAnimationInterval;
 
     private BlueSoldier soldier;
-    
-    private int oldX, oldY;
-    private long oldAnimationInterval;
 
     public WalkState(BlueSoldier soldier)
 	{
@@ -33,12 +28,12 @@ public class WalkState extends KaracterState
         oldX = karacter.getX();
 		oldY = karacter.getY();
         oldAnimationInterval = karacter.getAnimationInterval();
-	}
+    }
 
 	@Override
 	public void handleInput()
 	{
-  		switch (karacter.getDirection())
+		switch (karacter.getDirection())
 		{
 			case UP:
                 up();
@@ -60,44 +55,60 @@ public class WalkState extends KaracterState
 
 	public void left()
 	{
-		if(karacter.getAnimation() != leftAnimation)
+		if (karacter.getAnimation() != leftAnimation)
+		{
 			karacter.setAnimation(leftAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.LEFT)
+		if (karacter.getDirection() != Direction.LEFT)
+		{
 			karacter.setDirection(Direction.LEFT);
+		}
 
 		karacter.setX(karacter.getX() - WALK_SPEED);
 	}
 
 	public void right()
 	{
-		if(karacter.getAnimation() != rightAnimation)
+		if (karacter.getAnimation() != rightAnimation)
+		{
 			karacter.setAnimation(rightAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.RIGHT)
+		if (karacter.getDirection() != Direction.RIGHT)
+		{
 			karacter.setDirection(Direction.RIGHT);
+		}
 
 		karacter.setX(karacter.getX() + WALK_SPEED);
 	}
 
 	public void up()
 	{
-		if(karacter.getAnimation() != upAnimation)
+		if (karacter.getAnimation() != upAnimation)
+		{
 			karacter.setAnimation(upAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.UP)
+		if (karacter.getDirection() != Direction.UP)
+		{
 			karacter.setDirection(Direction.UP);
+		}
 
 		karacter.setY(karacter.getY() - WALK_SPEED);
 	}
 
 	public void down()
 	{
-		if(karacter.getAnimation() != downAnimation)
+		if (karacter.getAnimation() != downAnimation)
+		{
 			karacter.setAnimation(downAnimation);
+		}
 
-		if(karacter.getDirection() != Direction.DOWN)
+		if (karacter.getDirection() != Direction.DOWN)
+		{
 			karacter.setDirection(Direction.DOWN);
+		}
 
 		karacter.setY(karacter.getY() + WALK_SPEED);
 	}
@@ -107,18 +118,13 @@ public class WalkState extends KaracterState
 	{
 		int animationCounter = karacter.getAnimationCounter();
 
-		//System.out.println("Animation Counter is " + animationCounter);
-
-		//sword is done swinging revert back to former state
 		if (animationCounter == karacter.getAnimation().length)
 		{
 			karacter.setY(oldY);
 			karacter.setX(oldX);
-			karacter.setAnimationInterval(oldAnimationInterval);
-			karacter.setCheckcollision(true);
-			//karacter.setState(new StandState(karacter));
 		}
 		else
+
         {
 		// This section of the code corrects the position of karacter when he's striking.
 			// If you don't do this karacter appears to be moving when he swings his sword.
@@ -128,7 +134,7 @@ public class WalkState extends KaracterState
 
 			if (dir == Direction.UP)
 			{
-				switch(animationCounter)
+				switch (animationCounter)
 				{
 					case 0:
 						karacter.setY(karacter.getY() + 1);
@@ -164,7 +170,7 @@ public class WalkState extends KaracterState
 			}
 			else if (dir == Direction.LEFT)
 			{
-				switch(animationCounter)
+				switch (animationCounter)
 				{
 					case 0:
 						karacter.setY(karacter.getY() - 1);
@@ -198,23 +204,25 @@ public class WalkState extends KaracterState
 						break;
 				}
 			}
-			else if(dir == Direction.DOWN)
+			else if (dir == Direction.DOWN)
 			{
-				switch(animationCounter)
-				{
-					case 0:
-						karacter.setX(karacter.getX() - 4);
-						break;
+                switch (animationCounter)
+                {
+                    case 0:
+                        karacter.setX(karacter.getX() - 4);
+                        break;
 
-					case 1:
-						karacter.setX(karacter.getX() - 1);
-						break;
+                    case 1:
+                        karacter.setX(karacter.getX() - 1);
+                        break;
 
-					case 2:
-						karacter.setX(karacter.getX() + 1);
-						break;
-				}
+                    case 2:
+                        karacter.setX(karacter.getX() + 1);
+                        break;
+                }
             }
-        }
-    }
+
+		}
+	}
+
 }
