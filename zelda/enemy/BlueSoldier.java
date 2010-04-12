@@ -76,6 +76,9 @@ public class BlueSoldier extends Karacter implements Hittable
             case BOMB:
                 alive = false;
                 break;
+            case ARROW:
+                alive = false;
+                break;
 		}
 	}
 
