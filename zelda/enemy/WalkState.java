@@ -18,15 +18,17 @@ public class WalkState extends KaracterState
 	private int oldX, oldY;
 	private long oldAnimationInterval;
 
-	public WalkState(BlueSoldier soldier)
+    private BlueSoldier soldier;
+
+    public WalkState(BlueSoldier soldier)
 	{
 		super(soldier);
 		name = "WalkState";
-		
-		oldX = karacter.getX();
+
+        oldX = karacter.getX();
 		oldY = karacter.getY();
-		oldAnimationInterval = karacter.getAnimationInterval();
-	}
+        oldAnimationInterval = karacter.getAnimationInterval();
+    }
 
 	@Override
 	public void handleInput()
@@ -34,20 +36,20 @@ public class WalkState extends KaracterState
 		switch (karacter.getDirection())
 		{
 			case UP:
-				up();
+                up();
 				break;
 
 			case DOWN:
-				down();
-				break;
+                down();
+                break;
 
 			case LEFT:
 				left();
-				break;
+                break;
 
 			case RIGHT:
-				right();
-				break;
+                right();
+                break;
 		}
 	}
 
@@ -111,7 +113,7 @@ public class WalkState extends KaracterState
 		karacter.setY(karacter.getY() + WALK_SPEED);
 	}
 
-	@Override
+    @Override
 	public void handleAnimation()
 	{
 		int animationCounter = karacter.getAnimationCounter();
@@ -122,7 +124,12 @@ public class WalkState extends KaracterState
 			karacter.setX(oldX);
 		}
 		else
-		{
+
+        {
+		// This section of the code corrects the position of karacter when he's striking.
+			// If you don't do this karacter appears to be moving when he swings his sword.
+			// Go ahead and remove the entire body of this else statement. You'll see what i mean.
+
 			Direction dir = karacter.getDirection();
 
 			if (dir == Direction.UP)
@@ -199,22 +206,23 @@ public class WalkState extends KaracterState
 			}
 			else if (dir == Direction.DOWN)
 			{
-					switch (animationCounter)
-					{
-						case 0:
-							karacter.setX(karacter.getX() - 4);
-							break;
+                switch (animationCounter)
+                {
+                    case 0:
+                        karacter.setX(karacter.getX() - 4);
+                        break;
 
-						case 1:
-							karacter.setX(karacter.getX() - 1);
-							break;
+                    case 1:
+                        karacter.setX(karacter.getX() - 1);
+                        break;
 
-						case 2:
-							karacter.setX(karacter.getX() + 1);
-							break;
-					}
+                    case 2:
+                        karacter.setX(karacter.getX() + 1);
+                        break;
+                }
+            }
 
-			}
 		}
 	}
+
 }

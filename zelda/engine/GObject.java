@@ -145,6 +145,8 @@ public abstract class GObject implements DrawAble
 		return collision;
 	}
 
+
+
 	public int getX()
 	{
 		return x;
