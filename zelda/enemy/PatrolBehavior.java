@@ -69,7 +69,7 @@ public class PatrolBehavior extends Behavior
 
             if((obj instanceof Link) && !area.isEmpty())
             {
-                System.out.println("Link was seen");
+                //System.out.println("Link was seen");
             }
 		}
 
