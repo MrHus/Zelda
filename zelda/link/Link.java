@@ -5,6 +5,7 @@ import zelda.enemy.BlueSoldier;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.items.Bomb;
+import zelda.items.Heart;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -154,11 +155,30 @@ public class Link extends Karacter
 	@Override
 	protected void collision(GObject hitObject)
 	{
+        if (health == 0)
+        {
+            alive = false;
+            game.playMusic("sounds/killed.mp3", false);
+        }
+
 		if (hitObject instanceof BlueSoldier)
 		{
 
+            for(int i; health>0; health--)
+            {
+               System.out.println("Count is: " + health);
+            }
 		}
-	}
+
+        if (hitObject instanceof Heart)
+        {
+            if (health < 5)
+            {
+               health++;
+            }
+        }
+        System.out.println("leven= " + health);
+    }
 
 	//Handy dandy stuff that handles input
 	public boolean moveinput()

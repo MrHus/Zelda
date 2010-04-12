@@ -1,7 +1,10 @@
 package zelda.scene;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Graphics2D;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.engine.Scene;
@@ -20,7 +23,7 @@ public class ZeldaScene extends Scene
 
 	private int XSen; //left/right sensitivity for when the scene adapts too link
 	private int YSen; //up/down sensitivity for when the scene adapts too link
-	private final static int MOD = 1;
+	private final static int MOD = 1; 
 
 	public ZeldaScene(Game game, String img)
 	{
@@ -31,8 +34,11 @@ public class ZeldaScene extends Scene
 		
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 
-        GuiHeart heart = new GuiHeart(game, 370, 50, true);
-        gameObjects.add(heart);
+        for(int i = 0; i < 5; i++)
+        {
+			GuiHeart heart = new GuiHeart(game, 370+i*12, 50, true);
+			gameObjects.add(heart);
+        }
 	}
 
 	@Override
@@ -120,4 +126,17 @@ public class ZeldaScene extends Scene
 			}
 		}
 	}
+
+    @Override
+    public void draw(Graphics2D g2)
+	{
+		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
+        g2.setColor(Color.white);
+        Font f = new Font ("Serif", Font.BOLD, 12);
+        g2.setFont (f);
+        g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
+	}
 }
+
+    
+
