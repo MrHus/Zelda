@@ -7,7 +7,6 @@ import zelda.collision.Weapon;
 import zelda.enemy.Behavior;
 import zelda.engine.GObject;
 import zelda.engine.Game;
-import zelda.link.Link;
 
 /**
  *
@@ -44,7 +43,7 @@ public class Bomb extends GObject
         setAnimation(bombAnimation);
         this.setAnimationInterval(50); //keep on 50 for 2.5 sec bomb countdown.
 
-		//liquid = true;
+		liquid = true;
 		checkcollision = false;
         
         behavior = new BombBehavior(this);
@@ -93,3 +92,4 @@ public class Bomb extends GObject
 		
 	}
 }
+

@@ -38,6 +38,10 @@ public class WalkState extends LinkState
             {
                 link.dropBomb();
             }
+            else if(game.iskPressed())
+            {
+                link.setState(new BowState(link));
+            }
 			else
 			{
 				if (game.isaPressed())

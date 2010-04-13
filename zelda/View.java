@@ -102,11 +102,19 @@ public class View
 			g2.draw(r);
 		}
 
+        //draw green box for eye views
+		for (Shape v : game.getScene().getEyeViews())
+		{
+			g2.setColor(Color.green);
+			g2.draw(v);
+		}
+
 		//graphics.drawImage(bi, x, y, null);
 		graphics.drawImage(bi, 0, 0, null);
 
 		if (!buffer.contentsLost())
 			buffer.show();
+
 
 		graphics.dispose();
 		g2.dispose();
