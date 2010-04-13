@@ -79,7 +79,6 @@ public class Arrow extends GObject
 		}
     }
 
-
 	public void PostAnimation()
 	{
 		switch (direction)

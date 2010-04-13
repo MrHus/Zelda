@@ -50,8 +50,8 @@ public abstract class Karacter extends GObject
         return health;
     }
 
-    public void setHealth(int newHealth)
+    public void setHealth(int health)
     {
-        health = newHealth;
+        this.health = health;
     }
 }
