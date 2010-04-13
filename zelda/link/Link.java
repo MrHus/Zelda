@@ -160,6 +160,7 @@ public class Link extends Karacter
             alive = false;
             game.playMusic("sounds/killed.mp3", false);
         }
+
 		if (hitObject instanceof BlueSoldier)
 		{
 

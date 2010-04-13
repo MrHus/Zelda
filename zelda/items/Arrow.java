@@ -79,7 +79,6 @@ public class Arrow extends GObject
 		}
     }
 
-
 	public void PostAnimation()
 	{
 		switch (direction)
@@ -106,6 +105,7 @@ public class Arrow extends GObject
 		}
     }
 
+    @Override
     public void doInLoop()
     {
         switch (direction)

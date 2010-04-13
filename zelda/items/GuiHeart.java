@@ -17,9 +17,7 @@ public class GuiHeart extends GObject
     {
         super(game, x, y, 11, 10, "images/guihearts2.png");
         spriteLoc.put("full", new Rectangle(0, 0, 11, 10));
-        spriteLoc.put("empty", new Rectangle(11, 0, 22, 10));
-
-        
+        spriteLoc.put("empty", new Rectangle(11, 0, 11, 10));
 
         if(full)
         {

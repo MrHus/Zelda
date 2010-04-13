@@ -12,7 +12,7 @@ public abstract class Karacter extends GObject
 {
 	protected Direction direction;
 	protected KaracterState state;
-    protected int health = 4;
+    public int health = 4;
 
 	public Karacter(Game game, int x, int y, int width, int height, Direction dir, String image)
 	{
@@ -50,8 +50,8 @@ public abstract class Karacter extends GObject
         return health;
     }
 
-    public void setHealth(int newHealth)
+    public void setHealth(int health)
     {
-        health = newHealth;
+        this.health = health;
     }
 }
