@@ -17,10 +17,11 @@ public class Game
 	private int gameSpeed = 10;
 	private int width = 500;
 	private int height = 400;
-	
+
+    private Link link;
 	private Scene scene;
 	private Music music;
-	private Link link;
+	
 
 	private boolean aPressed = false;
 	private boolean sPressed = false;

@@ -25,23 +25,25 @@ public class ZeldaScene extends Scene
 
 	private int XSen; //left/right sensitivity for when the scene adapts too link
 	private int YSen; //up/down sensitivity for when the scene adapts too link
-	private final static int MOD = 1; 
+	private final static int MOD = 1;
 
-	public ZeldaScene(Game game, String img)
+  	public ZeldaScene(Game game, String img)
 	{
 		super(game, img);
 
 		XSen = game.getWidth() / 2;
 		YSen = game.getHeight() / 2;
-		
+        
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
+
+        GuiHeart heart;
 
         for(int i = 0; i < 5; i++)
         {
-            GuiHeart heart = new GuiHeart(game, (game.getWidth() - 130)+i*12 , 50, true);
+            heart = new GuiHeart(game, (game.getWidth() - 130)+i*12 , 50);
             gameObjects.add(heart);
         }
-
+         
         GuiRupee rupee = new GuiRupee(game, 100, game.getHeight() / 11);
         gameObjects.add(rupee);
 	}
