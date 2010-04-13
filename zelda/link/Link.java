@@ -18,6 +18,7 @@ public class Link extends Karacter
 {
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
+    private long lastHit = System.currentTimeMillis();
 
 	public Link(Game game, int x, int y)
 	{
@@ -164,10 +165,13 @@ public class Link extends Karacter
 		if (hitObject instanceof BlueSoldier)
 		{
 
-            for(int i; health>0; health--)
+            if (health > 0 && System.currentTimeMillis() > lastHit + 500)
             {
-               System.out.println("Count is: " + health);
+               health --;
+               lastHit = System.currentTimeMillis();
+               System.out.println("leven: " + health);
             }
+
 		}
 
         if (hitObject instanceof Heart)

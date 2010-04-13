@@ -125,6 +125,7 @@ public class Arrow extends GObject
 			case RIGHT:
                 setX(getX() + 2);
 				break;
+
 		}
     }
 
@@ -135,7 +136,7 @@ public class Arrow extends GObject
 		{
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
-			alive = false;
+           
 		}
 	}
 }
