@@ -28,7 +28,7 @@ public class BombBehavior extends Behavior
     public void behave()
     {
         if (System.currentTimeMillis() > lastAnimation + animationInterval) // if it time to reanimate
-	{
+        {
             if(ticks == 49)
             {
                 bomb.setAlive(false);
