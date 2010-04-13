@@ -1,5 +1,6 @@
 package zelda.scene;
 
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Polygon;
@@ -9,6 +10,7 @@ import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.engine.Scene;
 import zelda.items.GuiHeart;
+import zelda.items.GuiRupee;
 import zelda.link.Link;
 
 /**
@@ -28,9 +30,12 @@ public class ZeldaScene extends Scene
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
         for(int i = 0; i < 5; i++)
         {
-        GuiHeart heart = new GuiHeart(game, 370+i*12, 50, true);
-        gameObjects.add(heart);
+            GuiHeart heart = new GuiHeart(game, (game.getWidth() - 130)+i*12 , 50, true);
+            gameObjects.add(heart);
         }
+
+        GuiRupee rupee = new GuiRupee(game, 100, game.getHeight() / 11);
+        gameObjects.add(rupee);
 	}
 
 	@Override
@@ -124,6 +129,7 @@ public class ZeldaScene extends Scene
 			}
 		}
 	}
+
     @Override
     public void draw(Graphics2D g2)
 	{
@@ -132,6 +138,7 @@ public class ZeldaScene extends Scene
         Font f = new Font ("Serif", Font.BOLD, 12);
         g2.setFont (f);
         g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
+        g2.drawString("999", 98, game.getHeight() / 7);
 	}
 }
 

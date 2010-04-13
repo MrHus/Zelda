@@ -106,6 +106,7 @@ public class Arrow extends GObject
 		}
     }
 
+    @Override
     public void doInLoop()
     {
         switch (direction)
