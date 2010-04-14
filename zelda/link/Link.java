@@ -158,18 +158,19 @@ public class Link extends Karacter
 	{
         if (health == 0)
         {
-            alive = false;
             game.playMusic("sounds/killed.mp3", false);
+            alive = false;
         }
 
 		if (hitObject instanceof BlueSoldier)
 		{
 
-            if (health > 0 && System.currentTimeMillis() > lastHit + 500)
+            if (health > 0 && System.currentTimeMillis() > lastHit + 600)
             {
+               game.playMusic("sounds/linkHurt.mp3", false);
                health --;
                lastHit = System.currentTimeMillis();
-               System.out.println("leven: " + health);
+               //System.out.println("leven: " + health);
             }
 
 		}
@@ -178,10 +179,11 @@ public class Link extends Karacter
         {
             if (health < 5)
             {
+               game.playMusic("sounds/getItem.mp3", false);
                health++;
             }
         }
-        System.out.println("leven= " + health);
+        //System.out.println("leven= " + health);
     }
 
 	//Handy dandy stuff that handles input

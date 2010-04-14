@@ -53,28 +53,32 @@ public class Arrow extends GObject
 
         switch (direction)
 		{
-			case UP:
+            case UP:
                 sprite.setSprite(spriteLoc.get("arrowUp"));
                 this.setAnimation(arrowUp);
                 this.setHeight(13);
                 this.setWidth(4);
-				break;
+                game.playMusic("sounds/bowArrow.mp3", false);
+                break;
 
 			case DOWN:
                 sprite.setSprite(spriteLoc.get("arrowDown"));
                 this.setAnimation(arrowDown);
                 this.setHeight(13);
                 this.setWidth(4);
+                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case LEFT:
                 sprite.setSprite(spriteLoc.get("arrowLeft"));
                 this.setAnimation(arrowLeft);
+                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case RIGHT:
                 sprite.setSprite(spriteLoc.get("arrowRight"));
                 this.setAnimation(arrowRight);
+                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 		}
     }
@@ -83,7 +87,7 @@ public class Arrow extends GObject
 	{
 		switch (direction)
 		{
-			case UP:
+            case UP:
                 sprite.setSprite(spriteLoc.get("arrowHitUp"));
                 this.setAnimation(arrowHitUp);
 				break;

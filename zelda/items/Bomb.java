@@ -52,8 +52,14 @@ public class Bomb extends GObject
     @Override
 	public void preAnimation()
 	{
+        if (animationCounter == 1)
+        {
+            game.playMusic("sounds/linkBounce.mp3", false);
+        }
         if(animationCounter == 48)
         {
+            game.playMusic("sounds/bombExplode.mp3", false);
+            
             x -= 8;
             y -= 6;
 
