@@ -1,6 +1,7 @@
 package zelda.enemy;
 
 import zelda.karacter.Direction;
+import zelda.link.Link;
 
 /**
  *
@@ -9,42 +10,91 @@ import zelda.karacter.Direction;
 public class AttackBehavior extends Behavior {
 
     private BlueSoldier soldier;
-	private int ticks = 0;
-	private int max;
-	private int step = 1;
+    private Link link;
 
-	public AttackBehavior(BlueSoldier soldier, int ticks)
+    private int valueX;
+    private int valueY;
+
+	public AttackBehavior(BlueSoldier soldier)
 	{
 		this.soldier = soldier;
-		this.max = ticks;
-		move();
+        link = soldier.getGame().getLink();
 	}
 
 	public void behave()
-	{
+    {
+        valueX = Math.abs(link.getX() - soldier.getX());
+        valueY = Math.abs(link.getY() - soldier.getY());
 
+        //check which direct between link and soldier is longer, X or Y
+        if(valueX < valueY)
+        {
+            //Set new direction for soldier
+            //Soldier up
+            if(link.getY() < soldier.getY())
+            {
+                soldier.setY(soldier.getY() - 1);
+                if(soldier.getDirection() != Direction.UP)
+                {
+                    soldier.setDirection(Direction.UP);
+                }
+
+            }
+            //Soldier downw
+            else if(link.getY() > soldier.getY())
+            {
+                soldier.setY(soldier.getY() + 1);
+                if(soldier.getDirection() != Direction.DOWN)
+                {
+                    soldier.setDirection(Direction.DOWN);
+                }
+            }
+        }
+        else
+        {
+            //Set new direction for soldier
+            //Soldier left
+            if(link.getX() < soldier.getX())
+            {
+                soldier.setX(soldier.getX() - 1);
+                if(soldier.getDirection() != Direction.LEFT)
+                {
+                  soldier.setDirection(Direction.LEFT);
+                }
+            }
+            //Soldier right
+            else if(link.getX() > soldier.getX())
+            {
+                soldier.setX(soldier.getX() + 1);
+                if(soldier.getDirection() != Direction.RIGHT)
+                {
+                    soldier.setDirection(Direction.RIGHT);
+                }
+            }
+        }
+
+        //Set new X for soldier
+        //Soldier left
+        if(link.getX() < soldier.getX())
+        {
+            soldier.setX(soldier.getX() - 1);
+        }
+        //Soldier right
+        else if(link.getX() > soldier.getX())
+        {
+            soldier.setX(soldier.getX() + 1);
+        }
+
+        //Set new Y for soldier
+        //Soldier up
+        if(link.getY() < soldier.getY())
+        {
+            soldier.setY(soldier.getY() - 1);
+        }
+        //Soldier downw
+        else if(link.getY() > soldier.getY())
+        {
+            soldier.setY(soldier.getY() + 1);
+        }
     }
-
-    private void move()
-	{
-		switch (soldier.getDirection())
-		{
-			case UP:
-				soldier.setDirection(Direction.DOWN);
-				break;
-
-			case DOWN:
-				soldier.setDirection(Direction.UP);
-				break;
-
-			case LEFT:
-				soldier.setDirection(Direction.RIGHT);
-
-				break;
-
-			case RIGHT:
-				soldier.setDirection(Direction.LEFT);
-				break;
-		}
-	}
 }

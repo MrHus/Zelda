@@ -1,6 +1,5 @@
 package zelda.enemy;
 
-import java.awt.Polygon;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import java.awt.Rectangle;
@@ -16,8 +15,10 @@ import zelda.karacter.Karacter;
  */
 public class BlueSoldier extends Karacter implements Hittable
 {
+
 	private Behavior behavior;
     protected int enemyHealth = 6;
+
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
@@ -85,6 +86,7 @@ public class BlueSoldier extends Karacter implements Hittable
                 game.playMusic("sounds/enemyHit.mp3", false);
                 enemyHealth --;
                 //alive = false;
+                this.setState(new StandState(this));
                 break;
 		}
         if (enemyHealth <= 0)
