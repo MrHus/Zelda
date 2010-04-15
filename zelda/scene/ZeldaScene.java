@@ -49,18 +49,21 @@ public class ZeldaScene extends Scene
 		// If links walks to the border of the screen it should scroll.
 		if (!link.getStateString().equals("SwordState")) //ignore swordstate
 		{
+            //System.out.println(link.getX() + " > " + (sprite.getWidth() - XSen));
 			if (link.getX() > (sprite.getWidth() - XSen)) // link moves too far to the right.
 			{
 				int newX = sprite.getX() + MOD;
+               // System.out.println((newX + sprite.getWidth()) + " <= " + sprite.getImageWidth());
 				if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
 				{
+                    //System.out.println(newX + " " + sprite.getX());
 					link.setX(link.getX() - MOD);
 					modShapes(-MOD, 0);
 					sprite.setX(newX);
 				}
 			}
 
-			if (link.getX() < (sprite.getX() + XSen)) // link moves too far to the left
+			if (link.getX() < XSen) // link moves too far to the left
 			{
 				int newX = sprite.getX() - MOD;
 
@@ -77,6 +80,7 @@ public class ZeldaScene extends Scene
 				int newY = sprite.getY() + MOD;
 				if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
 				{
+//                    System.out.println(newY + " " + sprite.getY());
 					link.setY(link.getY() - MOD);
 					modShapes(0, -MOD);
 					sprite.setY(newY);
@@ -121,8 +125,8 @@ public class ZeldaScene extends Scene
 		{
 			if (obj.isScreenAdjust()) // should it adjust when screen moves.
 			{
-				obj.setX(obj.getX() + modX);
-				obj.setY(obj.getY() + modY);
+				obj.setXHardCore(obj.getX() + modX);
+				obj.setYHardCore(obj.getY() + modY);
 			}
 		}
 	}
