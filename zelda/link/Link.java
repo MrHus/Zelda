@@ -6,6 +6,7 @@ import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.items.Bomb;
 import zelda.items.Heart;
+import zelda.items.Rupee;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -19,6 +20,7 @@ public class Link extends Karacter
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
     private long lastHit = System.currentTimeMillis();
+    private int rupee = 0;
 
 	public Link(Game game, int x, int y)
 	{
@@ -166,14 +168,13 @@ public class Link extends Karacter
 		if (hitObject instanceof BlueSoldier)
 		{
 
-            if (health > 0 && System.currentTimeMillis() > lastHit + 600)
+            if (health > 0 && System.currentTimeMillis() > lastHit + 800)
             {
                game.playMusic("sounds/linkHurt.mp3", false);
                health --;
                lastHit = System.currentTimeMillis();
                //System.out.println("leven: " + health);
             }
-
 		}
 
         if (hitObject instanceof Heart)
@@ -184,7 +185,11 @@ public class Link extends Karacter
                health++;
             }
         }
-        //System.out.println("leven= " + health);
+
+        if (hitObject instanceof Rupee)
+        {
+            rupee += 5;
+        }
     }
 
 	//Handy dandy stuff that handles input
@@ -197,4 +202,14 @@ public class Link extends Karacter
 	{
         return (!game.isaPressed() && !game.isdPressed() && !game.iswPressed() && !game.issPressed());
 	}
+
+    public int getRupee()
+    {
+        return rupee;
+    }
+
+    public void setRupee(int rupee)
+    {
+        this.rupee = health;
+    }
 }

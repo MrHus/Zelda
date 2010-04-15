@@ -43,7 +43,7 @@ public class GuiHeart extends GObject
     {
         int empty = 5 - game.getLink().getHealth();
 
-        System.out.println(empty);
+        //System.out.println(empty);
         for (int j = 0; j < 5; j++)
         {
             if( j >= (5 - empty))
