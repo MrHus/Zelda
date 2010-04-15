@@ -66,7 +66,8 @@ public abstract class GObject implements DrawAble
 	 * @param hitObject
 	 */
 	protected void collision(GObject hitObject){}
-
+    protected void wallCollision(){}
+    
 	public void animate()
 	{
 		if (System.currentTimeMillis() > lastAnimation + animationInterval) // if it time to reanimate
@@ -118,6 +119,7 @@ public abstract class GObject implements DrawAble
 			if (!area.isEmpty()) // if isEmpty is false there is a collision
 			{
 				collision = true;
+                wallCollision();
 			}
 		}
 
