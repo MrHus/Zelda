@@ -14,7 +14,8 @@ import zelda.engine.Game;
  *
  * @author Christiaan
  */
-public class Bush extends GObject implements Hittable {
+public class Bush extends GObject implements Hittable
+{
 
     public Bush(Game game, int x, int y) {
         super(game, x, y, 16, 14, "images/items.png");
@@ -24,21 +25,36 @@ public class Bush extends GObject implements Hittable {
         String[] bushani = {"bush"};
         setAnimation(bushani);
         sprite.setSprite(spriteLoc.get("bush"));
-
-
     }
 
-    public void hitBy(Weapon weapon) {
-        switch (weapon) {
-            case SWORD:
-                String[] bushani = {"stump"};
-                setAnimation(bushani);
-                if (liquid == false)
-                {
+    public void hitBy(Weapon weapon) 
+    {
+        if(weapon == Weapon.SWORD)
+        {
+            String[] bushani = {"stump"};
+            setAnimation(bushani);
+
+            if (liquid == false)
+            {
                 game.playMusic("sounds/bushCut.mp3", false);
+
+                int r = (int)(Math.random()*200);
+                System.out.println(r);
+
+                if (r < 50)
+                {
+                    if (r < 25)
+                    {
+                        game.getScene().addNewGObject(new Heart (game, x, y));
+                    }
+                    else
+                    {
+                        game.getScene().addNewGObject(new Rupee (game, x, y));
+                    }
                 }
-                liquid = true;
-                break;
+            }
+
+            liquid = true;
         }
     }
 }

@@ -75,7 +75,6 @@ public class BlueSoldier extends Karacter implements Hittable
 			case SWORD:
                 enemyHealth --;
                 game.playMusic("sounds/enemyHit.mp3", false);
-				//alive = false;
 				break;
 
             case BOMB:
@@ -85,11 +84,10 @@ public class BlueSoldier extends Karacter implements Hittable
             case ARROW:
                 game.playMusic("sounds/enemyHit.mp3", false);
                 enemyHealth --;
-                //alive = false;
-                this.setState(new StandState(this));
                 break;
 		}
-        if (enemyHealth <= 0)
+
+        if(enemyHealth <= 0)
         {
             alive = false;
             game.playMusic("sounds/enemyDie.mp3", false);

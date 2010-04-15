@@ -147,8 +147,6 @@ public abstract class GObject implements DrawAble
 		return collision;
 	}
 
-
-
 	public int getX()
 	{
 		return x;
@@ -173,6 +171,16 @@ public abstract class GObject implements DrawAble
 		{
 			y = newY;
 		}
+	}
+
+    public void setYHardCore(int y)
+	{
+		this.y = y;
+	}
+
+    public void setXHardCore(int x)
+	{
+		this.x = x;
 	}
 
 	public int getHeight()

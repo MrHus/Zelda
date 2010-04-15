@@ -4,6 +4,7 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.scene.HouseScene;
+import zelda.scene.HyruleScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -33,8 +34,9 @@ public class Game
 
 	public Game()
 	{
-		link = new Link(this, 100, 100);
-		scene = new HouseScene(this);
+		link = new Link(this, 800, 900);
+//		scene = new HouseScene(this);
+        scene = new HyruleScene(this);
 
 		scene.initScene();
 	}

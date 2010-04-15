@@ -21,7 +21,7 @@ public class Controller implements Runnable, KeyListener
 	private View view;
 	private Link link;
 	private Scene scene;
-	//private PolyCreator polyCreator;
+	private PolyCreator polyCreator;
 
 	public Controller(Game game, View view, final JFrame frame)
 	{
@@ -30,7 +30,7 @@ public class Controller implements Runnable, KeyListener
 		link = game.getLink();  //handles input
 		scene = game.getScene();//handles input
 
-		//frame.addMouseListener(new PolyCreator(scene));
+		frame.addMouseListener(new PolyCreator(scene));
 		frame.addKeyListener(this);
 
 		thread = new Thread(this, "GameLoop");
