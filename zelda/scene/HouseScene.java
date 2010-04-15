@@ -5,6 +5,7 @@ import zelda.enemy.BlueSoldier;
 import zelda.items.Heart;
 import zelda.items.Bush;
 import zelda.engine.Game;
+import zelda.items.Rupee;
 import zelda.karacter.Direction;
 
 /**
@@ -63,14 +64,18 @@ public class HouseScene extends ZeldaScene
 		solids.add(house);
 
 
+        Bush bush = new Bush(game, 160, 50);
+        gameObjects.add(bush);
+
+        gameObjects.add(new Rupee(game, 120, 90));
+        gameObjects.add(new Rupee(game, 240, 40));
+
         gameObjects.add(new Heart(game, 280, 140));
         gameObjects.add(new Heart(game, 340, 90));
         gameObjects.add(new Heart(game, 180, 40));
 
-        Bush bush = new Bush(game, 160, 50);
-        gameObjects.add(bush);
-
 		gameObjects.add(game.getLink());
+
 		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
 		gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
 		game.playMusic("sounds/overworld.mp3", true);

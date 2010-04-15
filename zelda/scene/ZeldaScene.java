@@ -21,6 +21,7 @@ import zelda.link.Link;
 public class ZeldaScene extends Scene
 {
 	protected Link link;
+        
 	protected boolean move;
 
 	private int XSen; //left/right sensitivity for when the scene adapts too link
@@ -137,12 +138,12 @@ public class ZeldaScene extends Scene
     @Override
     public void draw(Graphics2D g2)
 	{
-		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
+       	g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
         g2.setColor(Color.white);
         Font f = new Font ("Serif", Font.BOLD, 12);
         g2.setFont (f);
         g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
-        g2.drawString("999", 98, game.getHeight() / 7);
+        g2.drawString("" + link.getRupee(), 98, game.getHeight() / 7);
 	}
 }
 
