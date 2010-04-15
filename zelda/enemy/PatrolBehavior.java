@@ -18,6 +18,7 @@ public class PatrolBehavior extends Behavior
 	private int step = 1;
 
     private Polygon eyeView;
+    protected Behavior behavior;
 
 	public PatrolBehavior(BlueSoldier soldier, int ticks)
 	{
@@ -51,6 +52,7 @@ public class PatrolBehavior extends Behavior
                 int[] evyposleft = {soldier.getY() + 20 , soldier.getY() + 50, soldier.getY() + 40, soldier.getY() - 15, soldier.getY() - 25, soldier.getY() + 5};
                 eyeView = new Polygon(evxposleft, evyposleft, evxposleft.length);
                 soldier.getGame().getScene().addEyeView(eyeView);
+                behavior = new AttackBehavior(soldier);
                 break;
 
 			case RIGHT:
@@ -70,6 +72,8 @@ public class PatrolBehavior extends Behavior
             if((obj instanceof Link) && !area.isEmpty())
             {
                 //System.out.println("Link was seen");
+
+                soldier.setBehavior(new AttackBehavior(soldier));
             }
 		}
 

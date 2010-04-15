@@ -16,7 +16,7 @@ import zelda.karacter.Karacter;
  */
 public class BlueSoldier extends Karacter implements Hittable
 {
-	private Behavior behavior;
+	protected Behavior behavior;
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
