@@ -3,7 +3,7 @@ package zelda;
 import java.awt.Polygon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import zelda.engine.Scene;
+import zelda.engine.Game;
 
 /**
  * This class is a 'development' only class. It lets you get coordinates on the 'screen'
@@ -13,12 +13,12 @@ import zelda.engine.Scene;
  */
 public class PolyCreator extends MouseAdapter
 {
-	private Scene scene;
+	private Game game;
 	private Polygon poly = new Polygon();
 
-	public PolyCreator(Scene scene)
+	public PolyCreator(Game game)
 	{
-		this.scene = scene;
+		this.game = game;
 	}
 
 	@Override
@@ -42,12 +42,14 @@ public class PolyCreator extends MouseAdapter
 		}
 		else // add point in the array.
 		{
-			int x = scene.getSprite().getX() + e.getX();
-			int y = scene.getSprite().getY() + e.getY() - 23;
+			int x = game.getScene().getSprite().getX() + e.getX();
+			int y = game.getScene().getSprite().getY() + e.getY() - 23;
 
-			poly.addPoint(x, y);
-
-			System.out.println(x + " " + y);
+			if(x != 0 && y != 0)
+			{
+				poly.addPoint(x, y);
+				System.out.println(x + " " + y);
+			}
 		}
 	}
 }

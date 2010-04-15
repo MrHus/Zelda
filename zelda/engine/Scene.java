@@ -26,11 +26,13 @@ public abstract class Scene implements DrawAble
 	{
 		this.game = game;
 		sprite = new Sprite(img);
+		//initScene();
 	}
 
-	public void initScene(){}
+	public abstract void handleExit(Rectangle exit);
+	//public abstract void initScene();
 
-	public void handleInput()
+	public synchronized void handleInput()
 	{
 		for (GObject obj : newGameObjects)
         {

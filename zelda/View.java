@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
 import zelda.engine.Game;
+import zelda.scene.ZeldaScene;
 
 /**
  * This class handles all the drawing.
@@ -107,6 +108,17 @@ public class View
 		{
 			g2.setColor(Color.green);
 			g2.draw(v);
+		}
+
+		if(game.getScene() instanceof ZeldaScene)
+		{
+			ZeldaScene zeldaScene = (ZeldaScene)game.getScene();
+
+			for(Shape v : zeldaScene.getExits())
+			{
+				g2.setColor(Color.magenta);
+				g2.draw(v);
+			}
 		}
 
 		//graphics.drawImage(bi, x, y, null);

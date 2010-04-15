@@ -5,8 +5,6 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
 import zelda.engine.Game;
-import zelda.engine.Scene;
-import zelda.link.Link;
 
 /**
  * The Controller is reponsible for the gameloop.
@@ -19,18 +17,14 @@ public class Controller implements Runnable, KeyListener
 	private Thread thread;
 	private Game game;
 	private View view;
-	private Link link;
-	private Scene scene;
 	private PolyCreator polyCreator;
 
 	public Controller(Game game, View view, final JFrame frame)
 	{
 		this.game = game;
 		this.view = view;
-		link = game.getLink();  //handles input
-		scene = game.getScene();//handles input
 
-		frame.addMouseListener(new PolyCreator(scene));
+		frame.addMouseListener(new PolyCreator(game));
 		frame.addKeyListener(this);
 
 		thread = new Thread(this, "GameLoop");
@@ -47,18 +41,34 @@ public class Controller implements Runnable, KeyListener
 		{
 			try
 			{
-				if(!game.isPaused())
-				{
-					scene.handleInput(); // let scene handle user input for menu's etc.
-					link.handleInput(); // let link handle key input.
+				boolean doto = true;
 
-					for(GObject obj : scene.getGObjects())
+				if(game.isSceneChanged())
+				{
+					game.getScene().handleExit(game.getExit());
+
+					if(game.getScene() != null)
 					{
-						obj.doInLoop(); // this lets the GObject hook in on the gameloop
+						game.setExit(null);
 					}
 				}
-				view.draw();
+				else
+				{
+					if(!game.isPaused() && doto)
+					{
+						game.getScene().handleInput(); // let scene handle user input for menu's etc.
+						
+						game.getLink().handleInput(); // let link handle key input.
 
+						for(GObject obj : game.getScene().getGObjects())
+						{
+							obj.doInLoop(); // this lets the GObject hook in on the gameloop
+						}
+					}
+
+					view.draw();
+				}
+				
 				Thread.sleep(game.getGameSpeed());
 			}
 			catch (InterruptedException e){}

@@ -1,6 +1,7 @@
 package zelda.scene;
 
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
 import zelda.items.Bush;
 import zelda.engine.Game;
@@ -21,9 +22,15 @@ public class HouseScene extends ZeldaScene
     private Polygon down;
     private Polygon trees;
 
+	private Rectangle exitUp   = new Rectangle(155, 20, 300, 20);
+	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
+
     public HouseScene(Game game)
 	{
         super(game, "images/link-house.png");
+
+		exits.add(exitUp);
+		exits.add(exitLeft);
 
         int[] hxpos = {149, 146, 145, 151, 177, 178, 182, 182, 202, 202, 208, 208, 232, 238, 240, 237, 150};
         int[] hypos = {177, 180, 265, 271, 273, 275, 275, 272, 271, 275, 275, 272, 272, 268, 183, 177, 177};
@@ -100,5 +107,15 @@ public class HouseScene extends ZeldaScene
 
 		game.playMusic("sounds/overworld.mp3", true);
     }
+
+	@Override
+	public void handleExit(Rectangle exit)
+	{
+		if (exit == exitUp)
+		{
+			game.stopMusic();
+			game.setScene(new HyruleScene(game));
+		}
+	}
 }
 

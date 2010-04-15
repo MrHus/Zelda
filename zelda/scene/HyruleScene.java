@@ -5,7 +5,7 @@
 package zelda.scene;
 
 import java.awt.Polygon;
-import java.util.ArrayList;
+import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
 import zelda.engine.Game;
 import zelda.items.Bush;
@@ -16,12 +16,13 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class HyruleScene extends ZeldaScene {
-
+public class HyruleScene extends ZeldaScene
+{
     private Polygon muur, muur1, muur2, muur3, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
     private Polygon bosje, bosje1, bosje2, tuin, tuin1, tuin2, balk;
 
-    public HyruleScene(Game game) {
+    public HyruleScene(Game game)
+	{
         super(game, "images/hyrule.png");
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
@@ -203,9 +204,6 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new Bush(game, 700, 692));
         gameObjects.add(new Bush(game, 716, 692));
 
-
-        game.getLink().setXHardCore(834);
-        game.getLink().setYHardCore(967);
         gameObjects.add(game.getLink());
         gameObjects.add(new BlueSoldier(game, 502, 800, Direction.DOWN, 40));
         gameObjects.add(new BlueSoldier(game, 880, 228, Direction.DOWN, 75));
@@ -213,9 +211,7 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new BlueSoldier(game, 520, 484, Direction.DOWN, 50));
 
 //        gameObjects.add(new BlueSoldier(game, 112, 310, Direction.UP, 75));
-
 //        gameObjects.add(new BlueSoldier(game, 252, 683, Direction.LEFT, 30));
-
 
         gameObjects.add(new Guard(game, 438, 705, Direction.LEFT));
         gameObjects.add(new Guard(game, 122, 991, Direction.UP));
@@ -223,4 +219,10 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new Guard(game, 983, 656, Direction.RIGHT));
         game.playMusic("sounds/overworld.mp3", true);
     }
+
+	@Override
+	public void handleExit(Rectangle exit)
+	{
+		//throw new UnsupportedOperationException("Not supported yet.");
+	}
 }

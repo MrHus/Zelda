@@ -1,10 +1,10 @@
 package zelda.engine;
 
+import java.awt.Rectangle;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.scene.HouseScene;
-import zelda.scene.HyruleScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -15,6 +15,7 @@ public class Game
 {
 	private boolean running = true;
 	private boolean paused  = false;
+
 	private int gameSpeed = 10;
 	private int width = 500;
 	private int height = 400;
@@ -22,7 +23,9 @@ public class Game
     private Link link;
 	private Scene scene;
 	private Music music;
-	
+
+	private boolean sceneChanged = false;
+	private Rectangle exit;
 
 	private boolean aPressed = false;
 	private boolean sPressed = false;
@@ -37,7 +40,7 @@ public class Game
 		link = new Link(this, 100, 100);
 		scene = new HouseScene(this);
 //        scene = new HyruleScene(this);
-		scene.initScene();
+		//scene.initScene();
 	}
 
 	public void quit()
@@ -78,6 +81,11 @@ public class Game
 		music.play();
 	}
 
+	public void stopMusic()
+	{
+		music.stop();
+	}
+
 	public Link getLink()
 	{
 		return link;
@@ -113,17 +121,17 @@ public class Game
 		this.gameSpeed = gameSpeed;
 	}
 
-	public Scene getScene()
+	public synchronized Scene getScene()
 	{
 		return scene;
 	}
 
-	public void setScene (Scene scene)
+	public synchronized void setScene (Scene scene)
 	{
 		this.scene = scene;
 	}
 
-	public int getHeight()
+	public synchronized int getHeight()
 	{
 		return height;
 	}
@@ -201,5 +209,29 @@ public class Game
 	public boolean iswPressed()
 	{
 		return wPressed;
+	}
+
+	public void setExit(Rectangle exit)
+	{
+		if(exit == null)
+		{
+			sceneChanged = false;
+			System.out.println("nulled out");
+		}
+		else
+		{
+			sceneChanged = true;
+		}
+		this.exit = exit;
+	}
+
+	public  Rectangle getExit()
+	{
+		return exit;
+	}
+
+	public boolean isSceneChanged()
+	{
+		return sceneChanged;
 	}
 }

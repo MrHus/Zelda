@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.engine.Scene;
@@ -18,10 +19,11 @@ import zelda.link.Link;
  *
  * @author maartenhus
  */
-public class ZeldaScene extends Scene
+public abstract class ZeldaScene extends Scene
 {
+	protected ArrayList<Rectangle> exits = new ArrayList<Rectangle>();
+
 	protected Link link;
-        
 	protected boolean move;
 
 	private int XSen; //left/right sensitivity for when the scene adapts too link
@@ -34,18 +36,19 @@ public class ZeldaScene extends Scene
 
 		XSen = game.getWidth() / 2;
 		YSen = game.getHeight() / 2;
-        
+        link = game.getLink();
+		
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 
         GuiHeart heart;
 
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 5; i++) //draw live bar hearts
         {
             heart = new GuiHeart(game, (game.getWidth() - 130)+i*12 , 50);
             gameObjects.add(heart);
         }
          
-        GuiRupee rupee = new GuiRupee(game, 100, game.getHeight() / 11);
+        GuiRupee rupee = new GuiRupee(game, 100, game.getHeight() / 11); // draw rupee amount
         gameObjects.add(rupee);
 	}
 
@@ -53,9 +56,32 @@ public class ZeldaScene extends Scene
 	public void handleInput()
 	{
 		super.handleInput();
+		if(linkIsInExit())
+		{
+			return;
+		}
 
+		moveScene();
+	}
+
+	private boolean linkIsInExit()
+	{
+		for(Rectangle exit : exits)
+		{
+			if (exit.intersects(link.getRectangle()))
+			{
+				game.setExit(exit);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private void moveScene()
+	{
 		// If links walks to the border of the screen it should scroll.
-		if (!link.getStateString().equals("SwordState")) //ignore swordstate
+		if (!link.getStateString().equals("SwordState") && !link.getStateString().equals("BowState")) //ignore swordstate and bowstate
 		{
             //System.out.println(link.getX() + " > " + (sprite.getWidth() - XSen));
 			if (link.getX() > (sprite.getWidth() - XSen)) // link moves too far to the right.
@@ -109,12 +135,6 @@ public class ZeldaScene extends Scene
 		}
 	}
 
-	@Override
-	public void initScene()
-	{
-		link = game.getLink();
-	}
-
 	/**
 	 * When the screen moves everything else should move in the opposite direction.
 	 * otherwise they won't sit still.
@@ -127,6 +147,11 @@ public class ZeldaScene extends Scene
 		for (Polygon poly : solids)
 		{
 			poly.translate(modX, modY);
+		}
+
+		for (Rectangle rect : exits)
+		{
+			rect.translate(modX, modY);
 		}
 
 		for (GObject obj : gameObjects)
@@ -147,7 +172,12 @@ public class ZeldaScene extends Scene
         Font f = new Font ("Serif", Font.BOLD, 12);
         g2.setFont (f);
         g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
-        g2.drawString("" + link.getRupee(), 98, game.getHeight() / 7);
+        //g2.drawString("" + link.getRupee(), 98, game.getHeight() / 7);
+	}
+
+	public ArrayList<Rectangle> getExits()
+	{
+		 return exits;
 	}
 }
 
