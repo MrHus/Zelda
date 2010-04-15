@@ -142,6 +142,7 @@ public class Arrow extends GObject
 		{
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
+            alive = false;
         }
 
         arrowHitSomething();

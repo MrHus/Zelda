@@ -16,11 +16,16 @@ public class BowState extends LinkState
 	private final static String[] leftAnimation	= {"Link bow left 1", "Link bow left 2","Link bow left 3"};
 	private final static String[] rightAnimation= {"Link bow right 1", "Link bow right 2"};
 
+    private int oldX, oldY;
+
 
 	public BowState(Link link)
 	{
 		super(link);
 		name = "BowState";
+
+        oldX = link.getX();
+        oldY = link.getY();
 
 		link.setCheckcollision(false);
 
@@ -57,6 +62,8 @@ public class BowState extends LinkState
 
 		if (animationCounter == link.getAnimation().length)
 		{
+            link.setY(oldY);
+			link.setX(oldX);
 			link.setCheckcollision(true);
 			link.setState(new StandState(link));;
 		}
@@ -69,17 +76,12 @@ public class BowState extends LinkState
 				switch(animationCounter)
 				{
 					case 0:
-						link.setX(link.getX() + 1);
+						link.setX(link.getX() - 2);
 						break;
 
 					case 1:
 						link.setX(link.getX() - 3);
 						break;
-
-					case 2:
-						link.setX(link.getX() + 1);
-						break;
-
 				}
 			}
 			else if (dir == Direction.LEFT)
@@ -87,17 +89,13 @@ public class BowState extends LinkState
 				switch(animationCounter)
 				{
 					case 0:
-						link.setX(link.getX() + 1);
+						link.setX(link.getX() + 2);
+                        link.setY(link.getY() + 1);
 						break;
 
 					case 1:
-						link.setX(link.getX() - 1);
+						link.setX(link.getX() - 2);
 						break;
-
-					case 2:
-						link.setX(link.getX() - 1);
-						break;
-
 				}
             }
         }
