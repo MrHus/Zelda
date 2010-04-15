@@ -20,12 +20,13 @@ public class Arrow extends GObject
 	private final static String[] arrowDown     = {"arrowDown"};
 	private final static String[] arrowUp       = {"arrowUp"};
 
-    private final static String[] arrowHitDown	= {"arrowDown1","arrowDown2","arrowDown3"};
-    private final static String[] arrowHitUp	= {"arrowUp1","arrowUp2","arrowUp3"};
-    private final static String[] arrowHitLeft	= {"arrowLeft1","arrowLeft2","arrowLeft3"};
-    private final static String[] arrowHitRight	= {"arrowRight1","arrowRight2","arrowRight3"};
+    private final static String[] arrowHitDown	= {"arrowDown1","arrowDown2","arrowDown3","arrowDown1","arrowDown2","arrowDown3"};
+    private final static String[] arrowHitUp	= {"arrowUp1","arrowUp2","arrowUp3","arrowUp1","arrowUp2","arrowUp3"};
+    private final static String[] arrowHitLeft	= {"arrowLeft1","arrowLeft2","arrowLeft3","arrowLeft1","arrowLeft2","arrowLeft3"};
+    private final static String[] arrowHitRight	= {"arrowRight1","arrowRight2","arrowRight3","arrowRight1","arrowRight2","arrowRight3"};
 
     private final static int SPEED = 2;
+    private boolean hit = false;
 
     private Direction direction;
 	
@@ -50,6 +51,13 @@ public class Arrow extends GObject
         spriteLoc.put("arrowLeft1", new Rectangle(0, 100, 12, 7));
         spriteLoc.put("arrowLeft2", new Rectangle(25, 100, 12, 7));
         spriteLoc.put("arrowLeft3", new Rectangle(50, 100, 12, 7));
+
+        setAnimation(arrowHitDown);
+        setAnimation(arrowHitUp);
+        setAnimation(arrowHitLeft);
+        setAnimation(arrowHitRight);
+
+        this.setAnimationInterval(140);
 
 
         direction = game.getLink().getDirection();
@@ -83,37 +91,6 @@ public class Arrow extends GObject
 		}
     }
 
-    // Before the guard dies, the arrow does a wiggel effect.
-	public void PreAnimation()
-	{
-		switch (direction)
-		{
-			case UP:
-                this.setAnimation(arrowHitUp);
-				break;
-
-			case DOWN:
-                this.setAnimation(arrowHitDown);
-				break;
-
-			case LEFT:
-                this.setAnimation(arrowHitLeft);
-				break;
-
-			case RIGHT:
-                this.setAnimation(arrowHitRight);
-				break;
-		}
-
-        
-    }
-
-    // After the guard dies, the arrow disapears.
-    public void PostAnimation()
-	{
-
-    }
-
     public void doInLoop()
     {
         switch (direction)
@@ -136,22 +113,58 @@ public class Arrow extends GObject
 		}
     }
 
+    public void preAnimation()
+    {
+        if(hit)
+        {
+            if(animationCounter == animation.length)
+            {
+                setAlive(false);
+            }
+        }
+    }
+
+    public void wallCollision()
+    {
+        arrowHitSomething();
+    }
+
+
 	@Override
 	public void collision(GObject obj)
 	{
+
 		if (obj instanceof Hittable && !(obj instanceof Link))
 		{
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
-            
-            if(alive = true)
-            {
-                PreAnimation();
-            }
-            else
-            {
-                PostAnimation();
-            }
-		}
+        }
+
+        arrowHitSomething();
 	}
+
+    private void arrowHitSomething()
+    {
+        // Arrow wiggel animation
+        switch (direction)
+		{
+			case UP:
+                this.setAnimation(arrowHitUp);
+				break;
+
+			case DOWN:
+                this.setAnimation(arrowHitDown);
+				break;
+
+			case LEFT:
+                this.setAnimation(arrowHitLeft);
+				break;
+
+			case RIGHT:
+                this.setAnimation(arrowHitRight);
+				break;
+		}
+
+        hit = true;
+    }
 }

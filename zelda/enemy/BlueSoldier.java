@@ -1,6 +1,5 @@
 package zelda.enemy;
 
-import java.awt.Polygon;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import java.awt.Rectangle;
@@ -78,7 +77,7 @@ public class BlueSoldier extends Karacter implements Hittable
                 alive = false;
                 break;
             case ARROW:
-                alive = false;
+                this.setState(new StandState(this));
                 break;
 		}
 	}
