@@ -5,6 +5,7 @@
 package zelda.items;
 
 import java.awt.Rectangle;
+import java.util.Random;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import zelda.engine.GObject;
@@ -38,7 +39,9 @@ public class Bush extends GObject implements Hittable
             {
                 game.playMusic("sounds/bushCut.mp3", false);
 
-                int r = (int)(Math.random()*200);
+				Random random = new Random();
+				int r = random.nextInt(100);
+
                 System.out.println(r);
 
                 if (r < 50)

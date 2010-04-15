@@ -2,11 +2,9 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import zelda.enemy.BlueSoldier;
-import zelda.items.Heart;
 import zelda.items.Bush;
 import zelda.engine.Game;
 import zelda.items.Guard;
-import zelda.items.Rupee;
 import zelda.karacter.Direction;
 
 /**
@@ -58,18 +56,12 @@ public class HouseScene extends ZeldaScene
 
         trees = new Polygon(txpos, typos, typos.length);
 
-
         solids.add(trees);
         solids.add(housecliff);
         solids.add(smallcliff);
         solids.add(right);
         solids.add(down);
         solids.add(house);
-
-
-        gameObjects.add(new Heart(game, 280, 140));
-        gameObjects.add(new Heart(game, 340, 90));
-        gameObjects.add(new Heart(game, 180, 40));
 
         gameObjects.add(new Bush(game, 160, 50));
         gameObjects.add(new Bush(game, 272, 51));
