@@ -69,13 +69,6 @@ public class HouseScene extends ZeldaScene
         Bush bush = new Bush(game, 160, 50);
         gameObjects.add(bush);
 
-        gameObjects.add(new Rupee(game, 120, 90));
-        gameObjects.add(new Rupee(game, 240, 40));
-
-        gameObjects.add(new Heart(game, 280, 140));
-        gameObjects.add(new Heart(game, 340, 90));
-        gameObjects.add(new Heart(game, 180, 40));
-
 		gameObjects.add(game.getLink());
 
 		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
