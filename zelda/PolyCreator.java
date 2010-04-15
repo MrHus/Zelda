@@ -43,7 +43,7 @@ public class PolyCreator extends MouseAdapter
 		else // add point in the array.
 		{
 			int x = game.getScene().getSprite().getX() + e.getX();
-			int y = game.getScene().getSprite().getY() + e.getY() - 23;
+			int y = game.getScene().getSprite().getY() + e.getY();
 
 			if(x != 0 && y != 0)
 			{

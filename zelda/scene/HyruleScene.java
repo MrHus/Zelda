@@ -140,6 +140,15 @@ public class HyruleScene extends ZeldaScene
 
         tuin2 = new Polygon(rxpos, rypos, rypos.length);
 
+		int[] xpos = {563, 637, 637, 562};
+		int[] ypos = {684, 683, 673, 671};
+
+		for (int i = 0; i < ypos.length; i++) {
+            ypos[i] += 20;
+        }
+
+		muur1 = new Polygon(xpos, ypos, ypos.length);
+
         solids.add(balk);
         solids.add(tuin);
         solids.add(tuin1);
@@ -153,6 +162,7 @@ public class HyruleScene extends ZeldaScene
         solids.add(kasteelmuur1);
         solids.add(kasteelmuur2);
         solids.add(muur);
+		solids.add(muur1);
         solids.add(ondermuur);
 
         gameObjects.add(new Bush(game, 657, 540));
