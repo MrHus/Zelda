@@ -14,13 +14,15 @@ public class Music implements Runnable
 	private Player player;
 	private Thread th = new Thread(this);
 	private URL mp3;
+	private String songname = "";
 	private boolean loop;
 
-	public Music(Game game, URL mp3, boolean loop)
+	public Music(Game game, URL mp3, String songname, boolean loop)
 	{
 		this.game = game;
 		this.loop = loop;
 		this.mp3 = mp3;
+		this.songname = songname;
 	}
 
 	public void play()
@@ -54,12 +56,17 @@ public class Music implements Runnable
 
 		if (loop) //if song is over but its on a loop replay the song.
 		{
-			game.playMusic(mp3, true);
+			game.playMusic(songname, true);
 		}
 	}
 
 	public void stop()
 	{
 		player.close();
+	}
+
+	public String getSong()
+	{
+		return songname;
 	}
 }

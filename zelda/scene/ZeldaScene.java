@@ -30,9 +30,9 @@ public abstract class ZeldaScene extends Scene
 	private int YSen; //up/down sensitivity for when the scene adapts too link
 	private final static int MOD = 1;
 
-  	public ZeldaScene(Game game, String img)
+  	public ZeldaScene(Game game, String img, String entrance)
 	{
-		super(game, img);
+		super(game, img, entrance);
 
 		XSen = game.getWidth() / 2;
 		YSen = game.getHeight() / 2;
@@ -56,83 +56,83 @@ public abstract class ZeldaScene extends Scene
 	public void handleInput()
 	{
 		super.handleInput();
-		if(linkIsInExit())
+		
+		checkLinkIsInExit();
+		
+		if (!link.getStateString().equals("SwordState") && !link.getStateString().equals("BowState")) //ignore swordstate and bowstate
 		{
-			return;
+			moveScene(link.getX(), link.getY());
 		}
-
-		moveScene();
 	}
 
-	private boolean linkIsInExit()
+	private void checkLinkIsInExit()
 	{
 		for(Rectangle exit : exits)
 		{
 			if (exit.intersects(link.getRectangle()))
 			{
-				game.setExit(exit);
-				return true;
+				handleSwitchScene(exit);
 			}
 		}
-
-		return false;
 	}
 
-	private void moveScene()
+	public boolean moveScene(int moveToX, int moveToY)
 	{
-		// If links walks to the border of the screen it should scroll.
-		if (!link.getStateString().equals("SwordState") && !link.getStateString().equals("BowState")) //ignore swordstate and bowstate
+		boolean moved = false;
+
+		if (moveToX > (sprite.getWidth() - XSen)) // link moves too far to the right.
 		{
-            //System.out.println(link.getX() + " > " + (sprite.getWidth() - XSen));
-			if (link.getX() > (sprite.getWidth() - XSen)) // link moves too far to the right.
+			int newX = sprite.getX() + MOD;
+		   // System.out.println((newX + sprite.getWidth()) + " <= " + sprite.getImageWidth());
+			if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
 			{
-				int newX = sprite.getX() + MOD;
-               // System.out.println((newX + sprite.getWidth()) + " <= " + sprite.getImageWidth());
-				if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
-				{
-                    //System.out.println(newX + " " + sprite.getX());
-					link.setX(link.getX() - MOD);
-					modShapes(-MOD, 0);
-					sprite.setX(newX);
-				}
-			}
-
-			if (link.getX() < XSen) // link moves too far to the left
-			{
-				int newX = sprite.getX() - MOD;
-
-				if (newX > 0)
-				{
-					link.setX(link.getX() + MOD);
-					modShapes(MOD, 0);
-					sprite.setX(newX);
-				}
-			}
-
-			if (link.getY() > (sprite.getHeight() - YSen)) // link moves too far down
-			{
-				int newY = sprite.getY() + MOD;
-				if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
-				{
-//                    System.out.println(newY + " " + sprite.getY());
-					link.setY(link.getY() - MOD);
-					modShapes(0, -MOD);
-					sprite.setY(newY);
-				}
-			}
-
-			if (link.getY() < YSen) // link moves to far up
-			{
-				int newY = sprite.getY() - MOD;
-
-				if (newY > 0)
-				{
-					link.setY(link.getY() + MOD);
-					modShapes(0, MOD);
-					sprite.setY(newY);
-				}
+				//System.out.println(newX + " " + sprite.getX());
+				link.setX(link.getX() - MOD);
+				modShapes(-MOD, 0);
+				sprite.setX(newX);
+				moved = true;
 			}
 		}
+
+		if (moveToX < XSen) // link moves too far to the left
+		{
+			int newX = sprite.getX() - MOD;
+
+			if (newX > 0)
+			{
+				link.setX(link.getX() + MOD);
+				modShapes(MOD, 0);
+				sprite.setX(newX);
+				moved = true;
+			}
+		}
+
+		if (moveToY > (sprite.getHeight() - YSen)) // link moves too far down
+		{
+			int newY = sprite.getY() + MOD;
+			if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
+			{
+				link.setY(link.getY() - MOD);
+				modShapes(0, -MOD);
+				sprite.setY(newY);
+				moved = true;
+			}
+		}
+
+		if (moveToY < YSen) // link moves to far up
+		{
+			int newY = sprite.getY() - MOD;
+
+			if (newY > 0)
+			{
+				link.setY(link.getY() + MOD);
+				modShapes(0, MOD);
+				sprite.setY(newY);
+				moved = true;
+			}
+		}
+		
+		return moved;
 	}
 
 	/**

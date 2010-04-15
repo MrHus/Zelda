@@ -25,9 +25,9 @@ public class HouseScene extends ZeldaScene
 	private Rectangle exitUp   = new Rectangle(155, 20, 300, 20);
 	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
 
-    public HouseScene(Game game)
+    public HouseScene(Game game, String entrance)
 	{
-        super(game, "images/link-house.png");
+        super(game, "images/link-house.png", entrance);
 
 		exits.add(exitUp);
 		exits.add(exitLeft);
@@ -94,8 +94,7 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Bush(game, 435, 365));
         gameObjects.add(new Bush(game, 451, 365));
 
-
-        gameObjects.add(game.getLink());
+		gameObjects.add(game.getLink());
         gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
         gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
         gameObjects.add(new Guard(game, 483, 408, Direction.RIGHT));
@@ -109,12 +108,21 @@ public class HouseScene extends ZeldaScene
     }
 
 	@Override
-	public void handleExit(Rectangle exit)
+	public void handleSwitchScene(Rectangle exit)
 	{
 		if (exit == exitUp)
 		{
-			game.stopMusic();
-			game.setScene(new HyruleScene(game));
+			game.setScene(new HyruleScene(game, "HouseScene"));
+		}
+	}
+
+	@Override
+	public void handleSwitchScene(String entrance)
+	{
+		if(entrance.equals("GameStart"))
+		{
+			game.getLink().setXHardCore(100);
+			game.getLink().setYHardCore(100);
 		}
 	}
 }

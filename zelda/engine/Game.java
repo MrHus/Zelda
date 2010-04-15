@@ -24,9 +24,6 @@ public class Game
 	private Scene scene;
 	private Music music;
 
-	private boolean sceneChanged = false;
-	private Rectangle exit;
-
 	private boolean aPressed = false;
 	private boolean sPressed = false;
 	private boolean dPressed = false;
@@ -38,9 +35,7 @@ public class Game
 	public Game()
 	{
 		link = new Link(this, 100, 100);
-		scene = new HouseScene(this);
-//        scene = new HyruleScene(this);
-		//scene.initScene();
+		scene = new HouseScene(this, "GameStart");
 	}
 
 	public void quit()
@@ -65,25 +60,18 @@ public class Game
 	public void playMusic(String mp3file, boolean loop)
 	{
 		URL mp3 = Main.class.getResource(mp3file);
-		music = new Music(this, mp3, loop);
-		music.play();
-	}
-
-	/**
-	 * Make the game play music.
-	 * 
-	 * @param mp3
-	 * @param loop
-	 */
-	public void playMusic(URL mp3, boolean loop)
-	{
-		music = new Music(this, mp3, loop);
+		music = new Music(this, mp3, mp3file, loop);
 		music.play();
 	}
 
 	public void stopMusic()
 	{
 		music.stop();
+	}
+
+	public String getSong()
+	{
+		return music.getSong();
 	}
 
 	public Link getLink()
@@ -131,7 +119,7 @@ public class Game
 		this.scene = scene;
 	}
 
-	public synchronized int getHeight()
+	public int getHeight()
 	{
 		return height;
 	}
@@ -209,29 +197,5 @@ public class Game
 	public boolean iswPressed()
 	{
 		return wPressed;
-	}
-
-	public void setExit(Rectangle exit)
-	{
-		if(exit == null)
-		{
-			sceneChanged = false;
-			System.out.println("nulled out");
-		}
-		else
-		{
-			sceneChanged = true;
-		}
-		this.exit = exit;
-	}
-
-	public  Rectangle getExit()
-	{
-		return exit;
-	}
-
-	public boolean isSceneChanged()
-	{
-		return sceneChanged;
 	}
 }

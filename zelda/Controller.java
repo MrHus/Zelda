@@ -41,33 +41,19 @@ public class Controller implements Runnable, KeyListener
 		{
 			try
 			{
-				boolean doto = true;
-
-				if(game.isSceneChanged())
+				if(!game.isPaused())
 				{
-					game.getScene().handleExit(game.getExit());
-
-					if(game.getScene() != null)
-					{
-						game.setExit(null);
-					}
-				}
-				else
-				{
-					if(!game.isPaused() && doto)
-					{
-						game.getScene().handleInput(); // let scene handle user input for menu's etc.
+					game.getScene().handleInput(); // let scene handle user input for menu's etc.
 						
-						game.getLink().handleInput(); // let link handle key input.
+					game.getLink().handleInput(); // let link handle key input.
 
-						for(GObject obj : game.getScene().getGObjects())
-						{
-							obj.doInLoop(); // this lets the GObject hook in on the gameloop
-						}
+					for(GObject obj : game.getScene().getGObjects())
+					{
+						obj.doInLoop(); // this lets the GObject hook in on the gameloop
 					}
-
-					view.draw();
 				}
+
+				view.draw();
 				
 				Thread.sleep(game.getGameSpeed());
 			}
