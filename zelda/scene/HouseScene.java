@@ -14,7 +14,6 @@ import zelda.karacter.Direction;
  */
 public class HouseScene extends ZeldaScene
 {
-
     private Polygon house;
     private Polygon right;
     private Polygon housecliff;
@@ -98,8 +97,8 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Guard(game, 9, 385, Direction.LEFT));
         gameObjects.add(new Guard(game, 233, 480, Direction.UP));
         gameObjects.add(new Guard(game, 206, 480, Direction.UP));
-        game.playMusic("sounds/overworld.mp3", true);
-    }
 
+		game.playMusic("sounds/overworld.mp3", true);
+    }
 }
 

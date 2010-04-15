@@ -18,7 +18,8 @@ import zelda.engine.Game;
 public class Bush extends GObject implements Hittable
 {
 
-    public Bush(Game game, int x, int y) {
+    public Bush(Game game, int x, int y)
+	{
         super(game, x, y, 16, 14, "images/items.png");
         spriteLoc.put("bush", new Rectangle(0, 0, 16, 14));
         spriteLoc.put("stump", new Rectangle(17, 0, 15, 13));
