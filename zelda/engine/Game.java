@@ -34,9 +34,9 @@ public class Game
 
 	public Game()
 	{
-		link = new Link(this, 800, 900);
-//		scene = new HouseScene(this);
-        scene = new HyruleScene(this);
+		link = new Link(this, 100, 100);
+        scene = new HouseScene(this);
+        //scene = new HyruleScene(this);
 
 		scene.initScene();
 	}
