@@ -13,7 +13,8 @@ import zelda.karacter.Direction;
  *
  * @author maartenhus
  */
-public class HouseScene extends ZeldaScene {
+public class HouseScene extends ZeldaScene
+{
 
     private Polygon house;
     private Polygon right;
@@ -22,7 +23,8 @@ public class HouseScene extends ZeldaScene {
     private Polygon down;
     private Polygon trees;
 
-    public HouseScene(Game game) {
+    public HouseScene(Game game)
+	{
         super(game, "images/link-house.png");
 
         int[] hxpos = {149, 146, 145, 151, 177, 178, 182, 182, 202, 202, 208, 208, 232, 238, 240, 237, 150};
