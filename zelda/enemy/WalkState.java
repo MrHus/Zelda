@@ -120,12 +120,7 @@ public class WalkState extends KaracterState
 
 		if (animationCounter == karacter.getAnimation().length)
 		{
-			karacter.setY(oldY);
-			karacter.setX(oldX);
-			karacter.setAnimationInterval(oldAnimationInterval);
-			//karacter.setCheckcollision(true);
-			//karacter.setState(new StandState(karacter));
-			//game.getScene().removeHitter(sword);
+			
 		}
 		else
 
@@ -147,36 +142,7 @@ public class WalkState extends KaracterState
 			{
 				switch (animationCounter)
 				{
-                    case 0:
-						karacter.setY(karacter.getY() - 1);
-						karacter.setX(karacter.getX() + 3);
-						break;
-
-					case 1:
-						karacter.setX(karacter.getX() - 2);
-						break;
-
-					case 2:
-						karacter.setY(karacter.getY() - 1);
-						karacter.setX(karacter.getX() - 5);
-						break;
-
-					case 3:
-						karacter.setX(karacter.getX() - 2);
-						break;
-
-					case 4:
-						karacter.setY(karacter.getY() + 2);
-						karacter.setX(karacter.getX() - 4);
-						break;
-
-					case 6:
-						karacter.setX(karacter.getX() + 1);
-						break;
-
-					case 8:
-						karacter.setX(karacter.getX() + 6);
-						break;
+                 
 				}
 			}
 			else if (dir == Direction.DOWN)

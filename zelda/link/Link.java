@@ -21,8 +21,6 @@ public class Link extends Karacter
 	private long lastInput = System.currentTimeMillis();
     private long lastHit = System.currentTimeMillis();
 
-    private final String[] deathAnimation	= {"Link hit", "Link death 1", "Link death 2"};
-
     private int rupee = 0;
 
 	public Link(Game game, int x, int y)
@@ -112,11 +110,14 @@ public class Link extends Karacter
 		spriteLoc.put("Link bow up 2",          new Rectangle(25, 375, 21, 21));
 		spriteLoc.put("Link bow up 3",          new Rectangle(50, 375, 21, 22));
 
-        spriteLoc.put("Link hit",               new Rectangle(0, 0, 18, 21));
-		spriteLoc.put("Link death",             new Rectangle(18, 0, 24, 22));
-		spriteLoc.put("Link death 2",           new Rectangle(42, 0, 24, 15));
+        spriteLoc.put("Link hit right",         new Rectangle(0, 414, 17, 21));
+		spriteLoc.put("Link death right",       new Rectangle(17, 414, 27, 19));
+		spriteLoc.put("Link death right 2",     new Rectangle(41, 414, 27, 15));
 
-		
+        spriteLoc.put("Link hit left",          new Rectangle(0, 436, 17, 21));
+		spriteLoc.put("Link death left",        new Rectangle(17, 436, 23, 19));
+		spriteLoc.put("Link death left 2",      new Rectangle(40, 436, 24, 15));
+        
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
 		screenAdjust = false;
@@ -167,9 +168,10 @@ public class Link extends Karacter
 	protected void collision(GObject hitObject)
 	{
         if (health == 0)
-        {
+        {            
             game.playMusic("sounds/killed.mp3", false);
-            alive = false;
+            setState(new DeathState(this,direction.UP));
+            //alive = false;
         }
 
 		if (hitObject instanceof BlueSoldier)
