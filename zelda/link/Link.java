@@ -5,6 +5,7 @@ import zelda.enemy.BlueSoldier;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.items.Bomb;
+import zelda.items.Heart;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -17,6 +18,7 @@ public class Link extends Karacter
 {
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
+    private long lastHit = System.currentTimeMillis();
 
 	public Link(Game game, int x, int y)
 	{
@@ -154,11 +156,35 @@ public class Link extends Karacter
 	@Override
 	protected void collision(GObject hitObject)
 	{
+        if (health == 0)
+        {
+            game.playMusic("sounds/killed.mp3", false);
+            alive = false;
+        }
+
 		if (hitObject instanceof BlueSoldier)
 		{
 
+            if (health > 0 && System.currentTimeMillis() > lastHit + 600)
+            {
+               game.playMusic("sounds/linkHurt.mp3", false);
+               health --;
+               lastHit = System.currentTimeMillis();
+               //System.out.println("leven: " + health);
+            }
+
 		}
-	}
+
+        if (hitObject instanceof Heart)
+        {
+            if (health < 5)
+            {
+               game.playMusic("sounds/getItem.mp3", false);
+               health++;
+            }
+        }
+        //System.out.println("leven= " + health);
+    }
 
 	//Handy dandy stuff that handles input
 	public boolean moveinput()

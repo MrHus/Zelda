@@ -57,38 +57,47 @@ public class Arrow extends GObject
 
         switch (direction)
 		{
-			case UP:
+            case UP:
                 sprite.setSprite(spriteLoc.get("arrowUp"));
                 this.setAnimation(arrowUp);
                 this.setHeight(13);
                 this.setWidth(4);
-				break;
+                game.playMusic("sounds/bowArrow.mp3", false);
+                break;
 
 			case DOWN:
                 sprite.setSprite(spriteLoc.get("arrowDown"));
                 this.setAnimation(arrowDown);
                 this.setHeight(13);
                 this.setWidth(4);
+                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case LEFT:
                 sprite.setSprite(spriteLoc.get("arrowLeft"));
                 this.setAnimation(arrowLeft);
+                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case RIGHT:
                 sprite.setSprite(spriteLoc.get("arrowRight"));
                 this.setAnimation(arrowRight);
+                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 		}
     }
 
+
     // Before the guard dies, the arrow does a wiggel effect.
 	public void PreAnimation()
 	{
+    }
+
+	public void PostAnimation()
+	{
 		switch (direction)
 		{
-			case UP:
+            case UP:
                 this.setAnimation(arrowHitUp);
 				break;
 
@@ -108,12 +117,8 @@ public class Arrow extends GObject
         
     }
 
-    // After the guard dies, the arrow disapears.
-    public void PostAnimation()
-	{
 
-    }
-
+    @Override
     public void doInLoop()
     {
         switch (direction)
@@ -133,6 +138,7 @@ public class Arrow extends GObject
 			case RIGHT:
                 setX(getX() + SPEED);
 				break;
+
 		}
     }
 
@@ -143,6 +149,7 @@ public class Arrow extends GObject
 		{
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
+
             
             if(alive = true)
             {

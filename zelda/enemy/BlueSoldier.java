@@ -17,6 +17,7 @@ import zelda.karacter.Karacter;
 public class BlueSoldier extends Karacter implements Hittable
 {
 	private Behavior behavior;
+    protected int enemyHealth = 6;
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
@@ -71,17 +72,29 @@ public class BlueSoldier extends Karacter implements Hittable
 		switch(weapon)
 		{
 			case SWORD:
-				alive = false;
+                enemyHealth --;
+                game.playMusic("sounds/enemyHit.mp3", false);
+				//alive = false;
 				break;
 
             case BOMB:
                 alive = false;
                 break;
+
             case ARROW:
-                alive = false;
+                game.playMusic("sounds/enemyHit.mp3", false);
+                enemyHealth --;
+                //alive = false;
                 break;
 		}
+        if (enemyHealth <= 0)
+        {
+            alive = false;
+            game.playMusic("sounds/enemyDie.mp3", false);
+        }
 	}
+
+
 
 	public Behavior getBehavior()
 	{

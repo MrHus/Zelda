@@ -40,24 +40,28 @@ public class SwordState extends LinkState
 				link.setAnimation(upAnimation);
 				link.setAnimationInterval(20);
 				sword = new Rectangle(oldX - 10, oldY - 10, 30, 10);
+                game.playMusic("sounds/swordSlash1.mp3", false);
 				break;
 
 			case DOWN:
 				link.setAnimation(downAnimation);
 				link.setAnimationInterval(30);
 				sword = new Rectangle(oldX, oldY + link.getHeight(), 25, 10);
-				break;
+				game.playMusic("sounds/swordSlash2.mp3", false);
+                break;
 
 			case LEFT:
 				link.setAnimation(leftAnimation);
 				link.setAnimationInterval(20);
 				sword = new Rectangle(oldX - 10, oldY, 20, 30);
+                game.playMusic("sounds/swordSlash3.mp3", false);
 				break;
 
 			case RIGHT:
 				link.setAnimation(rightAnimation);
 				link.setAnimationInterval(20);
 				sword = new Rectangle(oldX + link.getWidth(), oldY, 13, 28);
+                game.playMusic("sounds/swordSlash4.mp3", false);
 				break;
 		}
 
