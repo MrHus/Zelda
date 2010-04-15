@@ -25,7 +25,7 @@ public class Arrow extends GObject
     private final static String[] arrowHitLeft	= {"arrowLeft1","arrowLeft2","arrowLeft3","arrowLeft1","arrowLeft2","arrowLeft3"};
     private final static String[] arrowHitRight	= {"arrowRight1","arrowRight2","arrowRight3","arrowRight1","arrowRight2","arrowRight3"};
 
-    private final static int SPEED = 2;
+    private final static int SPEED = 3;
     private boolean hit = false;
 
     private Direction direction;
@@ -57,11 +57,9 @@ public class Arrow extends GObject
         setAnimation(arrowHitLeft);
         setAnimation(arrowHitRight);
 
-        this.setAnimationInterval(140);
-
+        setAnimationInterval(140);
 
         direction = game.getLink().getDirection();
-
 
         switch (direction)
 		{
@@ -95,8 +93,16 @@ public class Arrow extends GObject
 		}
     }
 
+	@Override
     public void doInLoop()
     {
+		// if arrow moves outside of the scene it should die.
+		if (x > game.getScene().getSprite().getWidth() || y > game.getScene().getSprite().getWidth() || x < 0 || y < 0)
+		{
+			alive = false;
+			return;
+		}
+
         switch (direction)
 		{
 			case UP:
@@ -117,6 +123,7 @@ public class Arrow extends GObject
 		}
     }
 
+	@Override
     public void preAnimation()
     {
         if(hit)
@@ -128,11 +135,11 @@ public class Arrow extends GObject
         }
     }
 
+	@Override
     public void wallCollision()
     {
         arrowHitSomething();
     }
-
 
 	@Override
 	public void collision(GObject obj)
