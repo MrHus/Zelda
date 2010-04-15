@@ -167,7 +167,8 @@ public class Arrow extends GObject
 			case RIGHT:
                 this.setAnimation(arrowHitRight);
 				break;
-
 		}
+
+        hit = true;
     }
 }
