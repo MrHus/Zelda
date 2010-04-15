@@ -16,6 +16,7 @@ public abstract class Scene implements DrawAble
 	protected Sprite sprite;
 	protected Game game;
 
+    protected ArrayList<GObject> newGameObjects = new ArrayList<GObject>();
 	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
 	protected ArrayList<Polygon> solids = new ArrayList<Polygon>();
 	protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
@@ -31,7 +32,12 @@ public abstract class Scene implements DrawAble
 
 	public void handleInput()
 	{
-		for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();) // remove dead objects
+		for (GObject obj : newGameObjects)
+        {
+            gameObjects.add(obj);
+        }
+
+        for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();) // remove dead objects
 		{
 			GObject obj = it.next();
 			if (!obj.isAlive())
@@ -39,6 +45,8 @@ public abstract class Scene implements DrawAble
 				it.remove();
 			}
 		}
+        newGameObjects.clear();
+
 	}
 
 	public void draw(Graphics2D g2)
@@ -49,6 +57,11 @@ public abstract class Scene implements DrawAble
 	public void addGObject(GObject gObject)
 	{
 		gameObjects.add(gObject);
+	}
+
+    public void addNewGObject(GObject gObject)
+	{
+		newGameObjects.add(gObject);
 	}
 
 	public ArrayList<Polygon> getSolids()
