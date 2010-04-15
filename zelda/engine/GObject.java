@@ -173,6 +173,16 @@ public abstract class GObject implements DrawAble
 		}
 	}
 
+    public void setYHardCore(int y)
+	{
+		this.y = y;
+	}
+
+    public void setXHardCore(int x)
+	{
+		this.x = x;
+	}
+
 	public int getHeight()
 	{
 		return height;
