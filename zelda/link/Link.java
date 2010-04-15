@@ -19,6 +19,7 @@ public class Link extends Karacter
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
     private long lastHit = System.currentTimeMillis();
+    private final String[] deathAnimation	= {"Link hit", "Link death 1", "Link death 2"};
 
 	public Link(Game game, int x, int y)
 	{
@@ -106,6 +107,10 @@ public class Link extends Karacter
         spriteLoc.put("Link bow up 1",          new Rectangle(0, 375, 18, 22));
 		spriteLoc.put("Link bow up 2",          new Rectangle(25, 375, 21, 21));
 		spriteLoc.put("Link bow up 3",          new Rectangle(50, 375, 21, 22));
+
+        spriteLoc.put("Link hit",               new Rectangle(0, 0, 18, 21));
+		spriteLoc.put("Link death",             new Rectangle(18, 0, 24, 22));
+		spriteLoc.put("Link death 2",           new Rectangle(42, 0, 24, 15));
 
 		
 		sprite.setSprite(spriteLoc.get("Link stand down"));
