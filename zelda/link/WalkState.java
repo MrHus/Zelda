@@ -19,6 +19,7 @@ public class WalkState extends LinkState
 	{
 		super(link);
 		name = "WalkState";
+        link.setAnimationInterval(90);
 	}
 
 	@Override

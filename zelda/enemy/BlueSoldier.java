@@ -19,6 +19,7 @@ public class BlueSoldier extends Karacter implements Hittable
 
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
+    private long lastHit = System.currentTimeMillis();
     
 	public BlueSoldier(Game game, int x, int y, Direction direction, int ticks)
 	{
@@ -76,7 +77,12 @@ public class BlueSoldier extends Karacter implements Hittable
         switch(weapon)
 		{
 			case SWORD:
-                health -= 3;
+                if (health > 0 && System.currentTimeMillis() > lastHit + 800)
+                {
+                    lastHit = System.currentTimeMillis();
+                    health -= 3;
+                    this.setState(new TransState(this, game.getLink().getDirection()));
+                }
 				break;
 
             case BOMB:

@@ -25,6 +25,8 @@ public class WalkState extends KaracterState
 		super(soldier);
 		name = "WalkState";
 
+        karacter.setAnimationInterval(90);
+
         oldAnimationInterval = karacter.getAnimationInterval();
 
         //karacter.setAnimationInterval(1000);
