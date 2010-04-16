@@ -37,7 +37,7 @@ public class Music extends Sound
 
 		if (loop) //if song is over but its on a loop replay the song.
 		{
-			game.playMusic(songname, true);
+			game.playFx(songname);
 		}
 	}
 

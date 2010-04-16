@@ -201,7 +201,7 @@ public class Link extends Karacter
 
         if (hitObject instanceof Rupee)
         {
-            game.playMusic("sounds/getItem.mp3", false);
+            game.playFx("sounds/getItem.mp3");
             rupee += 5;
         }
    }
