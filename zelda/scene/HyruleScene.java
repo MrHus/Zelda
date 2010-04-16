@@ -3,6 +3,7 @@ package zelda.scene;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
+import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
 import zelda.items.Bush;
 import zelda.items.Guard;
@@ -14,7 +15,7 @@ import zelda.karacter.Direction;
  */
 public class HyruleScene extends ZeldaScene {
 
-    private Polygon muur,muur1, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
+    private Polygon muur, muur1, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
     private Polygon bosje, bosje1, bosje2, tuin, tuin1, tuin2, balk;
 
     private Rectangle valkuil = new Rectangle(897, 160, 14, 14);
@@ -42,7 +43,7 @@ public class HyruleScene extends ZeldaScene {
             nypos[i] += 20;
         }
 
-		boom2 = new Polygon(nxpos, nypos, nypos.length);
+        boom2 = new Polygon(nxpos, nypos, nypos.length);
 
         int[] cxpos = {40, 42, 465, 464, 457, 464, 476, 473, 462, 462, 272, 272, 284, 285, 270, 272, 336, 338, 361, 363, 389, 390, 426, 426, 450, 454, 472, 473, 485, 485, 451, 369, 366, 241, 241, 243, 34};
         int[] cypos = {904, 889, 887, 713, 713, 628, 627, 567, 567, 545, 541, 461, 461, 338, 334, 166, 166, 243, 245, 258, 257, 240, 240, 260, 259, 240, 238, 270, 270, 164, 161, 160, 115, 114, 358, 565, 898};
@@ -146,14 +147,14 @@ public class HyruleScene extends ZeldaScene {
 
         tuin2 = new Polygon(rxpos, rypos, rypos.length);
 
-		int[] xpos = {563, 637, 637, 562};
-		int[] ypos = {684, 683, 673, 671};
+        int[] xpos = {563, 637, 637, 562};
+        int[] ypos = {684, 683, 673, 671};
 
-		for (int i = 0; i < ypos.length; i++) {
+        for (int i = 0; i < ypos.length; i++) {
             ypos[i] += 20;
         }
 
-		muur1 = new Polygon(xpos, ypos, ypos.length);
+        muur1 = new Polygon(xpos, ypos, ypos.length);
 
         solids.add(balk);
         solids.add(tuin);
@@ -168,7 +169,7 @@ public class HyruleScene extends ZeldaScene {
         solids.add(kasteelmuur1);
         solids.add(kasteelmuur2);
         solids.add(muur);
-		solids.add(muur1);
+        solids.add(muur1);
         solids.add(ondermuur);
 
         gameObjects.add(new Bush(game, 657, 540));
@@ -220,10 +221,10 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new BlueSoldier(game, 880, 228, Direction.DOWN, 75));
         gameObjects.add(new BlueSoldier(game, 477, 484, Direction.DOWN, 50));
         gameObjects.add(new BlueSoldier(game, 520, 484, Direction.DOWN, 50));
-
         gameObjects.add(new BlueSoldier(game, 236, 918, Direction.RIGHT, 50));
-
-        gameObjects.add(new BlueSoldier(game, 808, 698, Direction.LEFT, 20));
+        gameObjects.add(new WhiteSoldier(game, 833, 710, Direction.LEFT, 40));
+        gameObjects.add(new WhiteSoldier(game, 622, 528, Direction.DOWN, 30));
+        gameObjects.add(new WhiteSoldier(game, 293, 293, Direction.DOWN, 30));
 
 
         gameObjects.add(new Guard(game, 438, 715, Direction.LEFT));
@@ -231,15 +232,14 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new Guard(game, 152, 991, Direction.UP));
         gameObjects.add(new Guard(game, 995, 636, Direction.RIGHT));
         gameObjects.add(new Guard(game, 995, 666, Direction.RIGHT));
-        
-		if(!game.getSong().equals("sounds/overworld.mp3"))
-		{
-			System.out.println(game.getSong());
-			game.stopMusic();
-			game.playMusic("sounds/overworld.mp3", true);
-		}
 
-		handleSwitchScene(entrance);
+        if (!game.getSong().equals("sounds/overworld.mp3")) {
+            System.out.println(game.getSong());
+            game.stopMusic();
+            game.playMusic("sounds/overworld.mp3", true);
+        }
+
+        handleSwitchScene(entrance);
     }
 
 	@Override

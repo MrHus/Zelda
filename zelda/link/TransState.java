@@ -19,35 +19,31 @@ public class TransState extends LinkState
     {
         super(link);
 		name = "TransState";
-
+		link.setAnimationInterval(10);
         this.direction = direction;
     }
 
     public void left()
 	{
         link.setAnimation(leftAnimation);
-        link.setAnimationInterval(10);
 		link.setX(link.getX() + 4);
 	}
 
 	public void right()
 	{
         link.setAnimation(rightAnimation);
-        link.setAnimationInterval(10);
 		link.setX(link.getX() - 4);
 	}
 
 	public void up()
 	{
         link.setAnimation(upAnimation);
-        link.setAnimationInterval(10);
         link.setY(link.getY() + 4);
 	}
 
 	public void down()
 	{
         link.setAnimation(downAnimation);
-        link.setAnimationInterval(10);
 		link.setY(link.getY() - 4);
 	}
 
@@ -58,6 +54,7 @@ public class TransState extends LinkState
 
         if (animationCounter == link.getAnimation().length)
 		{
+			link.setAnimationInterval(90);
             link.setState(new WalkState(link));
         }
 

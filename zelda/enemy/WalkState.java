@@ -129,23 +129,7 @@ public class WalkState extends KaracterState
 		}
 		else
         {
-			if (dir == Direction.UP)
-			{
-				switch (animationCounter)
-				{
-                    case 0:
-						//karacter.setY(karacter.getY() + 0);
-						break;
-
-					case 1:
-						//karacter.setY(karacter.getY() + 1);
-						break;
-                    case 2:
-//						karacter.setY(karacter.getY() + 2);
-						break;
-				}
-			}
-			else if (dir == Direction.LEFT)
+			if (dir == Direction.LEFT)
 			{
 				switch (animationCounter)
 				{

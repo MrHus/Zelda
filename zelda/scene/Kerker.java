@@ -1,12 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import zelda.enemy.BlueSoldier;
 import zelda.engine.Game;
+import zelda.karacter.Direction;
 
 /**
  *
@@ -40,6 +38,8 @@ public class Kerker extends ZeldaScene {
         solids.add(tafel);
 
         gameObjects.add(game.getLink());
+        gameObjects.add(new BlueSoldier(game, 187, 212, Direction.LEFT, 60));
+        gameObjects.add(new BlueSoldier(game, 407, 246, Direction.RIGHT, 60));
 
         handleSwitchScene(entrance);
 
