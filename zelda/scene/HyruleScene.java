@@ -230,7 +230,7 @@ public class HyruleScene extends ZeldaScene {
 		{
 			System.out.println(game.getSong());
 			game.stopMusic();
-			game.playMusic("sounds/overworld.mp3", true);
+			game.playFx("sounds/overworld.mp3");
 		}
 
 		handleSwitchScene(entrance);

@@ -93,7 +93,7 @@ public class BlueSoldier extends Karacter implements Hittable
         if(health <= 0)
         {
             alive = false;
-            game.playMusic("sounds/enemyDie.mp3", false);
+            game.playFx("sounds/enemyDie.mp3");
             randomGoodie();
         }
 	}
