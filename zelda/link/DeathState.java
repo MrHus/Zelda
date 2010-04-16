@@ -7,15 +7,17 @@ import zelda.karacter.Direction;
  */
 public class DeathState extends LinkState
 {
-    private final String[] deathRightAnimation	= {"Link hit right", "Link death right 1", "Link death right 2"};
-    private final String[] deathLeftAnimation	= {"Link hit left", "Link death left 1", "Link death left 2"};
-    private final String[] deathLeft        	= {"Link death left 2"};
-    private final String[] deathRight         	= {"Link death right 2"};
+    private final String[] deathRightAnimation	= {"Link hit right", "Link death right", "Link death right 2"};
+    private final String[] deathLeftAnimation	= {"Link hit left", "Link death left", "Link death left 2"};
+
+    private Direction direction;
 
     public DeathState(Link link, Direction direction)
     {
         super(link);
         name = "DeathState";
+
+        this.direction = direction;
 
         switch(direction)
         {
@@ -46,14 +48,8 @@ public class DeathState extends LinkState
     }
 
     @Override
-	public void handleAnimation()
+	public void handleInput()
 	{
-		int animationCounter = link.getAnimationCounter();
-
-	//sword is done swinging revert back to former state
-		if (animationCounter == link.getAnimation().length)
-		{
-            link.setAnimation(deathLeft);
-        }
+        
     }    
 }
