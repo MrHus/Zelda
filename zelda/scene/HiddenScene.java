@@ -77,7 +77,7 @@ public class HiddenScene extends ZeldaScene {
     {
         if (exit == exitDown) 
         {
-            game.setScene(new HyruleScene(game, "HyruleScene"));
+            game.setScene(new HyruleScene(game, "HiddenScene"));
         }
     }
 
@@ -85,11 +85,9 @@ public class HiddenScene extends ZeldaScene {
     public void handleSwitchScene(String entrance)
     {
         if (entrance.equals("HyruleScene"))
-        {
-            while (moveScene(413, 131)){}
-
-            game.getLink().setXHardCore(413);
-            game.getLink().setYHardCore(131);
+        {          
+            game.getLink().setXHardCore(405);
+            game.getLink().setYHardCore(125);
         }
     }
 }

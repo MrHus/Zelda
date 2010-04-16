@@ -18,10 +18,10 @@ public class HyruleScene extends ZeldaScene {
     private Polygon muur, muur1, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
     private Polygon bosje, bosje1, bosje2, tuin, tuin1, tuin2, balk;
 
-    private Rectangle valkuil = new Rectangle(897, 160, 14, 14);
+    private Rectangle valkuil    = new Rectangle(897, 160, 14, 14);
     private Rectangle exitDown   = new Rectangle(672, 1013, 290, 20);
-    private Rectangle trap   = new Rectangle(713, 215, 14, 14);
-    private Rectangle deur   = new Rectangle(497, 247, 30, 30);
+    private Rectangle trap       = new Rectangle(713, 215, 14, 14);
+    private Rectangle deur       = new Rectangle(497, 247, 30, 30);
 
     public HyruleScene(Game game, String entrance)
 	{
@@ -35,7 +35,8 @@ public class HyruleScene extends ZeldaScene {
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
 
-        for (int i = 0; i < dypos.length; i++) {
+        for (int i = 0; i < dypos.length; i++)
+        {
             dypos[i] += 20;
         }
         boom = new Polygon(dxpos, dypos, dypos.length);
@@ -43,7 +44,8 @@ public class HyruleScene extends ZeldaScene {
         int[] nxpos = {632, 676, 686, 682, 683, 677, 679, 678, 667, 662, 659, 650, 637, 636, 626, 629, 627, 645};
         int[] nypos = {288, 286, 313, 327, 332, 336, 345, 349, 347, 347, 355, 348, 349, 341, 335, 330, 299, 284};
 
-        for (int i = 0; i < nypos.length; i++) {
+        for (int i = 0; i < nypos.length; i++)
+        {
             nypos[i] += 20;
         }
 
@@ -230,7 +232,6 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new WhiteSoldier(game, 622, 528, Direction.DOWN, 30));
         gameObjects.add(new WhiteSoldier(game, 293, 293, Direction.DOWN, 30));
 
-
         gameObjects.add(new Guard(game, 438, 715, Direction.LEFT));
         gameObjects.add(new Guard(game, 122, 991, Direction.UP));
         gameObjects.add(new Guard(game, 152, 991, Direction.UP));
@@ -254,15 +255,15 @@ public class HyruleScene extends ZeldaScene {
 		{
 			game.setScene(new HiddenScene(game, "HyruleScene"));
 		}
-        else if (exit == exitDown)
+        if (exit == exitDown)
         {
             game.setScene(new HouseScene(game, "HyruleScene"));
         }
-        else if (exit == trap)
+        if (exit == trap)
         {
-            game.setScene(new HiddenScene(game, "HyruleSceneTrap"));
+            game.setScene(new HiddenScene(game, "HyruleScene"));
         }
-        else if (exit == deur)
+        if (exit == deur)
         {
             game.setScene(new CastleScene(game, "HyruleScene"));
         }
@@ -282,8 +283,8 @@ public class HyruleScene extends ZeldaScene {
 		{
 			while(moveScene(571, 115)){}
 
-			game.getLink().setXHardCore(713);
-			game.getLink().setYHardCore(215);
+			game.getLink().setXHardCore(719);
+			game.getLink().setYHardCore(243);
 		}
 	}
 }
