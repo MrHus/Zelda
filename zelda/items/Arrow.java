@@ -25,7 +25,7 @@ public class Arrow extends GObject
     private final static String[] arrowHitLeft	= {"arrowLeft1","arrowLeft2","arrowLeft3","arrowLeft1","arrowLeft2","arrowLeft3"};
     private final static String[] arrowHitRight	= {"arrowRight1","arrowRight2","arrowRight3","arrowRight1","arrowRight2","arrowRight3"};
 
-    private final static int SPEED = 2;
+    private final static int SPEED = 3;
     private boolean hit = false;
 
     private Direction direction;
@@ -52,16 +52,9 @@ public class Arrow extends GObject
         spriteLoc.put("arrowLeft2", new Rectangle(25, 100, 12, 7));
         spriteLoc.put("arrowLeft3", new Rectangle(50, 100, 12, 7));
 
-        setAnimation(arrowHitDown);
-        setAnimation(arrowHitUp);
-        setAnimation(arrowHitLeft);
-        setAnimation(arrowHitRight);
-
-        this.setAnimationInterval(140);
-
+        setAnimationInterval(140);
 
         direction = game.getLink().getDirection();
-
 
         switch (direction)
 		{
@@ -70,7 +63,6 @@ public class Arrow extends GObject
                 this.setAnimation(arrowUp);
                 this.setHeight(13);
                 this.setWidth(4);
-                game.playMusic("sounds/bowArrow.mp3", false);
                 break;
 
 			case DOWN:
@@ -78,25 +70,32 @@ public class Arrow extends GObject
                 this.setAnimation(arrowDown);
                 this.setHeight(13);
                 this.setWidth(4);
-                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case LEFT:
                 sprite.setSprite(spriteLoc.get("arrowLeft"));
                 this.setAnimation(arrowLeft);
-                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case RIGHT:
                 sprite.setSprite(spriteLoc.get("arrowRight"));
                 this.setAnimation(arrowRight);
-                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 		}
+
+		game.playFx("sounds/bowArrow.mp3");
     }
 
+	@Override
     public void doInLoop()
     {
+		// if arrow moves outside of the scene it should die.
+		if (x > game.getScene().getSprite().getWidth() || y > game.getScene().getSprite().getWidth() || x < 0 || y < 0)
+		{
+			alive = false;
+			return;
+		}
+
         switch (direction)
 		{
 			case UP:
@@ -117,6 +116,7 @@ public class Arrow extends GObject
 		}
     }
 
+	@Override
     public void preAnimation()
     {
         if(hit)
@@ -128,24 +128,50 @@ public class Arrow extends GObject
         }
     }
 
+	@Override
     public void wallCollision()
     {
         arrowHitSomething();
     }
 
-
 	@Override
 	public void collision(GObject obj)
 	{
-
-		if (obj instanceof Hittable && !(obj instanceof Link))
+		if (obj instanceof Hittable && !(obj instanceof Link) && !(obj instanceof Bush))
 		{
+			System.out.println("here");
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
             alive = false;
+			arrowHitSomething();
         }
 
-        arrowHitSomething();
+		if(obj instanceof Guard)
+		{
+			arrowHitSomething();
+		}
+
+		if(obj instanceof Bush)
+		{
+			switch (direction)
+			{
+				case UP:
+					setYHardCore(getY() - SPEED);
+					break;
+
+				case DOWN:
+					setYHardCore(getY() + SPEED);
+					break;
+
+				case LEFT:
+					setXHardCore(getX() - SPEED);
+					break;
+
+				case RIGHT:
+					setXHardCore(getX() + SPEED);
+					break;
+			}
+		}
 	}
 
     private void arrowHitSomething()

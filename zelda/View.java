@@ -1,6 +1,7 @@
 package zelda;
 
 import java.awt.Color;
+import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -13,6 +14,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import zelda.engine.GObject;
 import zelda.engine.Game;
+import zelda.scene.ZeldaScene;
 
 /**
  * This class handles all the drawing.
@@ -41,11 +43,15 @@ public class View
 		gd = ge.getDefaultScreenDevice();
 		GraphicsConfiguration gc = gd.getDefaultConfiguration();
 
-		//gd.setFullScreenWindow(frame);
-
-		if (gd.isDisplayChangeSupported())
+		if(!game.isDebug())
 		{
-			//gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
+			gd.setFullScreenWindow(frame); //needs to be done before call too isDisplayChangeSupported
+		}
+
+		if (gd.isDisplayChangeSupported() && !game.isDebug())
+		{
+			
+			gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
 		}
 
 		frame.createBufferStrategy(2);
@@ -54,8 +60,12 @@ public class View
 		bi = gc.createCompatibleImage(game.getWidth(), game.getHeight());
 
 		//calculate the x and y for centering in fullscreen mode.
-		//x = (displayWidth - game.getWidth()) /2;
-		//y = (displayHeight - game.getHeight()) /2;
+		
+		if(!game.isDebug())
+		{
+			x = (displayWidth - game.getWidth()) /2;
+			y = (displayHeight - game.getHeight()) /2;
+		}
 	}	
 
 	public void draw()
@@ -74,7 +84,9 @@ public class View
 		//animate, and draw every GObject from Scene
 		for (GObject obj : game.getScene().getGObjects())
 		{
-			g2.draw(obj.getRectangle());
+			if (game.isDebug())
+				g2.draw(obj.getRectangle());
+
 			if (!game.isPaused())
 			{
 				obj.animate();
@@ -89,28 +101,49 @@ public class View
 			obj.draw(g2);
 		}
 
-		//Draw solids on the map
-		for (Shape s : game.getScene().getSolids())
+		if (game.isDebug())
 		{
-			g2.draw(s);
+
+			//Draw solids on the map
+			for (Shape s : game.getScene().getSolids())
+			{
+				g2.draw(s);
+			}
+
+			//draw blue box when link strikes debug
+			for (Rectangle r : game.getScene().getHitters())
+			{
+				g2.setColor(Color.blue);
+				g2.draw(r);
+			}
+
+			//draw green box for eye views
+			for (Shape v : game.getScene().getEyeViews())
+			{
+				g2.setColor(Color.green);
+				g2.draw(v);
+			}
+
+			if(game.getScene() instanceof ZeldaScene)
+			{
+				ZeldaScene zeldaScene = (ZeldaScene)game.getScene();
+
+				for(Shape v : zeldaScene.getExits())
+				{
+					g2.setColor(Color.magenta);
+					g2.draw(v);
+				}
+			}
 		}
 
-		//draw blue box when link strikes debug
-		for (Rectangle r : game.getScene().getHitters())
+		if (!game.isDebug())
 		{
-			g2.setColor(Color.blue);
-			g2.draw(r);
+			graphics.drawImage(bi, x, y, null);
 		}
-
-        //draw green box for eye views
-		for (Shape v : game.getScene().getEyeViews())
+		else
 		{
-			g2.setColor(Color.green);
-			g2.draw(v);
+			graphics.drawImage(bi, 0, 0, null);
 		}
-
-		//graphics.drawImage(bi, x, y, null);
-		graphics.drawImage(bi, 0, 0, null);
 
 		if (!buffer.contentsLost())
 			buffer.show();

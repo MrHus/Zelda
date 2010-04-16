@@ -26,7 +26,9 @@ public class GuiHeart extends GObject
 
         sprite.setSprite(spriteLoc.get("full"));
         setAnimation(fullAnimation);
-        
+
+		z = 2;
+
 		screenAdjust = false;
         checkcollision = false;
         liquid = true;
@@ -43,7 +45,7 @@ public class GuiHeart extends GObject
     {
         int empty = 5 - game.getLink().getHealth();
 
-        System.out.println(empty);
+        //System.out.println(empty);
         for (int j = 0; j < 5; j++)
         {
             if( j >= (5 - empty))
@@ -70,4 +72,9 @@ public class GuiHeart extends GObject
     {
         this.full = full;
     }
+
+	public static void clear()
+	{
+		i = 0;
+	}
 }

@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -16,22 +17,31 @@ public abstract class Scene implements DrawAble
 	protected Sprite sprite;
 	protected Game game;
 
+    protected ArrayList<GObject> newGameObjects = new ArrayList<GObject>();
 	protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
 	protected ArrayList<Polygon> solids = new ArrayList<Polygon>();
 	protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
     protected ArrayList<Polygon> eyeViews = new ArrayList<Polygon>();
 
-	public Scene(Game game, String img)
+	public Scene(Game game, String img, String entrance)
 	{
 		this.game = game;
 		sprite = new Sprite(img);
 	}
 
-	public void initScene(){}
+	public abstract void handleSwitchScene(Rectangle exit);
+	public abstract void handleSwitchScene(String entrance);
 
-	public void handleInput()
+	public synchronized void handleInput()
 	{
-		for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();) // remove dead objects
+		for (GObject obj : newGameObjects)
+        {
+            gameObjects.add(obj);
+        }
+
+		Collections.sort(gameObjects, new GObjectComparator());
+
+        for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();) // remove dead objects
 		{
 			GObject obj = it.next();
 			if (!obj.isAlive())
@@ -39,8 +49,10 @@ public abstract class Scene implements DrawAble
 				it.remove();
 			}
 		}
-	}
 
+		newGameObjects.clear();
+	}
+	
 	public void draw(Graphics2D g2)
 	{
 		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
@@ -49,6 +61,11 @@ public abstract class Scene implements DrawAble
 	public void addGObject(GObject gObject)
 	{
 		gameObjects.add(gObject);
+	}
+
+    public void addNewGObject(GObject gObject)
+	{
+		newGameObjects.add(gObject);
 	}
 
 	public ArrayList<Polygon> getSolids()

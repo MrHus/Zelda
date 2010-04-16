@@ -54,11 +54,11 @@ public class Bomb extends GObject
 	{
         if (animationCounter == 1)
         {
-            game.playMusic("sounds/linkBounce.mp3", false);
+            game.playFx("sounds/linkBounce.mp3");
         }
         if(animationCounter == 48)
         {
-            game.playMusic("sounds/bombExplode.mp3", false);
+            game.playFx("sounds/bombExplode.mp3");
             
             x -= 8;
             y -= 6;

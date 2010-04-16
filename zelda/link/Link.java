@@ -6,6 +6,7 @@ import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.items.Bomb;
 import zelda.items.Heart;
+import zelda.items.Rupee;
 import zelda.karacter.Direction;
 import zelda.karacter.Karacter;
 
@@ -19,6 +20,7 @@ public class Link extends Karacter
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
     private long lastHit = System.currentTimeMillis();
+    private int rupee = 0;
 
 	public Link(Game game, int x, int y)
 	{
@@ -110,6 +112,8 @@ public class Link extends Karacter
 		
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
+		z = 1;
+
 		screenAdjust = false;
 
 		state = new StandState(this);
@@ -120,23 +124,22 @@ public class Link extends Karacter
         switch (direction)
 		{
 			case UP:
-                game.getScene().addGObject(new Bomb(game, x + 2, y - 16));
+                game.getScene().addNewGObject(new Bomb(game, x + 2, y - 16));
 				break;
 
 			case DOWN:
-                game.getScene().addGObject(new Bomb(game, x + 2, y + getHeight()));
+                game.getScene().addNewGObject(new Bomb(game, x + 2, y + getHeight()));
 				break;
 
 			case LEFT:
-                game.getScene().addGObject(new Bomb(game, x - 13, y + 7));
+                game.getScene().addNewGObject(new Bomb(game, x - 13, y + 7));
 				break;
 
 			case RIGHT:
-                game.getScene().addGObject(new Bomb(game, x + getWidth(), y + 7));
+                game.getScene().addNewGObject(new Bomb(game, x + getWidth(), y + 7));
 				break;
 		}
     }
-
 
 	public void handleInput()
 	{
@@ -158,32 +161,34 @@ public class Link extends Karacter
 	{
         if (health == 0)
         {
-            game.playMusic("sounds/killed.mp3", false);
+            game.playFx("sounds/killed.mp3");
             alive = false;
         }
 
 		if (hitObject instanceof BlueSoldier)
 		{
 
-            if (health > 0 && System.currentTimeMillis() > lastHit + 600)
+            if (health > 0 && System.currentTimeMillis() > lastHit + 800)
             {
-               game.playMusic("sounds/linkHurt.mp3", false);
+               game.playFx("sounds/linkHurt.mp3");
                health --;
                lastHit = System.currentTimeMillis();
-               //System.out.println("leven: " + health);
             }
-
 		}
 
         if (hitObject instanceof Heart)
         {
             if (health < 5)
             {
-               game.playMusic("sounds/getItem.mp3", false);
+               game.playFx("sounds/getItem.mp3");
                health++;
             }
         }
-        //System.out.println("leven= " + health);
+
+        if (hitObject instanceof Rupee)
+        {
+            rupee += 5;
+        }
     }
 
 	//Handy dandy stuff that handles input
@@ -196,4 +201,14 @@ public class Link extends Karacter
 	{
         return (!game.isaPressed() && !game.isdPressed() && !game.iswPressed() && !game.issPressed());
 	}
+
+    public int getRupee()
+    {
+        return rupee;
+    }
+
+    public void setRupee(int rupee)
+    {
+        this.rupee = health;
+    }
 }

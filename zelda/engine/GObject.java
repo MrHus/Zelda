@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -19,6 +20,8 @@ public abstract class GObject implements DrawAble
 
 	protected int x;
 	protected int y;
+	protected int z = 0;
+	
 	protected int width;
 	protected int height;
 
@@ -147,8 +150,6 @@ public abstract class GObject implements DrawAble
 		return collision;
 	}
 
-
-
 	public int getX()
 	{
 		return x;
@@ -173,6 +174,21 @@ public abstract class GObject implements DrawAble
 		{
 			y = newY;
 		}
+	}
+
+	public int getZ()
+	{
+		return z;
+	}
+
+    public void setYHardCore(int y)
+	{
+		this.y = y;
+	}
+
+    public void setXHardCore(int x)
+	{
+		this.x = x;
 	}
 
 	public int getHeight()

@@ -14,6 +14,8 @@ public class Game
 {
 	private boolean running = true;
 	private boolean paused  = false;
+	private boolean debug   = true;
+
 	private int gameSpeed = 10;
 	private int width = 500;
 	private int height = 400;
@@ -21,7 +23,7 @@ public class Game
     private Link link;
 	private Scene scene;
 	private Music music;
-	
+	private SoundFx fx;
 
 	private boolean aPressed = false;
 	private boolean sPressed = false;
@@ -34,9 +36,7 @@ public class Game
 	public Game()
 	{
 		link = new Link(this, 100, 100);
-		scene = new HouseScene(this);
-
-		scene.initScene();
+		scene = new HouseScene(this, "GameStart");
 	}
 
 	public void quit()
@@ -61,20 +61,25 @@ public class Game
 	public void playMusic(String mp3file, boolean loop)
 	{
 		URL mp3 = Main.class.getResource(mp3file);
-		music = new Music(this, mp3, loop);
+		music = new Music(this, mp3, mp3file, loop);
 		music.play();
 	}
 
-	/**
-	 * Make the game play music.
-	 * 
-	 * @param mp3
-	 * @param loop
-	 */
-	public void playMusic(URL mp3, boolean loop)
+	public void stopMusic()
 	{
-		music = new Music(this, mp3, loop);
-		music.play();
+		music.stop();
+	}
+
+	public String getSong()
+	{
+		return music.getSong();
+	}
+
+	public void playFx(String mp3file)
+	{
+		URL mp3 = Main.class.getResource(mp3file);
+		fx = new SoundFx(this, mp3);
+		fx.play();
 	}
 
 	public Link getLink()
@@ -97,6 +102,11 @@ public class Game
 		return paused;
 	}
 
+	public boolean isDebug()
+	{
+		return debug;
+	}
+
 	public void setPaused(boolean paused)
 	{
 		this.paused = paused;
@@ -112,12 +122,12 @@ public class Game
 		this.gameSpeed = gameSpeed;
 	}
 
-	public Scene getScene()
+	public synchronized Scene getScene()
 	{
 		return scene;
 	}
 
-	public void setScene (Scene scene)
+	public synchronized void setScene (Scene scene)
 	{
 		this.scene = scene;
 	}
