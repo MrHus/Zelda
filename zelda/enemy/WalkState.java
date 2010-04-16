@@ -29,7 +29,10 @@ public class WalkState extends KaracterState
 
         oldAnimationInterval = karacter.getAnimationInterval();
 
-        //karacter.setAnimationInterval(1000);
+        karacter.setAnimationInterval(1000);
+
+        oldX = karacter.getX();
+        oldY = karacter.getY();
     }
 
 	@Override
@@ -124,8 +127,7 @@ public class WalkState extends KaracterState
 
 		if (animationCounter == karacter.getAnimation().length)
 		{
-			//karacter.setX(oldX);
-            //karacter.setY(oldY);
+
 		}
 		else
         {
@@ -140,11 +142,8 @@ public class WalkState extends KaracterState
 					case 1:
 						//karacter.setY(karacter.getY() + 1);
 						break;
-
                     case 2:
-						//karacter.setY(karacter.getY() - 7);
-						//karacter.setY(karacter.getY() - 7);
-                        //karacter.setX(karacter.getX() + 3);
+						karacter.setY(karacter.getY() + 2);
 						break;
 				}
 			}
