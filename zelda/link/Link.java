@@ -174,6 +174,8 @@ public class Link extends Karacter
                health --;
                lastHit = System.currentTimeMillis();
                //System.out.println("leven: " + health);
+               BlueSoldier soldier = (BlueSoldier)hitObject;
+               setState(new TransState(this, soldier.getDirection()));
             }
 		}
 
