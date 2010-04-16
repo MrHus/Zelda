@@ -173,7 +173,7 @@ public abstract class ZeldaScene extends Scene
         Font f = new Font ("Serif", Font.BOLD, 12);
         g2.setFont (f);
         g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
-        g2.drawString("" + link.getRupee(), 98, game.getHeight() / 7);
+        g2.drawString("" + link.getRupee(), 102, game.getHeight() / 7);
 	}
 
 	public ArrayList<Rectangle> getExits()

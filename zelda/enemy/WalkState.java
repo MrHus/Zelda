@@ -118,13 +118,14 @@ public class WalkState extends KaracterState
 	{
 		int animationCounter = karacter.getAnimationCounter();
 
-        // This section of the code corrects the position of karacter when he's striking.
-        // If you don't do this karacter appears to be moving when he swings his sword.
-        // Go ahead and remove the entire body of this else statement. You'll see what i mean.
-
         Direction dir = karacter.getDirection();
 
-
+		if (animationCounter == karacter.getAnimation().length)
+		{
+			
+		}
+		else
+        {
 			if (dir == Direction.UP)
 			{
 				switch (animationCounter)
@@ -161,4 +162,5 @@ public class WalkState extends KaracterState
 				}
 			}
 		}
+    }
 }

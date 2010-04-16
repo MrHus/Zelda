@@ -20,6 +20,7 @@ public class Link extends Karacter
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
     private long lastHit = System.currentTimeMillis();
+
     private int rupee = 0;
 
 	public Link(Game game, int x, int y)
@@ -109,7 +110,14 @@ public class Link extends Karacter
 		spriteLoc.put("Link bow up 2",          new Rectangle(25, 375, 21, 21));
 		spriteLoc.put("Link bow up 3",          new Rectangle(50, 375, 21, 22));
 
-		
+        spriteLoc.put("Link hit right",         new Rectangle(0, 414, 17, 21));
+		spriteLoc.put("Link death right",       new Rectangle(17, 414, 27, 19));
+		spriteLoc.put("Link death right 2",     new Rectangle(41, 414, 27, 15));
+
+        spriteLoc.put("Link hit left",          new Rectangle(0, 436, 17, 21));
+		spriteLoc.put("Link death left",        new Rectangle(17, 436, 23, 19));
+		spriteLoc.put("Link death left 2",      new Rectangle(40, 436, 24, 15));
+        
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
 		z = 1;
@@ -159,10 +167,10 @@ public class Link extends Karacter
 	@Override
 	protected void collision(GObject hitObject)
 	{
-
         if (health == 0)
         {
             game.playFx("sounds/killed.mp3");
+            setState(new DeathState(this,direction.LEFT));
             alive = false;
         }
 
@@ -174,14 +182,11 @@ public class Link extends Karacter
                game.playFx("sounds/linkHurt.mp3");
                health --;
                lastHit = System.currentTimeMillis();
-            }
 
-            if (health == 0)
-            {
-            game.playMusic("sounds/killed.mp3", false);
-            alive = false;
+               //System.out.println("leven: " + health);
+               BlueSoldier soldier = (BlueSoldier)hitObject;
+               setState(new TransState(this, soldier.getDirection()));
             }
-
 		}
 
         if (hitObject instanceof Heart)
@@ -198,7 +203,7 @@ public class Link extends Karacter
             game.playMusic("sounds/getItem.mp3", false);
             rupee += 5;
         }
-    }
+   }
 
 	//Handy dandy stuff that handles input
 	public boolean moveinput()
