@@ -47,7 +47,7 @@ public class BlueSoldier extends Karacter implements Hittable
 
 		this.direction = direction;
 
-		state = new StandState(this);
+		state = new WalkState(this);
 		behavior = new PatrolBehavior(this, ticks);
 	}
 
@@ -56,6 +56,7 @@ public class BlueSoldier extends Karacter implements Hittable
 	{
 		state.handleAnimation();
 	}
+
 
 	@Override
 	public void doInLoop()

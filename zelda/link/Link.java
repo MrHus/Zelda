@@ -113,7 +113,6 @@ public class Link extends Karacter
 		screenAdjust = false;
 
 		state = new StandState(this);
-        //setAnimationInterval(1000);
 	}
 
     public void dropBomb()
