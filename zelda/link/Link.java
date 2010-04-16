@@ -120,10 +120,11 @@ public class Link extends Karacter
         
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
+		z = 1;
+
 		screenAdjust = false;
 
 		state = new StandState(this);
-        //setAnimationInterval(1000);
 	}
 
     public void dropBomb()
@@ -131,23 +132,22 @@ public class Link extends Karacter
         switch (direction)
 		{
 			case UP:
-                game.getScene().addGObject(new Bomb(game, x + 2, y - 16));
+                game.getScene().addNewGObject(new Bomb(game, x + 2, y - 16));
 				break;
 
 			case DOWN:
-                game.getScene().addGObject(new Bomb(game, x + 2, y + getHeight()));
+                game.getScene().addNewGObject(new Bomb(game, x + 2, y + getHeight()));
 				break;
 
 			case LEFT:
-                game.getScene().addGObject(new Bomb(game, x - 13, y + 7));
+                game.getScene().addNewGObject(new Bomb(game, x - 13, y + 7));
 				break;
 
 			case RIGHT:
-                game.getScene().addGObject(new Bomb(game, x + getWidth(), y + 7));
+                game.getScene().addNewGObject(new Bomb(game, x + getWidth(), y + 7));
 				break;
 		}
     }
-
 
 	public void handleInput()
 	{
@@ -168,21 +168,20 @@ public class Link extends Karacter
 	protected void collision(GObject hitObject)
 	{
         if (health == 0)
+
         {            
             game.playMusic("sounds/killed.mp3", false);
             setState(new DeathState(this,direction.RIGHT));
-            //alive = false;
-        }
+            alive = false;
 
 		if (hitObject instanceof BlueSoldier)
 		{
 
             if (health > 0 && System.currentTimeMillis() > lastHit + 800)
             {
-               game.playMusic("sounds/linkHurt.mp3", false);
+               game.playFx("sounds/linkHurt.mp3");
                health --;
                lastHit = System.currentTimeMillis();
-               //System.out.println("leven: " + health);
             }
 		}
 
@@ -190,7 +189,7 @@ public class Link extends Karacter
         {
             if (health < 5)
             {
-               game.playMusic("sounds/getItem.mp3", false);
+               game.playFx("sounds/getItem.mp3");
                health++;
             }
         }
@@ -200,6 +199,7 @@ public class Link extends Karacter
             rupee += 5;
         }
     }
+   }
 
 	//Handy dandy stuff that handles input
 	public boolean moveinput()

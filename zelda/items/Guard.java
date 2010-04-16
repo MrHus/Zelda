@@ -40,6 +40,7 @@ public class Guard extends GObject {
                 break;
 
             case LEFT:
+				width = 21;
                 sprite.setSprite(spriteLoc.get("LEFT"));
                 setAnimation(leftAnimation);
                 break;

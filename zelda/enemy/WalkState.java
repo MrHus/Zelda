@@ -26,6 +26,8 @@ public class WalkState extends KaracterState
 		name = "WalkState";
 
         oldAnimationInterval = karacter.getAnimationInterval();
+
+        //karacter.setAnimationInterval(1000);
     }
 
 	@Override
@@ -148,5 +150,40 @@ public class WalkState extends KaracterState
 
             }       
         }
-	}
+			if (dir == Direction.UP)
+			{
+				switch (animationCounter)
+				{
+                    case 0:
+						karacter.setY(karacter.getY() + 0);
+						break;
+
+					case 1:
+						karacter.setY(karacter.getY() + 1);
+						break;
+
+                    case 2:
+						karacter.setY(karacter.getY() - 7);
+                        karacter.setX(karacter.getX() + 3);
+						break;
+				}
+			}
+			else if (dir == Direction.LEFT)
+			{
+				switch (animationCounter)
+				{
+                    case 0:
+						karacter.setX(karacter.getX() - 0);
+						break;
+
+					case 1:
+						karacter.setX(karacter.getX() - 5);
+						break;
+
+                    case 2:
+						karacter.setX(karacter.getX() + 4);
+						break;
+				}
+			}
+		}
 }

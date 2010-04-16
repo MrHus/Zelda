@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -22,20 +23,23 @@ public abstract class Scene implements DrawAble
 	protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
     protected ArrayList<Polygon> eyeViews = new ArrayList<Polygon>();
 
-	public Scene(Game game, String img)
+	public Scene(Game game, String img, String entrance)
 	{
 		this.game = game;
 		sprite = new Sprite(img);
 	}
 
-	public void initScene(){}
+	public abstract void handleSwitchScene(Rectangle exit);
+	public abstract void handleSwitchScene(String entrance);
 
-	public void handleInput()
+	public synchronized void handleInput()
 	{
 		for (GObject obj : newGameObjects)
         {
             gameObjects.add(obj);
         }
+
+		Collections.sort(gameObjects, new GObjectComparator());
 
         for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();) // remove dead objects
 		{
@@ -45,10 +49,10 @@ public abstract class Scene implements DrawAble
 				it.remove();
 			}
 		}
-        newGameObjects.clear();
 
+		newGameObjects.clear();
 	}
-
+	
 	public void draw(Graphics2D g2)
 	{
 		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
