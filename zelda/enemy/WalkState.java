@@ -29,8 +29,6 @@ public class WalkState extends KaracterState
 
         oldAnimationInterval = karacter.getAnimationInterval();
 
-        karacter.setAnimationInterval(1000);
-
         oldX = karacter.getX();
         oldY = karacter.getY();
     }
