@@ -14,10 +14,10 @@ public abstract class Karacter extends GObject
 	protected KaracterState state;
     protected int health = 1;
 
-	public Karacter(Game game, int x, int y, int width, int height, Direction dir, String image)
+	public Karacter(Game game, int x, int y, int width, int height, Direction direction, String image)
 	{
 		super(game, x, y, width, height, image);
-		direction = dir;
+		this.direction = direction;
 	}
 
 	public Direction getDirection()

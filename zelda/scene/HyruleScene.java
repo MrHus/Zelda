@@ -12,9 +12,9 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class HyruleScene extends ZeldaScene
-{
-    private Polygon muur, muur1, muur2, muur3, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
+public class HyruleScene extends ZeldaScene {
+
+    private Polygon muur,muur1, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
     private Polygon bosje, bosje1, bosje2, tuin, tuin1, tuin2, balk;
 
     public HyruleScene(Game game, String entrance)
@@ -215,13 +215,16 @@ public class HyruleScene extends ZeldaScene
         gameObjects.add(new BlueSoldier(game, 477, 484, Direction.DOWN, 50));
         gameObjects.add(new BlueSoldier(game, 520, 484, Direction.DOWN, 50));
 
-//        gameObjects.add(new BlueSoldier(game, 112, 310, Direction.UP, 75));
-//        gameObjects.add(new BlueSoldier(game, 252, 683, Direction.LEFT, 30));
+        gameObjects.add(new BlueSoldier(game, 236, 918, Direction.RIGHT, 50));
 
-        gameObjects.add(new Guard(game, 438, 705, Direction.LEFT));
+        gameObjects.add(new BlueSoldier(game, 808, 698, Direction.LEFT, 20));
+
+
+        gameObjects.add(new Guard(game, 438, 715, Direction.LEFT));
         gameObjects.add(new Guard(game, 122, 991, Direction.UP));
         gameObjects.add(new Guard(game, 152, 991, Direction.UP));
-        gameObjects.add(new Guard(game, 983, 656, Direction.RIGHT));
+        gameObjects.add(new Guard(game, 995, 636, Direction.RIGHT));
+        gameObjects.add(new Guard(game, 995, 666, Direction.RIGHT));
         
 		if(!game.getSong().equals("sounds/overworld.mp3"))
 		{

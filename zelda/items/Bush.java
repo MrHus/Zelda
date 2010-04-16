@@ -21,7 +21,7 @@ public class Bush extends GObject implements Hittable
 	{
         super(game, x, y, 16, 14, "images/items.png");
         spriteLoc.put("bush", new Rectangle(0, 0, 16, 15));
-        spriteLoc.put("stump", new Rectangle(17, 0, 15, 15));
+        spriteLoc.put("stump", new Rectangle(17, 0, 16, 15));
         
         String[] bushani = {"bush"};
         setAnimation(bushani);
