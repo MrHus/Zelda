@@ -130,7 +130,7 @@ public class WalkState extends KaracterState
 				switch (animationCounter)
 				{
                     case 0:
-						karacter.setY(karacter.getY() + 0);
+						karacter.setY(karacter.getY() + 2);
 						break;
 
 					case 1:
@@ -138,8 +138,8 @@ public class WalkState extends KaracterState
 						break;
 
                     case 2:
-						karacter.setY(karacter.getY() - 7);
-                        karacter.setX(karacter.getX() + 3);
+						karacter.setY(karacter.getY() - 4);
+                        karacter.setX(karacter.getX() + 0);
 						break;
 				}
 			}
