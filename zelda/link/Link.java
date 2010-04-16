@@ -170,7 +170,7 @@ public class Link extends Karacter
         if (health == 0)
         {
             game.playFx("sounds/killed.mp3");
-
+            setState(new DeathState(this,direction.LEFT));
             alive = false;
         }
 
@@ -182,15 +182,7 @@ public class Link extends Karacter
                game.playFx("sounds/linkHurt.mp3");
                health --;
                lastHit = System.currentTimeMillis();
-            }
-
-            if (health == 0)
-            {
-            game.playFx("sounds/killed.mp3", false);
-            setState(new DeathState(this,direction.LEFT));
-            //alive = false;
-            }
-
+            }   
 		}
 
         if (hitObject instanceof Heart)
