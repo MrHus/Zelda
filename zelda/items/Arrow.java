@@ -52,11 +52,6 @@ public class Arrow extends GObject
         spriteLoc.put("arrowLeft2", new Rectangle(25, 100, 12, 7));
         spriteLoc.put("arrowLeft3", new Rectangle(50, 100, 12, 7));
 
-        setAnimation(arrowHitDown);
-        setAnimation(arrowHitUp);
-        setAnimation(arrowHitLeft);
-        setAnimation(arrowHitRight);
-
         setAnimationInterval(140);
 
         direction = game.getLink().getDirection();
@@ -144,11 +139,39 @@ public class Arrow extends GObject
 	{
 		if (obj instanceof Hittable && !(obj instanceof Link) && !(obj instanceof Bush))
 		{
+			System.out.println("here");
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
             alive = false;
 			arrowHitSomething();
         }
+
+		if(obj instanceof Guard)
+		{
+			arrowHitSomething();
+		}
+
+		if(obj instanceof Bush)
+		{
+			switch (direction)
+			{
+				case UP:
+					setYHardCore(getY() - SPEED);
+					break;
+
+				case DOWN:
+					setYHardCore(getY() + SPEED);
+					break;
+
+				case LEFT:
+					setXHardCore(getX() - SPEED);
+					break;
+
+				case RIGHT:
+					setXHardCore(getX() + SPEED);
+					break;
+			}
+		}
 	}
 
     private void arrowHitSomething()

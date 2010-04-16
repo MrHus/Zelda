@@ -16,14 +16,14 @@ public class Main extends JFrame
 		if(game.isDebug())
 		{
 			setLocationRelativeTo(null);
+			setSize(game.getWidth(), game.getHeight());
 		}
 		else
 		{
-			setUndecorated(true);
+			setUndecorated(true);	
 		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(game.getWidth(), game.getHeight());
 		setVisible(true);
 
 		view = new View(game, this);
