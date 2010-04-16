@@ -19,8 +19,6 @@ public class DeathState extends LinkState
         super(link);
         name = "DeathState";
 
-        System.out.println("DeathState");
-
         switch(direction)
         {
             case UP:
@@ -31,19 +29,19 @@ public class DeathState extends LinkState
 
             case DOWN:
                 link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(50);
+                link.setAnimationInterval(1000);
                 game.playMusic("sounds/killed.mp3", false);
                 break;
 
             case LEFT:
                 link.setAnimation(deathLeftAnimation);
-                link.setAnimationInterval(50);
+                link.setAnimationInterval(1000);
                 game.playMusic("sounds/killed.mp3", false);
                 break;
 
             case RIGHT:
                 link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(50);
+                link.setAnimationInterval(1000);
                 game.playMusic("sounds/killed.mp3", false);
                 break;
         }
@@ -54,14 +52,10 @@ public class DeathState extends LinkState
 	{
 		int animationCounter = link.getAnimationCounter();
 
-		//System.out.println("Animation Counter is " + animationCounter);
-
-		//sword is done swinging revert back to former state
+	//sword is done swinging revert back to former state
 		if (animationCounter == link.getAnimation().length)
 		{
             link.setAnimation(deathLeft);
         }
-    }
-
-    
+    }    
 }

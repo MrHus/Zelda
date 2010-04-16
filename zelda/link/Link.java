@@ -170,7 +170,7 @@ public class Link extends Karacter
         if (health == 0)
         {            
             game.playMusic("sounds/killed.mp3", false);
-            setState(new DeathState(this,direction.UP));
+            setState(new DeathState(this,direction.RIGHT));
             //alive = false;
         }
 
