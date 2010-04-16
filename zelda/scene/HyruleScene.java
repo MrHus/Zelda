@@ -17,7 +17,7 @@ public class HyruleScene extends ZeldaScene {
     private Polygon muur,muur1, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
     private Polygon bosje, bosje1, bosje2, tuin, tuin1, tuin2, balk;
 
-    private Rectangle valkuil = new Rectangle(897, 160, 12, 12);
+    private Rectangle valkuil = new Rectangle(897, 160, 14, 14);
     private Rectangle exitDown   = new Rectangle(672, 1013, 290, 20);
 
     public HyruleScene(Game game, String entrance)
@@ -249,8 +249,6 @@ public class HyruleScene extends ZeldaScene {
         if (exit == exitDown || exit == valkuil)
 		{
 			game.setScene(new HouseScene(game, "HyruleScene"));
-            game.getLink().setXHardCore(250);
-			game.getLink().setYHardCore(350);
 		}
 	}
 
