@@ -12,7 +12,6 @@ import zelda.scene.HouseScene;
  */
 public class Game
 {
-
 	private boolean running = true;
 	private boolean paused = false;
 	private boolean debug = true;
