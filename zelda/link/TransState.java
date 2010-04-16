@@ -73,7 +73,6 @@ public class TransState extends LinkState
 
             case LEFT:
                 right();
-                System.out.println("okey");
                 break;
 
             case RIGHT:
