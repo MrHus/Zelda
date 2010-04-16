@@ -68,11 +68,15 @@ public class BlueSoldier extends Karacter implements Hittable
 
 	public void hitBy(Weapon weapon)
 	{
-		switch(weapon)
+        if (health >= 1)
+        {
+            game.playFx("sounds/enemyHit.mp3");
+        }
+
+        switch(weapon)
 		{
 			case SWORD:
                 health -= 3;
-                game.playFx("sounds/enemyHit.mp3");
 				break;
 
             case BOMB:
@@ -81,7 +85,6 @@ public class BlueSoldier extends Karacter implements Hittable
                 break;
 
             case ARROW:
-                game.playFx("sounds/enemyHit.mp3");
                 health -= 3;
                 break;
 		}

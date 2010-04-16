@@ -40,25 +40,21 @@ public class Bush extends GObject implements Hittable
             {
                 game.playFx("sounds/bushCut.mp3");
 
+                randomGoodie();
+            }
+
+            liquid = true;
+        }
+        if(weapon == Weapon.BOMB)
+        {
+            String[] bushani = {"stump"};
+            setAnimation(bushani);
+
+            if (liquid == false)
+            {
+                game.playFx("sounds/bushCut.mp3");
 
                 randomGoodie();
-
-				Random random = new Random();
-				int r = random.nextInt(100);
-
-				//System.out.println(r);
-
-                if (r < 50)
-                {
-                    if (r < 25)
-                    {
-                        game.getScene().addNewGObject(new Heart (game, x, y));
-                    }
-                    else
-                    {
-                        game.getScene().addNewGObject(new Rupee (game, x, y));
-                    }
-                }
             }
 
             liquid = true;

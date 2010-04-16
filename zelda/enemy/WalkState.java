@@ -141,7 +141,7 @@ public class WalkState extends KaracterState
 
                     case 2:
 						karacter.setY(karacter.getY() - 7);
-                        karacter.setX(karacter.getX() + 3);
+                        //karacter.setX(karacter.getX() + 3);
 						break;
 				}
 			}

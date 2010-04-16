@@ -12,8 +12,6 @@ public class DeathState extends LinkState
     private final String[] deathLeft        	= {"Link death left 2"};
     private final String[] deathRight         	= {"Link death right 2"};
 
-
-
     public DeathState(Link link, Direction direction)
     {
         super(link);
