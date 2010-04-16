@@ -68,7 +68,6 @@ public class Arrow extends GObject
                 this.setAnimation(arrowUp);
                 this.setHeight(13);
                 this.setWidth(4);
-                game.playMusic("sounds/bowArrow.mp3", false);
                 break;
 
 			case DOWN:
@@ -76,21 +75,20 @@ public class Arrow extends GObject
                 this.setAnimation(arrowDown);
                 this.setHeight(13);
                 this.setWidth(4);
-                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case LEFT:
                 sprite.setSprite(spriteLoc.get("arrowLeft"));
                 this.setAnimation(arrowLeft);
-                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 
 			case RIGHT:
                 sprite.setSprite(spriteLoc.get("arrowRight"));
                 this.setAnimation(arrowRight);
-                game.playMusic("sounds/bowArrow.mp3", false);
 				break;
 		}
+
+		game.playFx("sounds/bowArrow.mp3");
     }
 
 	@Override

@@ -159,7 +159,7 @@ public class Link extends Karacter
 	{
         if (health == 0)
         {
-            game.playMusic("sounds/killed.mp3", false);
+            game.playFx("sounds/killed.mp3");
             alive = false;
         }
 
@@ -168,10 +168,9 @@ public class Link extends Karacter
 
             if (health > 0 && System.currentTimeMillis() > lastHit + 800)
             {
-               game.playMusic("sounds/linkHurt.mp3", false);
+               game.playFx("sounds/linkHurt.mp3");
                health --;
                lastHit = System.currentTimeMillis();
-               //System.out.println("leven: " + health);
             }
 		}
 
@@ -179,7 +178,7 @@ public class Link extends Karacter
         {
             if (health < 5)
             {
-               game.playMusic("sounds/getItem.mp3", false);
+               game.playFx("sounds/getItem.mp3");
                health++;
             }
         }

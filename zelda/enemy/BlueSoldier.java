@@ -74,7 +74,7 @@ public class BlueSoldier extends Karacter implements Hittable
 		{
 			case SWORD:
                 health -= 3;
-                game.playMusic("sounds/enemyHit.mp3", false);
+                game.playFx("sounds/enemyHit.mp3");
 				break;
 
             case BOMB:
@@ -82,7 +82,7 @@ public class BlueSoldier extends Karacter implements Hittable
                 break;
 
             case ARROW:
-                game.playMusic("sounds/enemyHit.mp3", false);
+                game.playFx("sounds/enemyHit.mp3");
                 health -= 3;
                 break;
 		}
@@ -90,7 +90,7 @@ public class BlueSoldier extends Karacter implements Hittable
         if(health <= 0)
         {
             alive = false;
-            game.playMusic("sounds/enemyDie.mp3", false);
+            game.playFx("sounds/enemyDie.mp3");
         }
 	}
 

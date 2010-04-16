@@ -21,8 +21,8 @@ public class Bush extends GObject implements Hittable
     public Bush(Game game, int x, int y)
 	{
         super(game, x, y, 16, 14, "images/items.png");
-        spriteLoc.put("bush", new Rectangle(0, 0, 16, 14));
-        spriteLoc.put("stump", new Rectangle(17, 0, 15, 13));
+        spriteLoc.put("bush", new Rectangle(0, 0, 16, 15));
+        spriteLoc.put("stump", new Rectangle(17, 0, 15, 15));
         
         String[] bushani = {"bush"};
         setAnimation(bushani);
@@ -38,7 +38,7 @@ public class Bush extends GObject implements Hittable
 
             if (liquid == false)
             {
-                game.playMusic("sounds/bushCut.mp3", false);
+                game.playFx("sounds/bushCut.mp3");
 
 				Random random = new Random();
 				int r = random.nextInt(100);

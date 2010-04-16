@@ -1,6 +1,5 @@
 package zelda.engine;
 
-import java.awt.Rectangle;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
@@ -15,6 +14,7 @@ public class Game
 {
 	private boolean running = true;
 	private boolean paused  = false;
+	private boolean debug   = false;
 
 	private int gameSpeed = 10;
 	private int width = 500;
@@ -23,6 +23,7 @@ public class Game
     private Link link;
 	private Scene scene;
 	private Music music;
+	private SoundFx fx;
 
 	private boolean aPressed = false;
 	private boolean sPressed = false;
@@ -74,6 +75,13 @@ public class Game
 		return music.getSong();
 	}
 
+	public void playFx(String mp3file)
+	{
+		URL mp3 = Main.class.getResource(mp3file);
+		fx = new SoundFx(this, mp3);
+		fx.play();
+	}
+
 	public Link getLink()
 	{
 		return link;
@@ -92,6 +100,11 @@ public class Game
 	public boolean isPaused()
 	{
 		return paused;
+	}
+
+	public boolean isDebug()
+	{
+		return debug;
 	}
 
 	public void setPaused(boolean paused)
