@@ -46,7 +46,6 @@ public abstract class Scene implements DrawAble
 			}
 		}
         newGameObjects.clear();
-
 	}
 
 	public void draw(Graphics2D g2)

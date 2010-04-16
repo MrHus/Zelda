@@ -38,20 +38,7 @@ public class Bush extends GObject implements Hittable
             {
                 game.playMusic("sounds/bushCut.mp3", false);
 
-                int r = (int)(Math.random()*200);
-                System.out.println(r);
-
-                if (r < 50)
-                {
-                    if (r < 25)
-                    {
-                        game.getScene().addNewGObject(new Heart (game, x, y));
-                    }
-                    else
-                    {
-                        game.getScene().addNewGObject(new Rupee (game, x, y));
-                    }
-                }
+                randomGoodie();
             }
 
             liquid = true;

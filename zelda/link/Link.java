@@ -159,12 +159,6 @@ public class Link extends Karacter
 	@Override
 	protected void collision(GObject hitObject)
 	{
-        if (health == 0)
-        {
-            game.playMusic("sounds/killed.mp3", false);
-            alive = false;
-        }
-
 		if (hitObject instanceof BlueSoldier)
 		{
 
@@ -175,6 +169,13 @@ public class Link extends Karacter
                lastHit = System.currentTimeMillis();
                //System.out.println("leven: " + health);
             }
+
+            if (health == 0)
+            {
+            game.playMusic("sounds/killed.mp3", false);
+            alive = false;
+            }
+
 		}
 
         if (hitObject instanceof Heart)
@@ -188,6 +189,7 @@ public class Link extends Karacter
 
         if (hitObject instanceof Rupee)
         {
+            game.playMusic("sounds/getItem.mp3", false);
             rupee += 5;
         }
     }
