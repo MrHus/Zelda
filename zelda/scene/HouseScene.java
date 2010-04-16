@@ -106,6 +106,7 @@ public class HouseScene extends ZeldaScene
 		gameObjects.add(game.getLink());
         gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
         gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
+
         gameObjects.add(new Guard(game, 483, 408, Direction.RIGHT));
         gameObjects.add(new Guard(game, 483, 376, Direction.RIGHT));
         gameObjects.add(new Guard(game, 9, 415, Direction.LEFT));
@@ -113,7 +114,7 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Guard(game, 233, 480, Direction.UP));
         gameObjects.add(new Guard(game, 206, 480, Direction.UP));
 
-		game.playMusic("sounds/overworld.mp3", true);
+		//game.playMusic("sounds/overworld.mp3", true);
     }
 
 	@Override
