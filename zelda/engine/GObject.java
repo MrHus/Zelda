@@ -296,18 +296,18 @@ public abstract class GObject implements DrawAble
     public void randomGoodie()
     {
         int r = (int)(Math.random()*200);
-                System.out.println(r);
+        System.out.println(r);
 
-                if (r < 50)
-                {
-                    if (r < 25)
-                    {
-                        game.getScene().addNewGObject(new Heart (game, x, y));
-                    }
-                    else
-                    {
-                        game.getScene().addNewGObject(new Rupee (game, x, y));
-                    }
-                }
+        if (r < 50)
+        {
+            if (r < 25)
+            {
+                game.getScene().addNewGObject(new Heart (game, x, y));
+            }
+            else
+            {
+                game.getScene().addNewGObject(new Rupee (game, x, y));
+            }
+        }
     }
 }

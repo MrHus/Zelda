@@ -88,6 +88,7 @@ public class BlueSoldier extends Karacter implements Hittable
             case ARROW:
                 game.playFx("sounds/enemyHit.mp3");
                 health -= 3;
+                this.setBehavior(new AttackBehavior(this));
                 break;
 		}
 
