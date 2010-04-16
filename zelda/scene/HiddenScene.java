@@ -14,10 +14,13 @@ import zelda.karacter.Direction;
 public class HiddenScene extends ZeldaScene {
 
     Polygon muur, muur1, muur2, muur3, uitgang;
+    private Rectangle exitDown = new Rectangle(116, 449, 20, 20);
 
     public HiddenScene(Game game, String entrance) {
 
         super(game, "images/hiddenpath.png", entrance);
+        exits.add(exitDown);
+
         int[] hxpos = {385, 446, 446, 112, 112, 111, 95, 96, 112, 113, 113, 72, 72, 115, 113, 52, 43, 480, 480};
         int[] hypos = {190, 189, 112, 110, 187, 319, 319, 406, 406, 428, 424, 424, 454, 454, 467, 467, 53, 54, 204};
 
@@ -68,21 +71,25 @@ public class HiddenScene extends ZeldaScene {
         gameObjects.add(new WhiteSoldier(game, 123, 117, Direction.UP, 20));
         gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT, 20));
         gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT, 20));
+        handleSwitchScene(entrance);
 
     }
 
     @Override
     public void handleSwitchScene(Rectangle exit) {
-//        if (exit == exitUp) {
-//            game.setScene(new HyruleScene(game, "HouseScene"));
-//        }
+        if (exit == exitDown) {
+            game.setScene(new HyruleScene(game, "HiddenScene"));
+        }
     }
 
     @Override
     public void handleSwitchScene(String entrance) {
-//        if (entrance.equals("GameStart")) {
-//            game.getLink().setXHardCore(100);
-//            game.getLink().setYHardCore(100);
-//        }
+        if (entrance.equals("HiddenSceneTrap")) {
+            while (moveScene(712, 213)) {
+            }
+
+            game.getLink().setXHardCore(81);
+            game.getLink().setYHardCore(131);
+        }
     }
 }

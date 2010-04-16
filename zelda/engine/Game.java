@@ -3,6 +3,7 @@ package zelda.engine;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
+import zelda.scene.HiddenScene;
 import zelda.scene.HouseScene;
 
 /**

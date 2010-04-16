@@ -20,6 +20,8 @@ public class HyruleScene extends ZeldaScene {
 
     private Rectangle valkuil = new Rectangle(897, 160, 14, 14);
     private Rectangle exitDown   = new Rectangle(672, 1013, 290, 20);
+    private Rectangle trap   = new Rectangle(713, 215, 14, 14);
+    private Rectangle deur   = new Rectangle(497, 247, 30, 30);
 
     public HyruleScene(Game game, String entrance)
 	{
@@ -27,6 +29,8 @@ public class HyruleScene extends ZeldaScene {
 
         exits.add(exitDown);
         exits.add(valkuil);
+        exits.add(trap);
+        exits.add(deur);
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
@@ -246,10 +250,22 @@ public class HyruleScene extends ZeldaScene {
 	public void handleSwitchScene(Rectangle exit)
 	{
 		//throw new UnsupportedOperationException("Not supported yet.");
-        if (exit == exitDown || exit == valkuil)
+        if (exit == valkuil)
 		{
-			game.setScene(new HouseScene(game, "HyruleScene"));
+			game.setScene(new HiddenScene(game, "HyruleScene"));
 		}
+        else if (exit == exitDown)
+        {
+            game.setScene(new HouseScene(game, "HyruleScene"));
+        }
+        else if (exit == trap)
+        {
+            game.setScene(new HiddenScene(game, "HyruleSceneTrap"));
+        }
+        else if (exit == deur)
+        {
+            game.setScene(new CastleScene(game, "HyruleScene"));
+        }
 	}
 
 	@Override
@@ -261,6 +277,13 @@ public class HyruleScene extends ZeldaScene {
 
 			game.getLink().setXHardCore(250);
 			game.getLink().setYHardCore(350);
+		}
+        if(entrance.equals("HiddenScene"))
+		{
+			while(moveScene(571, 115)){}
+
+			game.getLink().setXHardCore(713);
+			game.getLink().setYHardCore(215);
 		}
 	}
 }
