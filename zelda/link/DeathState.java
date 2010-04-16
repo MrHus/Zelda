@@ -12,10 +12,14 @@ public class DeathState extends LinkState
 
     private Direction direction;
 
+    private long oldAnimationInterval;
+
     public DeathState(Link link, Direction direction)
     {
         super(link);
         name = "DeathState";
+
+
 
         this.direction = direction;
 
@@ -23,25 +27,25 @@ public class DeathState extends LinkState
         {
             case UP:
                 link.setAnimation(deathLeftAnimation);
-                link.setAnimationInterval(1000);
+                link.setAnimationInterval(700);
                 game.playFx("sounds/killed.mp3");
                 break;
 
             case DOWN:
                 link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(1000);
+                link.setAnimationInterval(700);
                 game.playFx("sounds/killed.mp3");
                 break;
 
             case LEFT:
                 link.setAnimation(deathLeftAnimation);
-                link.setAnimationInterval(1000);
+                link.setAnimationInterval(700);
                 game.playFx("sounds/killed.mp3");
                 break;
 
             case RIGHT:
                 link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(1000);
+                link.setAnimationInterval(700);
                 game.playFx("sounds/killed.mp3");
                 break;
         }
@@ -51,5 +55,24 @@ public class DeathState extends LinkState
 	public void handleInput()
 	{
         
-    }    
+    }
+
+    @Override
+	public void handleAnimation()
+	{
+		int animationCounter = link.getAnimationCounter();
+		
+		if (animationCounter == link.getAnimation().length)
+		{
+			link.setAnimationInterval(oldAnimationInterval);			
+			link.setState(new StandState(link));
+			game.setScene(new zelda.scene.HouseScene(game, "HouseScene"));
+            link.setHealth(1);
+
+            game.getLink().setXHardCore(183);
+			game.getLink().setYHardCore(278);
+
+		}
+		
+    }
 }
