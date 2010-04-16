@@ -26,7 +26,9 @@ public class GuiHeart extends GObject
 
         sprite.setSprite(spriteLoc.get("full"));
         setAnimation(fullAnimation);
-        
+
+		z = 2;
+
 		screenAdjust = false;
         checkcollision = false;
         liquid = true;

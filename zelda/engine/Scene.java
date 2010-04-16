@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -37,6 +38,8 @@ public abstract class Scene implements DrawAble
         {
             gameObjects.add(obj);
         }
+
+		Collections.sort(gameObjects, new GObjectComparator());
 
         for (Iterator<GObject> it = gameObjects.iterator(); it.hasNext();) // remove dead objects
 		{
