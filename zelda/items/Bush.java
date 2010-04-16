@@ -5,7 +5,6 @@
 package zelda.items;
 
 import java.awt.Rectangle;
-import java.util.Random;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import zelda.engine.GObject;

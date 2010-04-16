@@ -19,6 +19,7 @@ public class BlueSoldier extends Karacter implements Hittable
 
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
+    private long lastHit = System.currentTimeMillis();
     
 	public BlueSoldier(Game game, int x, int y, Direction direction, int ticks)
 	{
@@ -34,7 +35,7 @@ public class BlueSoldier extends Karacter implements Hittable
 
 		spriteLoc.put("Stand up",		new Rectangle(0, 60, 22, 27));
 		spriteLoc.put("Walk up 1",		new Rectangle(30, 60, 22, 26));
-		spriteLoc.put("Walk up 2",		new Rectangle(64, 57, 22, 33));
+		spriteLoc.put("Walk up 2",		new Rectangle(60, 57, 22, 33));
 
 		spriteLoc.put("Stand down",		new Rectangle(0, 90, 22, 33));
 		spriteLoc.put("Walk down 1",	new Rectangle(30, 90, 22, 34));
@@ -76,7 +77,12 @@ public class BlueSoldier extends Karacter implements Hittable
         switch(weapon)
 		{
 			case SWORD:
-                health -= 3;
+                if (health > 0 && System.currentTimeMillis() > lastHit + 800)
+                {
+                    lastHit = System.currentTimeMillis();
+                    health -= 3;
+                    this.setState(new TransState(this, game.getLink().getDirection()));
+                }
 				break;
 
             case BOMB:
@@ -86,13 +92,14 @@ public class BlueSoldier extends Karacter implements Hittable
 
             case ARROW:
                 health -= 3;
+                this.setBehavior(new AttackBehavior(this));
                 break;
 		}
         
         if(health <= 0)
         {
             alive = false;
-            game.playMusic("sounds/enemyDie.mp3", false);
+            game.playFx("sounds/enemyDie.mp3");
             randomGoodie();
         }
 	}

@@ -110,13 +110,13 @@ public class Link extends Karacter
 		spriteLoc.put("Link bow up 2",          new Rectangle(25, 375, 21, 21));
 		spriteLoc.put("Link bow up 3",          new Rectangle(50, 375, 21, 22));
 
-        spriteLoc.put("Link hit right",         new Rectangle(0, 414, 17, 21));
-		spriteLoc.put("Link death right",       new Rectangle(17, 414, 27, 19));
-		spriteLoc.put("Link death right 2",     new Rectangle(41, 414, 27, 15));
+        spriteLoc.put("Link hit right",         new Rectangle(0, 425, 17, 21));
+		spriteLoc.put("Link death right",       new Rectangle(25, 425, 27, 19));
+		spriteLoc.put("Link death right 2",     new Rectangle(50, 425, 27, 15));
 
-        spriteLoc.put("Link hit left",          new Rectangle(0, 436, 17, 21));
-		spriteLoc.put("Link death left",        new Rectangle(17, 436, 23, 19));
-		spriteLoc.put("Link death left 2",      new Rectangle(40, 436, 24, 15));
+        spriteLoc.put("Link hit left",          new Rectangle(0, 450, 17, 21));
+		spriteLoc.put("Link death left",        new Rectangle(25, 450, 23, 19));
+		spriteLoc.put("Link death left 2",      new Rectangle(50, 450, 24, 15));
         
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
@@ -170,14 +170,17 @@ public class Link extends Karacter
 	{
         if (health == 0)
         {
-            game.playFx("sounds/killed.mp3");
-            setState(new DeathState(this,direction.LEFT));
-            alive = false;
+            if(!getStateString().equals("DeathState"))
+            {
+                
+                game.playFx("sounds/killed.mp3");
+                setState(new DeathState(this, getDirection()));
+                //alive = false;
+            }            
         }
 
 		if (hitObject instanceof BlueSoldier)
 		{
-
             if (health > 0 && System.currentTimeMillis() > lastHit + 800)
             {
                game.playFx("sounds/linkHurt.mp3");
@@ -201,7 +204,7 @@ public class Link extends Karacter
 
         if (hitObject instanceof Rupee)
         {
-            game.playMusic("sounds/getItem.mp3", false);
+            game.playFx("sounds/getItem.mp3");
             rupee += 5;
         }
    }
