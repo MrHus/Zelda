@@ -43,7 +43,7 @@ public class Bush extends GObject implements Hittable
 				Random random = new Random();
 				int r = random.nextInt(100);
 
-                System.out.println(r);
+				//System.out.println(r);
 
                 if (r < 50)
                 {
