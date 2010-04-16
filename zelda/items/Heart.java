@@ -21,7 +21,8 @@ public class Heart extends GObject
     
         sprite.setSprite(spriteLoc.get("heart"));
         setAnimation(heartAnimation);
-        //game.getLink().getheart()
+
+		liquid = true;
     }
 
     @Override
