@@ -125,31 +125,7 @@ public class WalkState extends KaracterState
 			
 		}
 		else
-
-			// This section of the code corrects the position of karacter when he's striking.
-			// If you don't do this karacter appears to be moving when he swings his sword.
-			// Go ahead and remove the entire body of this else statement. You'll see what i mean.
-	
-			if (dir == Direction.LEFT)
-			{
-				switch (animationCounter)
-				{
-                 
-				}
-			}
-			else if (dir == Direction.DOWN)
-			{
-                switch (animationCounter)
-                {
-                    
-                }
-
-            switch(animationCounter)
-            {
-               
-
-            }       
-        }
+        {
 			if (dir == Direction.UP)
 			{
 				switch (animationCounter)
@@ -186,4 +162,5 @@ public class WalkState extends KaracterState
 				}
 			}
 		}
+    }
 }

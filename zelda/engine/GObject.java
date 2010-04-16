@@ -7,6 +7,8 @@ import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.util.Comparator;
 import java.util.HashMap;
+import zelda.items.Heart;
+import zelda.items.Rupee;
 
 /**
  * A GObject is something that gets drawn on the View, checks if it collides and animates itself.
@@ -290,4 +292,22 @@ public abstract class GObject implements DrawAble
 	{
 		this.screenAdjust = screenAdjust;
 	}
+
+    public void randomGoodie()
+    {
+        int r = (int)(Math.random()*200);
+                System.out.println(r);
+
+                if (r < 50)
+                {
+                    if (r < 25)
+                    {
+                        game.getScene().addNewGObject(new Heart (game, x, y));
+                    }
+                    else
+                    {
+                        game.getScene().addNewGObject(new Rupee (game, x, y));
+                    }
+                }
+    }
 }

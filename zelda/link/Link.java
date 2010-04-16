@@ -168,11 +168,11 @@ public class Link extends Karacter
 	protected void collision(GObject hitObject)
 	{
         if (health == 0)
-
-        {            
-            game.playMusic("sounds/killed.mp3", false);
-            setState(new DeathState(this,direction.RIGHT));
-            alive = false;
+        {
+            game.playFx("sounds/killed.mp3");
+            setState(new DeathState(this,direction.UP));
+            //alive = false;
+        }
 
 		if (hitObject instanceof BlueSoldier)
 		{
@@ -183,6 +183,13 @@ public class Link extends Karacter
                health --;
                lastHit = System.currentTimeMillis();
             }
+
+            if (health == 0)
+            {
+            game.playMusic("sounds/killed.mp3", false);
+            alive = false;
+            }
+
 		}
 
         if (hitObject instanceof Heart)
@@ -196,9 +203,9 @@ public class Link extends Karacter
 
         if (hitObject instanceof Rupee)
         {
+            game.playMusic("sounds/getItem.mp3", false);
             rupee += 5;
         }
-    }
    }
 
 	//Handy dandy stuff that handles input

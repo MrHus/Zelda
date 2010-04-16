@@ -36,9 +36,7 @@ public class Game
 	public Game()
 	{
 		link = new Link(this, 100, 100);
-
 		scene = new HouseScene(this, "GameStart");
-
 	}
 
 	public void quit()
