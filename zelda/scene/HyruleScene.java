@@ -17,6 +17,7 @@ public class HyruleScene extends ZeldaScene {
     private Polygon muur,muur1, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
     private Polygon bosje, bosje1, bosje2, tuin, tuin1, tuin2, balk;
 
+    private Rectangle valkuil = new Rectangle(897, 160, 12, 12);
     private Rectangle exitDown   = new Rectangle(672, 1013, 290, 20);
 
     public HyruleScene(Game game, String entrance)
@@ -24,6 +25,7 @@ public class HyruleScene extends ZeldaScene {
         super(game, "images/hyrule.png", entrance);
 
         exits.add(exitDown);
+        exits.add(valkuil);
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
@@ -244,9 +246,11 @@ public class HyruleScene extends ZeldaScene {
 	public void handleSwitchScene(Rectangle exit)
 	{
 		//throw new UnsupportedOperationException("Not supported yet.");
-        if (exit == exitDown)
+        if (exit == exitDown || exit == valkuil)
 		{
 			game.setScene(new HouseScene(game, "HyruleScene"));
+            game.getLink().setXHardCore(250);
+			game.getLink().setYHardCore(350);
 		}
 	}
 
