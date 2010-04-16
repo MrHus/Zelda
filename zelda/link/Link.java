@@ -20,6 +20,7 @@ public class Link extends Karacter
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
     private long lastHit = System.currentTimeMillis();
+
     private int rupee = 0;
 
 	public Link(Game game, int x, int y)
@@ -109,13 +110,22 @@ public class Link extends Karacter
 		spriteLoc.put("Link bow up 2",          new Rectangle(25, 375, 21, 21));
 		spriteLoc.put("Link bow up 3",          new Rectangle(50, 375, 21, 22));
 
-		
+        spriteLoc.put("Link hit right",         new Rectangle(0, 414, 17, 21));
+		spriteLoc.put("Link death right",       new Rectangle(17, 414, 27, 19));
+		spriteLoc.put("Link death right 2",     new Rectangle(41, 414, 27, 15));
+
+        spriteLoc.put("Link hit left",          new Rectangle(0, 436, 17, 21));
+		spriteLoc.put("Link death left",        new Rectangle(17, 436, 23, 19));
+		spriteLoc.put("Link death left 2",      new Rectangle(40, 436, 24, 15));
+        
 		sprite.setSprite(spriteLoc.get("Link stand down"));
+
+		z = 1;
+        health = 5;
 
 		screenAdjust = false;
 
 		state = new StandState(this);
-        //setAnimationInterval(1000);
 	}
 
     public void dropBomb()
@@ -123,23 +133,22 @@ public class Link extends Karacter
         switch (direction)
 		{
 			case UP:
-                game.getScene().addGObject(new Bomb(game, x + 2, y - 16));
+                game.getScene().addNewGObject(new Bomb(game, x + 2, y - 16));
 				break;
 
 			case DOWN:
-                game.getScene().addGObject(new Bomb(game, x + 2, y + getHeight()));
+                game.getScene().addNewGObject(new Bomb(game, x + 2, y + getHeight()));
 				break;
 
 			case LEFT:
-                game.getScene().addGObject(new Bomb(game, x - 13, y + 7));
+                game.getScene().addNewGObject(new Bomb(game, x - 13, y + 7));
 				break;
 
 			case RIGHT:
-                game.getScene().addGObject(new Bomb(game, x + getWidth(), y + 7));
+                game.getScene().addNewGObject(new Bomb(game, x + getWidth(), y + 7));
 				break;
 		}
     }
-
 
 	public void handleInput()
 	{
@@ -161,8 +170,9 @@ public class Link extends Karacter
 	{
         if (health == 0)
         {
-            game.playMusic("sounds/killed.mp3", false);
-            alive = false;
+            game.playFx("sounds/killed.mp3");
+            setState(new DeathState(this,direction.UP));
+            //alive = false;
         }
 
 		if (hitObject instanceof BlueSoldier)
@@ -170,27 +180,34 @@ public class Link extends Karacter
 
             if (health > 0 && System.currentTimeMillis() > lastHit + 800)
             {
-               game.playMusic("sounds/linkHurt.mp3", false);
+               game.playFx("sounds/linkHurt.mp3");
                health --;
                lastHit = System.currentTimeMillis();
-               //System.out.println("leven: " + health);
             }
+
+            if (health == 0)
+            {
+            game.playMusic("sounds/killed.mp3", false);
+            alive = false;
+            }
+
 		}
 
         if (hitObject instanceof Heart)
         {
             if (health < 5)
             {
-               game.playMusic("sounds/getItem.mp3", false);
+               game.playFx("sounds/getItem.mp3");
                health++;
             }
         }
 
         if (hitObject instanceof Rupee)
         {
+            game.playMusic("sounds/getItem.mp3", false);
             rupee += 5;
         }
-    }
+   }
 
 	//Handy dandy stuff that handles input
 	public boolean moveinput()

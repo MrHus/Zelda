@@ -15,7 +15,6 @@ import zelda.karacter.Karacter;
  */
 public class WhiteSoldier extends Karacter implements Hittable
 {
-
 	private Behavior behavior;
 
 	private long inputInterval = 50;
@@ -44,11 +43,10 @@ public class WhiteSoldier extends Karacter implements Hittable
 		
 		sprite.setSprite(spriteLoc.get("Stand right"));
 
-		direction = direction;
 		health = 6;
 
-//		state = new StandState(this);
-//		behavior = new PatrolBehavior(this, ticks);
+		state = new WalkState(this);
+		behavior = new RandomBehavior(this);
 	}
 
 	@Override
@@ -63,7 +61,7 @@ public class WhiteSoldier extends Karacter implements Hittable
 		if (System.currentTimeMillis() > lastInput + inputInterval)
 		{
 			state.handleInput();
-			behavior.behave();
+            behavior.behave();
 			lastInput = System.currentTimeMillis();
 		}
 	}
