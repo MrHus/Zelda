@@ -11,29 +11,29 @@ import zelda.scene.HouseScene;
  *
  * @author maartenhus
  */
-public class Game
-{
-	private boolean running = true;
-	private boolean paused = false;
-	private boolean debug = true;
-	private int gameSpeed = 10;
-	private int width = 500;
-	private int height = 400;
-	private Link link;
-	private Scene scene;
-	private Music music;
-	private SoundFx fx;
-	private boolean aPressed = false;
-	private boolean sPressed = false;
-	private boolean dPressed = false;
-	private boolean wPressed = false;
-	private boolean jPressed = false;
-	private boolean kPressed = false;
-	private boolean lPressed = false;
 
-	public Game()
-	{
-		link = new Link(this, 100, 100);
+public class Game {
+
+    private boolean running = true;
+    private boolean paused = false;
+    private boolean debug = true;
+    private int gameSpeed = 10;
+    private int width = 500;
+    private int height = 400;
+    private Link link;
+    private Scene scene;
+    private Music music;
+    private SoundFx fx;
+    private boolean aPressed = false;
+    private boolean sPressed = false;
+    private boolean dPressed = false;
+    private boolean wPressed = false;
+    private boolean jPressed = false;
+    private boolean kPressed = false;
+    private boolean lPressed = false;
+
+    public Game() {
+        link = new Link(this, 100, 100);
 		scene = new HouseScene(this, "GameStart");
 
 //        scene = new HiddenScene(this, "GameStart");

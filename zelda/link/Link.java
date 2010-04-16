@@ -111,12 +111,14 @@ public class Link extends Karacter
 		spriteLoc.put("Link bow up 3",          new Rectangle(50, 375, 21, 22));
 
         spriteLoc.put("Link hit right",         new Rectangle(0, 425, 17, 21));
-		spriteLoc.put("Link death right",       new Rectangle(25, 425, 27, 19));
-		spriteLoc.put("Link death right 2",     new Rectangle(50, 425, 27, 15));
+        spriteLoc.put("Link death right",       new Rectangle(50, 425, 27, 15));
+		spriteLoc.put("Link death right 2",     new Rectangle(25, 425, 27, 19));
+		
 
         spriteLoc.put("Link hit left",          new Rectangle(0, 450, 17, 21));
-		spriteLoc.put("Link death left",        new Rectangle(25, 450, 23, 19));
-		spriteLoc.put("Link death left 2",      new Rectangle(50, 450, 24, 15));
+        spriteLoc.put("Link death left",        new Rectangle(50, 450, 24, 15));
+		spriteLoc.put("Link death left 2",      new Rectangle(25, 450, 23, 19));
+		
         
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
