@@ -89,6 +89,7 @@ public class WhiteSoldier extends Karacter implements Hittable
         {
             alive = false;
             game.playFx("sounds/enemyDie.mp3");
+            randomGoodie();
         }
 	}
 
