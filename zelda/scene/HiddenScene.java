@@ -11,12 +11,13 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class HiddenScene extends ZeldaScene {
-
+public class HiddenScene extends ZeldaScene
+{
     Polygon muur, muur1, muur2, muur3, uitgang;
     private Rectangle exitDown = new Rectangle(116, 449, 20, 20);
 
-    public HiddenScene(Game game, String entrance) {
+    public HiddenScene(Game game, String entrance)
+	{
 
         super(game, "images/hiddenpath.png", entrance);
         exits.add(exitDown);
@@ -76,20 +77,23 @@ public class HiddenScene extends ZeldaScene {
     }
 
     @Override
-    public void handleSwitchScene(Rectangle exit) {
-        if (exit == exitDown) {
+    public void handleSwitchScene(Rectangle exit)
+	{
+        if (exit == exitDown)
+		{
             game.setScene(new HyruleScene(game, "HiddenScene"));
         }
     }
 
     @Override
-    public void handleSwitchScene(String entrance) {
-        if (entrance.equals("HiddenSceneTrap")) {
-            while (moveScene(712, 213)) {
-            }
+    public void handleSwitchScene(String entrance)
+	{
+        if (entrance.equals("HyruleScene"))
+		{
+            while (moveScene(314, 100)) {}
 
-            game.getLink().setXHardCore(81);
-            game.getLink().setYHardCore(131);
+            game.getLink().setXHardCore(390);
+            game.getLink().setYHardCore(158);
         }
     }
 }

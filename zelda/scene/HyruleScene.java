@@ -18,19 +18,19 @@ public class HyruleScene extends ZeldaScene {
     private Polygon muur, muur1, kasteelmuur1, boom, boom2, kasteelmuur, kasteelmuur2, ondermuur;
     private Polygon bosje, bosje1, bosje2, tuin, tuin1, tuin2, balk;
 
-    private Rectangle valkuil = new Rectangle(897, 160, 14, 14);
-    private Rectangle exitDown   = new Rectangle(672, 1013, 290, 20);
-    private Rectangle trap   = new Rectangle(713, 215, 14, 14);
-    private Rectangle deur   = new Rectangle(497, 247, 30, 30);
+    private Rectangle hatch		= new Rectangle(910, 160, 5, 5);
+    private Rectangle exitDown  = new Rectangle(672, 1013, 290, 20);
+    private Rectangle trap		= new Rectangle(713, 215, 14, 14);
+    private Rectangle door		= new Rectangle(497, 247, 30, 30);
 
     public HyruleScene(Game game, String entrance)
 	{
         super(game, "images/hyrule.png", entrance);
 
         exits.add(exitDown);
-        exits.add(valkuil);
+        exits.add(hatch);
         exits.add(trap);
-        exits.add(deur);
+        exits.add(door);
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
@@ -251,7 +251,7 @@ public class HyruleScene extends ZeldaScene {
 	public void handleSwitchScene(Rectangle exit)
 	{
 		//throw new UnsupportedOperationException("Not supported yet.");
-        if (exit == valkuil)
+        if (exit == hatch)
 		{
 			game.setScene(new HiddenScene(game, "HyruleScene"));
 		}
@@ -263,7 +263,7 @@ public class HyruleScene extends ZeldaScene {
         {
             game.setScene(new HiddenScene(game, "HyruleSceneTrap"));
         }
-        else if (exit == deur)
+        else if (exit == door)
         {
             game.setScene(new CastleScene(game, "HyruleScene"));
         }
@@ -281,10 +281,10 @@ public class HyruleScene extends ZeldaScene {
 		}
         if(entrance.equals("HiddenScene"))
 		{
-			while(moveScene(571, 115)){}
+			while(moveScene(724, 0)){System.out.println("Moving");}
 
-			game.getLink().setXHardCore(713);
-			game.getLink().setYHardCore(215);
+			game.getLink().setXHardCore(220);
+			game.getLink().setYHardCore(250);
 		}
 	}
 }
