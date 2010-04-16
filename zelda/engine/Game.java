@@ -4,6 +4,7 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.scene.HiddenScene;
+import zelda.scene.HouseScene;
 import zelda.scene.Kerker;
 
 /**
@@ -33,8 +34,8 @@ public class Game {
 
     public Game() {
         link = new Link(this, 100, 100);
-//		scene = new HouseScene(this, "GameStart");
-        scene = new HiddenScene(this, "GameStart");
+		scene = new HouseScene(this, "GameStart");
+//        scene = new HiddenScene(this, "GameStart");
 //        scene = new Kerker(this, "GameStart");
     }
 
