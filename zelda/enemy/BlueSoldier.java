@@ -37,7 +37,7 @@ public class BlueSoldier extends Karacter implements Hittable
 
 		spriteLoc.put("Stand up",		new Rectangle(0, 60, 22, 27));
 		spriteLoc.put("Walk up 1",		new Rectangle(30, 60, 22, 26));
-		spriteLoc.put("Walk up 2",		new Rectangle(64, 57, 22, 33));
+		spriteLoc.put("Walk up 2",		new Rectangle(60, 57, 22, 33));
 
 		spriteLoc.put("Stand down",		new Rectangle(0, 90, 22, 33));
 		spriteLoc.put("Walk down 1",	new Rectangle(30, 90, 22, 34));
