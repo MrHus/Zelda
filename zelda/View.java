@@ -43,7 +43,10 @@ public class View
 		gd = ge.getDefaultScreenDevice();
 		GraphicsConfiguration gc = gd.getDefaultConfiguration();
 
-		gd.setFullScreenWindow(frame);
+		if(!game.isDebug())
+		{
+			gd.setFullScreenWindow(frame); //needs to be done before call too isDisplayChangeSupported
+		}
 
 		if (gd.isDisplayChangeSupported() && !game.isDebug())
 		{
