@@ -1,10 +1,12 @@
 package zelda.scene;
 
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
-import zelda.items.Heart;
 import zelda.items.Bush;
 import zelda.engine.Game;
+import zelda.items.Guard;
+import zelda.items.Heart;
 import zelda.items.Rupee;
 import zelda.karacter.Direction;
 
@@ -13,8 +15,8 @@ import zelda.karacter.Direction;
  *
  * @author maartenhus
  */
-public class HouseScene extends ZeldaScene {
-
+public class HouseScene extends ZeldaScene
+{
     private Polygon house;
     private Polygon right;
     private Polygon housecliff;
@@ -22,8 +24,15 @@ public class HouseScene extends ZeldaScene {
     private Polygon down;
     private Polygon trees;
 
-    public HouseScene(Game game) {
-        super(game, "images/link-house.png");
+	private Rectangle exitUp   = new Rectangle(155, 20, 300, 20);
+	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
+
+    public HouseScene(Game game, String entrance)
+	{
+        super(game, "images/link-house.png", entrance);
+
+		exits.add(exitUp);
+		exits.add(exitLeft);
 
         int[] hxpos = {149, 146, 145, 151, 177, 178, 182, 182, 202, 202, 208, 208, 232, 238, 240, 237, 150};
         int[] hypos = {177, 180, 265, 271, 273, 275, 275, 272, 271, 275, 275, 272, 272, 268, 183, 177, 177};
@@ -55,7 +64,6 @@ public class HouseScene extends ZeldaScene {
 
         trees = new Polygon(txpos, typos, typos.length);
 
-
         solids.add(trees);
         solids.add(housecliff);
         solids.add(smallcliff);
@@ -63,22 +71,63 @@ public class HouseScene extends ZeldaScene {
         solids.add(down);
         solids.add(house);
 
-
         Bush bush = new Bush(game, 160, 50);
         gameObjects.add(bush);
 
-        gameObjects.add(new Rupee(game, 120, 90));
-        gameObjects.add(new Rupee(game, 240, 40));
-
-        gameObjects.add(new Heart(game, 280, 140));
-        gameObjects.add(new Heart(game, 340, 90));
-        gameObjects.add(new Heart(game, 180, 40));
+        gameObjects.add(new Bush(game, 160, 50));
+        gameObjects.add(new Bush(game, 272, 51));
+        gameObjects.add(new Bush(game, 305, 71));
+        gameObjects.add(new Bush(game, 144, 270));
+        gameObjects.add(new Bush(game, 128, 270));
+        gameObjects.add(new Bush(game, 112, 270));
+        gameObjects.add(new Bush(game, 144, 284));
+        gameObjects.add(new Bush(game, 128, 284));
+        gameObjects.add(new Bush(game, 112, 284));
+        gameObjects.add(new Bush(game, 229, 271));
+        gameObjects.add(new Bush(game, 229, 287));
+        gameObjects.add(new Bush(game, 245, 271));
+        gameObjects.add(new Bush(game, 245, 287));
+        gameObjects.add(new Bush(game, 34, 272));
+        gameObjects.add(new Bush(game, 50, 288));
+        gameObjects.add(new Bush(game, 34, 302));
+        gameObjects.add(new Bush(game, 50, 272));
+        gameObjects.add(new Bush(game, 34, 288));
+        gameObjects.add(new Bush(game, 50, 302));
+        gameObjects.add(new Bush(game, 419, 333));
+        gameObjects.add(new Bush(game, 419, 349));
+        gameObjects.add(new Bush(game, 435, 349));
+        gameObjects.add(new Bush(game, 435, 365));
+        gameObjects.add(new Bush(game, 451, 365));
 
 		gameObjects.add(game.getLink());
+        gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
+        gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
+        gameObjects.add(new Guard(game, 483, 408, Direction.RIGHT));
+        gameObjects.add(new Guard(game, 483, 376, Direction.RIGHT));
+        gameObjects.add(new Guard(game, 9, 415, Direction.LEFT));
+        gameObjects.add(new Guard(game, 9, 385, Direction.LEFT));
+        gameObjects.add(new Guard(game, 233, 480, Direction.UP));
+        gameObjects.add(new Guard(game, 206, 480, Direction.UP));
 
-		gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
-		gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
 		game.playMusic("sounds/overworld.mp3", true);
+    }
+
+	@Override
+	public void handleSwitchScene(Rectangle exit)
+	{
+		if (exit == exitUp)
+		{
+			game.setScene(new HyruleScene(game, "HouseScene"));
+		}
+	}
+
+	@Override
+	public void handleSwitchScene(String entrance)
+	{
+		if(entrance.equals("GameStart"))
+		{
+			game.getLink().setXHardCore(100);
+			game.getLink().setYHardCore(100);
+		}
 	}
 }
-
