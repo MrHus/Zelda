@@ -121,6 +121,7 @@ public class Arrow extends GObject
     {
         if(hit)
         {
+            liquid = true;
             if(animationCounter == animation.length)
             {
                 setAlive(false);
