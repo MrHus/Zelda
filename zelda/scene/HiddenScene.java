@@ -68,9 +68,9 @@ public class HiddenScene extends ZeldaScene {
         gameObjects.add(new Rupee(game, 405, 336));
         gameObjects.add(new Rupee(game, 413, 336));
 
-        gameObjects.add(new WhiteSoldier(game, 123, 117, Direction.UP, 20));
-        gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT, 20));
-        gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT, 20));
+        gameObjects.add(new WhiteSoldier(game, 123, 117, Direction.UP));
+        gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT));
+        gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT));
         handleSwitchScene(entrance);
 
     }
