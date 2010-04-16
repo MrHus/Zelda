@@ -40,6 +40,7 @@ public abstract class ZeldaScene extends Scene
 		
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 
+		GuiHeart.clear();
         GuiHeart heart;
 
         for(int i = 0; i < 5; i++) //draw live bar hearts

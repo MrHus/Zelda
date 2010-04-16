@@ -72,4 +72,9 @@ public class GuiHeart extends GObject
     {
         this.full = full;
     }
+
+	public static void clear()
+	{
+		i = 0;
+	}
 }
