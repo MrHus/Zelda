@@ -170,8 +170,8 @@ public class Link extends Karacter
         if (health == 0)
         {
             game.playFx("sounds/killed.mp3");
-            setState(new DeathState(this,direction.UP));
-            //alive = false;
+
+            alive = false;
         }
 
 		if (hitObject instanceof BlueSoldier)
@@ -186,8 +186,9 @@ public class Link extends Karacter
 
             if (health == 0)
             {
-            game.playMusic("sounds/killed.mp3", false);
-            alive = false;
+            game.playFx("sounds/killed.mp3", false);
+            setState(new DeathState(this,direction.LEFT));
+            //alive = false;
             }
 
 		}
