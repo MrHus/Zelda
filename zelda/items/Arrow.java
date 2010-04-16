@@ -142,15 +142,13 @@ public class Arrow extends GObject
 	@Override
 	public void collision(GObject obj)
 	{
-
-		if (obj instanceof Hittable && !(obj instanceof Link))
+		if (obj instanceof Hittable && !(obj instanceof Link) && !(obj instanceof Bush))
 		{
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
             alive = false;
+			arrowHitSomething();
         }
-
-        arrowHitSomething();
 	}
 
     private void arrowHitSomething()
