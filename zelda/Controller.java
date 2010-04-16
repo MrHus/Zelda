@@ -53,7 +53,10 @@ public class Controller implements Runnable, KeyListener
 					}
 				}
 
-				view.draw();
+                try
+                {
+                    view.draw();
+                }catch(Exception e){}
 				
 				Thread.sleep(game.getGameSpeed());
 			}

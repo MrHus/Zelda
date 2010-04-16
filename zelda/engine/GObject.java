@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import java.util.Comparator;
 import java.util.HashMap;
 import zelda.items.Heart;
 import zelda.items.Rupee;
@@ -296,7 +295,7 @@ public abstract class GObject implements DrawAble
     public void randomGoodie()
     {
         int r = (int)(Math.random()*200);
-        System.out.println(r);
+        //System.out.println(r);
 
         if (r < 50)
         {
