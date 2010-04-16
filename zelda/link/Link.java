@@ -1,7 +1,7 @@
 package zelda.link;
 
 import java.awt.Rectangle;
-import zelda.enemy.BlueSoldier;
+import zelda.enemy.Soldier;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.items.Bomb;
@@ -173,15 +173,14 @@ public class Link extends Karacter
         if (health == 0)
         {
             if(!getStateString().equals("DeathState"))
-            {
-                
+            {    
                 game.playFx("sounds/killed.mp3");
                 setState(new DeathState(this, getDirection()));
                 //alive = false;
             }            
         }
 
-		if (hitObject instanceof BlueSoldier)
+		if (hitObject instanceof Soldier)
 		{
             if (health > 0 && System.currentTimeMillis() > lastHit + 800)
             {
@@ -190,7 +189,7 @@ public class Link extends Karacter
                lastHit = System.currentTimeMillis();
 
                //System.out.println("leven: " + health);
-               BlueSoldier soldier = (BlueSoldier)hitObject;
+               Soldier soldier = (Soldier)hitObject;
                setState(new TransState(this, soldier.getDirection()));
             }
 		}

@@ -196,10 +196,10 @@ public class CastleScene extends ZeldaScene {
 
         gameObjects.add(new BlueSoldier(game, 331, 762, Direction.RIGHT, 50));
         gameObjects.add(new BlueSoldier(game, 689, 762, Direction.LEFT, 50));
-        gameObjects.add(new WhiteSoldier(game, 1038, 681, Direction.LEFT, 50));
+        gameObjects.add(new WhiteSoldier(game, 1038, 681, Direction.LEFT));
         gameObjects.add(new BlueSoldier(game, 883, 144, Direction.UP, 200));
         gameObjects.add(new BlueSoldier(game, 116, 144, Direction.UP, 200));
-        gameObjects.add(new WhiteSoldier(game, 505, 114, Direction.LEFT, 40));
+        gameObjects.add(new WhiteSoldier(game, 505, 114, Direction.LEFT));
 
 
         handleSwitchScene(entrance);

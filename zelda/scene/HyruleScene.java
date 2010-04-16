@@ -228,9 +228,10 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new BlueSoldier(game, 477, 484, Direction.DOWN, 50));
         gameObjects.add(new BlueSoldier(game, 520, 484, Direction.DOWN, 50));
         gameObjects.add(new BlueSoldier(game, 236, 918, Direction.RIGHT, 50));
-        gameObjects.add(new WhiteSoldier(game, 833, 710, Direction.LEFT, 40));
-        gameObjects.add(new WhiteSoldier(game, 622, 528, Direction.DOWN, 30));
-        gameObjects.add(new WhiteSoldier(game, 293, 293, Direction.DOWN, 30));
+
+        gameObjects.add(new WhiteSoldier(game, 833, 710, Direction.LEFT));
+        gameObjects.add(new WhiteSoldier(game, 622, 528, Direction.DOWN));
+        gameObjects.add(new WhiteSoldier(game, 293, 293, Direction.DOWN));
 
         gameObjects.add(new Guard(game, 438, 715, Direction.LEFT));
         gameObjects.add(new Guard(game, 122, 991, Direction.UP));
