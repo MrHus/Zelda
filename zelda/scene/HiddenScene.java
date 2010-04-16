@@ -18,7 +18,6 @@ public class HiddenScene extends ZeldaScene
 
     public HiddenScene(Game game, String entrance)
 	{
-
         super(game, "images/hiddenpath.png", entrance);
         exits.add(exitDown);
 
@@ -51,9 +50,6 @@ public class HiddenScene extends ZeldaScene
         solids.add(uitgang);
         gameObjects.add(game.getLink());
 
-        game.getLink().setXHardCore(414);
-        game.getLink().setYHardCore(160);
-
         gameObjects.add(new Rupee(game, 365, 322));
         gameObjects.add(new Rupee(game, 373, 322));
         gameObjects.add(new Rupee(game, 381, 322));
@@ -72,15 +68,15 @@ public class HiddenScene extends ZeldaScene
         gameObjects.add(new WhiteSoldier(game, 123, 117, Direction.UP));
         gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT));
         gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT));
-        handleSwitchScene(entrance);
 
+        handleSwitchScene(entrance);
     }
 
     @Override
     public void handleSwitchScene(Rectangle exit)
 	{
-        if (exit == exitDown)
-		{
+        if (exit == exitDown) 
+        {
             game.setScene(new HyruleScene(game, "HiddenScene"));
         }
     }

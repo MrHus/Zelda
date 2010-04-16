@@ -39,7 +39,7 @@ public class WhiteSoldier extends Soldier implements Hittable
 
             case ARROW:
                 game.playFx("sounds/enemyHit.mp3");
-                health -= 3;
+                health -= 3;               
                 break;
 		}
 

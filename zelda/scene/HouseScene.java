@@ -135,8 +135,7 @@ public class HouseScene extends ZeldaScene
 	public void handleSwitchScene(String entrance)
 	{
         if(entrance.equals("HyruleScene"))
-		{
-            System.out.println ("test");
+		{           
 			while(moveScene(100, 100)){}
 
 			game.getLink().setXHardCore(244);
