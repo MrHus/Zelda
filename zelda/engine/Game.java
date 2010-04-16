@@ -16,7 +16,6 @@ public class Game {
     private boolean running = true;
     private boolean paused = false;
     private boolean debug = true;
-
     private int gameSpeed = 10;
     private int width = 500;
     private int height = 400;
