@@ -24,7 +24,7 @@ public class HouseScene extends ZeldaScene
     private Polygon down;
     private Polygon trees;
 
-	private Rectangle exitUp   = new Rectangle(155, 20, 300, 20);
+	private Rectangle exitUp   = new Rectangle(155, 10, 300, 20);
 	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
 
     public HouseScene(Game game, String entrance)
@@ -110,6 +110,8 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Guard(game, 206, 480, Direction.UP));
 
 		game.playMusic("sounds/overworld.mp3", true);
+
+        handleSwitchScene(entrance);
     }
 
 	@Override
@@ -124,10 +126,19 @@ public class HouseScene extends ZeldaScene
 	@Override
 	public void handleSwitchScene(String entrance)
 	{
+        if(entrance.equals("HyruleScene"))
+		{
+            System.out.println ("test");
+			while(moveScene(100, 100)){}
+
+			game.getLink().setXHardCore(244);
+			game.getLink().setYHardCore(33);
+		}
+
 		if(entrance.equals("GameStart"))
 		{
-			game.getLink().setXHardCore(100);
-			game.getLink().setYHardCore(100);
+			game.getLink().setXHardCore(183);
+			game.getLink().setYHardCore(278);
 		}
 	}
 }
