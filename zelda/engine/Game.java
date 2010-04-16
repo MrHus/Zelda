@@ -3,7 +3,7 @@ package zelda.engine;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
-import zelda.scene.HouseScene;
+import zelda.scene.HiddenScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -36,7 +36,8 @@ public class Game
 	public Game()
 	{
 		link = new Link(this, 100, 100);
-		scene = new HouseScene(this, "GameStart");
+//		scene = new HouseScene(this, "GameStart");
+		scene = new HiddenScene(this, "GameStart");
 	}
 
 	public void quit()
