@@ -121,6 +121,7 @@ public class Link extends Karacter
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
 		z = 1;
+        health = 5;
 
 		screenAdjust = false;
 
@@ -203,7 +204,7 @@ public class Link extends Karacter
 
         if (hitObject instanceof Rupee)
         {
-            game.playMusic("sounds/getItem.mp3", false);
+            game.playFx("sounds/getItem.mp3");
             rupee += 5;
         }
    }

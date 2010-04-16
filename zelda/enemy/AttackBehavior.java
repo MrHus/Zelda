@@ -17,6 +17,7 @@ public class AttackBehavior extends Behavior {
 
 	public AttackBehavior(BlueSoldier soldier)
 	{
+        //System.out.println("here");
 		this.soldier = soldier;
         link = soldier.getGame().getLink();
 	}

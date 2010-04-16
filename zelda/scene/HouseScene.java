@@ -6,8 +6,6 @@ import zelda.enemy.BlueSoldier;
 import zelda.items.Bush;
 import zelda.engine.Game;
 import zelda.items.Guard;
-import zelda.items.Heart;
-import zelda.items.Rupee;
 import zelda.karacter.Direction;
 
 /**
@@ -99,9 +97,11 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Bush(game, 435, 365));
         gameObjects.add(new Bush(game, 451, 365));
 
-		gameObjects.add(game.getLink());
+        gameObjects.add(game.getLink());
+        
         gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
         gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
+
         gameObjects.add(new Guard(game, 483, 408, Direction.RIGHT));
         gameObjects.add(new Guard(game, 483, 376, Direction.RIGHT));
         gameObjects.add(new Guard(game, 9, 415, Direction.LEFT));
