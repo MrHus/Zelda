@@ -1,6 +1,7 @@
 package zelda.enemy;
 
 import zelda.karacter.Direction;
+import zelda.karacter.Karacter;
 import zelda.karacter.KaracterState;
 
 /**
@@ -14,21 +15,14 @@ public class StandState extends KaracterState
 	private final static String[] leftAnimation	= {"Stand left"};
 	private final static String[] rightAnimation= {"Stand right"};
 
-	private Direction oldDirection;
-	private BlueSoldier soldier;
+	private Direction oldDirection;;
 
-    private int oldX, oldY;
-
-	public StandState(BlueSoldier soldier)
+	public StandState(Karacter soldier)
 	{
 		super(soldier);
-		this.soldier = soldier;
 		name = "StandState";
 
 		oldDirection = soldier.getDirection();
-
-        oldX = karacter.getX();
-        oldY = karacter.getY();
 
 		switch (oldDirection)
 		{
@@ -56,7 +50,7 @@ public class StandState extends KaracterState
 		//System.out.println("oldDirection " + oldDirection + " new " + karacter.getDirection());
 		if (oldDirection != karacter.getDirection())
         {
-            karacter.setState(new WalkState(soldier));
+            karacter.setState(new WalkState(karacter));
         }
 	}
 }

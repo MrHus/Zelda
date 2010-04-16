@@ -2,9 +2,7 @@ package zelda.enemy;
 
 import java.awt.Polygon;
 import java.awt.geom.Area;
-import zelda.engine.GObject;
 import zelda.karacter.Direction;
-import zelda.link.Link;
 
 /**
  *
@@ -52,7 +50,6 @@ public class PatrolBehavior extends Behavior
                 int[] evyposleft = {soldier.getY() + 20 , soldier.getY() + 50, soldier.getY() + 40, soldier.getY() - 15, soldier.getY() - 25, soldier.getY() + 5};
                 eyeView = new Polygon(evxposleft, evyposleft, evxposleft.length);
                 soldier.getGame().getScene().addEyeView(eyeView);
-                behavior = new AttackBehavior(soldier);
                 break;
 
 			case RIGHT:
@@ -63,20 +60,14 @@ public class PatrolBehavior extends Behavior
                 break;
 		}
 
-        for (GObject obj : soldier.getGame().getScene().getGObjects())
-		{
-            final Area area = new Area();
-            area.add(new Area(eyeView));
-            area.intersect(new Area(obj.getRectangle()));
+        final Area area = new Area();
+        area.add(new Area(eyeView));
+        area.intersect(new Area(soldier.getGame().getLink().getRectangle()));
 
-            if((obj instanceof Link) && !area.isEmpty())
-            {
-                //System.out.println("Link was seen");
-
-                soldier.setBehavior(new AttackBehavior(soldier));
-            }
-		}
-
+        if(!area.isEmpty())
+        {
+            soldier.setBehavior(new AttackBehavior(soldier));
+        }
 
 		if (soldier.getStateString().equals("WalkState"))
 		{

@@ -1,6 +1,7 @@
 package zelda.enemy;
 
 import zelda.karacter.Direction;
+import zelda.karacter.Karacter;
 import zelda.karacter.KaracterState;
 
 /**
@@ -13,14 +14,13 @@ public class WalkState extends KaracterState
 	private final String[] upAnimation		= {"Stand up", "Walk up 1", "Walk up 2"};
 	private final String[] leftAnimation	= {"Stand left", "Walk left 1", "Walk left 2"};
 	private final String[] rightAnimation	= {"Stand right", "Walk right 1", "Walk right 2"};
-	
-	private final static int WALK_SPEED = 2;
+
+    private static final int WALK_SPEED = 2;
+
 	private int oldX, oldY;
 	private long oldAnimationInterval;
 
-    private BlueSoldier soldier;
-
-    public WalkState(BlueSoldier soldier)
+    public WalkState(Karacter soldier)
 	{
 		super(soldier);
 		name = "WalkState";
@@ -122,7 +122,8 @@ public class WalkState extends KaracterState
 
 		if (animationCounter == karacter.getAnimation().length)
 		{
-			
+			//karacter.setX(oldX);
+            //karacter.setY(oldY);
 		}
 		else
         {
@@ -131,14 +132,15 @@ public class WalkState extends KaracterState
 				switch (animationCounter)
 				{
                     case 0:
-						karacter.setY(karacter.getY() + 0);
+						//karacter.setY(karacter.getY() + 0);
 						break;
 
 					case 1:
-						karacter.setY(karacter.getY() + 1);
+						//karacter.setY(karacter.getY() + 1);
 						break;
 
                     case 2:
+						//karacter.setY(karacter.getY() - 7);
 						//karacter.setY(karacter.getY() - 7);
                         //karacter.setX(karacter.getX() + 3);
 						break;
