@@ -18,6 +18,8 @@ public class BlueSoldier extends Karacter implements Hittable
 
 	private Behavior behavior;
 
+    protected int enemyHealth = 4;
+
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
@@ -44,7 +46,7 @@ public class BlueSoldier extends Karacter implements Hittable
 		
 		sprite.setSprite(spriteLoc.get("Stand right"));
 
-		direction = direction;
+		this.direction = direction;
 		health = 6;
 
 		state = new WalkState(this);
@@ -79,7 +81,8 @@ public class BlueSoldier extends Karacter implements Hittable
 				break;
 
             case BOMB:
-                alive = false;
+                //alive = false;
+                enemyHealth = 0;
                 break;
 
             case ARROW:
@@ -88,6 +91,14 @@ public class BlueSoldier extends Karacter implements Hittable
                 break;
 		}
 
+        System.out.println(enemyHealth);
+        
+        if(enemyHealth <= 0)
+        {
+            alive = false;
+            game.playMusic("sounds/enemyDie.mp3", false);
+            randomGoodie();
+        }
         if(health <= 0)
         {
             alive = false;
