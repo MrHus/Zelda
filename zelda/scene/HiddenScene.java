@@ -50,9 +50,6 @@ public class HiddenScene extends ZeldaScene {
         solids.add(uitgang);
         gameObjects.add(game.getLink());
 
-        game.getLink().setXHardCore(414);
-        game.getLink().setYHardCore(160);
-
         gameObjects.add(new Rupee(game, 365, 322));
         gameObjects.add(new Rupee(game, 373, 322));
         gameObjects.add(new Rupee(game, 381, 322));
@@ -71,24 +68,27 @@ public class HiddenScene extends ZeldaScene {
         gameObjects.add(new WhiteSoldier(game, 123, 117, Direction.UP, 20));
         gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT, 20));
         gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT, 20));
+        
         handleSwitchScene(entrance);
-
     }
 
     @Override
-    public void handleSwitchScene(Rectangle exit) {
-        if (exit == exitDown) {
-            game.setScene(new HyruleScene(game, "HiddenScene"));
+    public void handleSwitchScene(Rectangle exit)
+    {
+        if (exit == exitDown) 
+        {
+            game.setScene(new HyruleScene(game, "HyruleScene"));
         }
     }
 
     @Override
-    public void handleSwitchScene(String entrance) {
-        if (entrance.equals("HiddenSceneTrap")) {
-            while (moveScene(712, 213)) {
-            }
+    public void handleSwitchScene(String entrance)
+    {
+        if (entrance.equals("HyruleScene"))
+        {
+            while (moveScene(413, 131)){}
 
-            game.getLink().setXHardCore(81);
+            game.getLink().setXHardCore(413);
             game.getLink().setYHardCore(131);
         }
     }

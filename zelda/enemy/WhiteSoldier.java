@@ -81,7 +81,7 @@ public class WhiteSoldier extends Karacter implements Hittable
 
             case ARROW:
                 game.playFx("sounds/enemyHit.mp3");
-                health -= 3;
+                health -= 3;               
                 break;
 		}
 
