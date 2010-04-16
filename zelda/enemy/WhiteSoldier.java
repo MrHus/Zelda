@@ -13,7 +13,7 @@ import zelda.karacter.Karacter;
  *
  * @author maartenhus
  */
-public class BlueSoldier extends Karacter implements Hittable
+public class WhiteSoldier extends Karacter implements Hittable
 {
 
 	private Behavior behavior;
@@ -21,9 +21,9 @@ public class BlueSoldier extends Karacter implements Hittable
 	private long inputInterval = 50;
 	private long lastInput = System.currentTimeMillis();
 
-	public BlueSoldier(Game game, int x, int y, Direction direction, int ticks)
+	public WhiteSoldier(Game game, int x, int y, Direction direction, int ticks)
 	{
-		super(game, x, y, 10, 20, direction, "images/blue-soldier.png");
+		super(game, x, y, 10, 20, Direction.DOWN, "images/white-soldier.png");
 
 		spriteLoc.put("Stand right",	new Rectangle(0, 0, 27, 27));
 		spriteLoc.put("Walk right 1",	new Rectangle(30, 0, 32, 27));
@@ -44,10 +44,11 @@ public class BlueSoldier extends Karacter implements Hittable
 		
 		sprite.setSprite(spriteLoc.get("Stand right"));
 
+		direction = direction;
 		health = 6;
 
-		state = new StandState(this);
-		behavior = new PatrolBehavior(this, ticks);
+//		state = new StandState(this);
+//		behavior = new PatrolBehavior(this, ticks);
 	}
 
 	@Override
