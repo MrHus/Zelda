@@ -6,8 +6,6 @@ import zelda.enemy.BlueSoldier;
 import zelda.items.Bush;
 import zelda.engine.Game;
 import zelda.items.Guard;
-import zelda.items.Heart;
-import zelda.items.Rupee;
 import zelda.karacter.Direction;
 
 /**
