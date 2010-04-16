@@ -107,7 +107,17 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Guard(game, 233, 480, Direction.UP));
         gameObjects.add(new Guard(game, 206, 480, Direction.UP));
 
-		game.playMusic("sounds/overworld.mp3", true);
+		
+		if(!game.getSong().equals("sounds/overworld.mp3"))
+		{
+			System.out.println(game.getSong());
+
+			try
+			{
+				game.stopMusic();
+			}catch(Exception e){}
+			game.playMusic("sounds/overworld.mp3", true);
+		}
 
         handleSwitchScene(entrance);
     }

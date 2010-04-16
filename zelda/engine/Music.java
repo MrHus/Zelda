@@ -27,7 +27,7 @@ public class Music extends Sound
 			try
 			{
 				player.play();
-				Thread.sleep(1000);
+				Thread.sleep(10);
 			}
 			catch (Exception ee)
 			{
