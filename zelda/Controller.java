@@ -17,14 +17,14 @@ public class Controller implements Runnable, KeyListener
 	private Thread thread;
 	private Game game;
 	private View view;
-	private PolyCreator polyCreator;
+	//private PolyCreator polyCreator;
 
 	public Controller(Game game, View view, final JFrame frame)
 	{
 		this.game = game;
 		this.view = view;
 
-		frame.addMouseListener(new PolyCreator(game));
+		//frame.addMouseListener(new PolyCreator(game));
 		frame.addKeyListener(this);
 
 		thread = new Thread(this, "GameLoop");
@@ -103,6 +103,9 @@ public class Controller implements Runnable, KeyListener
 			case KeyEvent.VK_L:
 				game.setlPressed(true);
 				break;
+			case KeyEvent.VK_ENTER:
+				game.setEnterPressed(true);
+				break;
 		}
 	}
 
@@ -130,6 +133,9 @@ public class Controller implements Runnable, KeyListener
 				break;
 			case KeyEvent.VK_L:
 				game.setlPressed(false);
+				break;
+			case KeyEvent.VK_ENTER:
+				game.setEnterPressed(false);
 				break;
 		}
 	}

@@ -26,7 +26,7 @@ public class HyruleScene extends ZeldaScene
 
     public HyruleScene(Game game, String entrance)
 	{
-        super(game, "images/hyrule.png", entrance);
+        super(game, "images/hyrule.png");
 
         exits.add(exitDown);
         exits.add(hatch);

@@ -18,12 +18,14 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class CastleScene extends ZeldaScene {
+public class CastleScene extends ZeldaScene
+{
 
     Polygon middenbovenmuur, stukmuur, stukmuur1, stukmuur2, rechtsonder, rechts, rechtsmidden, linksonder, links, zuil, zuil1, zuil2, zuil3, zuil4, zuil5, zuil6, zuil7, midden, midden1, pot, pot1, ding1, ding, ding2, ding3;
 
-    public CastleScene(Game game, String entrance) {
-        super(game, "images/castle.png", entrance);
+    public CastleScene(Game game, String entrance)
+	{
+        super(game, "images/castle.png");
 
         int[] xpos = {498, 352, 298, 217, 215, 147, 146, 145, 159, 160, 190, 193, 318, 320, 704, 704, 830, 831, 863, 865, 877, 880, 672, 496};
         int[] ypos = {561, 563, 621, 621, 567, 561, 477, 447, 445, 175, 174, 152, 152, 167, 167, 152, 153, 174, 174, 446, 445, 476, 528, 538};
@@ -206,11 +208,14 @@ public class CastleScene extends ZeldaScene {
     }
 
     @Override
-    public void handleSwitchScene(Rectangle exit) {
+    public void handleSwitchScene(Rectangle exit) 
+	{
+
     }
 
     @Override
-    public void handleSwitchScene(String entrance) {
+    public void handleSwitchScene(String entrance)
+	{
 
         if (entrance.equals("GameStart")) {
             game.getLink().setXHardCore(502);

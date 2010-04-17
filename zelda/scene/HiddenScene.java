@@ -18,7 +18,7 @@ public class HiddenScene extends ZeldaScene
 
     public HiddenScene(Game game, String entrance)
 	{
-        super(game, "images/hiddenpath.png", entrance);
+        super(game, "images/hiddenpath.png");
         exits.add(exitDown);
 
         int[] hxpos = {385, 446, 446, 112, 112, 111, 95, 96, 112, 113, 113, 72, 72, 115, 113, 52, 43, 480, 480};

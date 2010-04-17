@@ -27,7 +27,7 @@ public class HouseScene extends ZeldaScene
 
     public HouseScene(Game game, String entrance)
 	{
-        super(game, "images/link-house.png", entrance);
+        super(game, "images/link-house.png");
 
 		exits.add(exitUp);
 		exits.add(exitLeft);
