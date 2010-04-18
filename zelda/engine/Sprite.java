@@ -40,9 +40,8 @@ public class Sprite
 		this.height = (int)rect.getHeight();
 	}
 
-	public BufferedImage getImage()
+	public synchronized BufferedImage getImage()
 	{
-		//System.out.println(x + " " + y + " " + width + " " + height);
 		return image.getSubimage(x, y, width, height);
 	}
 

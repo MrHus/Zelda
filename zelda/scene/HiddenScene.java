@@ -69,6 +69,12 @@ public class HiddenScene extends ZeldaScene
         gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT));
         gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT));
 
+		if (!game.getSong().equals("sounds/cave.mp3"))
+		{
+            game.stopMusic();
+            game.playMusic("sounds/cave.mp3", true);
+        }
+
         handleSwitchScene(entrance);
     }
 

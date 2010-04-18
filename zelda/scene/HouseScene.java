@@ -62,12 +62,12 @@ public class HouseScene extends ZeldaScene
 
         trees = new Polygon(txpos, typos, typos.length);
 
-        solids.add(trees);
-        solids.add(housecliff);
-        solids.add(smallcliff);
-        solids.add(right);
-        solids.add(down);
-        solids.add(house);
+//        solids.add(trees);
+//        solids.add(housecliff);
+//        solids.add(smallcliff);
+//        solids.add(right);
+//        solids.add(down);
+//        solids.add(house);
 
         gameObjects.add(new Bush(game, 160, 50));
         gameObjects.add(new Bush(game, 272, 51));
@@ -107,7 +107,6 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Guard(game, 233, 480, Direction.UP));
         gameObjects.add(new Guard(game, 206, 480, Direction.UP));
 
-		
 		if(!game.getSong().equals("sounds/overworld.mp3"))
 		{
 			try

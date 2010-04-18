@@ -17,14 +17,14 @@ public class Controller implements Runnable, KeyListener
 	private Thread thread;
 	private Game game;
 	private View view;
-	//private PolyCreator polyCreator;
+	private PolyCreator polyCreator;
 
-	public Controller(Game game, View view, final JFrame frame)
+	public Controller(Game game, View view, JFrame frame)
 	{
 		this.game = game;
 		this.view = view;
 
-		//frame.addMouseListener(new PolyCreator(game));
+		frame.addMouseListener(new PolyCreator(game));
 		frame.addKeyListener(this);
 
 		thread = new Thread(this, "GameLoop");

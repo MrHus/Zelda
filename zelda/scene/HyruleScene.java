@@ -162,21 +162,21 @@ public class HyruleScene extends ZeldaScene
 
         wall1 = new Polygon(xpos, ypos, ypos.length);
 
-        solids.add(balk);
-        solids.add(garden);
-        solids.add(garden1);
-        solids.add(garden3);
-        solids.add(bush1);
-        solids.add(bush2);
-        solids.add(bush3);
-        solids.add(tree);
-        solids.add(tree2);
-        solids.add(castlewall2);
-        solids.add(castlewall1);
-        solids.add(castlewall3);
-        solids.add(wall);
-        solids.add(wall1);
-        solids.add(downwall);
+//        solids.add(balk);
+//        solids.add(garden);
+//        solids.add(garden1);
+//        solids.add(garden3);
+//        solids.add(bush1);
+//        solids.add(bush2);
+//        solids.add(bush3);
+//        solids.add(tree);
+//        solids.add(tree2);
+//        solids.add(castlewall2);
+//        solids.add(castlewall1);
+//        solids.add(castlewall3);
+//        solids.add(wall);
+//        solids.add(wall1);
+//        solids.add(downwall);
 
         gameObjects.add(new Bush(game, 657, 540));
         gameObjects.add(new Bush(game, 673, 540));

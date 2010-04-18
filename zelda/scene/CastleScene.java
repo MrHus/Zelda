@@ -151,7 +151,6 @@ public class CastleScene extends ZeldaScene
 
         ding3 = new Polygon(xxpos, xypos, xypos.length);
 
-
         solids.add(middenbovenmuur);
         solids.add(stukmuur);
         solids.add(stukmuur1);
@@ -178,7 +177,6 @@ public class CastleScene extends ZeldaScene
         solids.add(ding2);
         solids.add(ding3);
 
-
         gameObjects.add(new Rupee(game, 131, 96));
         gameObjects.add(new Rupee(game, 148, 96));
         gameObjects.add(new Rupee(game, 196, 577));
@@ -199,6 +197,11 @@ public class CastleScene extends ZeldaScene
         gameObjects.add(new BlueSoldier(game, 116, 144, Direction.UP, 200));
         gameObjects.add(new WhiteSoldier(game, 505, 114, Direction.LEFT));
 
+		if (!game.getSong().equals("sounds/castle.mp3"))
+		{
+            game.stopMusic();
+            game.playMusic("sounds/castle.mp3", true);
+        }
 
         handleSwitchScene(entrance);
     }
@@ -212,8 +215,16 @@ public class CastleScene extends ZeldaScene
     @Override
     public void handleSwitchScene(String entrance)
 	{
+		if (entrance.equals("HyruleScene"))
+		{
+			while(moveScene(251, 926)){}
 
-        if (entrance.equals("GameStart")) {
+            game.getLink().setXHardCore(250);
+            game.getLink().setYHardCore(200);
+        }
+
+        if (entrance.equals("GameStart"))
+		{
             game.getLink().setXHardCore(502);
             game.getLink().setYHardCore(926);
         }
