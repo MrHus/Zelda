@@ -12,7 +12,6 @@ import zelda.karacter.Direction;
  */
 public class Dungeon extends ZeldaScene
 {
-
     Polygon wall2, wall1, table;
 
     public Dungeon(Game game, String entrance)

@@ -16,7 +16,6 @@ import zelda.karacter.Direction;
  */
 public class CastleScene extends ZeldaScene
 {
-
     Polygon middenbovenmuur, stukmuur, stukmuur1, stukmuur2, rechtsonder, rechts, rechtsmidden, linksonder, links, zuil, zuil1, zuil2, zuil3, zuil4, zuil5, zuil6, zuil7, midden, midden1, pot, pot1, ding1, ding, ding2, ding3;
 
     public CastleScene(Game game, String entrance)

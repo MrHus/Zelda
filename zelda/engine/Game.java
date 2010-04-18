@@ -10,7 +10,6 @@ import zelda.menu.MainMenu;
  *
  * @author maartenhus
  */
-
 public class Game
 {
     private boolean running = true;
