@@ -20,7 +20,7 @@ public class SoundFx extends Sound
 			try
 			{
 				player.play();
-				Thread.sleep(10);
+				Thread.sleep(100);
 			}
 			catch (Exception ee)
 			{

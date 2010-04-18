@@ -69,7 +69,8 @@ public abstract class ZeldaScene extends Scene
 			}
 		}
 
-		//System.out.println(sprite.getX() + ", " + sprite.getY());
+		System.out.println("Scene is at:");
+		System.out.println(sprite.getX() + ", " + sprite.getY());
 	}
 
 	private void checkLinkIsInExit()

@@ -97,5 +97,13 @@ public class HiddenScene extends ZeldaScene
             game.getLink().setXHardCore(396);
             game.getLink().setYHardCore(141);
         }
+
+		if (entrance.equals("HyruleSceneStairs"))
+		{
+			moveScene(1, 79);
+
+			game.getLink().setXHardCore(116);
+			game.getLink().setYHardCore(346);
+		}
     }
 }

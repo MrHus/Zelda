@@ -62,12 +62,12 @@ public class HouseScene extends ZeldaScene
 
         trees = new Polygon(txpos, typos, typos.length);
 
-//        solids.add(trees);
-//        solids.add(housecliff);
-//        solids.add(smallcliff);
-//        solids.add(right);
-//        solids.add(down);
-//        solids.add(house);
+        solids.add(trees);
+        solids.add(housecliff);
+        solids.add(smallcliff);
+        solids.add(right);
+        solids.add(down);
+        solids.add(house);
 
         gameObjects.add(new Bush(game, 160, 50));
         gameObjects.add(new Bush(game, 272, 51));
