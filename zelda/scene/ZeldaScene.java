@@ -68,6 +68,8 @@ public abstract class ZeldaScene extends Scene
 				adjustScene(game.getLink().getX(), game.getLink().getY());
 			}
 		}
+
+		//System.out.println(sprite.getX() + ", " + sprite.getY());
 	}
 
 	private void checkLinkIsInExit()

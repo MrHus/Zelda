@@ -20,7 +20,7 @@ public class HyruleScene extends ZeldaScene
 
     private Rectangle hatch		= new Rectangle(910, 160, 5, 5);
     private Rectangle exitDown  = new Rectangle(672, 1013, 290, 20);
-    private Rectangle trap		= new Rectangle(713, 215, 14, 14);
+    private Rectangle stairs		= new Rectangle(713, 215, 14, 14);
     private Rectangle door		= new Rectangle(497, 247, 30, 30);
 
     public HyruleScene(Game game, String entrance)
@@ -29,7 +29,7 @@ public class HyruleScene extends ZeldaScene
 
         exits.add(exitDown);
         exits.add(hatch);
-        exits.add(trap);
+        exits.add(stairs);
         exits.add(door);
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
@@ -200,10 +200,10 @@ public class HyruleScene extends ZeldaScene
         gameObjects.add(new Bush(game, 913, 160));
         gameObjects.add(new Bush(game, 895, 942));
 
-        gameObjects.add(new Bush(game, 694, 957));
+        gameObjects.add(new Bush(game, 694, 941));
+        gameObjects.add(new Bush(game, 710, 941));
         gameObjects.add(new Bush(game, 710, 957));
-        gameObjects.add(new Bush(game, 710, 973));
-        gameObjects.add(new Bush(game, 694, 973));
+        gameObjects.add(new Bush(game, 694, 957));
 
         gameObjects.add(new Bush(game, 843, 503));
         gameObjects.add(new Bush(game, 843, 519));
@@ -214,7 +214,6 @@ public class HyruleScene extends ZeldaScene
         gameObjects.add(new Bush(game, 684, 676));
         gameObjects.add(new Bush(game, 700, 676));
         gameObjects.add(new Bush(game, 716, 676));
-
 
         gameObjects.add(new Bush(game, 652, 692));
         gameObjects.add(new Bush(game, 668, 692));
@@ -254,15 +253,15 @@ public class HyruleScene extends ZeldaScene
 		//throw new UnsupportedOperationException("Not supported yet.");
         if (exit == hatch)
 		{
-			game.setScene(new HiddenScene(game, "HyruleScene"));
+			game.setScene(new HiddenScene(game, "HyruleSceneHatch"));
 		}
         if (exit == exitDown)
         {
             game.setScene(new HouseScene(game, "HyruleScene"));
         }
-        if (exit == trap)
+        if (exit == stairs)
         {
-            game.setScene(new HiddenScene(game, "HyruleScene"));
+            game.setScene(new HiddenScene(game, "HyruleSceneStairs"));
         }
 		if (exit == door)
         {
@@ -275,10 +274,10 @@ public class HyruleScene extends ZeldaScene
 	{
 		if(entrance.equals("HouseScene"))
 		{
-			//while(moveScene(783, 957)){}
+			moveScene(524, 623);
 
-			game.getLink().setXHardCore(250);
-			game.getLink().setYHardCore(350);
+			game.getLink().setXHardCore(game.getLink().getX() + 519);
+			game.getLink().setYHardCore(370);
 		}
         if(entrance.equals("HiddenScene"))
 		{

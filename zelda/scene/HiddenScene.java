@@ -90,12 +90,12 @@ public class HiddenScene extends ZeldaScene
     @Override
     public void handleSwitchScene(String entrance)
 	{
-        if (entrance.equals("HyruleScene"))
+        if (entrance.equals("HyruleSceneHatch"))
 		{
-            //while (moveScene(314, 100)) {}
+            moveScene(13, 0);
 
-            game.getLink().setXHardCore(390);
-            game.getLink().setYHardCore(158);
+            game.getLink().setXHardCore(396);
+            game.getLink().setYHardCore(141);
         }
     }
 }
