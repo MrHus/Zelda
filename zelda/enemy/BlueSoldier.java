@@ -1,12 +1,9 @@
 package zelda.enemy;
 
-import apple.laf.CoreUIConstants;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
-import java.awt.Rectangle;
 import zelda.engine.Game;
 import zelda.karacter.Direction;
-import zelda.karacter.Karacter;
 
 /**
  * A Blue soldier.
@@ -15,11 +12,6 @@ import zelda.karacter.Karacter;
  */
 public class BlueSoldier extends Soldier implements Hittable
 {
-	private Behavior behavior;
-
-	private long inputInterval = 50;
-	private long lastInput = System.currentTimeMillis();
-
 	public BlueSoldier(Game game, int x, int y, Direction direction, int ticks)
 	{
 		super(game, x, y, direction, "images/blue-soldier.png");
@@ -40,18 +32,18 @@ public class BlueSoldier extends Soldier implements Hittable
                 {
                     lastHit = System.currentTimeMillis();
                     health -= 3;
-                    this.setState(new TransState(this, game.getLink().getDirection()));
+                    setState(new TransState(this, game.getLink().getDirection()));
+					setBehavior(new AttackBehavior(this));
                 }
 				break;
 
             case BOMB:
-                //alive = false;
                 health = 0;
                 break;
 
             case ARROW:
                 health -= 3;
-                this.setBehavior(new AttackBehavior(this));
+                setBehavior(new AttackBehavior(this));
                 break;
 		}
         
