@@ -1,8 +1,5 @@
 package zelda.menu;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import zelda.engine.Game;
 import zelda.engine.Scene;
@@ -14,7 +11,7 @@ import zelda.scene.HouseScene;
  */
 public class MainMenu extends Scene
 {
-	private Fairy fairy = new Fairy(game, 230, 205);
+	private Fairy fairy = new Fairy(game, 210, 215);
 
 	private static int		 CURRENT	= 0;
 	private static final int NEW_GAME	= 0;
@@ -31,6 +28,11 @@ public class MainMenu extends Scene
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 
 		gameObjects.add(fairy);
+
+		try
+		{
+			game.stopMusic();
+		}catch(Exception e){}
 
 		game.playMusic("sounds/main-menu.mp3", false);
 	}
@@ -61,6 +63,7 @@ public class MainMenu extends Scene
 					break;
 
 				case HELP:
+					game.setScene(new HelpMenu(game));
 					break;
 			}
 		}
@@ -98,36 +101,16 @@ public class MainMenu extends Scene
 		switch(CURRENT)
 		{
 			case NEW_GAME:
-				fairy.setY(205);
+				fairy.setY(220);
 				break;
 
 			case LOAD_GAME:
-				fairy.setY(235);
+				fairy.setY(285);
 				break;
 
 			case HELP:
-				fairy.setY(265);
+				fairy.setY(348);
 				break;
 		}
 	}
-
-	@Override
-    public void draw(Graphics2D g2)
-	{
-		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
-
-		g2.setColor(Color.white);
-        Font f = new Font ("Serif", Font.BOLD, 16);
-        g2.setFont (f);
-
-		g2.drawString("New Game", 250, 220);
-		g2.drawString("Load Game", 250, 250);
-		g2.drawString("Help", 250, 280);
-	}
-
-	@Override
-	public void handleSwitchScene(Rectangle exit){}
-
-	@Override
-	public void handleSwitchScene(String entrance){}
 }

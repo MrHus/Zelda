@@ -174,6 +174,9 @@ public abstract class ZeldaScene extends Scene
 	{
 		 return exits;
 	}
+
+	public abstract void handleSwitchScene(Rectangle exit);
+	public abstract void handleSwitchScene(String entrance);
 }
 
     

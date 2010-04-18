@@ -28,10 +28,11 @@ public abstract class Scene implements DrawAble
 		this.game = game;
 		sprite = new Sprite(img);
 	}
-
-	public abstract void handleSwitchScene(Rectangle exit);
-	public abstract void handleSwitchScene(String entrance);
-	public abstract void draw (Graphics2D g2);
+	
+	public void draw(Graphics2D g2)
+	{
+		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
+	}
 
 	public synchronized void handleInput()
 	{

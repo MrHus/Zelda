@@ -110,12 +110,11 @@ public class HouseScene extends ZeldaScene
 		
 		if(!game.getSong().equals("sounds/overworld.mp3"))
 		{
-			System.out.println(game.getSong());
-
 			try
 			{
 				game.stopMusic();
 			}catch(Exception e){}
+
 			game.playMusic("sounds/overworld.mp3", true);
 		}
 
