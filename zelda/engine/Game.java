@@ -12,9 +12,11 @@ import zelda.menu.MainMenu;
  */
 public class Game
 {
-    private boolean running = true;
-    private boolean paused = false;
-    private boolean debug = true;
+
+	private boolean running = true;
+	private boolean paused  = false;
+	private boolean debug   = true;
+
 
     private int gameSpeed = 10;
     private int width = 500;

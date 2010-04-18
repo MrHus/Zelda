@@ -1,5 +1,6 @@
 package zelda.enemy;
 
+import apple.laf.CoreUIConstants;
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
 import java.awt.Rectangle;
@@ -14,6 +15,11 @@ import zelda.karacter.Karacter;
  */
 public class BlueSoldier extends Soldier implements Hittable
 {
+	private Behavior behavior;
+
+	private long inputInterval = 50;
+	private long lastInput = System.currentTimeMillis();
+
 	public BlueSoldier(Game game, int x, int y, Direction direction, int ticks)
 	{
 		super(game, x, y, direction, "images/blue-soldier.png");
