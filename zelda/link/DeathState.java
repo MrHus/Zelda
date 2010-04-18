@@ -7,53 +7,72 @@ import zelda.karacter.Direction;
  */
 public class DeathState extends LinkState
 {
-    private final String[] deathRightAnimation	= {"Link hit right", "Link death right 1", "Link death right 2"};
-    private final String[] deathLeftAnimation	= {"Link hit left", "Link death left 1", "Link death left 2"};
-    private final String[] deathLeft        	= {"Link death left 2"};
-    private final String[] deathRight         	= {"Link death right 2"};
+    private final String[] deathRightAnimation	= {"Link hit right", "Link death right", "Link death right 2"};
+    private final String[] deathLeftAnimation	= {"Link hit left", "Link death left", "Link death left 2"};
+
+    private Direction direction;
+
+    private long oldAnimationInterval;
 
     public DeathState(Link link, Direction direction)
     {
         super(link);
         name = "DeathState";
 
+
+
+        this.direction = direction;
+
         switch(direction)
         {
             case UP:
                 link.setAnimation(deathLeftAnimation);
-                link.setAnimationInterval(1000);
-                game.playMusic("sounds/killed.mp3", false);
+                link.setAnimationInterval(700);
+                game.playFx("sounds/killed.mp3");
                 break;
 
             case DOWN:
                 link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(1000);
-                game.playMusic("sounds/killed.mp3", false);
+                link.setAnimationInterval(700);
+                game.playFx("sounds/killed.mp3");
                 break;
 
             case LEFT:
                 link.setAnimation(deathLeftAnimation);
-                link.setAnimationInterval(1000);
-                game.playMusic("sounds/killed.mp3", false);
+                link.setAnimationInterval(700);
+                game.playFx("sounds/killed.mp3");
                 break;
 
             case RIGHT:
                 link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(1000);
-                game.playMusic("sounds/killed.mp3", false);
+                link.setAnimationInterval(700);
+                game.playFx("sounds/killed.mp3");
                 break;
         }
+    }
+
+    @Override
+	public void handleInput()
+	{
+        
     }
 
     @Override
 	public void handleAnimation()
 	{
 		int animationCounter = link.getAnimationCounter();
-
-	//sword is done swinging revert back to former state
+		
 		if (animationCounter == link.getAnimation().length)
 		{
-            link.setAnimation(deathLeft);
-        }
-    }    
+			link.setAnimationInterval(oldAnimationInterval);			
+			link.setState(new StandState(link));
+			game.setScene(new zelda.scene.HouseScene(game, "HouseScene"));
+            link.setHealth(1);
+
+            game.getLink().setXHardCore(183);
+			game.getLink().setYHardCore(278);
+
+		}
+		
+    }
 }

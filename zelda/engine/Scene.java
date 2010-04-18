@@ -23,14 +23,16 @@ public abstract class Scene implements DrawAble
 	protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
     protected ArrayList<Polygon> eyeViews = new ArrayList<Polygon>();
 
-	public Scene(Game game, String img, String entrance)
+	public Scene(Game game, String img)
 	{
 		this.game = game;
 		sprite = new Sprite(img);
 	}
-
-	public abstract void handleSwitchScene(Rectangle exit);
-	public abstract void handleSwitchScene(String entrance);
+	
+	public void draw(Graphics2D g2)
+	{
+		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
+	}
 
 	public synchronized void handleInput()
 	{
@@ -52,11 +54,6 @@ public abstract class Scene implements DrawAble
         newGameObjects.clear();
 	}
 	
-	public void draw(Graphics2D g2)
-	{
-		g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
-	}
-
 	public void addGObject(GObject gObject)
 	{
 		gameObjects.add(gObject);

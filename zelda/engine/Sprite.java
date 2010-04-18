@@ -40,7 +40,7 @@ public class Sprite
 		this.height = (int)rect.getHeight();
 	}
 
-	public synchronized Image getImage()
+	public synchronized BufferedImage getImage()
 	{
 		return image.getSubimage(x, y, width, height);
 	}
@@ -73,6 +73,16 @@ public class Sprite
 	public int getWidth()
 	{
 		return width;
+	}
+
+	public void setHeight(int height)
+	{
+		this.height = height;
+	}
+
+	public void setWidth(int width)
+	{
+		this.width = width;
 	}
 
 	public int getImageWidth()

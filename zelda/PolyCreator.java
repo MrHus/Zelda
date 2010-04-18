@@ -48,7 +48,8 @@ public class PolyCreator extends MouseAdapter
 			if(x != 0 && y != 0)
 			{
 				poly.addPoint(x, y);
-				System.out.println(x + " " + y);
+				System.out.println("Relative:" + x + " " + y);
+				System.out.println("Real:" + e.getX() + " " + e.getY());
 			}
 		}
 	}

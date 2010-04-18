@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package zelda.items;
 
 import java.awt.Rectangle;
@@ -23,10 +19,10 @@ public class Guard extends GObject {
     public Guard(Game game, int x, int y, Direction direction) {
         super(game, x, y, 25, 25, "images/items.png");
 
-        spriteLoc.put("DOWN", new Rectangle(0, 25, 25, 30));
-        spriteLoc.put("LEFT", new Rectangle(25, 25, 21, 28));
-        spriteLoc.put("UP", new Rectangle(50, 25, 25, 28));
-        spriteLoc.put("RIGHT", new Rectangle(75, 25, 21, 28));
+        spriteLoc.put("DOWN",	new Rectangle(0, 25, 25, 30));
+        spriteLoc.put("LEFT",	new Rectangle(25, 25, 21, 28));
+        spriteLoc.put("UP",		new Rectangle(50, 25, 25, 28));
+        spriteLoc.put("RIGHT",	new Rectangle(75, 25, 21, 28));
 
         switch (direction) {
             case UP:
@@ -50,7 +46,5 @@ public class Guard extends GObject {
                 setAnimation(rightAnimation);
                 break;
         }
-
-
     }
 }

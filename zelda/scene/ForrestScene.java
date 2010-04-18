@@ -21,7 +21,7 @@ public class ForrestScene extends ZeldaScene
 
     public ForrestScene(Game game, String entrance)
 	{
-        super(game, "images/forrest-scene.png", entrance);
+        super(game, "images/forrest-scene.png");
 
         exits.add(exitRight);
 
@@ -138,7 +138,7 @@ public class ForrestScene extends ZeldaScene
 	{
 		if(entrance.equals("HouseScene"))
 		{
-			while(moveScene(31, 204)){}
+			moveScene(31, 204);
 
 			game.getLink().setXHardCore(31);
 			game.getLink().setYHardCore(204);

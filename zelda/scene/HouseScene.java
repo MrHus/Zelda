@@ -22,12 +22,12 @@ public class HouseScene extends ZeldaScene
     private Polygon down;
     private Polygon trees;
 
-	private Rectangle exitUp   = new Rectangle(155, 20, 300, 20);
+	private Rectangle exitUp   = new Rectangle(155, 0, 300, 20);
 	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
 
     public HouseScene(Game game, String entrance)
 	{
-        super(game, "images/link-house.png", entrance);
+        super(game, "images/link-house.png");
 
 		exits.add(exitUp);
 		exits.add(exitLeft);
@@ -69,9 +69,6 @@ public class HouseScene extends ZeldaScene
         solids.add(down);
         solids.add(house);
 
-        Bush bush = new Bush(game, 160, 50);
-        gameObjects.add(bush);
-
         gameObjects.add(new Bush(game, 160, 50));
         gameObjects.add(new Bush(game, 272, 51));
         gameObjects.add(new Bush(game, 305, 71));
@@ -81,6 +78,7 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Bush(game, 144, 284));
         gameObjects.add(new Bush(game, 128, 284));
         gameObjects.add(new Bush(game, 112, 284));
+        
         gameObjects.add(new Bush(game, 229, 271));
         gameObjects.add(new Bush(game, 229, 287));
         gameObjects.add(new Bush(game, 245, 271));
@@ -96,7 +94,7 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Bush(game, 435, 349));
         gameObjects.add(new Bush(game, 435, 365));
         gameObjects.add(new Bush(game, 451, 365));
-
+        
         gameObjects.add(game.getLink());
         
         gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
@@ -109,7 +107,17 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Guard(game, 233, 480, Direction.UP));
         gameObjects.add(new Guard(game, 206, 480, Direction.UP));
 
-		game.playMusic("sounds/overworld.mp3", true);
+		if(!game.getSong().equals("sounds/overworld.mp3"))
+		{
+			try
+			{
+				game.stopMusic();
+			}catch(Exception e){}
+
+			game.playMusic("sounds/overworld.mp3", true);
+		}
+
+        handleSwitchScene(entrance);
     }
 
 	@Override
@@ -129,10 +137,20 @@ public class HouseScene extends ZeldaScene
 	@Override
 	public void handleSwitchScene(String entrance)
 	{
+        if(entrance.equals("HyruleScene"))
+		{           
+			moveScene(12, 0);
+
+			game.getLink().setXHardCore(game.getLink().getX() + 12);
+			game.getLink().setYHardCore(25);
+		}
+
 		if(entrance.equals("GameStart"))
 		{
-			game.getLink().setXHardCore(100);
-			game.getLink().setYHardCore(100);
+			moveScene(0, 100);
+
+			game.getLink().setXHardCore(185);
+			game.getLink().setYHardCore(177);
 		}
 	}
 }

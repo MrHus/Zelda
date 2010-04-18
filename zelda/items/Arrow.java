@@ -121,6 +121,7 @@ public class Arrow extends GObject
     {
         if(hit)
         {
+            liquid = true;
             if(animationCounter == animation.length)
             {
                 setAlive(false);
@@ -139,7 +140,6 @@ public class Arrow extends GObject
 	{
 		if (obj instanceof Hittable && !(obj instanceof Link) && !(obj instanceof Bush))
 		{
-			System.out.println("here");
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
             alive = false;

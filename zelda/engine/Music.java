@@ -27,7 +27,7 @@ public class Music extends Sound
 			try
 			{
 				player.play();
-				Thread.sleep(1000);
+				Thread.sleep(10);
 			}
 			catch (Exception ee)
 			{
@@ -37,7 +37,7 @@ public class Music extends Sound
 
 		if (loop) //if song is over but its on a loop replay the song.
 		{
-			game.playMusic(songname, true);
+			game.playFx(songname);
 		}
 	}
 

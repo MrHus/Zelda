@@ -3,58 +3,63 @@ package zelda.engine;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
-import zelda.scene.HouseScene;
+import zelda.menu.MainMenu;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
  *
  * @author maartenhus
  */
+
 public class Game
 {
+
 	private boolean running = true;
 	private boolean paused  = false;
 	private boolean debug   = true;
 
-	private int gameSpeed = 10;
-	private int width = 500;
-	private int height = 400;
+
+    private int gameSpeed = 10;
+    private int width = 500;
+    private int height = 400;
 
     private Link link;
-	private Scene scene;
-	private Music music;
-	private SoundFx fx;
+    private Scene scene;
+    private Music music;
+    private SoundFx fx;
+	
+    private boolean aPressed = false;
+    private boolean sPressed = false;
+    private boolean dPressed = false;
+    private boolean wPressed = false;
+    private boolean jPressed = false;
+    private boolean kPressed = false;
+    private boolean lPressed = false;
+	private boolean enterPressed = false;
 
-	private boolean aPressed = false;
-	private boolean sPressed = false;
-	private boolean dPressed = false;
-	private boolean wPressed = false;
-	private boolean jPressed = false;
-	private boolean kPressed = false;
-	private boolean lPressed = false;
-
-	public Game()
+    public Game()
 	{
-		link = new Link(this, 100, 100);
-		scene = new HouseScene(this, "GameStart");
+        link = new Link(this, 100, 100);
+		scene = new MainMenu(this);
 	}
 
 	public void quit()
 	{
-		music.stop();
+		if (music != null)
+			music.stop();
 
 		try
 		{
 			Thread.sleep(1000); // give it some time to shutdown the music nicely.
 		}
-		catch (InterruptedException ex){}
+		catch (InterruptedException ex) {}
 
 		System.exit(0);
 	}
 
 	/**
 	 * Make the game play music.
-	 * 
+	 *
 	 * @param mp3file
 	 * @param loop
 	 */
@@ -72,6 +77,11 @@ public class Game
 
 	public String getSong()
 	{
+		if (music == null)
+		{
+			return "";
+		}
+
 		return music.getSong();
 	}
 
@@ -127,7 +137,7 @@ public class Game
 		return scene;
 	}
 
-	public synchronized void setScene (Scene scene)
+	public synchronized void setScene(Scene scene)
 	{
 		this.scene = scene;
 	}
@@ -177,6 +187,11 @@ public class Game
 		this.wPressed = wPressed;
 	}
 
+	public void setEnterPressed(boolean enterPressed)
+	{
+		this.enterPressed = enterPressed;
+	}
+
 	public boolean isaPressed()
 	{
 		return aPressed;
@@ -210,5 +225,10 @@ public class Game
 	public boolean iswPressed()
 	{
 		return wPressed;
+	}
+
+	public boolean isEnterPressed()
+	{
+		return enterPressed;
 	}
 }
