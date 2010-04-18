@@ -22,7 +22,7 @@ public class HouseScene extends ZeldaScene
     private Polygon down;
     private Polygon trees;
 
-	private Rectangle exitUp   = new Rectangle(155, 10, 300, 20);
+	private Rectangle exitUp   = new Rectangle(155, 0, 300, 20);
 	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
 
     public HouseScene(Game game, String entrance)
