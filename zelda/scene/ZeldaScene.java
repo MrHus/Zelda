@@ -21,6 +21,8 @@ public abstract class ZeldaScene extends Scene
 {
 	protected ArrayList<Rectangle> exits = new ArrayList<Rectangle>();
 
+	private boolean adjust = false;
+
 	private int XSen; //left/right sensitivity for when the scene adapts too link
 	private int YSen; //up/down sensitivity for when the scene adapts too link
 	private final static int MOD = 1;
@@ -53,10 +55,18 @@ public abstract class ZeldaScene extends Scene
 		super.handleInput();
 		
 		checkLinkIsInExit();
-		
-		if (!game.getLink().getStateString().equals("SwordState") && !game.getLink().getStateString().equals("BowState")) //ignore swordstate and bowstate
+
+		if(game.getLink().moveinput())
 		{
-			moveScene(game.getLink().getX(), game.getLink().getY());
+			adjust = true;
+		}
+
+		if (adjust)
+		{
+			if (!game.getLink().getStateString().equals("SwordState") && !game.getLink().getStateString().equals("BowState")) //ignore swordstate and bowstate
+			{
+				adjustScene(game.getLink().getX(), game.getLink().getY());
+			}
 		}
 	}
 
@@ -71,10 +81,8 @@ public abstract class ZeldaScene extends Scene
 		}
 	}
 
-	public boolean moveScene(int moveToX, int moveToY)
+	public void adjustScene(int moveToX, int moveToY)
 	{
-		boolean moved = false;
-
 		if (moveToX > (sprite.getWidth() - XSen)) // link moves too far to the right.
 		{
 			int newX = sprite.getX() + MOD;
@@ -85,7 +93,6 @@ public abstract class ZeldaScene extends Scene
 				game.getLink().setX(game.getLink().getX() - MOD);
 				modShapes(-MOD, 0);
 				sprite.setX(newX);
-				moved = true;
 			}
 		}
 
@@ -98,7 +105,6 @@ public abstract class ZeldaScene extends Scene
 				game.getLink().setX(game.getLink().getX() + MOD);
 				modShapes(MOD, 0);
 				sprite.setX(newX);
-				moved = true;
 			}
 		}
 
@@ -110,7 +116,6 @@ public abstract class ZeldaScene extends Scene
 				game.getLink().setY(game.getLink().getY() - MOD);
 				modShapes(0, -MOD);
 				sprite.setY(newY);
-				moved = true;
 			}
 		}
 
@@ -123,11 +128,70 @@ public abstract class ZeldaScene extends Scene
 				game.getLink().setY(game.getLink().getY() + MOD);
 				modShapes(0, MOD);
 				sprite.setY(newY);
-				moved = true;
 			}
 		}
-		
-		return moved;
+	}
+
+	public void moveScene(int toX, int toY)
+	{
+		boolean moved = false;
+
+		do
+		{
+			moved = false;
+
+			if (sprite.getX() < toX)
+			{
+				int newX = sprite.getX() + MOD;
+
+				if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
+				{
+					game.getLink().setX(game.getLink().getX() - MOD);
+					modShapes(-MOD, 0);
+					sprite.setX(newX);
+					moved = true;
+				}
+			}
+
+			if (sprite.getX() > toX) // link moves too far to the left
+			{
+				int newX = sprite.getX() - MOD;
+
+				if (newX > 0)
+				{
+					game.getLink().setX(game.getLink().getX() + MOD);
+					modShapes(MOD, 0);
+					sprite.setX(newX);
+					moved = true;
+				}
+			}
+
+			if (sprite.getY() < toY)
+			{
+				int newY = sprite.getY() + MOD;
+				if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
+				{
+					game.getLink().setY(game.getLink().getY() - MOD);
+					modShapes(0, -MOD);
+					sprite.setY(newY);
+					moved = true;
+				}
+			}
+
+			if (sprite.getY() > toY)
+			{
+				int newY = sprite.getY() - MOD;
+
+				if (newY > 0)
+				{
+					game.getLink().setY(game.getLink().getY() + MOD);
+					modShapes(0, MOD);
+					sprite.setY(newY);
+					moved = true;
+				}
+			}
+		}
+		while(moved);
 	}
 
 	/**

@@ -217,7 +217,7 @@ public class CastleScene extends ZeldaScene
 	{
 		if (entrance.equals("HyruleScene"))
 		{
-			while(moveScene(251, 926)){}
+			//while(moveScene(251, 926)){}
 
             game.getLink().setXHardCore(250);
             game.getLink().setYHardCore(200);

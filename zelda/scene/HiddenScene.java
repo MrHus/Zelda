@@ -92,7 +92,7 @@ public class HiddenScene extends ZeldaScene
 	{
         if (entrance.equals("HyruleScene"))
 		{
-            while (moveScene(314, 100)) {}
+            //while (moveScene(314, 100)) {}
 
             game.getLink().setXHardCore(390);
             game.getLink().setYHardCore(158);
