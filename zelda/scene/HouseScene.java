@@ -119,6 +119,11 @@ public class HouseScene extends ZeldaScene
 		{
 			game.setScene(new HyruleScene(game, "HouseScene"));
 		}
+
+        if (exit == exitLeft)
+		{
+			game.setScene(new ForrestScene(game, "HouseScene"));
+		}
 	}
 
 	@Override
