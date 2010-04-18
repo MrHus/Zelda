@@ -27,7 +27,7 @@ public class Music extends Sound
 			try
 			{
 				player.play();
-				Thread.sleep(10);
+				Thread.sleep(1000);
 			}
 			catch (Exception ee)
 			{
@@ -39,6 +39,8 @@ public class Music extends Sound
 		{
 			game.playFx(songname);
 		}
+
+		player.close();
 	}
 
 	public void stop()
