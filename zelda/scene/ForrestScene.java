@@ -24,7 +24,7 @@ public class ForrestScene extends ZeldaScene
 
     public ForrestScene(Game game, String entrance)
 	{
-        super(game, "images/forrest-scene.png");
+        super(game, "images/forrest-scene.png", "ForrestScene");
 
         exits.add(exitRight1);
         exits.add(exitRight2);

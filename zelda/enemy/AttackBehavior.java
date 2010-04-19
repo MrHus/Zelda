@@ -1,6 +1,7 @@
 package zelda.enemy;
 
 import zelda.karacter.Direction;
+import zelda.karacter.Karacter;
 import zelda.link.Link;
 
 /**
@@ -9,13 +10,13 @@ import zelda.link.Link;
  */
 public class AttackBehavior extends Behavior {
 
-    private BlueSoldier soldier;
+    private Karacter soldier;
     private Link link;
 
     private int valueX;
     private int valueY;
 
-	public AttackBehavior(BlueSoldier soldier)
+	public AttackBehavior(Karacter soldier)
 	{
         //System.out.println("here");
 		this.soldier = soldier;

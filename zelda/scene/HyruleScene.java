@@ -13,10 +13,8 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class HyruleScene extends ZeldaScene
-{
-    private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall;
-    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk;
+public class HyruleScene extends ZeldaScene {
+
 
     private Rectangle hatch         = new Rectangle(910, 160, 5, 5);
     private Rectangle exitDown      = new Rectangle(672, 1013, 290, 20);
@@ -24,9 +22,14 @@ public class HyruleScene extends ZeldaScene
     private Rectangle door          = new Rectangle(497, 247, 30, 30);
     private Rectangle forrestExit	= new Rectangle(121, 989, 50, 20);
 
+    private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, downwall1;
+    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk;
+
+
+
     public HyruleScene(Game game, String entrance)
 	{
-        super(game, "images/hyrule.png");
+        super(game, "images/hyrule.png", "HyruleScene");
 
         exits.add(exitDown);
         exits.add(hatch);
@@ -37,8 +40,7 @@ public class HyruleScene extends ZeldaScene
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
 
-        for (int i = 0; i < dypos.length; i++)
-        {
+        for (int i = 0; i < dypos.length; i++) {
             dypos[i] += 20;
         }
         tree = new Polygon(dxpos, dypos, dypos.length);
@@ -46,15 +48,14 @@ public class HyruleScene extends ZeldaScene
         int[] nxpos = {632, 676, 686, 682, 683, 677, 679, 678, 667, 662, 659, 650, 637, 636, 626, 629, 627, 645};
         int[] nypos = {288, 286, 313, 327, 332, 336, 345, 349, 347, 347, 355, 348, 349, 341, 335, 330, 299, 284};
 
-        for (int i = 0; i < nypos.length; i++)
-        {
+        for (int i = 0; i < nypos.length; i++) {
             nypos[i] += 20;
         }
 
         tree2 = new Polygon(nxpos, nypos, nypos.length);
 
-        int[] cxpos = {40, 42, 465, 464, 457, 464, 476, 473, 462, 462, 272, 272, 284, 285, 270, 272, 336, 338, 361, 363, 389, 390, 426, 426, 450, 454, 472, 473, 485, 485, 451, 369, 366, 241, 241, 243, 34};
-        int[] cypos = {904, 889, 887, 713, 713, 628, 627, 567, 567, 545, 541, 461, 461, 338, 334, 166, 166, 243, 245, 258, 257, 240, 240, 260, 259, 240, 238, 270, 270, 164, 161, 160, 115, 114, 358, 565, 898};
+        int[] cxpos = {40, 42, 465, 464, 457, 464, 476, 473, 462, 462, 272, 272, 284, 285, 270, 272, 336, 338, 361, 363, 389, 390, 426, 426, 450, 454, 472, 473, 485, 485, 451, 369, 366, 241, 241, 34};
+        int[] cypos = {904, 889, 887, 713, 713, 628, 627, 567, 567, 545, 541, 461, 461, 338, 334, 166, 166, 243, 245, 258, 257, 240, 240, 260, 259, 240, 238, 270, 270, 164, 161, 160, 115, 114, 358, 898};
 
         for (int i = 0; i < cypos.length; i++) {
             cypos[i] += 20;
@@ -62,7 +63,7 @@ public class HyruleScene extends ZeldaScene
         castlewall2 = new Polygon(cxpos, cypos, cypos.length);
 
         int[] fxpos = {561, 562, 750, 752, 738, 739, 752, 751, 736, 735, 705, 704, 688, 687, 687, 702, 704, 672, 672, 664, 662, 634, 633, 633, 597, 597, 599, 599, 578, 577, 577, 570, 570, 552, 552, 538, 538, 576, 575, 656, 657, 781, 784, 768, 768, 782, 781, 593};
-        int[] fypos = {562, 545, 543, 465, 463, 337, 336, 168, 168, 187, 187, 169, 167, 240, 246, 247, 260, 261, 243, 243, 257, 257, 247, 240, 239, 256, 265, 373, 373, 266, 259, 259, 242, 242, 276, 277, 163, 161, 193, 191, 113, 114, 355, 358, 414, 417, 563, 564};
+        int[] fypos = {562, 545, 543, 465, 463, 337, 336, 168, 168, 187, 187, 169, 167, 240, 246, 247, 260, 261, 243, 243, 257, 257, 247, 240, 239, 256, 265, 368, 368, 266, 259, 259, 242, 242, 276, 277, 163, 161, 193, 191, 113, 114, 355, 358, 414, 417, 563, 564};
 
         for (int i = 0; i < fypos.length; i++) {
             fypos[i] += 20;
@@ -87,13 +88,16 @@ public class HyruleScene extends ZeldaScene
         }
         wall = new Polygon(gxpos, gypos, gypos.length);
 
-        int[] ixpos = {671, 642, 636, 212, 206, 178, 114, 93, 80, 35, 33, 33, 668};
-        int[] iypos = {989, 968, 927, 929, 962, 989, 989, 952, 908, 910, 903, 988, 989};
 
-        for (int i = 0; i < iypos.length; i++) {
-            iypos[i] += 20;
-        }
+        int[] ixpos = {34, 92, 117, 44, 35,};
+        int[] iypos = {932, 950, 1006, 1000, 932,};
+
         downwall = new Polygon(ixpos, iypos, iypos.length);
+
+        int[] zxpos = {181, 210, 211, 638, 668, 180};
+        int[] zypos = {1004, 992, 956, 953, 1010, 1008};
+
+        downwall1 = new Polygon(zxpos, zypos, zypos.length);
 
 
         int[] jxpos = {426, 445, 446, 426, 426};
@@ -179,6 +183,7 @@ public class HyruleScene extends ZeldaScene
         solids.add(wall);
         solids.add(wall1);
         solids.add(downwall);
+        solids.add(downwall1);
 
         gameObjects.add(new Bush(game, 657, 540));
         gameObjects.add(new Bush(game, 673, 540));
@@ -235,13 +240,10 @@ public class HyruleScene extends ZeldaScene
         gameObjects.add(new WhiteSoldier(game, 293, 293, Direction.DOWN));
 
         gameObjects.add(new Guard(game, 438, 715, Direction.LEFT));
-        gameObjects.add(new Guard(game, 122, 991, Direction.UP));
-        gameObjects.add(new Guard(game, 152, 991, Direction.UP));
         gameObjects.add(new Guard(game, 995, 636, Direction.RIGHT));
         gameObjects.add(new Guard(game, 995, 666, Direction.RIGHT));
 
-        if (!game.getSong().equals("sounds/overworld.mp3"))
-		{
+        if (!game.getSong().equals("sounds/overworld.mp3")) {
             game.stopMusic();
             game.playMusic("sounds/overworld.mp3", true);
         }
@@ -249,24 +251,19 @@ public class HyruleScene extends ZeldaScene
         handleSwitchScene(entrance);
     }
 
-	@Override
-	public void handleSwitchScene(Rectangle exit)
-	{
-		//throw new UnsupportedOperationException("Not supported yet.");
-        if (exit == hatch)
-		{
-			game.setScene(new HiddenScene(game, "HyruleSceneHatch"));
-		}
-        if (exit == exitDown)
-        {
+    @Override
+    public void handleSwitchScene(Rectangle exit) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+        if (exit == hatch) {
+            game.setScene(new HiddenScene(game, "HyruleSceneHatch"));
+        }
+        if (exit == exitDown) {
             game.setScene(new HouseScene(game, "HyruleScene"));
         }
-        if (exit == stairs)
-        {
+        if (exit == stairs) {
             game.setScene(new HiddenScene(game, "HyruleSceneStairs"));
         }
-		if (exit == door)
-        {
+        if (exit == door) {
             game.setScene(new CastleScene(game, "HyruleScene"));
         }
 

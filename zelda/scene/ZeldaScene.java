@@ -25,11 +25,10 @@ public abstract class ZeldaScene extends Scene
 
 	private int XSen; //left/right sensitivity for when the scene adapts too link
 	private int YSen; //up/down sensitivity for when the scene adapts too link
-	private final static int MOD = 1;
 
-  	public ZeldaScene(Game game, String img)
+  	public ZeldaScene(Game game, String img, String sceneName)
 	{
-		super(game, img);
+		super(game, img, sceneName);
 
 		XSen = game.getWidth() / 2;
 		YSen = game.getHeight() / 2;
@@ -135,68 +134,6 @@ public abstract class ZeldaScene extends Scene
 		}
 	}
 
-	public void moveScene(int toX, int toY)
-	{
-		boolean moved = false;
-
-		do
-		{
-			moved = false;
-
-			if (sprite.getX() < toX)
-			{
-				int newX = sprite.getX() + MOD;
-
-				if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
-				{
-					game.getLink().setX(game.getLink().getX() - MOD);
-					modShapes(-MOD, 0);
-					sprite.setX(newX);
-					moved = true;
-				}
-			}
-
-			if (sprite.getX() > toX) // link moves too far to the left
-			{
-				int newX = sprite.getX() - MOD;
-
-				if (newX > 0)
-				{
-					game.getLink().setX(game.getLink().getX() + MOD);
-					modShapes(MOD, 0);
-					sprite.setX(newX);
-					moved = true;
-				}
-			}
-
-			if (sprite.getY() < toY)
-			{
-				int newY = sprite.getY() + MOD;
-				if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
-				{
-					game.getLink().setY(game.getLink().getY() - MOD);
-					modShapes(0, -MOD);
-					sprite.setY(newY);
-					moved = true;
-				}
-			}
-
-			if (sprite.getY() > toY)
-			{
-				int newY = sprite.getY() - MOD;
-
-				if (newY > 0)
-				{
-					game.getLink().setY(game.getLink().getY() + MOD);
-					modShapes(0, MOD);
-					sprite.setY(newY);
-					moved = true;
-				}
-			}
-		}
-		while(moved);
-	}
-
 	/**
 	 * When the screen moves everything else should move in the opposite direction.
 	 * otherwise they won't sit still.
@@ -204,7 +141,8 @@ public abstract class ZeldaScene extends Scene
 	 * @param modX
 	 * @param modY
 	 */
-	private void modShapes(int modX, int modY)
+	@Override
+	public void modShapes(int modX, int modY)
 	{
 		for (Polygon poly : solids)
 		{
