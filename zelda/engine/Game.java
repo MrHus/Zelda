@@ -49,8 +49,7 @@ public class Game
     public Game()
 	{
         link = new Link(this, 100, 100);
-		//scene = new MainMenu(this);
-        scene = new BattleScene(this, "GameStart");
+		scene = new MainMenu(this);
 	}
 
 	public void quit()
