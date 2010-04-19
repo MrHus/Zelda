@@ -1,9 +1,17 @@
 package zelda.engine;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import zelda.Main;
+import zelda.karacter.Direction;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
+import zelda.scene.HouseScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -44,6 +52,8 @@ public class Game
 	{
 		if (music != null)
 			music.stop();
+
+		save();
 
 		try
 		{
@@ -87,6 +97,78 @@ public class Game
 		URL mp3 = Main.class.getResource(mp3file);
 		fx = new SoundFx(this, mp3);
 		fx.play();
+	}
+
+	public void load()
+	{
+		FileInputStream fis = null;
+		ObjectInputStream in = null;
+
+		try
+		{
+			fis = new FileInputStream("Zelda.ser");
+			in = new ObjectInputStream(fis);
+			SaveData data = (SaveData)in.readObject();
+
+			Scene scn = initScene(data.getSceneName());
+
+			setScene(scn);
+
+			link.setHealth(data.getHealth());
+			link.setRupee(data.getRupee());
+
+			in.close();
+		}
+		catch(IOException ex)
+		{
+			ex.printStackTrace();
+		}
+		catch(ClassNotFoundException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+
+	public Scene initScene(String sceneName)
+	{
+		Scene scn = null;
+
+		if(sceneName.equals("HouseScene"))
+		{
+			scn = new HouseScene(this, "GameStart");
+		}
+
+		return scn;
+	}
+
+	public void save()
+	{
+		FileOutputStream fos = null;
+		ObjectOutputStream out = null;
+
+		File file = new File("Zelda.ser");
+		
+		try
+		{
+			file.delete();
+		}catch(Exception e){}
+		
+		file = new File("Zelda.ser");
+
+		try
+		{
+			fos = new FileOutputStream(file);
+			out = new ObjectOutputStream(fos);
+
+			SaveData data = new SaveData(link, scene);
+
+			out.writeObject(data);
+			out.close();
+		}
+		catch(IOException ex)
+		{
+			ex.printStackTrace();
+		}
 	}
 
 	public Link getLink()

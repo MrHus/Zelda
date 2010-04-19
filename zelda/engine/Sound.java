@@ -32,7 +32,7 @@ public abstract class Sound implements Runnable
 		// Hopefully this will fix the "cant rip 0x00 bug".
 		if (System.currentTimeMillis() > lastPlayed + playInterval || !lastSong.equals(mp3.getFile()))
 		{
-			System.out.println(mp3.getFile());
+			//System.out.println(mp3.getFile());
 			try
 			{
 				player = new Player(mp3.openStream());

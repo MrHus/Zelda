@@ -23,7 +23,7 @@ public class MainMenu extends Scene
 
 	public MainMenu(Game game)
 	{
-		super(game, "images/main-menu.png");
+		super(game, "images/main-menu.png", "MainMenu");
 
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 
@@ -60,6 +60,7 @@ public class MainMenu extends Scene
 					break;
 
 				case LOAD_GAME:
+					game.load();
 					break;
 
 				case HELP:

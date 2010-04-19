@@ -2,10 +2,7 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import zelda.enemy.BlueSoldier;
-import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
-import zelda.karacter.Direction;
 
 
 /**
@@ -21,7 +18,7 @@ public class ForrestScene extends ZeldaScene
 
     public ForrestScene(Game game, String entrance)
 	{
-        super(game, "images/forrest-scene.png");
+        super(game, "images/forrest-scene.png", "ForrestScene");
 
         exits.add(exitRight);
 
