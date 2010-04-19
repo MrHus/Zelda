@@ -1,6 +1,7 @@
 package zelda.link;
 
 import zelda.karacter.Direction;
+import zelda.scene.HouseScene;
 
 /**
  * @author Bas Harteveld
@@ -10,18 +11,12 @@ public class DeathState extends LinkState
     private final String[] deathRightAnimation	= {"Link hit right", "Link death right", "Link death right 2"};
     private final String[] deathLeftAnimation	= {"Link hit left", "Link death left", "Link death left 2"};
 
-    private Direction direction;
-
     private long oldAnimationInterval;
 
     public DeathState(Link link, Direction direction)
     {
         super(link);
         name = "DeathState";
-
-
-
-        this.direction = direction;
 
         switch(direction)
         {
@@ -52,12 +47,6 @@ public class DeathState extends LinkState
     }
 
     @Override
-	public void handleInput()
-	{
-        
-    }
-
-    @Override
 	public void handleAnimation()
 	{
 		int animationCounter = link.getAnimationCounter();
@@ -66,13 +55,8 @@ public class DeathState extends LinkState
 		{
 			link.setAnimationInterval(oldAnimationInterval);			
 			link.setState(new StandState(link));
-			game.setScene(new zelda.scene.HouseScene(game, "HouseScene"));
-            link.setHealth(1);
-
-            game.getLink().setXHardCore(183);
-			game.getLink().setYHardCore(278);
-
+			link.setHealth(2);
+			game.setScene(new HouseScene(game, "GameStart"));
 		}
-		
     }
 }

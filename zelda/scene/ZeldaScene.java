@@ -69,8 +69,8 @@ public abstract class ZeldaScene extends Scene
 			}
 		}
 
-		System.out.println("Scene is at:");
-		System.out.println(sprite.getX() + ", " + sprite.getY());
+		//System.out.println("Scene is at:");
+		//System.out.println(sprite.getX() + ", " + sprite.getY());
 	}
 
 	private void checkLinkIsInExit()
@@ -231,9 +231,11 @@ public abstract class ZeldaScene extends Scene
 	{
        	g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
         g2.setColor(Color.white);
-        Font f = new Font ("Serif", Font.BOLD, 12);
+
+		Font f = new Font ("Serif", Font.BOLD, 12);
         g2.setFont (f);
-        g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
+
+		g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
         g2.drawString("" + game.getLink().getRupee(), 102, game.getHeight() / 7);
 	}
 

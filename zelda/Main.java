@@ -21,8 +21,7 @@ public class Main extends JFrame
 			setSize(game.getWidth(), game.getHeight());
 		}
 		
-		setUndecorated(true);	
-		
+		setUndecorated(true);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

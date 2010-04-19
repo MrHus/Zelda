@@ -2,10 +2,8 @@ package zelda.enemy;
 
 import zelda.collision.Hittable;
 import zelda.collision.Weapon;
-import java.awt.Rectangle;
 import zelda.engine.Game;
 import zelda.karacter.Direction;
-import zelda.karacter.Karacter;
 
 /**
  * A White soldier.
@@ -22,6 +20,11 @@ public class WhiteSoldier extends Soldier implements Hittable
 
 	public void hitBy(Weapon weapon)
 	{
+		if (health >= 1)
+        {
+            game.playFx("sounds/enemyHit.mp3");
+        }
+
 		switch(weapon)
 		{
 			case SWORD:
@@ -29,16 +32,15 @@ public class WhiteSoldier extends Soldier implements Hittable
                 {
                     lastHit = System.currentTimeMillis();
                     health -= 3;
-                    this.setState(new TransState(this, game.getLink().getDirection()));
+                    setState(new TransState(this, game.getLink().getDirection()));
                 }
 				break;
 
             case BOMB:
-                alive = false;
+                health = 0;
                 break;
 
             case ARROW:
-                game.playFx("sounds/enemyHit.mp3");
                 health -= 3;               
                 break;
 		}
