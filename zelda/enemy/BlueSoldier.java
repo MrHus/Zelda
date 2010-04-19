@@ -42,7 +42,7 @@ public class BlueSoldier extends Soldier implements Hittable
                 break;
 
             case ARROW:
-                health -= 3;
+                health -= 1;
                 setBehavior(new AttackBehavior(this));
                 break;
 		}
