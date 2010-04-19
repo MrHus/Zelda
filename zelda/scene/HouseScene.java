@@ -141,8 +141,8 @@ public class HouseScene extends ZeldaScene
 		{           
 			moveScene(12, 0);
 
-			game.getLink().setXHardCore(game.getLink().getX() + 12);
-			game.getLink().setYHardCore(25);
+			game.getLink().setXHardCore(320);
+			game.getLink().setYHardCore(34);
 		}
 
 		if(entrance.equals("GameStart"))

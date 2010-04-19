@@ -316,8 +316,8 @@ public class HyruleScene extends ZeldaScene
         if (entrance.equals("HouseScene")) {
             moveScene(524, 623);
 
-            game.getLink().setXHardCore(game.getLink().getX() + 519);
-            game.getLink().setYHardCore(370);
+            game.getLink().setXHardCore(309);
+            game.getLink().setYHardCore(349);
         }
         if (entrance.equals("HiddenScene")) {
             moveScene(463, 44);

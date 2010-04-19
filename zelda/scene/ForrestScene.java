@@ -15,14 +15,11 @@ public class ForrestScene extends ZeldaScene
 
 	private Rectangle exitRight = new Rectangle(506, 193, 20, 50);
 
-
     public ForrestScene(Game game, String entrance)
 	{
         super(game, "images/forrest-scene.png", "ForrestScene");
 
         exits.add(exitRight);
-
-
 
         // Draw both fenches
         int[] axpos = {9, 10, 2, 1, 8};
@@ -33,7 +30,6 @@ public class ForrestScene extends ZeldaScene
         }
 
         fenchLeft = new Polygon(axpos, aypos, aypos.length);
-
 
         int[] cxpos = {510, 511, 505, 504};
         int[] cypos = {220, 295, 296, 220};
@@ -97,8 +93,6 @@ public class ForrestScene extends ZeldaScene
 
         lake = new Polygon(bxpos, bypos, bypos.length);
 
-
-
         // Add polygon objects
         solids.add(fenchLeft);
         solids.add(lake);
@@ -118,10 +112,7 @@ public class ForrestScene extends ZeldaScene
         //gameObjects.add(new WhiteSoldier(game, 256, 118, Direction.LEFT, 20));
         //gameObjects.add(new WhiteSoldier(game, 375, 358, Direction.DOWN, 20));
 
-
         handleSwitchScene(entrance);
-
-
     }
 
 	@Override
