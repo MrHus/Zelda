@@ -23,10 +23,15 @@ public abstract class Scene implements DrawAble
 	protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
     protected ArrayList<Polygon> eyeViews = new ArrayList<Polygon>();
 
-	public Scene(Game game, String img)
+	protected String sceneName;
+
+	protected final static int MOD = 1;
+
+	public Scene(Game game, String img, String sceneName)
 	{
 		this.game = game;
 		sprite = new Sprite(img);
+		this.sceneName = sceneName;
 	}
 	
 	public void draw(Graphics2D g2)
@@ -52,6 +57,92 @@ public abstract class Scene implements DrawAble
 			}
 		}
         newGameObjects.clear();
+	}
+
+	public void moveScene(int toX, int toY)
+	{
+		boolean moved = false;
+
+		do
+		{
+			moved = false;
+
+			if (sprite.getX() < toX)
+			{
+				int newX = sprite.getX() + MOD;
+
+				if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
+				{
+					game.getLink().setX(game.getLink().getX() - MOD);
+					modShapes(-MOD, 0);
+					sprite.setX(newX);
+					moved = true;
+				}
+			}
+
+			if (sprite.getX() > toX) // link moves too far to the left
+			{
+				int newX = sprite.getX() - MOD;
+
+				if (newX > 0)
+				{
+					game.getLink().setX(game.getLink().getX() + MOD);
+					modShapes(MOD, 0);
+					sprite.setX(newX);
+					moved = true;
+				}
+			}
+
+			if (sprite.getY() < toY)
+			{
+				int newY = sprite.getY() + MOD;
+				if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
+				{
+					game.getLink().setY(game.getLink().getY() - MOD);
+					modShapes(0, -MOD);
+					sprite.setY(newY);
+					moved = true;
+				}
+			}
+
+			if (sprite.getY() > toY)
+			{
+				int newY = sprite.getY() - MOD;
+
+				if (newY > 0)
+				{
+					game.getLink().setY(game.getLink().getY() + MOD);
+					modShapes(0, MOD);
+					sprite.setY(newY);
+					moved = true;
+				}
+			}
+		}
+		while(moved);
+	}
+
+	/**
+	 * When the screen moves everything else should move in the opposite direction.
+	 * otherwise they won't sit still.
+	 *
+	 * @param modX
+	 * @param modY
+	 */
+	public void modShapes(int modX, int modY)
+	{
+		for (Polygon poly : solids)
+		{
+			poly.translate(modX, modY);
+		}
+
+		for (GObject obj : gameObjects)
+		{
+			if (obj.isScreenAdjust()) // should it adjust when screen moves.
+			{
+				obj.setXHardCore(obj.getX() + modX);
+				obj.setYHardCore(obj.getY() + modY);
+			}
+		}
 	}
 	
 	public void addGObject(GObject gObject)
@@ -102,6 +193,11 @@ public abstract class Scene implements DrawAble
 	public ArrayList<Polygon> getEyeViews()
 	{
 		return eyeViews;
+	}
+
+	public String getName()
+	{
+		return sceneName;
 	}
 
 	//remove after done with PolyCreator

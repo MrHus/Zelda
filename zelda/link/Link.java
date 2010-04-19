@@ -246,6 +246,6 @@ public class Link extends Karacter
 
     public void setRupee(int rupee)
     {
-        this.rupee = health;
+        this.rupee = rupee;
     }
 }
