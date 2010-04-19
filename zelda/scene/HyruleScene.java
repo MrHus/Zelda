@@ -286,5 +286,12 @@ public class HyruleScene extends ZeldaScene
 			game.getLink().setXHardCore(250);
 			game.getLink().setYHardCore(200);
 		}
+        if(entrance.equals("CastleScene"))
+		{
+			moveScene(524, 623);
+
+			game.getLink().setXHardCore(510);
+            game.getLink().setYHardCore(310);
+		}
 	}
 }

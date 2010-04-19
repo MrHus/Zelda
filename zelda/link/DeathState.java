@@ -18,30 +18,24 @@ public class DeathState extends LinkState
         super(link);
         name = "DeathState";
 
+        link.setAnimationInterval(700);
+
         switch(direction)
         {
             case UP:
-                link.setAnimation(deathLeftAnimation);
-                link.setAnimationInterval(700);
-                game.playFx("sounds/killed.mp3");
+                link.setAnimation(deathLeftAnimation);                
                 break;
 
             case DOWN:
                 link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(700);
-                game.playFx("sounds/killed.mp3");
                 break;
 
             case LEFT:
                 link.setAnimation(deathLeftAnimation);
-                link.setAnimationInterval(700);
-                game.playFx("sounds/killed.mp3");
                 break;
 
             case RIGHT:
-                link.setAnimation(deathRightAnimation);
-                link.setAnimationInterval(700);
-                game.playFx("sounds/killed.mp3");
+                link.setAnimation(deathRightAnimation);              
                 break;
         }
     }
