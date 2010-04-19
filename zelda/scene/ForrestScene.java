@@ -4,7 +4,7 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import zelda.enemy.armos.ArmosKnight;
 import zelda.enemy.BlueSoldier;
-import zelda.enemy.BossSoldier;
+import zelda.enemy.GhostSoldier;
 import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
 import zelda.items.Rupee;
@@ -117,10 +117,15 @@ public class ForrestScene extends ZeldaScene
         gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 50));
         gameObjects.add(new BlueSoldier(game, 128, 216, Direction.RIGHT, 50));
 
+
         gameObjects.add(new WhiteSoldier(game, 408, 162, Direction.LEFT));
         gameObjects.add(new WhiteSoldier(game, 162, 85, Direction.DOWN));
 
-		
+
+		gameObjects.add(new Rupee(game, 380, 110));
+		gameObjects.add(new Rupee(game, 390, 110));
+		gameObjects.add(new Rupee(game, 400, 110));
+		gameObjects.add(new Rupee(game, 410, 110));
 		gameObjects.add(new Rupee(game, 380, 128));
 		gameObjects.add(new Rupee(game, 390, 128));
 		gameObjects.add(new Rupee(game, 400, 128));

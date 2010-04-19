@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package zelda.enemy.armos;
 
 import java.awt.Rectangle;
@@ -17,14 +13,15 @@ import zelda.karacter.Karacter;
  *
  * @author Christiaan
  */
-public class ArmosKnight extends Karacter implements Hittable {
-
+public class ArmosKnight extends Karacter implements Hittable
+{
     protected Behavior behavior;
     protected long inputInterval = 50;
     protected long lastInput = System.currentTimeMillis();
     protected long lastHit = System.currentTimeMillis();
 
-    public ArmosKnight(Game game, int x, int y, Direction direction) {
+    public ArmosKnight(Game game, int x, int y, Direction direction)
+    {
         super(game, x, y, 32, 52, direction, "images/armos.png");
 
         spriteLoc.put("1", new Rectangle(0, 0, 32, 52));
@@ -48,12 +45,15 @@ public class ArmosKnight extends Karacter implements Hittable {
         behavior = new AttackBehavior(this);
     }
 
-    public void hitBy(Weapon weapon) {
-        if (health >= 1) {
+    public void hitBy(Weapon weapon)
+    {
+        if (health >= 1)
+        {
             game.playFx("sounds/enemyHit.mp3");
         }
 
-        switch (weapon) {
+        switch (weapon)
+        {
             case SWORD:
                 if (health > 0 && System.currentTimeMillis() > lastHit + 800) {
                     lastHit = System.currentTimeMillis();
@@ -74,11 +74,13 @@ public class ArmosKnight extends Karacter implements Hittable {
                 if (health > 0 && System.currentTimeMillis() > lastHit + 800) {
                     lastHit = System.currentTimeMillis();
                     health -= 1;
+                    setState(new TransState(this, game.getLink().getDirection()));
                 }
                 break;
         }
 
-        if (health <= 0) {
+        if (health <= 0)
+        {
             alive = false;
             game.playFx("sounds/enemyDie.mp3");
             randomGoodie();
@@ -86,24 +88,29 @@ public class ArmosKnight extends Karacter implements Hittable {
     }
 
     @Override
-    public void preAnimation() {
+    public void preAnimation()
+    {
         state.handleAnimation();
     }
 
     @Override
-    public void doInLoop() {
-        if (System.currentTimeMillis() > lastInput + inputInterval) {
+    public void doInLoop()
+    {
+        if (System.currentTimeMillis() > lastInput + inputInterval)
+        {
             state.handleInput();
             behavior.behave();
             lastInput = System.currentTimeMillis();
         }
     }
 
-    public Behavior getBehavior() {
+    public Behavior getBehavior()
+    {
         return behavior;
     }
 
-    public void setBehavior(Behavior behavior) {
+    public void setBehavior(Behavior behavior)
+    {
         this.behavior = behavior;
     }
 }

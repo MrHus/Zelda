@@ -50,7 +50,10 @@ public class Game
 	{
         link = new Link(this, 100, 100);
 		scene = new MainMenu(this);
+<<<<<<< HEAD
         //scene = new BattleScene(this, "GameStart");
+=======
+>>>>>>> 9e3e01a4c3f4419885f8658ad8c9512b53a127b4
 	}
 
 	public void quit()
