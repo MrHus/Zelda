@@ -14,7 +14,7 @@ public class Game
 {
 	private boolean running = true;
 	private boolean paused  = false;
-	private boolean debug   = true;
+	private boolean debug   = false;
 
     private int gameSpeed = 10;
     private int width = 500;
@@ -33,6 +33,9 @@ public class Game
     private boolean kPressed = false;
     private boolean lPressed = false;
 	private boolean enterPressed = false;
+
+    private long lastHit = System.currentTimeMillis();
+    private long lastHit2 = System.currentTimeMillis();
 
     public Game()
 	{
@@ -166,12 +169,28 @@ public class Game
 
 	public void setkPressed(boolean kPressed)
 	{
-		this.kPressed = kPressed;
+        if (System.currentTimeMillis() > lastHit + 1000)
+        {    
+            this.kPressed = kPressed;
+            lastHit = System.currentTimeMillis();
+        }
+        else
+        {
+            this.kPressed = false;
+        }
 	}
 
 	public void setlPressed(boolean lPressed)
 	{
-		this.lPressed = lPressed;
+        if (System.currentTimeMillis() > lastHit2 + 3000)
+        {
+            this.lPressed = lPressed;
+            lastHit2 = System.currentTimeMillis();
+        }
+        else
+        {
+           this.lPressed = false;
+        }
 	}
 
 	public void setsPressed(boolean sPressed)
