@@ -141,10 +141,10 @@ public class ForrestScene extends ZeldaScene
 	{
 		if(entrance.equals("HouseScene"))
 		{
-			moveScene(31, 204);
+			moveScene(473, 136);
 
-			game.getLink().setXHardCore(31);
-			game.getLink().setYHardCore(204);
+			game.getLink().setXHardCore(473);
+			game.getLink().setYHardCore(100);
 		}
 	}
 }
