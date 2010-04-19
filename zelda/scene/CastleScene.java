@@ -14,12 +14,11 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class CastleScene extends ZeldaScene
-{
+public class CastleScene extends ZeldaScene {
+
     Polygon middenbovenmuur, stukmuur, stukmuur1, stukmuur2, rechtsonder, rechts, rechtsmidden, linksonder, links, zuil, zuil1, zuil2, zuil3, zuil4, zuil5, zuil6, zuil7, midden, midden1, pot, pot1, ding1, ding, ding2, ding3;
 
-    public CastleScene(Game game, String entrance)
-	{
+    public CastleScene(Game game, String entrance) {
         super(game, "images/castle.png");
 
         int[] xpos = {498, 352, 298, 217, 215, 147, 146, 145, 159, 160, 190, 193, 318, 320, 704, 704, 830, 831, 863, 865, 877, 880, 672, 496};
@@ -196,8 +195,7 @@ public class CastleScene extends ZeldaScene
         gameObjects.add(new BlueSoldier(game, 116, 144, Direction.UP, 200));
         gameObjects.add(new WhiteSoldier(game, 505, 114, Direction.LEFT));
 
-		if (!game.getSong().equals("sounds/castle.mp3"))
-		{
+        if (!game.getSong().equals("sounds/castle.mp3")) {
             game.stopMusic();
             game.playMusic("sounds/castle.mp3", true);
         }
@@ -206,19 +204,15 @@ public class CastleScene extends ZeldaScene
     }
 
     @Override
-    public void handleSwitchScene(Rectangle exit) 
-	{
-
+    public void handleSwitchScene(Rectangle exit) {
     }
 
     @Override
-    public void handleSwitchScene(String entrance)
-	{
-		if (entrance.equals("HyruleScene"))
-		{
-			moveScene(252, 607);
+    public void handleSwitchScene(String entrance) {
+        if (entrance.equals("HyruleScene")) {
+            moveScene(252, 607);
 
-			game.getLink().setXHardCore(250);
+            game.getLink().setXHardCore(250);
             game.getLink().setYHardCore(326);
         }
     }
