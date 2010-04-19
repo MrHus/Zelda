@@ -9,7 +9,9 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
+import zelda.scene.CastleBasement;
 import zelda.scene.HouseScene;
+import zelda.scene.ZeldaScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -27,7 +29,7 @@ public class Game
     private int height = 400;
 
     private Link link;
-    private Scene scene;
+    private ZeldaScene scene;
     private Music music;
     private SoundFx fx;
 	
@@ -47,7 +49,8 @@ public class Game
 	{
         link = new Link(this, 100, 100);
 		//scene = new MainMenu(this);
-        scene = new HouseScene(this, "HyruleScene");
+        scene = new CastleBasement(this, "HyruleScene");
+		scene.handleSwitchScene("HyruleScene");
 	}
 
 	public void quit()
@@ -112,7 +115,7 @@ public class Game
 			in = new ObjectInputStream(fis);
 			SaveData data = (SaveData)in.readObject();
 
-			Scene scn = initScene(data.getSceneName());
+			ZeldaScene scn = initScene(data.getSceneName());
 
 			setScene(scn);
 
@@ -131,9 +134,9 @@ public class Game
 		}
 	}
 
-	public Scene initScene(String sceneName)
+	public ZeldaScene initScene(String sceneName)
 	{
-		Scene scn = null;
+		ZeldaScene scn = null;
 
 		if(sceneName.equals("HouseScene"))
 		{
@@ -218,7 +221,7 @@ public class Game
 		return scene;
 	}
 
-	public synchronized void setScene(Scene scene)
+	public synchronized void setScene(ZeldaScene scene)
 	{
 		this.scene = scene;
 	}
