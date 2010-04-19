@@ -18,10 +18,11 @@ public class HyruleScene extends ZeldaScene
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall;
     private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk;
 
-    private Rectangle hatch		= new Rectangle(910, 160, 5, 5);
-    private Rectangle exitDown  = new Rectangle(672, 1013, 290, 20);
-    private Rectangle stairs		= new Rectangle(713, 215, 14, 14);
-    private Rectangle door		= new Rectangle(497, 247, 30, 30);
+    private Rectangle hatch         = new Rectangle(910, 160, 5, 5);
+    private Rectangle exitDown      = new Rectangle(672, 1013, 290, 20);
+    private Rectangle stairs        = new Rectangle(713, 215, 14, 14);
+    private Rectangle door          = new Rectangle(497, 247, 30, 30);
+    private Rectangle forrestExit	= new Rectangle(121, 989, 50, 20);
 
     public HyruleScene(Game game, String entrance)
 	{
@@ -31,6 +32,7 @@ public class HyruleScene extends ZeldaScene
         exits.add(hatch);
         exits.add(stairs);
         exits.add(door);
+        exits.add(forrestExit);
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
@@ -267,6 +269,11 @@ public class HyruleScene extends ZeldaScene
         {
             game.setScene(new CastleScene(game, "HyruleScene"));
         }
+
+        if (exit == forrestExit)
+        {
+            game.setScene(new ForrestScene(game, "HyruleScene"));
+        }
 	}
 
 	@Override
@@ -285,6 +292,14 @@ public class HyruleScene extends ZeldaScene
 
 			game.getLink().setXHardCore(250);
 			game.getLink().setYHardCore(200);
+		}
+
+        if(entrance.equals("ForrestScene3"))
+		{
+			moveScene(1, 623);
+
+			game.getLink().setXHardCore(139);
+			game.getLink().setYHardCore(341);
 		}
 	}
 }
