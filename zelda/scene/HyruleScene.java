@@ -16,11 +16,11 @@ import zelda.karacter.Direction;
 public class HyruleScene extends ZeldaScene
 {
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall;
-    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk;
+    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk, lantern1, lantern2, lantern3, lantern4, lantern5, lantern6;
 
     private Rectangle hatch		= new Rectangle(910, 160, 5, 5);
     private Rectangle exitDown  = new Rectangle(672, 1013, 290, 20);
-    private Rectangle stairs		= new Rectangle(713, 215, 14, 14);
+    private Rectangle stairs	= new Rectangle(713, 215, 14, 14);
     private Rectangle door		= new Rectangle(497, 247, 30, 30);
 
     public HyruleScene(Game game, String entrance)
@@ -31,6 +31,16 @@ public class HyruleScene extends ZeldaScene
         exits.add(hatch);
         exits.add(stairs);
         exits.add(door);
+
+        int[] wxpos = {385, 398, 398, 385};
+        int[] wypos = {497, 497, 511, 511};
+        
+        lantern1 = new Polygon(wxpos, wypos, wypos.length);
+
+        int[] txpos = {336, 350, 350, 336};
+        int[] typos = {495, 495, 511, 511};
+
+        lantern2 = new Polygon(wxpos, wypos, wypos.length);
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
@@ -118,7 +128,6 @@ public class HyruleScene extends ZeldaScene
         }
         bush3 = new Polygon(mxpos, mypos, mypos.length);
 
-
         int[] oxpos = {751, 735, 737, 751, 752};
         int[] oypos = {263, 260, 248, 248, 261};
         for (int i = 0; i < oypos.length; i++) {
@@ -161,6 +170,13 @@ public class HyruleScene extends ZeldaScene
         }
 
         wall1 = new Polygon(xpos, ypos, ypos.length);
+
+        solids.add(lantern1);
+        solids.add(lantern2);
+        solids.add(lantern3);
+        solids.add(lantern4);
+        solids.add(lantern5);
+        solids.add(lantern6);
 
         solids.add(balk);
         solids.add(garden);
