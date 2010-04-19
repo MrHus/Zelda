@@ -2,7 +2,9 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import zelda.enemy.armos.ArmosKnight;
 import zelda.enemy.BlueSoldier;
+import zelda.enemy.BossSoldier;
 import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
 import zelda.karacter.Direction;
@@ -116,8 +118,8 @@ public class ForrestScene extends ZeldaScene
         gameObjects.add(game.getLink());
 
         // add WhiteSoldiers
-        //gameObjects.add(new BlueSoldier(game, 70, 223, Direction.UP, 20));
-        //gameObjects.add(new BlueSoldier(game, 116, 340, Direction.DOWN, 20));
+        gameObjects.add(new BossSoldier(game, 70, 223, Direction.UP));
+        gameObjects.add(new ArmosKnight(game, 116, 340, Direction.DOWN));
         //gameObjects.add(new WhiteSoldier(game, 256, 118, Direction.LEFT, 20));
         //gameObjects.add(new WhiteSoldier(game, 375, 358, Direction.DOWN, 20));
 

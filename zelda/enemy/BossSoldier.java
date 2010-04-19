@@ -10,11 +10,12 @@ import zelda.karacter.Direction;
  *
  * @author maartenhus
  */
-public class WhiteSoldier extends Soldier implements Hittable {
+public class BossSoldier extends Soldier implements Hittable {
 
-    public WhiteSoldier(Game game, int x, int y, Direction direction) {
-        super(game, x, y, direction, "images/white-soldier.png");
-        behavior = new RandomBehavior(this);
+    public BossSoldier(Game game, int x, int y, Direction direction) {
+        super(game, x, y, direction, "images/boss.png");
+        behavior = new AttackBehavior(this);
+        health = 30;
     }
 
     public void hitBy(Weapon weapon) {
@@ -28,19 +29,21 @@ public class WhiteSoldier extends Soldier implements Hittable {
                     lastHit = System.currentTimeMillis();
                     health -= 3;
                     setState(new TransState(this, game.getLink().getDirection()));
-                    setBehavior(new AttackBehavior(this));
                 }
                 break;
 
             case BOMB:
-                health = 0;
+                if (health > 0 && System.currentTimeMillis() > lastHit + 800) {
+                    lastHit = System.currentTimeMillis();
+                    health -= 10;
+                    setState(new TransState(this, game.getLink().getDirection()));
+                }
                 break;
 
             case ARROW:
                 if (health > 0 && System.currentTimeMillis() > lastHit + 800) {
                     lastHit = System.currentTimeMillis();
                     health -= 2;
-                    setBehavior(new AttackBehavior(this));
                 }
                 break;
         }
