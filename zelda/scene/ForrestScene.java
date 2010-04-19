@@ -122,6 +122,9 @@ public class ForrestScene extends ZeldaScene
         //gameObjects.add(new WhiteSoldier(game, 375, 358, Direction.DOWN, 20));
 
 
+        handleSwitchScene(entrance);
+
+
     }
 
 	@Override
