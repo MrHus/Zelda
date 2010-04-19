@@ -155,8 +155,8 @@ public class Link extends Karacter
 
 	public void handleInput()
 	{
-		//System.out.println("Link is at:");
-		//System.out.println(x + ", " + y);
+		System.out.println("Link is at:");
+		System.out.println(x + ", " + y);
 
 		if (System.currentTimeMillis() > lastInput + inputInterval)
 		{
