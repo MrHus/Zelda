@@ -120,7 +120,6 @@ public class ForrestScene extends ZeldaScene
         gameObjects.add(new WhiteSoldier(game, 408, 162, Direction.LEFT));
         gameObjects.add(new WhiteSoldier(game, 162, 85, Direction.DOWN));
 
-
 		gameObjects.add(new Rupee(game, 380, 110));
 		gameObjects.add(new Rupee(game, 390, 110));
 		gameObjects.add(new Rupee(game, 400, 110));
@@ -151,6 +150,11 @@ public class ForrestScene extends ZeldaScene
 		{
 			game.setScene(new HyruleScene(game, "ForrestScene3"));
 		}
+
+        if (exit == warpExit)
+		{
+			game.setScene(new BattleScene(game, "warp"));
+		}
 	}
 
 	@Override
@@ -177,6 +181,13 @@ public class ForrestScene extends ZeldaScene
 			moveScene(1, 1);
 			game.getLink().setXHardCore(135);
 			game.getLink().setYHardCore(31);
+		}
+
+        if(entrance.equals("BattleScene"))
+		{
+			moveScene(10, 1);
+			game.getLink().setXHardCore(382);
+			game.getLink().setYHardCore(131);
 		}
 	}
 }
