@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
+import zelda.menu.MainMenu;
 import zelda.scene.CastleBasement;
 import zelda.scene.HouseScene;
 import zelda.scene.ZeldaScene;
@@ -29,7 +30,7 @@ public class Game
     private int height = 400;
 
     private Link link;
-    private ZeldaScene scene;
+    private Scene scene;
     private Music music;
     private SoundFx fx;
 	
@@ -48,10 +49,8 @@ public class Game
     public Game()
 	{
         link = new Link(this, 100, 100);
-		//scene = new MainMenu(this);
-        scene = new CastleBasement(this, "HyruleScene");
-		scene.handleSwitchScene("HyruleScene");
-	}
+		scene = new MainMenu(this);
+    }
 
 	public void quit()
 	{
@@ -221,7 +220,7 @@ public class Game
 		return scene;
 	}
 
-	public synchronized void setScene(ZeldaScene scene)
+	public synchronized void setScene(Scene scene)
 	{
 		this.scene = scene;
 	}
