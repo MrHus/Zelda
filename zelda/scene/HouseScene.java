@@ -101,6 +101,7 @@ public class HouseScene extends ZeldaScene
         
         gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
         gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
+        
 
         gameObjects.add(new Guard(game, 483, 408, Direction.RIGHT));
         gameObjects.add(new Guard(game, 483, 376, Direction.RIGHT));
