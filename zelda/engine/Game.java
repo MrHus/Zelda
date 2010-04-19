@@ -11,7 +11,6 @@ import zelda.Main;
 import zelda.karacter.Direction;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
-import zelda.scene.BattleScene;
 import zelda.scene.HouseScene;
 
 /**
@@ -50,10 +49,7 @@ public class Game
 	{
         link = new Link(this, 100, 100);
 		scene = new MainMenu(this);
-<<<<<<< HEAD
-        //scene = new BattleScene(this, "GameStart");
-=======
->>>>>>> 9e3e01a4c3f4419885f8658ad8c9512b53a127b4
+        //scene = new ForrestScene(this, "GameStart");
 	}
 
 	public void quit()
