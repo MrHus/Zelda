@@ -15,10 +15,10 @@ import zelda.karacter.Direction;
  */
 public class HyruleScene extends ZeldaScene
 {
-    private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall;
-    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk, lantern1, lantern2, lantern3, lantern4, lantern5, lantern6;
+    private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, bush1, bush2, bush3;
+    private Polygon garden, garden1, garden3, balk, lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;
 
-    private Rectangle hatch		= new Rectangle(910, 160, 5, 5);
+    private Rectangle hatch		= new Rectangle(904, 166, 1, 1);
     private Rectangle exitDown  = new Rectangle(672, 1013, 290, 20);
     private Rectangle stairs	= new Rectangle(713, 215, 14, 14);
     private Rectangle door		= new Rectangle(497, 247, 30, 30);
@@ -38,9 +38,39 @@ public class HyruleScene extends ZeldaScene
         lantern1 = new Polygon(wxpos, wypos, wypos.length);
 
         int[] txpos = {336, 350, 350, 336};
-        int[] typos = {495, 495, 511, 511};
+        int[] typos = {497, 497, 511, 511};
 
-        lantern2 = new Polygon(wxpos, wypos, wypos.length);
+        lantern2 = new Polygon(txpos, typos, typos.length);
+        
+        int[] uxpos = {385, 398, 398, 385};
+        int[] uypos = {464, 464, 480, 480};
+
+        lantern3 = new Polygon(uxpos, uypos, uypos.length);
+
+        int[] axpos = {336, 350, 350, 336};
+        int[] aypos = {464, 464, 480, 480};
+
+        lantern4 = new Polygon(axpos, aypos, aypos.length);
+
+        int[] sxpos = {385, 398, 398, 385};
+        int[] sypos = {431, 431, 449, 449};
+
+        lantern5 = new Polygon(sxpos, sypos, sypos.length);
+
+        int[] hxpos = {336, 350, 350, 336};
+        int[] hypos = {431, 431, 449, 449};
+
+        lantern6 = new Polygon(hxpos, hypos, hypos.length);
+
+        int[] lxpos = {385, 398, 398, 385};
+        int[] lypos = {398, 398, 418, 418};
+
+        lantern7 = new Polygon(lxpos, lypos, lypos.length);
+
+        int[] zxpos = {336, 350, 350, 336};
+        int[] zypos = {398, 398, 418, 418};
+
+        lantern8 = new Polygon(zxpos, zypos, zypos.length);
 
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
@@ -177,6 +207,8 @@ public class HyruleScene extends ZeldaScene
         solids.add(lantern4);
         solids.add(lantern5);
         solids.add(lantern6);
+        solids.add(lantern7);
+        solids.add(lantern8);
 
         solids.add(balk);
         solids.add(garden);
