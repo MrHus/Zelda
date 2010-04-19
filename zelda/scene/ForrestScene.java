@@ -4,9 +4,11 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import zelda.enemy.armos.ArmosKnight;
 import zelda.enemy.BlueSoldier;
-import zelda.enemy.BossSoldier;
+import zelda.enemy.GhostSoldier;
 import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
+import zelda.items.Rupee;
+import zelda.items.Warp;
 import zelda.karacter.Direction;
 
 
@@ -22,6 +24,7 @@ public class ForrestScene extends ZeldaScene
 	private Rectangle exitRight1 = new Rectangle(506, 185, 20, 50);
     private Rectangle exitRight2 = new Rectangle(506, 250, 20, 90);
     private Rectangle exitUp = new Rectangle(100, 0, 90, 20);
+	private Rectangle warpExit = new Rectangle(393, 108, 16, 16);
 
     public ForrestScene(Game game, String entrance)
 	{
@@ -30,12 +33,8 @@ public class ForrestScene extends ZeldaScene
         exits.add(exitRight1);
         exits.add(exitRight2);
         exits.add(exitUp);
+		exits.add(warpExit);
 
-<<<<<<< HEAD
-        // Draw both fenches
-        int[] axpos = {9, 10, 2, 1, 8};
-        int[] aypos = {170, 299, 299, 172, 172};
-=======
         // Draw upperTreeline
         int[] axpos = {507, 485, 472, 451, 445, 426, 412, 388, 375, 354, 331, 317, 291, 271, 245, 219, 210, 197, 508, 508};
         int[] aypos = {182, 186, 192, 183, 167, 136, 89, 90, 135, 143, 103, 81, 80, 81, 81, 81, 81, 42, 44, 181};
@@ -44,21 +43,15 @@ public class ForrestScene extends ZeldaScene
 
         int[] cxpos = {203, 187, 180, 177, 328, 454, 506, 507, 361, 202};
         int[] cypos = {37, 16, 20, 4, 4, 4, 6, 39, 38, 37};
->>>>>>> c93f9c4c59a777f9b58a87089413b7538b4fc143
 
         upperTreeline2 = new Polygon(cxpos, cypos, cypos.length);
 
 
-<<<<<<< HEAD
-        int[] cxpos = {510, 511, 505, 504};
-        int[] cypos = {220, 295, 296, 220};
-=======
         // Draw leftTreeline
         int[] bxpos = {115, 110, 93, 88, 72, 96, 96, 98, 117, 119, 115, 110, 99, 88, 73, 74, 88, 96, 93, 92, 87, 77, 67, 5, 6, 115};
         int[] bypos = {4, 23, 52, 73, 93, 114, 127, 145, 162, 185, 199, 213, 219, 261, 271, 286, 297, 310, 332, 343, 360, 361, 396, 398, 5, 5};
 
         leftTreeline = new Polygon(bxpos, bypos, bypos.length);
->>>>>>> c93f9c4c59a777f9b58a87089413b7538b4fc143
 
         int[] dxpos = {67, 60, 45, 71, 103, 120, 126, 142, 144, 5, 6, 66};
         int[] dypos = {398, 408, 429, 436, 435, 451, 482, 497, 509, 506, 398, 399};
@@ -102,27 +95,8 @@ public class ForrestScene extends ZeldaScene
 
         deadtree3 = new Polygon(kxpos, kypos, kypos.length);
 
-<<<<<<< HEAD
-
-        // Draw Lake
-        int[] bxpos = {220, 143, 142, 223, 297, 376, 378, 298, 222};
-        int[] bypos = {144, 221, 257, 334, 335, 258, 222, 145, 144};
-
-        for (int i = 0; i < bypos.length; i++) {
-            bypos[i] += 20;
-        }
-
-        lake = new Polygon(bxpos, bypos, bypos.length);
-
-        // Add polygon objects
-        solids.add(fenchLeft);
-        solids.add(lake);
-        solids.add(fenchRight);
-        solids.add(upperTreeline1);
-=======
         solids.add(upperTreeline);
         solids.add(leftTreeline);
->>>>>>> c93f9c4c59a777f9b58a87089413b7538b4fc143
         solids.add(upperTreeline2);
         solids.add(leftTreeline2);
         solids.add(middleTreeline);
@@ -137,21 +111,29 @@ public class ForrestScene extends ZeldaScene
         gameObjects.add(game.getLink());
 
 
-<<<<<<< HEAD
-=======
         gameObjects.add(game.getLink());
         gameObjects.add(new BlueSoldier(game, 448, 400, Direction.UP, 75));
         gameObjects.add(new BlueSoldier(game, 259, 403, Direction.RIGHT, 50));
         gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 50));
         gameObjects.add(new BlueSoldier(game, 128, 216, Direction.RIGHT, 50));
 
-        gameObjects.add(new BossSoldier(game, 70, 223, Direction.UP));
-        gameObjects.add(new ArmosKnight(game, 116, 340, Direction.DOWN));
+        gameObjects.add(new GhostSoldier(game, 170, 223, Direction.UP));
+        gameObjects.add(new ArmosKnight(game, 326, 340, Direction.DOWN));
 
         gameObjects.add(new WhiteSoldier(game, 408, 162, Direction.LEFT));
         gameObjects.add(new WhiteSoldier(game, 162, 85, Direction.DOWN));
 
->>>>>>> c93f9c4c59a777f9b58a87089413b7538b4fc143
+
+		gameObjects.add(new Rupee(game, 380, 110));
+		gameObjects.add(new Rupee(game, 390, 110));
+		gameObjects.add(new Rupee(game, 400, 110));
+		gameObjects.add(new Rupee(game, 410, 110));
+		gameObjects.add(new Rupee(game, 380, 128));
+		gameObjects.add(new Rupee(game, 390, 128));
+		gameObjects.add(new Rupee(game, 400, 128));
+		gameObjects.add(new Rupee(game, 410, 128));
+		gameObjects.add(new Warp(game, 393, 108));
+
         handleSwitchScene(entrance);
     }
 

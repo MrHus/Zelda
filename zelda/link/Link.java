@@ -123,7 +123,7 @@ public class Link extends Karacter
         
 		sprite.setSprite(spriteLoc.get("Link stand down"));
 
-		z = 1;
+		z = 2;
         health = 5;
 
 		screenAdjust = false;
