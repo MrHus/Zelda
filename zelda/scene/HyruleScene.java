@@ -24,8 +24,9 @@ public class HyruleScene extends ZeldaScene
     private Rectangle stairs = new Rectangle(713, 215, 14, 14);
     private Rectangle door = new Rectangle(497, 247, 30, 30);
 
-    public HyruleScene(Game game, String entrance) {
-        super(game, "images/hyrule.png");
+    public HyruleScene(Game game, String entrance)
+	{
+        super(game, "images/hyrule.png", "HyruleScene");
 
         exits.add(exitDown);
         exits.add(hatch);
