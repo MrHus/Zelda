@@ -5,6 +5,8 @@ import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
 import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
+import zelda.items.Rupee;
+import zelda.items.Warp;
 import zelda.karacter.Direction;
 
 
@@ -20,7 +22,7 @@ public class ForrestScene extends ZeldaScene
 	private Rectangle exitRight1 = new Rectangle(506, 185, 20, 50);
     private Rectangle exitRight2 = new Rectangle(506, 250, 20, 90);
     private Rectangle exitUp = new Rectangle(100, 0, 90, 20);
-
+	private Rectangle warpExit = new Rectangle(393, 108, 16, 16);
 
     public ForrestScene(Game game, String entrance)
 	{
@@ -29,6 +31,7 @@ public class ForrestScene extends ZeldaScene
         exits.add(exitRight1);
         exits.add(exitRight2);
         exits.add(exitUp);
+		exits.add(warpExit);
 
         // Draw upperTreeline
         int[] axpos = {507, 485, 472, 451, 445, 426, 412, 388, 375, 354, 331, 317, 291, 271, 245, 219, 210, 197, 508, 508};
@@ -114,9 +117,14 @@ public class ForrestScene extends ZeldaScene
         gameObjects.add(new WhiteSoldier(game, 408, 162, Direction.LEFT));
         gameObjects.add(new WhiteSoldier(game, 162, 85, Direction.DOWN));
 
+		
+		gameObjects.add(new Rupee(game, 380, 128));
+		gameObjects.add(new Rupee(game, 390, 128));
+		gameObjects.add(new Rupee(game, 400, 128));
+		gameObjects.add(new Rupee(game, 410, 128));
+		gameObjects.add(new Warp(game, 393, 108));
+
         handleSwitchScene(entrance);
-
-
     }
 
 	@Override
