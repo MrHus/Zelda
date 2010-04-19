@@ -33,6 +33,7 @@ public class WhiteSoldier extends Soldier implements Hittable
                     lastHit = System.currentTimeMillis();
                     health -= 3;
                     setState(new TransState(this, game.getLink().getDirection()));
+                    setBehavior(new AttackBehavior(this));
                 }
 				break;
 
@@ -41,7 +42,8 @@ public class WhiteSoldier extends Soldier implements Hittable
                 break;
 
             case ARROW:
-                health -= 3;               
+                health -= 2;
+                setBehavior(new AttackBehavior(this));
                 break;
 		}
 
