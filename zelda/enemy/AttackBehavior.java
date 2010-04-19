@@ -8,7 +8,8 @@ import zelda.link.Link;
  *
  * @author vincentklarholz
  */
-public class AttackBehavior extends Behavior {
+public class AttackBehavior extends Behavior
+{
 
     private Karacter soldier;
     private Link link;
