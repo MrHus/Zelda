@@ -140,7 +140,6 @@ public class Arrow extends GObject
 	{
 		if (obj instanceof Hittable && !(obj instanceof Link) && !(obj instanceof Bush))
 		{
-			System.out.println("here");
 			Hittable hittable = (Hittable)obj;
 			hittable.hitBy(Weapon.ARROW);
             alive = false;

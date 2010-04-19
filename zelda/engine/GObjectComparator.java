@@ -6,7 +6,7 @@ import java.util.Comparator;
  *
  * @author maartenhus
  */
-public class GObjectComparator implements Comparator
+public class GObjectComparator implements Comparator<Object>
 {
 	public int compare(Object obj1, Object obj2)
 	{

@@ -19,7 +19,7 @@ public class Controller implements Runnable, KeyListener
 	private View view;
 	private PolyCreator polyCreator;
 
-	public Controller(Game game, View view, final JFrame frame)
+	public Controller(Game game, View view, JFrame frame)
 	{
 		this.game = game;
 		this.view = view;
@@ -103,6 +103,9 @@ public class Controller implements Runnable, KeyListener
 			case KeyEvent.VK_L:
 				game.setlPressed(true);
 				break;
+			case KeyEvent.VK_ENTER:
+				game.setEnterPressed(true);
+				break;
 		}
 	}
 
@@ -130,6 +133,9 @@ public class Controller implements Runnable, KeyListener
 				break;
 			case KeyEvent.VK_L:
 				game.setlPressed(false);
+				break;
+			case KeyEvent.VK_ENTER:
+				game.setEnterPressed(false);
 				break;
 		}
 	}

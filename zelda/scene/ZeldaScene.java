@@ -11,7 +11,6 @@ import zelda.engine.Game;
 import zelda.engine.Scene;
 import zelda.items.GuiHeart;
 import zelda.items.GuiRupee;
-import zelda.link.Link;
 
 /**
  * A specialised Scene object for the Zelda game.
@@ -22,20 +21,18 @@ public abstract class ZeldaScene extends Scene
 {
 	protected ArrayList<Rectangle> exits = new ArrayList<Rectangle>();
 
-	protected Link link;
-	protected boolean move;
+	private boolean adjust = false;
 
 	private int XSen; //left/right sensitivity for when the scene adapts too link
 	private int YSen; //up/down sensitivity for when the scene adapts too link
 	private final static int MOD = 1;
 
-  	public ZeldaScene(Game game, String img, String entrance)
+  	public ZeldaScene(Game game, String img)
 	{
-		super(game, img, entrance);
+		super(game, img);
 
 		XSen = game.getWidth() / 2;
 		YSen = game.getHeight() / 2;
-        link = game.getLink();
 		
 		sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
 
@@ -58,28 +55,37 @@ public abstract class ZeldaScene extends Scene
 		super.handleInput();
 		
 		checkLinkIsInExit();
-		
-		if (!link.getStateString().equals("SwordState") && !link.getStateString().equals("BowState")) //ignore swordstate and bowstate
+
+		if(game.getLink().moveinput())
 		{
-			moveScene(link.getX(), link.getY());
+			adjust = true;
 		}
+
+		if (adjust)
+		{
+			if (!game.getLink().getStateString().equals("SwordState") && !game.getLink().getStateString().equals("BowState")) //ignore swordstate and bowstate
+			{
+				adjustScene(game.getLink().getX(), game.getLink().getY());
+			}
+		}
+
+		//System.out.println("Scene is at:");
+		//System.out.println(sprite.getX() + ", " + sprite.getY());
 	}
 
 	private void checkLinkIsInExit()
 	{
 		for(Rectangle exit : exits)
 		{
-			if (exit.intersects(link.getRectangle()))
+			if (exit.intersects(game.getLink().getRectangle()))
 			{
 				handleSwitchScene(exit);
 			}
 		}
 	}
 
-	public boolean moveScene(int moveToX, int moveToY)
+	public void adjustScene(int moveToX, int moveToY)
 	{
-		boolean moved = false;
-
 		if (moveToX > (sprite.getWidth() - XSen)) // link moves too far to the right.
 		{
 			int newX = sprite.getX() + MOD;
@@ -87,10 +93,9 @@ public abstract class ZeldaScene extends Scene
 			if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
 			{
 				//System.out.println(newX + " " + sprite.getX());
-				link.setX(link.getX() - MOD);
+				game.getLink().setX(game.getLink().getX() - MOD);
 				modShapes(-MOD, 0);
 				sprite.setX(newX);
-				moved = true;
 			}
 		}
 
@@ -100,10 +105,9 @@ public abstract class ZeldaScene extends Scene
 
 			if (newX > 0)
 			{
-				link.setX(link.getX() + MOD);
+				game.getLink().setX(game.getLink().getX() + MOD);
 				modShapes(MOD, 0);
 				sprite.setX(newX);
-				moved = true;
 			}
 		}
 
@@ -112,10 +116,9 @@ public abstract class ZeldaScene extends Scene
 			int newY = sprite.getY() + MOD;
 			if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
 			{
-				link.setY(link.getY() - MOD);
+				game.getLink().setY(game.getLink().getY() - MOD);
 				modShapes(0, -MOD);
 				sprite.setY(newY);
-				moved = true;
 			}
 		}
 
@@ -125,14 +128,73 @@ public abstract class ZeldaScene extends Scene
 
 			if (newY > 0)
 			{
-				link.setY(link.getY() + MOD);
+				game.getLink().setY(game.getLink().getY() + MOD);
 				modShapes(0, MOD);
 				sprite.setY(newY);
-				moved = true;
 			}
 		}
-		
-		return moved;
+	}
+
+	public void moveScene(int toX, int toY)
+	{
+		boolean moved = false;
+
+		do
+		{
+			moved = false;
+
+			if (sprite.getX() < toX)
+			{
+				int newX = sprite.getX() + MOD;
+
+				if ((newX + sprite.getWidth()) <= sprite.getImageWidth())
+				{
+					game.getLink().setX(game.getLink().getX() - MOD);
+					modShapes(-MOD, 0);
+					sprite.setX(newX);
+					moved = true;
+				}
+			}
+
+			if (sprite.getX() > toX) // link moves too far to the left
+			{
+				int newX = sprite.getX() - MOD;
+
+				if (newX > 0)
+				{
+					game.getLink().setX(game.getLink().getX() + MOD);
+					modShapes(MOD, 0);
+					sprite.setX(newX);
+					moved = true;
+				}
+			}
+
+			if (sprite.getY() < toY)
+			{
+				int newY = sprite.getY() + MOD;
+				if ((newY + sprite.getHeight()) <= sprite.getImageHeight())
+				{
+					game.getLink().setY(game.getLink().getY() - MOD);
+					modShapes(0, -MOD);
+					sprite.setY(newY);
+					moved = true;
+				}
+			}
+
+			if (sprite.getY() > toY)
+			{
+				int newY = sprite.getY() - MOD;
+
+				if (newY > 0)
+				{
+					game.getLink().setY(game.getLink().getY() + MOD);
+					modShapes(0, MOD);
+					sprite.setY(newY);
+					moved = true;
+				}
+			}
+		}
+		while(moved);
 	}
 
 	/**
@@ -169,16 +231,21 @@ public abstract class ZeldaScene extends Scene
 	{
        	g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
         g2.setColor(Color.white);
-        Font f = new Font ("Serif", Font.BOLD, 12);
+
+		Font f = new Font ("Serif", Font.BOLD, 12);
         g2.setFont (f);
-        g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
-        g2.drawString("" + link.getRupee(), 102, game.getHeight() / 7);
+
+		g2.drawString("-- LIFE --", game.getWidth() - 122, game.getHeight() / 9);
+        g2.drawString("" + game.getLink().getRupee(), 102, game.getHeight() / 7);
 	}
 
 	public ArrayList<Rectangle> getExits()
 	{
 		 return exits;
 	}
+
+	public abstract void handleSwitchScene(Rectangle exit);
+	public abstract void handleSwitchScene(String entrance);
 }
 
     

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package zelda.scene;
 
 import java.awt.Polygon;
@@ -15,13 +11,16 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class HiddenScene extends ZeldaScene {
-
+public class HiddenScene extends ZeldaScene
+{
     Polygon muur, muur1, muur2, muur3, uitgang;
+    private Rectangle exitDown = new Rectangle(116, 449, 20, 20);
 
-    public HiddenScene(Game game, String entrance) {
+    public HiddenScene(Game game, String entrance)
+	{
+        super(game, "images/hiddenpath.png");
+        exits.add(exitDown);
 
-        super(game, "images/hiddenpath.png", entrance);
         int[] hxpos = {385, 446, 446, 112, 112, 111, 95, 96, 112, 113, 113, 72, 72, 115, 113, 52, 43, 480, 480};
         int[] hypos = {190, 189, 112, 110, 187, 319, 319, 406, 406, 428, 424, 424, 454, 454, 467, 467, 53, 54, 204};
 
@@ -51,9 +50,6 @@ public class HiddenScene extends ZeldaScene {
         solids.add(uitgang);
         gameObjects.add(game.getLink());
 
-        game.getLink().setXHardCore(414);
-        game.getLink().setYHardCore(160);
-
         gameObjects.add(new Rupee(game, 365, 322));
         gameObjects.add(new Rupee(game, 373, 322));
         gameObjects.add(new Rupee(game, 381, 322));
@@ -69,24 +65,45 @@ public class HiddenScene extends ZeldaScene {
         gameObjects.add(new Rupee(game, 405, 336));
         gameObjects.add(new Rupee(game, 413, 336));
 
-        gameObjects.add(new WhiteSoldier(game, 123, 117, Direction.UP, 20));
-        gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT, 20));
-        gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT, 20));
+        gameObjects.add(new WhiteSoldier(game, 123, 117, Direction.UP));
+        gameObjects.add(new WhiteSoldier(game, 121, 337, Direction.LEFT));
+        gameObjects.add(new WhiteSoldier(game, 325, 331, Direction.LEFT));
 
+		if (!game.getSong().equals("sounds/cave.mp3"))
+		{
+            game.stopMusic();
+            game.playMusic("sounds/cave.mp3", true);
+        }
+
+        handleSwitchScene(entrance);
     }
 
     @Override
-    public void handleSwitchScene(Rectangle exit) {
-//        if (exit == exitUp) {
-//            game.setScene(new HyruleScene(game, "HouseScene"));
-//        }
+    public void handleSwitchScene(Rectangle exit)
+	{
+        if (exit == exitDown) 
+        {
+            game.setScene(new HyruleScene(game, "HiddenScene"));
+        }
     }
 
     @Override
-    public void handleSwitchScene(String entrance) {
-//        if (entrance.equals("GameStart")) {
-//            game.getLink().setXHardCore(100);
-//            game.getLink().setYHardCore(100);
-//        }
+    public void handleSwitchScene(String entrance)
+	{
+        if (entrance.equals("HyruleSceneHatch"))
+		{
+            moveScene(13, 0);
+
+            game.getLink().setXHardCore(396);
+            game.getLink().setYHardCore(141);
+        }
+
+		if (entrance.equals("HyruleSceneStairs"))
+		{
+			moveScene(1, 79);
+
+			game.getLink().setXHardCore(116);
+			game.getLink().setYHardCore(346);
+		}
     }
 }

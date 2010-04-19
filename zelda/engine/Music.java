@@ -39,6 +39,8 @@ public class Music extends Sound
 		{
 			game.playFx(songname);
 		}
+
+		player.close();
 	}
 
 	public void stop()

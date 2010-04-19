@@ -27,5 +27,7 @@ public class SoundFx extends Sound
 				ee.printStackTrace();
 			}
 		}
+
+		player.close();
 	}
 }

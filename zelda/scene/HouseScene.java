@@ -22,12 +22,12 @@ public class HouseScene extends ZeldaScene
     private Polygon down;
     private Polygon trees;
 
-	private Rectangle exitUp   = new Rectangle(155, 10, 300, 20);
+	private Rectangle exitUp   = new Rectangle(155, 0, 300, 20);
 	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
 
     public HouseScene(Game game, String entrance)
 	{
-        super(game, "images/link-house.png", entrance);
+        super(game, "images/link-house.png");
 
 		exits.add(exitUp);
 		exits.add(exitLeft);
@@ -107,7 +107,15 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(new Guard(game, 233, 480, Direction.UP));
         gameObjects.add(new Guard(game, 206, 480, Direction.UP));
 
-		game.playMusic("sounds/overworld.mp3", true);
+		if(!game.getSong().equals("sounds/overworld.mp3"))
+		{
+			try
+			{
+				game.stopMusic();
+			}catch(Exception e){}
+
+			game.playMusic("sounds/overworld.mp3", true);
+		}
 
         handleSwitchScene(entrance);
     }
@@ -119,24 +127,30 @@ public class HouseScene extends ZeldaScene
 		{
 			game.setScene(new HyruleScene(game, "HouseScene"));
 		}
+
+        if (exit == exitLeft)
+		{
+			game.setScene(new ForrestScene(game, "HouseScene"));
+		}
 	}
 
 	@Override
 	public void handleSwitchScene(String entrance)
 	{
         if(entrance.equals("HyruleScene"))
-		{
-            System.out.println ("test");
-			while(moveScene(100, 100)){}
+		{           
+			moveScene(12, 0);
 
-			game.getLink().setXHardCore(244);
-			game.getLink().setYHardCore(33);
+			game.getLink().setXHardCore(game.getLink().getX() + 12);
+			game.getLink().setYHardCore(25);
 		}
 
 		if(entrance.equals("GameStart"))
 		{
-			game.getLink().setXHardCore(183);
-			game.getLink().setYHardCore(278);
+			moveScene(0, 100);
+
+			game.getLink().setXHardCore(185);
+			game.getLink().setYHardCore(177);
 		}
 	}
 }

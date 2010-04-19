@@ -68,6 +68,7 @@ public class WalkState extends KaracterState
 			karacter.setDirection(Direction.LEFT);
 		}
 
+		karacter.setWidth(29);
 		karacter.setX(karacter.getX() - WALK_SPEED);
 	}
 
@@ -83,6 +84,7 @@ public class WalkState extends KaracterState
 			karacter.setDirection(Direction.RIGHT);
 		}
 
+		karacter.setWidth(29);
 		karacter.setX(karacter.getX() + WALK_SPEED);
 	}
 
@@ -98,6 +100,7 @@ public class WalkState extends KaracterState
 			karacter.setDirection(Direction.UP);
 		}
 
+		karacter.setWidth(22);
 		karacter.setY(karacter.getY() - WALK_SPEED);
 	}
 
@@ -113,6 +116,7 @@ public class WalkState extends KaracterState
 			karacter.setDirection(Direction.DOWN);
 		}
 
+		karacter.setWidth(22);
 		karacter.setY(karacter.getY() + WALK_SPEED);
 	}
 
@@ -129,28 +133,12 @@ public class WalkState extends KaracterState
 		}
 		else
         {
-			if (dir == Direction.UP)
+			if (dir == Direction.LEFT)
 			{
 				switch (animationCounter)
 				{
                     case 0:
-						//karacter.setY(karacter.getY() + 0);
-						break;
-
-					case 1:
-						//karacter.setY(karacter.getY() + 1);
-						break;
-                    case 2:
-//						karacter.setY(karacter.getY() + 2);
-						break;
-				}
-			}
-			else if (dir == Direction.LEFT)
-			{
-				switch (animationCounter)
-				{
-                    case 0:
-						karacter.setX(karacter.getX() - 0);
+						//karacter.setX(karacter.getX() - 0);
 						break;
 
 					case 1:
@@ -158,7 +146,7 @@ public class WalkState extends KaracterState
 						break;
 
                     case 2:
-						karacter.setX(karacter.getX() + 4);
+						karacter.setX(karacter.getX() + 5);
 						break;
 				}
 			}

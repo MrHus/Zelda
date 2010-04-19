@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package zelda.items;
 
 import java.awt.Rectangle;
@@ -16,7 +11,7 @@ import zelda.link.Link;
  */
 public class Rupee extends GObject
 {
-    private final static String[] rupeeAnimation = {"rupee1", "rupee1", "rupee1", "rupee1", "rupee1","rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee2", "rupee3"};
+    private final static String[] rupeeAnimation = {"rupee1", "rupee2", "rupee3", "rupee1", "rupee1", "rupee1", "rupee1","rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1", "rupee1"};
 
     public Rupee (Game game, int x, int y)
     {
