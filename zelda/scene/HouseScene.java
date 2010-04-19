@@ -24,6 +24,7 @@ public class HouseScene extends ZeldaScene
 
 	private Rectangle exitUp   = new Rectangle(155, 0, 300, 20);
 	private Rectangle exitLeft = new Rectangle(0, 180, 20, 50);
+    private Rectangle exitLeft2 = new Rectangle(0, 250, 20, 90);
 
     public HouseScene(Game game, String entrance)
 	{
@@ -31,6 +32,7 @@ public class HouseScene extends ZeldaScene
 
 		exits.add(exitUp);
 		exits.add(exitLeft);
+        exits.add(exitLeft2);
 
         int[] hxpos = {149, 146, 145, 151, 177, 178, 182, 182, 202, 202, 208, 208, 232, 238, 240, 237, 150};
         int[] hypos = {177, 180, 265, 271, 273, 275, 275, 272, 271, 275, 275, 272, 272, 268, 183, 177, 177};
@@ -99,6 +101,7 @@ public class HouseScene extends ZeldaScene
         
         gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
         gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
+        
 
         gameObjects.add(new Guard(game, 483, 408, Direction.RIGHT));
         gameObjects.add(new Guard(game, 483, 376, Direction.RIGHT));
@@ -130,7 +133,12 @@ public class HouseScene extends ZeldaScene
 
         if (exit == exitLeft)
 		{
-			game.setScene(new ForrestScene(game, "HouseScene"));
+			game.setScene(new ForrestScene(game, "HouseSceneLeft1"));
+		}
+
+        if (exit == exitLeft2)
+		{
+			game.setScene(new ForrestScene(game, "HouseSceneLeft2"));
 		}
 	}
 
@@ -153,12 +161,20 @@ public class HouseScene extends ZeldaScene
 			game.getLink().setYHardCore(177);
 		}
 
-        if(entrance.equals("ForrestScene"))
+        if(entrance.equals("ForrestScene1"))
 		{
 			moveScene(0, 100);
 
 			game.getLink().setXHardCore(29);
 			game.getLink().setYHardCore(100);
+		}
+
+        if(entrance.equals("ForrestScene2"))
+		{
+			moveScene(0, 100);
+
+			game.getLink().setXHardCore(29);
+			game.getLink().setYHardCore(165);
 		}
 	}
 }

@@ -17,12 +17,25 @@ import zelda.karacter.Direction;
 public class HyruleScene extends ZeldaScene
 {
 
+
+    private Rectangle hatch         = new Rectangle(910, 160, 5, 5);
+    private Rectangle exitDown      = new Rectangle(672, 1013, 290, 20);
+    private Rectangle stairs        = new Rectangle(713, 215, 14, 14);
+    private Rectangle door          = new Rectangle(497, 247, 30, 30);
+    private Rectangle forrestExit	= new Rectangle(121, 989, 50, 20);
+
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, downwall1;
+<<<<<<< HEAD
     private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk, lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;;
     private Rectangle hatch	= new Rectangle(904, 166, 1, 1);
     private Rectangle exitDown = new Rectangle(672, 1013, 290, 20);
     private Rectangle stairs = new Rectangle(713, 215, 14, 14);
     private Rectangle door = new Rectangle(497, 247, 30, 30);
+=======
+    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk;
+
+
+>>>>>>> c93f9c4c59a777f9b58a87089413b7538b4fc143
 
     public HyruleScene(Game game, String entrance)
 	{
@@ -32,6 +45,7 @@ public class HyruleScene extends ZeldaScene
         exits.add(hatch);
         exits.add(stairs);
         exits.add(door);
+        exits.add(forrestExit);
 
         int[] wxpos = {385, 398, 398, 385};
         int[] wypos = {497, 497, 511, 511};
@@ -309,8 +323,8 @@ public class HyruleScene extends ZeldaScene
         if (exit == door) {
             game.setScene(new CastleScene(game, "HyruleScene"));
         }
-    }
 
+<<<<<<< HEAD
     @Override
     public void handleSwitchScene(String entrance) {
         if (entrance.equals("HouseScene")) {
@@ -318,12 +332,38 @@ public class HyruleScene extends ZeldaScene
 
             game.getLink().setXHardCore(309);
             game.getLink().setYHardCore(349);
+=======
+        if (exit == forrestExit)
+        {
+            game.setScene(new ForrestScene(game, "HyruleScene"));
+>>>>>>> c93f9c4c59a777f9b58a87089413b7538b4fc143
         }
-        if (entrance.equals("HiddenScene")) {
-            moveScene(463, 44);
+	}
 
-            game.getLink().setXHardCore(250);
-            game.getLink().setYHardCore(200);
-        }
-    }
+	@Override
+	public void handleSwitchScene(String entrance)
+	{
+		if(entrance.equals("HouseScene"))
+		{
+			moveScene(524, 623);
+
+			game.getLink().setXHardCore(game.getLink().getX() + 519);
+			game.getLink().setYHardCore(370);
+		}
+        if(entrance.equals("HiddenScene"))
+		{
+			moveScene(463, 44);
+
+			game.getLink().setXHardCore(250);
+			game.getLink().setYHardCore(200);
+		}
+
+        if(entrance.equals("ForrestScene3"))
+		{
+			moveScene(1, 623);
+
+			game.getLink().setXHardCore(139);
+			game.getLink().setYHardCore(341);
+		}
+	}
 }

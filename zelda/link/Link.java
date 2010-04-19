@@ -2,6 +2,7 @@ package zelda.link;
 
 import java.awt.Rectangle;
 import zelda.enemy.Soldier;
+import zelda.enemy.armos.ArmosKnight;
 import zelda.engine.GObject;
 import zelda.engine.Game;
 import zelda.items.Bomb;
@@ -195,8 +196,22 @@ public class Link extends Karacter
                Soldier soldier = (Soldier)hitObject;
                setState(new TransState(this, soldier.getDirection()));
             }
-		}
+        }
+        
+        if (hitObject instanceof ArmosKnight)
+        {
+            if (health > 0 && System.currentTimeMillis() > lastHit + 800)
+            {
+               game.playFx("sounds/linkHurt.mp3");
+               health --;
+               lastHit = System.currentTimeMillis();
 
+               //System.out.println("leven: " + health);
+               ArmosKnight armosKnight = (ArmosKnight)hitObject;
+               setState(new TransState(this, armosKnight.getDirection()));
+            }
+		}
+        
         if (hitObject instanceof Heart)
         {
             if (health < 5)
