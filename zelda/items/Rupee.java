@@ -25,6 +25,8 @@ public class Rupee extends GObject
        setAnimationInterval(100);
        setAnimation(rupeeAnimation);
 
+	   z = 1;
+
 	   liquid = true;
     }
 
