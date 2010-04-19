@@ -233,8 +233,8 @@ public class HyruleScene extends ZeldaScene
         gameObjects.add(new WhiteSoldier(game, 293, 293, Direction.DOWN));
 
         gameObjects.add(new Guard(game, 438, 715, Direction.LEFT));
-        gameObjects.add(new Guard(game, 122, 991, Direction.UP));
-        gameObjects.add(new Guard(game, 152, 991, Direction.UP));
+//        gameObjects.add(new Guard(game, 122, 991, Direction.UP));
+//        gameObjects.add(new Guard(game, 152, 991, Direction.UP));
         gameObjects.add(new Guard(game, 995, 636, Direction.RIGHT));
         gameObjects.add(new Guard(game, 995, 666, Direction.RIGHT));
 
