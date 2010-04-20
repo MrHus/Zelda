@@ -2,9 +2,7 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import zelda.enemy.BlueSoldier;
 import zelda.engine.Game;
-import zelda.karacter.Direction;
 
 /**
  *
