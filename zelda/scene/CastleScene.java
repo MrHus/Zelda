@@ -17,16 +17,14 @@ import zelda.karacter.Direction;
 public class CastleScene extends ZeldaScene
 {
     private Polygon middenbovenmuur, stukmuur, stukmuur1, stukmuur2, rechtsonder, rechts, rechtsmidden, linksonder, links, zuil, zuil1, zuil2, zuil3, zuil4, zuil5, zuil6, zuil7, midden, midden1, pot, pot1, ding1, ding, ding2, ding3;
-    private Rectangle door = new Rectangle(498, 974, 30, 20);
-
-    private Rectangle exitUp	= new Rectangle(910, 160, 27, 20);
+    
+    private Rectangle exitUp	= new Rectangle(500, 88, 27, 20);
     private Rectangle exitDown  = new Rectangle(500, 967, 27, 20);
 
     public CastleScene(Game game, String entrance)
 	{
         super(game, "images/castle.png", "CastleScene");
 
-        exits.add(door);
         exits.add(exitUp);
         exits.add(exitDown);
 
@@ -222,11 +220,7 @@ public class CastleScene extends ZeldaScene
         }
         if (exit == exitDown)
         {
-			game.setScene(new HyruleScene(game, "HyruleScene"));
-        }
-		if (exit == door)
-        {
-            game.setScene(new HyruleScene(game, "HiddenScene"));
+			game.setScene(new HyruleScene(game, "CastleScene"));
         }
     }
 
@@ -240,7 +234,7 @@ public class CastleScene extends ZeldaScene
             game.getLink().setXHardCore(250);
             game.getLink().setYHardCore(326);
         }
-        if (entrance.equals("DungeonScene"))
+        if (entrance.equals("CastleBasementScene"))
 		{
 			moveScene(450, 100);
 
