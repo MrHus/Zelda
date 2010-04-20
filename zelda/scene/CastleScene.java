@@ -200,7 +200,6 @@ public class CastleScene extends ZeldaScene
         gameObjects.add(new WhiteSoldier(game, 1038, 681, Direction.LEFT));
         gameObjects.add(new BlueSoldier(game, 883, 144, Direction.UP, 200));
         gameObjects.add(new BlueSoldier(game, 116, 144, Direction.UP, 200));
-        gameObjects.add(new WhiteSoldier(game, 505, 114, Direction.LEFT));
 
         if (!game.getSong().equals("sounds/castle.mp3"))
 		{
@@ -214,9 +213,10 @@ public class CastleScene extends ZeldaScene
     @Override
     public void handleSwitchScene(Rectangle exit) 
 	{
-        if (exit == exitUp)
+
+		if (exit == exitUp)
         {
-			game.setScene(new DungeonScene(game, "CastleScene"));
+			game.setScene(new CastleBasementScene(game, "CastleScene"));
         }
         if (exit == exitDown)
         {
@@ -236,10 +236,10 @@ public class CastleScene extends ZeldaScene
         }
         if (entrance.equals("CastleBasementScene"))
 		{
-			moveScene(450, 100);
+			moveScene(254, 1);
 
-			game.getLink().setXHardCore(502);
-            game.getLink().setYHardCore(112);
+			game.getLink().setXHardCore(250);
+            game.getLink().setYHardCore(119);
         }
     }
 }

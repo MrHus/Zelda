@@ -39,8 +39,12 @@ public class DungeonScene extends ZeldaScene
         solids.add(table);
 
         gameObjects.add(game.getLink());
-        gameObjects.add(new BlueSoldier(game, 187, 212, Direction.LEFT, 60));
-        gameObjects.add(new BlueSoldier(game, 407, 246, Direction.RIGHT, 60));
+
+		if (!game.getSong().equals("sounds/castle.mp3"))
+        {
+            game.stopMusic();
+            game.playMusic("sounds/castle.mp3", true);
+		}
 
         handleSwitchScene(entrance);
     }
@@ -54,7 +58,7 @@ public class DungeonScene extends ZeldaScene
     @Override
     public void handleSwitchScene(String entrance)
 	{
-        if (entrance.equals("GameStart"))
+        if (entrance.equals("ArmosScene"))
 		{
             game.getLink().setXHardCore(81);
             game.getLink().setYHardCore(120);

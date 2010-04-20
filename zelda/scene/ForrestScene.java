@@ -2,10 +2,7 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import zelda.enemy.armos.ArmosKnight;
 import zelda.enemy.BlueSoldier;
-import zelda.enemy.GhostSoldier;
-import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
 import zelda.items.Rupee;
 import zelda.items.Warp;
