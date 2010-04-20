@@ -23,7 +23,7 @@ public class BattleScene extends ZeldaScene
 
     public BattleScene(Game game, String entrance)
 	{
-        super(game, "images/battle-scene.png", "BattleScene");
+        super(game, "images/battle-dark.png", "BattleScene");
 
         exits.add(warpExit);
 
