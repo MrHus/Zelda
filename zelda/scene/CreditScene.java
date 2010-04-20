@@ -18,10 +18,10 @@ public class CreditScene extends ZeldaScene
     {
         super(game, "images/aftitel.png", "CreditScene");
 
-         if (!game.getSong().equals("sounds/castle.mp3"))
+         if (!game.getSong().equals("sounds/credits.mp3"))
             {
             game.stopMusic();
-            game.playMusic("sounds/castle.mp3", true);
+            game.playMusic("sounds/credits.mp3", true);
             }
     }
 
