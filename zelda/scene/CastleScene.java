@@ -196,6 +196,7 @@ public class CastleScene extends ZeldaScene {
 
         gameObjects.add(new Guard(game, 118, 971, Direction.UP));
         gameObjects.add(new Guard(game, 885, 968, Direction.UP));
+        gameObjects.add(new Guard(game, 504, 564, Direction.DOWN));
 
         gameObjects.add(new BlueSoldier(game, 331, 762, Direction.RIGHT, 50));
         gameObjects.add(new BlueSoldier(game, 689, 762, Direction.LEFT, 50));
