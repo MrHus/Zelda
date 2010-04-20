@@ -114,18 +114,18 @@ public abstract class GObject implements DrawAble
 		Rectangle rect = new Rectangle(newX, newY, width, height);
 		boolean collision = false;
 
-//		for (Polygon poly : game.getScene().getSolids()) //for each solid object
-//		{
-//			final Area area = new Area();
-//			area.add(new Area(rect));
-//			area.intersect(new Area(poly)); //check if there is a collision
-//
-//			if (!area.isEmpty()) // if isEmpty is false there is a collision
-//			{
-//				collision = true;
-//                wallCollision();
-//			}
-//		}
+		for (Polygon poly : game.getScene().getSolids()) //for each solid object
+		{
+			final Area area = new Area();
+			area.add(new Area(rect));
+			area.intersect(new Area(poly)); //check if there is a collision
+
+			if (!area.isEmpty()) // if isEmpty is false there is a collision
+			{
+				collision = true;
+                wallCollision();
+			}
+		}
 
 		for (GObject obj : game.getScene().getGObjects())
 		{
