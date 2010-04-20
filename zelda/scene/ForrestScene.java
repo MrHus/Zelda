@@ -125,16 +125,11 @@ public class ForrestScene extends ZeldaScene
 		gameObjects.add(new Rupee(game, 410, 128));
 		gameObjects.add(new Warp(game, 393, 108));
 
-
-        if(!game.getSong().equals("sounds/overworld.mp3"))
+		if (!game.getSong().equals("sounds/overworld.mp3"))
 		{
-			try
-			{
-				game.stopMusic();
-			}catch(Exception e){}
-
-			game.playMusic("sounds/overworld.mp3", true);
-		}
+			game.stopMusic();
+            game.playMusic("sounds/overworld.mp3", true);
+        }
 
         handleSwitchScene(entrance);
     }

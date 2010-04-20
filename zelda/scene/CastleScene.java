@@ -14,19 +14,17 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class CastleScene extends ZeldaScene {
-
-    Polygon middenbovenmuur, stukmuur, stukmuur1, stukmuur2, rechtsonder, rechts, rechtsmidden, linksonder, links, zuil, zuil1, zuil2, zuil3, zuil4, zuil5, zuil6, zuil7, midden, midden1, pot, pot1, ding1, ding, ding2, ding3;
-    private Rectangle door = new Rectangle(498, 974, 30, 20);
-
-    private Rectangle exitUp	= new Rectangle(910, 160, 27, 20);
+public class CastleScene extends ZeldaScene
+{
+    private Polygon middenbovenmuur, stukmuur, stukmuur1, stukmuur2, rechtsonder, rechts, rechtsmidden, linksonder, links, zuil, zuil1, zuil2, zuil3, zuil4, zuil5, zuil6, zuil7, midden, midden1, pot, pot1, ding1, ding, ding2, ding3;
+    
+    private Rectangle exitUp	= new Rectangle(500, 88, 27, 20);
     private Rectangle exitDown  = new Rectangle(500, 967, 27, 20);
 
     public CastleScene(Game game, String entrance)
 	{
         super(game, "images/castle.png", "CastleScene");
 
-        exits.add(door);
         exits.add(exitUp);
         exits.add(exitDown);
 
@@ -196,16 +194,16 @@ public class CastleScene extends ZeldaScene {
 
         gameObjects.add(new Guard(game, 118, 971, Direction.UP));
         gameObjects.add(new Guard(game, 885, 968, Direction.UP));
+        gameObjects.add(new Guard(game, 504, 564, Direction.DOWN));
 
         gameObjects.add(new BlueSoldier(game, 331, 762, Direction.RIGHT, 50));
         gameObjects.add(new BlueSoldier(game, 689, 762, Direction.LEFT, 50));
         gameObjects.add(new WhiteSoldier(game, 1038, 681, Direction.LEFT));
         gameObjects.add(new BlueSoldier(game, 883, 144, Direction.UP, 200));
         gameObjects.add(new BlueSoldier(game, 116, 144, Direction.UP, 200));
-        gameObjects.add(new WhiteSoldier(game, 505, 114, Direction.LEFT));
 
         if (!game.getSong().equals("sounds/castle.mp3"))
-        {
+		{
             game.stopMusic();
             game.playMusic("sounds/castle.mp3", true);
         }
@@ -216,34 +214,33 @@ public class CastleScene extends ZeldaScene {
     @Override
     public void handleSwitchScene(Rectangle exit) 
 	{
-         if (exit == exitUp)
-                {
-                    game.setScene(new CastleBasementScene(game, "CastleScene"));
-                }
-         if (exit == exitDown)
-                {
-                    game.setScene(new HyruleScene(game, "HyruleScene"));
-                }
-         if (exit == door)
+
+		if (exit == exitUp)
         {
-            game.setScene(new HyruleScene(game, "HiddenScene"));
+			game.setScene(new CastleBasementScene(game, "CastleScene"));
+        }
+        if (exit == exitDown)
+        {
+			game.setScene(new HyruleScene(game, "CastleScene"));
         }
     }
 
     @Override
-    public void handleSwitchScene(String entrance) {
-        if (entrance.equals("HyruleScene")) {
+    public void handleSwitchScene(String entrance)
+	{
+        if (entrance.equals("HyruleScene"))
+		{
             moveScene(252, 607);
 
             game.getLink().setXHardCore(250);
             game.getLink().setYHardCore(326);
         }
-        if (entrance.equals("DungeonScene"))
+        if (entrance.equals("CastleBasementScene"))
 		{
-			moveScene(450, 100);
+			moveScene(254, 1);
 
-			game.getLink().setXHardCore(502);
-            game.getLink().setYHardCore(112);
+			game.getLink().setXHardCore(250);
+            game.getLink().setYHardCore(119);
         }
     }
 }

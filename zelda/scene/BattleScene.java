@@ -17,9 +17,7 @@ public class BattleScene extends ZeldaScene
 {
     private Polygon leftTreeline, RightTreeline, deadTree;
 
-
     private Rectangle warpExit = new Rectangle(232, 458, 16, 16);
-
 
     public BattleScene(Game game, String entrance)
 	{
