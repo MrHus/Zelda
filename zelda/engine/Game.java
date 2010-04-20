@@ -10,8 +10,13 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
+
+import zelda.scene.CastleScene;
+import zelda.scene.DungeonScene;
+import zelda.scene.ForrestScene;
+import zelda.scene.HiddenScene;
+import zelda.scene.HyruleScene;
 import zelda.scene.HouseScene;
-import zelda.scene.ZeldaScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -141,6 +146,31 @@ public class Game
 		{
 			scn = new HouseScene(this, "GameStart");
 		}
+
+        if(sceneName.equals("HyruleScene"))
+		{
+			scn = new HyruleScene(this, "HouseScene");
+		}
+
+        if(sceneName.equals("HiddenScene"))
+		{
+			scn = new HiddenScene(this, "HyruleSceneHatch");
+		}
+        
+        if(sceneName.equals("ForrestScene"))
+        {
+            scn = new ForrestScene(this, "HouseScene");
+        }
+
+        if (sceneName.equals("DungeonScene"))
+        {
+            scn = new DungeonScene(this, "GameStart");
+        }
+
+        if (sceneName.equals("CastleScene"))
+        {
+            scn = new CastleScene(this, "HyruleScene");
+        }
 
 		return scn;
 	}
