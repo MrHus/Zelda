@@ -48,7 +48,7 @@ public class Game
     public Game()
 	{
         link = new Link(this, 100, 100);
-		//scene = new MainMenu(this);
+//		scene = new MainMenu(this);
         scene = new CastleBasement(this, "HyruleScene");
 		scene.handleSwitchScene("HyruleScene");
 	}
