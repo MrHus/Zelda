@@ -23,7 +23,7 @@ public class Game
 {
 	private boolean running = true;
 	private boolean paused  = false;
-	private boolean debug   = true;
+	private boolean debug   = false;
 
     private int gameSpeed = 10;
     private int width = 500;
