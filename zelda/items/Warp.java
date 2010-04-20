@@ -19,6 +19,8 @@ public class Warp extends GObject
 		spriteLoc.put("Warp1", new Rectangle(40, 0, 16, 16));
 		spriteLoc.put("Warp2", new Rectangle(60, 0, 16, 16));
 		spriteLoc.put("Warp3", new Rectangle(80, 0, 16, 16));
+        spriteLoc.put("Warp4", new Rectangle(0, 58, 16, 16));
+
 
 		sprite.setSprite(spriteLoc.get("Warp1"));
         setAnimation(warpani);
