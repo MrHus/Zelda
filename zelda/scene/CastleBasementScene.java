@@ -2,20 +2,29 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import zelda.enemy.BlueSoldier;
+import zelda.enemy.WhiteSoldier;
 import zelda.engine.Game;
 import zelda.items.Rupee;
+import zelda.items.Warp;
+import zelda.karacter.Direction;
 
 /**
  *
  * @author Bas Harteveld
  */
-public class CastleBasement extends ZeldaScene
+public class CastleBasementScene extends ZeldaScene
 {
     private Polygon wall1, wall2, wall3, wall4, wall5, wall6, wall7, block1, block2, block3;
+    private Rectangle warpExit = new Rectangle(160, 91, 16, 16);
+    private Rectangle exitUp	= new Rectangle(910, 160, 27, 20);
 
-    public CastleBasement(Game game, String entrance)
+    public CastleBasementScene(Game game, String entrance)
 	{
-        super(game, "images/castlebasement.png", "HyruleScene");
+        super(game, "images/castlebasement.png", "castlebasement");
+
+        exits.add(warpExit);
+        exits.add(exitUp);
 
         int[] wxpos1 = {752, 752, 709, 709, 748, 748, 554, 590};
         int[] wypos1 = {59, 77, 77, 217, 217, 312, 312, 69};
@@ -82,6 +91,14 @@ public class CastleBasement extends ZeldaScene
 
         gameObjects.add(game.getLink());
 
+        gameObjects.add(new BlueSoldier(game, 755, 195, Direction.UP, 60));
+        gameObjects.add(new BlueSoldier(game, 675, 399, Direction.UP, 110));
+        gameObjects.add(new BlueSoldier(game, 740, 794, Direction.DOWN, 80));
+        gameObjects.add(new BlueSoldier(game, 126, 703, Direction.DOWN, 120));
+        gameObjects.add(new BlueSoldier(game, 331, 385, Direction.RIGHT, 70));
+
+        gameObjects.add(new WhiteSoldier(game, 637, 905, Direction.LEFT));
+
         gameObjects.add(new Rupee(game, 355, 368));
         gameObjects.add(new Rupee(game, 363, 368));
         gameObjects.add(new Rupee(game, 371, 368));
@@ -103,13 +120,29 @@ public class CastleBasement extends ZeldaScene
         gameObjects.add(new Rupee(game, 387, 396));
         gameObjects.add(new Rupee(game, 395, 396));
         gameObjects.add(new Rupee(game, 403, 396));
-        
+        gameObjects.add(new Warp (game, 160, 91));
+
+//        if (!game.getSong().equals("sounds/castle.mp3"))
+//        {
+//            game.stopMusic();
+//            game.playMusic("sounds/castle.mp3", true);
+//        }
+
+        handleSwitchScene(entrance);
+
     }
 
 	@Override
 	public void handleSwitchScene(Rectangle exit)
 	{
-
+        if (exit == warpExit)
+            {
+                game.setScene(new BattleScene(game, "warp"));
+            }
+        if (exit == exitUp)
+                {
+                    game.setScene(new CastleScene(game, "CastleBasementScene"));
+                }
 	}
 
 	@Override
@@ -117,10 +150,11 @@ public class CastleBasement extends ZeldaScene
 	{
         if(entrance.equals("HyruleScene"))
 		{
-			moveScene(25, 101);
+            System.out.println("test");
+			moveScene(482, 1);
 
-			game.getLink().setXHardCore(242);
-			game.getLink().setYHardCore(290);
+			game.getLink().setXHardCore(275);
+			game.getLink().setYHardCore(86);
 		}
 	}
 }
