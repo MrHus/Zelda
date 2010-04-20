@@ -25,8 +25,6 @@ public class HyruleScene extends ZeldaScene {
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, downwall1;
     private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk;
 
-
-
     public HyruleScene(Game game, String entrance)
 	{
         super(game, "images/hyrule.png", "HyruleScene");
@@ -243,7 +241,8 @@ public class HyruleScene extends ZeldaScene {
         gameObjects.add(new Guard(game, 995, 636, Direction.RIGHT));
         gameObjects.add(new Guard(game, 995, 666, Direction.RIGHT));
 
-        if (!game.getSong().equals("sounds/overworld.mp3")) {
+        if (!game.getSong().equals("sounds/overworld.mp3"))
+		{
             game.stopMusic();
             game.playMusic("sounds/overworld.mp3", true);
         }

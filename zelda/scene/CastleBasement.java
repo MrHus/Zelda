@@ -103,7 +103,6 @@ public class CastleBasement extends ZeldaScene
         gameObjects.add(new Rupee(game, 387, 396));
         gameObjects.add(new Rupee(game, 395, 396));
         gameObjects.add(new Rupee(game, 403, 396));
-        
     }
 
 	@Override
