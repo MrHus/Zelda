@@ -59,10 +59,13 @@ public class BattleScene extends ZeldaScene
 
         gameObjects.add(new GhostSoldier(game, 240, 98, Direction.DOWN));
 
+		if (!game.getSong().equals("sounds/boss-bgm.mp3"))
+		{
+            game.stopMusic();
+            game.playMusic("sounds/boss-bgm.mp3", true);
+        }
 
         handleSwitchScene(entrance);
-
-
     }
 
 	@Override

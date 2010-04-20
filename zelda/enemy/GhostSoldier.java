@@ -48,11 +48,8 @@ public class GhostSoldier extends Soldier implements Hittable
                 break;
 
             case ARROW:
-                if (health > 0 && System.currentTimeMillis() > lastHit + 800)
-                {
-                    lastHit = System.currentTimeMillis();
-                    health -= 2;
-                }
+                health -= 3;
+                setBehavior(new AttackBehavior(this));
                 break;
         }
 
