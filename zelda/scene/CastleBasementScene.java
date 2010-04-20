@@ -21,7 +21,7 @@ public class CastleBasementScene extends ZeldaScene
 
     public CastleBasementScene(Game game, String entrance)
 	{
-        super(game, "images/castlebasement.png", "castlebasement");
+        super(game, "images/castlebasement.png", "CastleBasementScene");
 
         exits.add(warpExit);
         exits.add(exitUp);

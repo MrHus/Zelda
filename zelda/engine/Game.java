@@ -10,8 +10,11 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
+import zelda.scene.ArmosScene;
+import zelda.scene.BattleScene;
+import zelda.scene.CastleBasementScene;
 import zelda.scene.CastleScene;
-import zelda.scene.Dungeon;
+import zelda.scene.DungeonScene;
 import zelda.scene.ForrestScene;
 import zelda.scene.HiddenScene;
 import zelda.scene.HyruleScene;
@@ -160,15 +163,30 @@ public class Game
             scn = new ForrestScene(this, "HouseScene");
         }
 
-        if (sceneName.equals("Dungeon"))
+        if (sceneName.equals("DungeonScene"))
         {
-            scn = new Dungeon(this, "GameStart");
+            scn = new DungeonScene(this, "GameStart");
         }
 
         if (sceneName.equals("CastleScene"))
         {
             scn = new CastleScene(this, "HyruleScene");
         }
+
+        if (sceneName.equals("CastleBasementScene"))
+        {
+            scn = new CastleBasementScene(this, "CastleScene");
+        }
+        
+        if (sceneName.equals("ArmosScene"))
+        {
+            scn = new ArmosScene(this, "CastleBasementScene");
+        }
+
+        if (sceneName.equals("BattleScene"))
+        {
+            scn = new BattleScene(this, "warp");
+        } 
 
 		return scn;
 	}
