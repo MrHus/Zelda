@@ -48,7 +48,7 @@ public class ArmosKnight extends Karacter implements Hittable
 
         sprite.setSprite(spriteLoc.get("1"));
 
-        health = 35;
+        health = 1;
 
         state = new AttackState(this);
 
