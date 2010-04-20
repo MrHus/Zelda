@@ -29,7 +29,7 @@ public class Game
     private int height = 400;
 
     private Link link;
-    private ZeldaScene scene;
+    private Scene scene;
     private Music music;
     private SoundFx fx;
 	
@@ -50,7 +50,6 @@ public class Game
         link = new Link(this, 100, 100);
 
 		scene = new MainMenu(this);
-        //scene = new ForrestScene(this, "GameStart");
 	}
 
 	public void quit()
@@ -115,7 +114,7 @@ public class Game
 			in = new ObjectInputStream(fis);
 			SaveData data = (SaveData)in.readObject();
 
-			ZeldaScene scn = initScene(data.getSceneName());
+			Scene scn = initScene(data.getSceneName());
 
 			setScene(scn);
 
@@ -134,9 +133,9 @@ public class Game
 		}
 	}
 
-	public ZeldaScene initScene(String sceneName)
+	public Scene initScene(String sceneName)
 	{
-		ZeldaScene scn = null;
+		Scene scn = null;
 
 		if(sceneName.equals("HouseScene"))
 		{
@@ -221,7 +220,7 @@ public class Game
 		return scene;
 	}
 
-	public synchronized void setScene(ZeldaScene scene)
+	public synchronized void setScene(Scene scene)
 	{
 		this.scene = scene;
 	}
@@ -252,29 +251,13 @@ public class Game
 	}
 
 	public void setkPressed(boolean kPressed)
-	{
-        if (System.currentTimeMillis() > lastHit + 1000)
-        {    
-            this.kPressed = kPressed;
-            lastHit = System.currentTimeMillis();
-        }
-        else
-        {
-            this.kPressed = false;
-        }
+	{  
+		this.kPressed = kPressed;
 	}
 
 	public void setlPressed(boolean lPressed)
 	{
-        if (System.currentTimeMillis() > lastHit2 + 3000)
-        {
-            this.lPressed = lPressed;
-            lastHit2 = System.currentTimeMillis();
-        }
-        else
-        {
-           this.lPressed = false;
-        }
+		this.lPressed = lPressed;
 	}
 
 	public void setsPressed(boolean sPressed)

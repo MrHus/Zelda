@@ -22,6 +22,12 @@ public class Link extends Karacter
 	private long lastInput = System.currentTimeMillis();
     private long lastHit = System.currentTimeMillis();
 
+	private long bomInterval = 3000;
+	private long lastBom = System.currentTimeMillis();
+
+	private long arrowInterval = 1000;
+	private long lastArrow = System.currentTimeMillis();
+
     private int rupee = 0;
 
 	public Link(Game game, int x, int y)
@@ -133,25 +139,39 @@ public class Link extends Karacter
 
     public void dropBomb()
     {
-        switch (direction)
+		if (System.currentTimeMillis() > lastBom + bomInterval)
 		{
-			case UP:
-                game.getScene().addNewGObject(new Bomb(game, x + 2, y - 16));
-				break;
+			switch (direction)
+			{
+				case UP:
+					game.getScene().addNewGObject(new Bomb(game, x + 2, y - 16));
+					break;
 
-			case DOWN:
-                game.getScene().addNewGObject(new Bomb(game, x + 2, y + getHeight()));
-				break;
+				case DOWN:
+					game.getScene().addNewGObject(new Bomb(game, x + 2, y + getHeight()));
+					break;
 
-			case LEFT:
-                game.getScene().addNewGObject(new Bomb(game, x - 13, y + 7));
-				break;
+				case LEFT:
+					game.getScene().addNewGObject(new Bomb(game, x - 13, y + 7));
+					break;
 
-			case RIGHT:
-                game.getScene().addNewGObject(new Bomb(game, x + getWidth(), y + 7));
-				break;
+				case RIGHT:
+					game.getScene().addNewGObject(new Bomb(game, x + getWidth(), y + 7));
+					break;
+			}
+
+			lastBom = System.currentTimeMillis();
 		}
     }
+
+	public void shootArrow()
+	{
+		if (System.currentTimeMillis() > lastArrow + arrowInterval)
+		{
+			setState(new BowState(this));
+			lastArrow = System.currentTimeMillis();
+		}
+	}
 
 	public void handleInput()
 	{
