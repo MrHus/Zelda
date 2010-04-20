@@ -11,6 +11,7 @@ import zelda.engine.Game;
 public class Warp extends GObject
 {
 	private final static String[] warpani = {"Warp1", "Warp2", "Warp3"};
+    private final static String[] emptyani = {"Warp4"};
 
 	public Warp(Game game, int x, int y)
 	{
@@ -27,4 +28,16 @@ public class Warp extends GObject
 
 		liquid = true;
 	}
+
+    public void setActive()
+    {
+        if(animation == warpani)
+        {
+            setAnimation(emptyani);
+        }
+        else
+        {
+            setAnimation(warpani);
+        }
+    }
 }
