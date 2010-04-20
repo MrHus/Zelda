@@ -110,8 +110,7 @@ public class ForrestScene extends ZeldaScene
         // add Link
         gameObjects.add(game.getLink());
 
-
-        gameObjects.add(game.getLink());
+        
         gameObjects.add(new BlueSoldier(game, 448, 400, Direction.UP, 75));
         gameObjects.add(new BlueSoldier(game, 259, 403, Direction.RIGHT, 50));
         gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 50));

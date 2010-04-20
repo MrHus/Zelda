@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
-import zelda.scene.CastleBasement;
+import zelda.scene.CastleBasementScene;
 import zelda.scene.HouseScene;
 import zelda.scene.ZeldaScene;
 
@@ -49,7 +49,7 @@ public class Game
 	{
         link = new Link(this, 100, 100);
 //		scene = new MainMenu(this);
-        scene = new CastleBasement(this, "HyruleScene");
+        scene = new CastleBasementScene(this, "HyruleScene");
 		scene.handleSwitchScene("HyruleScene");
 	}
 
