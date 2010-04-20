@@ -35,6 +35,17 @@ public class ArmosKnight extends Karacter implements Hittable
         spriteLoc.put("9", new Rectangle(256, 0, 32, 52));
         spriteLoc.put("10", new Rectangle(288, 0, 32, 52));
 
+        spriteLoc.put("hit 1", new Rectangle(0, 64, 32, 52));
+        spriteLoc.put("hit 2", new Rectangle(32, 64, 32, 52));
+        spriteLoc.put("hit 3", new Rectangle(64, 64, 32, 52));
+        spriteLoc.put("hit 4", new Rectangle(96, 64, 32, 52));
+        spriteLoc.put("hit 5", new Rectangle(128, 64, 32, 52));
+        spriteLoc.put("hit 6", new Rectangle(160, 64, 32, 52));
+        spriteLoc.put("hit 7", new Rectangle(192, 64, 32, 52));
+        spriteLoc.put("hit 8", new Rectangle(224, 64, 32, 52));
+        spriteLoc.put("hit 9", new Rectangle(256, 64, 32, 52));
+        spriteLoc.put("hit 10", new Rectangle(288, 64, 32, 52));
+
         sprite.setSprite(spriteLoc.get("1"));
 
 

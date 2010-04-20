@@ -38,6 +38,11 @@ public abstract class Soldier extends Karacter
 		spriteLoc.put("Walk down 2",	new Rectangle(60, 90, 22, 38));
 		spriteLoc.put("Walk down 3",	new Rectangle(0, 125, 22, 35));
 
+        spriteLoc.put("hit right",	new Rectangle(0, 160, 27, 27));
+        spriteLoc.put("hit left",		new Rectangle(0, 192, 27, 27));
+        spriteLoc.put("hit down",		new Rectangle(0, 256, 22, 33));
+        spriteLoc.put("hit up",		new Rectangle(0, 224, 22, 24));
+
 		sprite.setSprite(spriteLoc.get("Stand right"));
 
 		health = 6;

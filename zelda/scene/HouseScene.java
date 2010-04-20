@@ -3,6 +3,7 @@ package zelda.scene;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import zelda.enemy.BlueSoldier;
+import zelda.enemy.armos.ArmosKnight;
 import zelda.items.Bush;
 import zelda.engine.Game;
 import zelda.items.Guard;
@@ -100,7 +101,7 @@ public class HouseScene extends ZeldaScene
         gameObjects.add(game.getLink());
         
         gameObjects.add(new BlueSoldier(game, 300, 90, Direction.LEFT, 20));
-        gameObjects.add(new BlueSoldier(game, 325, 300, Direction.DOWN, 40));
+        gameObjects.add(new ArmosKnight(game, 325, 300, Direction.DOWN));
         
 
         gameObjects.add(new Guard(game, 483, 408, Direction.RIGHT));
