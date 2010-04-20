@@ -11,7 +11,6 @@ import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
 import zelda.scene.HouseScene;
-import zelda.scene.ZeldaScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -22,7 +21,7 @@ public class Game
 {
 	private boolean running = true;
 	private boolean paused  = false;
-	private boolean debug   = false;
+	private boolean debug   = true;
 
     private int gameSpeed = 10;
     private int width = 500;
