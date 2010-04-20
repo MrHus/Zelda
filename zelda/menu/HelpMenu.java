@@ -34,7 +34,7 @@ public class HelpMenu extends Scene
 		{
 			if (game.isEnterPressed())
 			{
-				//game.setScene(new MainMenu(game));
+				game.setScene(new MainMenu(game));
 			}
 			
 			lastInput = System.currentTimeMillis();
