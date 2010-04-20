@@ -10,7 +10,6 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
-import zelda.scene.CastleBasement;
 import zelda.scene.CastleScene;
 import zelda.scene.Dungeon;
 import zelda.scene.ForrestScene;
