@@ -16,8 +16,8 @@ public class ArmosScene extends ZeldaScene
 {
     private Polygon leftTreeline, RightTreeline, deadTree;
 
-	private Rectangle warpExit = new Rectangle(232, 300, 16, 16);
-
+	private Rectangle warpExit = new Rectangle(232, 270, 16, 16);
+    private Warp warp = new Warp(game, 232, 270);
 	private boolean warpVisible = false;
 
     public ArmosScene(Game game, String entrance)
@@ -41,12 +41,14 @@ public class ArmosScene extends ZeldaScene
 
         deadTree = new Polygon(cxpos, cypos, cypos.length);
 
-
         solids.add(leftTreeline);
         solids.add(RightTreeline);
         solids.add(deadTree);
 
-		gameObjects.add(new Warp(game, 232, 300));
+        
+        warp.setActive();
+        
+		gameObjects.add(warp);
 
         // add Link
         gameObjects.add(game.getLink());
@@ -82,7 +84,8 @@ public class ArmosScene extends ZeldaScene
 		{
 			game.stopMusic();
             game.playMusic("sounds/fanfare.mp3", false);
-
+            
+            warp.setActive();
 			warpVisible = true;
 		}
 	}
