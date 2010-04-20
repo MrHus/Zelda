@@ -10,7 +10,7 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
-
+import zelda.scene.CastleBasement;
 import zelda.scene.CastleScene;
 import zelda.scene.DungeonScene;
 import zelda.scene.ForrestScene;
@@ -27,7 +27,7 @@ public class Game
 {
 	private boolean running = true;
 	private boolean paused  = false;
-	private boolean debug   = true;
+	private boolean debug   = false;
 
     private int gameSpeed = 10;
     private int width = 500;
@@ -53,9 +53,8 @@ public class Game
     public Game()
 	{
         link = new Link(this, 100, 100);
-
 		scene = new MainMenu(this);
-	}
+    }
 
 	public void quit()
 	{
