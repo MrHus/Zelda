@@ -219,7 +219,7 @@ public class CastleScene extends ZeldaScene {
 	{
          if (exit == exitUp)
                 {
-                    game.setScene(new DungeonScene(game, "CastleScene"));
+                    game.setScene(new CastleBasementScene(game, "CastleScene"));
                 }
          if (exit == exitDown)
                 {
