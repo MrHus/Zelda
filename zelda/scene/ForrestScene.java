@@ -114,7 +114,6 @@ public class ForrestScene extends ZeldaScene
         gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 15));
         gameObjects.add(new BlueSoldier(game, 128, 110, Direction.UP, 55));
 
-
 		gameObjects.add(new Rupee(game, 380, 110));
 		gameObjects.add(new Rupee(game, 390, 110));
 		gameObjects.add(new Rupee(game, 400, 110));

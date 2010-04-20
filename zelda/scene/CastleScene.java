@@ -214,7 +214,6 @@ public class CastleScene extends ZeldaScene
     @Override
     public void handleSwitchScene(Rectangle exit) 
 	{
-
 		if (exit == exitUp)
         {
 			game.setScene(new CastleBasementScene(game, "CastleScene"));

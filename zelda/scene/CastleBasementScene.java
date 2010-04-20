@@ -89,7 +89,7 @@ public class CastleBasementScene extends ZeldaScene
         solids.add(block3);
 
         gameObjects.add(game.getLink());
-		game.getLink().setRupee(game.getLink().getRupee() - 240);
+		//game.getLink().setRupee(game.getLink().getRupee() - 240);
 
         gameObjects.add(new BlueSoldier(game, 755, 195, Direction.UP, 60));
         gameObjects.add(new BlueSoldier(game, 675, 399, Direction.UP, 110));
