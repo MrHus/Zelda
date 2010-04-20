@@ -252,29 +252,13 @@ public class Game
 	}
 
 	public void setkPressed(boolean kPressed)
-	{
-        if (System.currentTimeMillis() > lastHit + 1000)
-        {    
-            this.kPressed = kPressed;
-            lastHit = System.currentTimeMillis();
-        }
-        else
-        {
-            this.kPressed = false;
-        }
+	{  
+		this.kPressed = kPressed;
 	}
 
 	public void setlPressed(boolean lPressed)
 	{
-        if (System.currentTimeMillis() > lastHit2 + 3000)
-        {
-            this.lPressed = lPressed;
-            lastHit2 = System.currentTimeMillis();
-        }
-        else
-        {
-           this.lPressed = false;
-        }
+		this.lPressed = lPressed;
 	}
 
 	public void setsPressed(boolean sPressed)

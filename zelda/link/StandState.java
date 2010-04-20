@@ -50,7 +50,7 @@ public class StandState extends LinkState
         }
         else if(game.iskPressed())
         {
-            link.setState(new BowState(link));
+            link.shootArrow();
         }
 		else
 		{

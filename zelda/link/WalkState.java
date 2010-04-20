@@ -41,7 +41,7 @@ public class WalkState extends LinkState
             }
             else if(game.iskPressed())
             {
-                link.setState(new BowState(link));
+                link.shootArrow();
             }
 			else
 			{
