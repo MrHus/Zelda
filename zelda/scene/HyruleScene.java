@@ -23,7 +23,7 @@ public class HyruleScene extends ZeldaScene
     private Rectangle forrestExit	= new Rectangle(121, 989, 50, 20);
 
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, downwall1;
-    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk, lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;
+    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk; //lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;
 
 
     public HyruleScene(Game game, String entrance)
@@ -35,7 +35,7 @@ public class HyruleScene extends ZeldaScene
         exits.add(stairs);
         exits.add(door);
         exits.add(forrestExit);
-
+        /*
         int[] wxpos = {385, 398, 398, 385};
         int[] wypos = {497, 497, 511, 511};
         
@@ -75,7 +75,7 @@ public class HyruleScene extends ZeldaScene
         int[] vypos = {398, 398, 418, 418};
 
         lantern8 = new Polygon(vxpos, vypos, vypos.length);
-
+        */
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
 
@@ -204,7 +204,7 @@ public class HyruleScene extends ZeldaScene
         }
 
         wall1 = new Polygon(xpos, ypos, ypos.length);
-
+        /*
         solids.add(lantern1);
         solids.add(lantern2);
         solids.add(lantern3);
@@ -213,7 +213,7 @@ public class HyruleScene extends ZeldaScene
         solids.add(lantern6);
         solids.add(lantern7);
         solids.add(lantern8);
-
+        */
         solids.add(balk);
         solids.add(garden);
         solids.add(garden1);
