@@ -197,7 +197,8 @@ public class Link extends Karacter
         if (health == 0)
         {
             if(!getStateString().equals("DeathState"))
-            {    
+            {
+				game.stopMusic();
                 game.playFx("sounds/killed.mp3");
                 setState(new DeathState(this, getDirection()));
                 //alive = false;
