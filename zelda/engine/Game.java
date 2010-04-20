@@ -11,7 +11,7 @@ import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
 import zelda.scene.CastleScene;
-import zelda.scene.Dungeon;
+import zelda.scene.DungeonScene;
 import zelda.scene.ForrestScene;
 import zelda.scene.HiddenScene;
 import zelda.scene.HyruleScene;
@@ -160,9 +160,9 @@ public class Game
             scn = new ForrestScene(this, "HouseScene");
         }
 
-        if (sceneName.equals("Dungeon"))
+        if (sceneName.equals("DungeonScene"))
         {
-            scn = new Dungeon(this, "GameStart");
+            scn = new DungeonScene(this, "GameStart");
         }
 
         if (sceneName.equals("CastleScene"))

@@ -71,7 +71,7 @@ public class HiddenScene extends ZeldaScene
 
 		if (!game.getSong().equals("sounds/cave.mp3"))
 		{
-            game.stopMusic();
+			game.stopMusic();
             game.playMusic("sounds/cave.mp3", true);
         }
 

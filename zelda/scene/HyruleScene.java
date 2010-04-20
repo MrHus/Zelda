@@ -23,8 +23,8 @@ public class HyruleScene extends ZeldaScene
     private Rectangle forrestExit	= new Rectangle(121, 1000, 50, 20);
 
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, downwall1;
-    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk; //lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;
 
+    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk; //lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;
 
     public HyruleScene(Game game, String entrance)
 	{
@@ -289,7 +289,8 @@ public class HyruleScene extends ZeldaScene
         gameObjects.add(new Guard(game, 995, 636, Direction.RIGHT));
         gameObjects.add(new Guard(game, 995, 666, Direction.RIGHT));
 
-        if (!game.getSong().equals("sounds/overworld.mp3")) {
+        if (!game.getSong().equals("sounds/overworld.mp3"))
+		{
             game.stopMusic();
             game.playMusic("sounds/overworld.mp3", true);
         }
@@ -329,6 +330,7 @@ public class HyruleScene extends ZeldaScene
             game.getLink().setXHardCore(309);
             game.getLink().setYHardCore(349);
         }
+		
         if(entrance.equals("HiddenScene"))
 		{
 			moveScene(463, 44);
@@ -343,6 +345,14 @@ public class HyruleScene extends ZeldaScene
 
 			game.getLink().setXHardCore(139);
 			game.getLink().setYHardCore(341);
+		}
+
+		if(entrance.equals("CastleScene"))
+		{
+			moveScene(251, 88);
+
+			game.getLink().setXHardCore(250);
+			game.getLink().setYHardCore(200);
 		}
 	}
 }
