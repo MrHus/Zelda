@@ -11,8 +11,12 @@ import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
 import zelda.scene.CastleBasement;
+import zelda.scene.CastleScene;
+import zelda.scene.Dungeon;
+import zelda.scene.ForrestScene;
+import zelda.scene.HiddenScene;
+import zelda.scene.HyruleScene;
 import zelda.scene.HouseScene;
-import zelda.scene.ZeldaScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -114,7 +118,7 @@ public class Game
 			in = new ObjectInputStream(fis);
 			SaveData data = (SaveData)in.readObject();
 
-			ZeldaScene scn = initScene(data.getSceneName());
+			Scene scn = initScene(data.getSceneName());
 
 			setScene(scn);
 
@@ -133,14 +137,39 @@ public class Game
 		}
 	}
 
-	public ZeldaScene initScene(String sceneName)
+	public Scene initScene(String sceneName)
 	{
-		ZeldaScene scn = null;
+		Scene scn = null;
 
 		if(sceneName.equals("HouseScene"))
 		{
 			scn = new HouseScene(this, "GameStart");
 		}
+
+        if(sceneName.equals("HyruleScene"))
+		{
+			scn = new HyruleScene(this, "HouseScene");
+		}
+
+        if(sceneName.equals("HiddenScene"))
+		{
+			scn = new HiddenScene(this, "HyruleSceneHatch");
+		}
+        
+        if(sceneName.equals("ForrestScene"))
+        {
+            scn = new ForrestScene(this, "HouseScene");
+        }
+
+        if (sceneName.equals("Dungeon"))
+        {
+            scn = new Dungeon(this, "GameStart");
+        }
+
+        if (sceneName.equals("CastleScene"))
+        {
+            scn = new CastleScene(this, "HyruleScene");
+        }
 
 		return scn;
 	}
@@ -251,29 +280,13 @@ public class Game
 	}
 
 	public void setkPressed(boolean kPressed)
-	{
-        if (System.currentTimeMillis() > lastHit + 1000)
-        {    
-            this.kPressed = kPressed;
-            lastHit = System.currentTimeMillis();
-        }
-        else
-        {
-            this.kPressed = false;
-        }
+	{  
+		this.kPressed = kPressed;
 	}
 
 	public void setlPressed(boolean lPressed)
 	{
-        if (System.currentTimeMillis() > lastHit2 + 3000)
-        {
-            this.lPressed = lPressed;
-            lastHit2 = System.currentTimeMillis();
-        }
-        else
-        {
-           this.lPressed = false;
-        }
+		this.lPressed = lPressed;
 	}
 
 	public void setsPressed(boolean sPressed)

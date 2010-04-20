@@ -92,11 +92,5 @@ public class Bomb extends GObject
             game.getScene().removeHitter(bomb);
         }
     }
-
-	@Override
-	public void collision(GObject obj)
-	{
-		
-	}
 }
 

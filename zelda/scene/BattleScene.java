@@ -2,8 +2,11 @@ package zelda.scene;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import zelda.enemy.BlueSoldier;
+import zelda.enemy.GhostSoldier;
 import zelda.engine.Game;
 import zelda.items.Warp;
+import zelda.karacter.Direction;
 
 
 /**
@@ -20,7 +23,7 @@ public class BattleScene extends ZeldaScene
 
     public BattleScene(Game game, String entrance)
 	{
-        super(game, "images/battle-scene.png", "BattleScene");
+        super(game, "images/battle-dark.png", "BattleScene");
 
         exits.add(warpExit);
 
@@ -49,10 +52,20 @@ public class BattleScene extends ZeldaScene
         // add Link
         gameObjects.add(game.getLink());
 
+        gameObjects.add(new BlueSoldier(game, 330, 145, Direction.LEFT, 10));
+        gameObjects.add(new BlueSoldier(game, 150, 340, Direction.DOWN, 10));
+        gameObjects.add(new BlueSoldier(game, 135, 135, Direction.RIGHT, 10));
+        gameObjects.add(new BlueSoldier(game, 280, 400, Direction.LEFT, 20));
+
+        gameObjects.add(new GhostSoldier(game, 240, 98, Direction.DOWN));
+
+		if (!game.getSong().equals("sounds/boss-bgm.mp3"))
+		{
+            game.stopMusic();
+            game.playMusic("sounds/boss-bgm.mp3", true);
+        }
 
         handleSwitchScene(entrance);
-
-
     }
 
 	@Override

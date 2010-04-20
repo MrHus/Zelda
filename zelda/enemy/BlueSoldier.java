@@ -42,12 +42,8 @@ public class BlueSoldier extends Soldier implements Hittable
                 break;
 
             case ARROW:
-                if (health > 0 && System.currentTimeMillis() > lastHit + 800)
-                {
-                    lastHit = System.currentTimeMillis();
-                    health -= 1;
-                    setBehavior(new AttackBehavior(this));
-                }
+				health -= 3;
+                setBehavior(new AttackBehavior(this));
                 break;
 		}
         

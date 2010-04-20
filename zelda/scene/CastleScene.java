@@ -17,6 +17,7 @@ import zelda.karacter.Direction;
 public class CastleScene extends ZeldaScene {
 
     Polygon middenbovenmuur, stukmuur, stukmuur1, stukmuur2, rechtsonder, rechts, rechtsmidden, linksonder, links, zuil, zuil1, zuil2, zuil3, zuil4, zuil5, zuil6, zuil7, midden, midden1, pot, pot1, ding1, ding, ding2, ding3;
+    private Rectangle door = new Rectangle(498, 974, 30, 20);
 
     private Rectangle exitUp	= new Rectangle(910, 160, 27, 20);
     private Rectangle exitDown  = new Rectangle(500, 967, 27, 20);
@@ -25,6 +26,7 @@ public class CastleScene extends ZeldaScene {
 	{
         super(game, "images/castle.png", "CastleScene");
 
+        exits.add(door);
         exits.add(exitUp);
         exits.add(exitDown);
 
@@ -202,7 +204,8 @@ public class CastleScene extends ZeldaScene {
         gameObjects.add(new BlueSoldier(game, 116, 144, Direction.UP, 200));
         gameObjects.add(new WhiteSoldier(game, 505, 114, Direction.LEFT));
 
-        if (!game.getSong().equals("sounds/castle.mp3")) {
+        if (!game.getSong().equals("sounds/castle.mp3"))
+        {
             game.stopMusic();
             game.playMusic("sounds/castle.mp3", true);
         }
@@ -221,6 +224,10 @@ public class CastleScene extends ZeldaScene {
                 {
                     game.setScene(new HyruleScene(game, "HyruleScene"));
                 }
+         if (exit == door)
+        {
+            game.setScene(new HyruleScene(game, "HiddenScene"));
+        }
     }
 
     @Override

@@ -13,18 +13,17 @@ import zelda.karacter.Direction;
  *
  * @author Christiaan
  */
-public class HyruleScene extends ZeldaScene {
 
-
-    private Rectangle hatch         = new Rectangle(910, 160, 5, 5);
+public class HyruleScene extends ZeldaScene
+{
+    private Rectangle hatch         = new Rectangle(904, 166, 1, 1);
     private Rectangle exitDown      = new Rectangle(672, 1013, 290, 20);
     private Rectangle stairs        = new Rectangle(713, 215, 14, 14);
     private Rectangle door          = new Rectangle(497, 247, 30, 30);
-    private Rectangle forrestExit	= new Rectangle(121, 989, 50, 20);
+    private Rectangle forrestExit	= new Rectangle(121, 1000, 50, 20);
 
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, downwall1;
-    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk;
-
+    private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk; //lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;
 
 
     public HyruleScene(Game game, String entrance)
@@ -36,7 +35,47 @@ public class HyruleScene extends ZeldaScene {
         exits.add(stairs);
         exits.add(door);
         exits.add(forrestExit);
+        /*
+        int[] wxpos = {385, 398, 398, 385};
+        int[] wypos = {497, 497, 511, 511};
+        
+        lantern1 = new Polygon(wxpos, wypos, wypos.length);
 
+        int[] txpos = {336, 350, 350, 336};
+        int[] typos = {497, 497, 511, 511};
+
+        lantern2 = new Polygon(txpos, typos, typos.length);
+        
+        int[] uxpos = {385, 398, 398, 385};
+        int[] uypos = {464, 464, 480, 480};
+
+        lantern3 = new Polygon(uxpos, uypos, uypos.length);
+
+        int[] axpos = {336, 350, 350, 336};
+        int[] aypos = {464, 464, 480, 480};
+
+        lantern4 = new Polygon(axpos, aypos, aypos.length);
+
+        int[] sxpos = {385, 398, 398, 385};
+        int[] sypos = {431, 431, 449, 449};
+
+        lantern5 = new Polygon(sxpos, sypos, sypos.length);
+
+        int[] hxpos = {336, 350, 350, 336};
+        int[] hypos = {431, 431, 449, 449};
+
+        lantern6 = new Polygon(hxpos, hypos, hypos.length);
+
+        int[] lxpos = {385, 398, 398, 385};
+        int[] lypos = {398, 398, 418, 418};
+
+        lantern7 = new Polygon(lxpos, lypos, lypos.length);
+
+        int[] vxpos = {336, 350, 350, 336};
+        int[] vypos = {398, 398, 418, 418};
+
+        lantern8 = new Polygon(vxpos, vypos, vypos.length);
+        */
         int[] dxpos = {342, 346, 369, 388, 396, 396, 339};
         int[] dypos = {290, 347, 357, 349, 334, 294, 294};
 
@@ -99,7 +138,6 @@ public class HyruleScene extends ZeldaScene {
 
         downwall1 = new Polygon(zxpos, zypos, zypos.length);
 
-
         int[] jxpos = {426, 445, 446, 426, 426};
         int[] jypos = {281, 281, 350, 350, 285};
 
@@ -123,7 +161,6 @@ public class HyruleScene extends ZeldaScene {
             mypos[i] += 20;
         }
         bush3 = new Polygon(mxpos, mypos, mypos.length);
-
 
         int[] oxpos = {751, 735, 737, 751, 752};
         int[] oypos = {263, 260, 248, 248, 261};
@@ -167,7 +204,16 @@ public class HyruleScene extends ZeldaScene {
         }
 
         wall1 = new Polygon(xpos, ypos, ypos.length);
-
+        /*
+        solids.add(lantern1);
+        solids.add(lantern2);
+        solids.add(lantern3);
+        solids.add(lantern4);
+        solids.add(lantern5);
+        solids.add(lantern6);
+        solids.add(lantern7);
+        solids.add(lantern8);
+        */
         solids.add(balk);
         solids.add(garden);
         solids.add(garden1);
@@ -252,7 +298,8 @@ public class HyruleScene extends ZeldaScene {
     }
 
     @Override
-    public void handleSwitchScene(Rectangle exit) {
+    public void handleSwitchScene(Rectangle exit)
+    {
         //throw new UnsupportedOperationException("Not supported yet.");
         if (exit == hatch) {
             game.setScene(new HiddenScene(game, "HyruleSceneHatch"));
@@ -266,23 +313,22 @@ public class HyruleScene extends ZeldaScene {
         if (exit == door) {
             game.setScene(new CastleScene(game, "HyruleScene"));
         }
-
         if (exit == forrestExit)
         {
             game.setScene(new ForrestScene(game, "HyruleScene"));
         }
-	}
+    }
 
 	@Override
 	public void handleSwitchScene(String entrance)
 	{
-		if(entrance.equals("HouseScene"))
-		{
-			moveScene(524, 623);
+		if (entrance.equals("HouseScene"))
+        {
+            moveScene(524, 623);
 
-			game.getLink().setXHardCore(game.getLink().getX() + 519);
-			game.getLink().setYHardCore(370);
-		}
+            game.getLink().setXHardCore(309);
+            game.getLink().setYHardCore(349);
+        }
         if(entrance.equals("HiddenScene"))
 		{
 			moveScene(463, 44);

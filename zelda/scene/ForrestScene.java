@@ -112,13 +112,11 @@ public class ForrestScene extends ZeldaScene
 
 
         gameObjects.add(game.getLink());
-        gameObjects.add(new BlueSoldier(game, 448, 400, Direction.UP, 75));
+        gameObjects.add(new BlueSoldier(game, 440, 375, Direction.UP, 20));
         gameObjects.add(new BlueSoldier(game, 259, 403, Direction.RIGHT, 50));
-        gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 50));
-        gameObjects.add(new BlueSoldier(game, 128, 216, Direction.RIGHT, 50));
+        gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 15));
+        gameObjects.add(new BlueSoldier(game, 128, 110, Direction.UP, 55));
 
-        gameObjects.add(new WhiteSoldier(game, 408, 162, Direction.LEFT));
-        gameObjects.add(new WhiteSoldier(game, 162, 85, Direction.DOWN));
 
 		gameObjects.add(new Rupee(game, 380, 110));
 		gameObjects.add(new Rupee(game, 390, 110));
@@ -129,6 +127,17 @@ public class ForrestScene extends ZeldaScene
 		gameObjects.add(new Rupee(game, 400, 128));
 		gameObjects.add(new Rupee(game, 410, 128));
 		gameObjects.add(new Warp(game, 393, 108));
+
+
+        if(!game.getSong().equals("sounds/overworld.mp3"))
+		{
+			try
+			{
+				game.stopMusic();
+			}catch(Exception e){}
+
+			game.playMusic("sounds/overworld.mp3", true);
+		}
 
         handleSwitchScene(entrance);
     }
