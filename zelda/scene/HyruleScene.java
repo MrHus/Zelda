@@ -20,7 +20,7 @@ public class HyruleScene extends ZeldaScene
     private Rectangle exitDown      = new Rectangle(672, 1013, 290, 20);
     private Rectangle stairs        = new Rectangle(713, 215, 14, 14);
     private Rectangle door          = new Rectangle(497, 247, 30, 30);
-    private Rectangle forrestExit	= new Rectangle(121, 989, 50, 20);
+    private Rectangle forrestExit	= new Rectangle(121, 1000, 50, 20);
 
     private Polygon wall, wall1, castlewall1, tree, tree2, castlewall2, castlewall3, downwall, downwall1;
     private Polygon bush1, bush2, bush3, garden, garden1, garden3, balk; //lantern1, lantern2, lantern3, lantern4, lantern5, lantern6, lantern7, lantern8;

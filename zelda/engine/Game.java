@@ -10,12 +10,13 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
+
 import zelda.scene.CastleScene;
 import zelda.scene.Dungeon;
 import zelda.scene.ForrestScene;
 import zelda.scene.HiddenScene;
-import zelda.scene.HouseScene;
 import zelda.scene.HyruleScene;
+import zelda.scene.HouseScene;
 
 /**
  * This class represents the Game: Legend of Zelda: a Link to the Past!
@@ -52,6 +53,7 @@ public class Game
     public Game()
 	{
         link = new Link(this, 100, 100);
+
 		scene = new MainMenu(this);
 	}
 
@@ -279,29 +281,13 @@ public class Game
 	}
 
 	public void setkPressed(boolean kPressed)
-	{
-        if (System.currentTimeMillis() > lastHit + 1000)
-        {    
-            this.kPressed = kPressed;
-            lastHit = System.currentTimeMillis();
-        }
-        else
-        {
-            this.kPressed = false;
-        }
+	{  
+		this.kPressed = kPressed;
 	}
 
 	public void setlPressed(boolean lPressed)
 	{
-        if (System.currentTimeMillis() > lastHit2 + 3000)
-        {
-            this.lPressed = lPressed;
-            lastHit2 = System.currentTimeMillis();
-        }
-        else
-        {
-           this.lPressed = false;
-        }
+		this.lPressed = lPressed;
 	}
 
 	public void setsPressed(boolean sPressed)

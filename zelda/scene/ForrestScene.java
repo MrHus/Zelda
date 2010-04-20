@@ -112,16 +112,10 @@ public class ForrestScene extends ZeldaScene
 
 
         gameObjects.add(game.getLink());
-        gameObjects.add(new BlueSoldier(game, 448, 400, Direction.UP, 75));
+        gameObjects.add(new BlueSoldier(game, 440, 375, Direction.UP, 20));
         gameObjects.add(new BlueSoldier(game, 259, 403, Direction.RIGHT, 50));
-        gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 50));
-        gameObjects.add(new BlueSoldier(game, 128, 216, Direction.RIGHT, 50));
-
-        gameObjects.add(new GhostSoldier(game, 170, 223, Direction.UP));
-        gameObjects.add(new ArmosKnight(game, 326, 340, Direction.DOWN));
-
-        gameObjects.add(new WhiteSoldier(game, 408, 162, Direction.LEFT));
-        gameObjects.add(new WhiteSoldier(game, 162, 85, Direction.DOWN));
+        gameObjects.add(new BlueSoldier(game, 137, 411, Direction.DOWN, 15));
+        gameObjects.add(new BlueSoldier(game, 128, 110, Direction.UP, 55));
 
 
 		gameObjects.add(new Rupee(game, 380, 110));
@@ -154,6 +148,11 @@ public class ForrestScene extends ZeldaScene
 		{
 			game.setScene(new HyruleScene(game, "ForrestScene3"));
 		}
+
+        if (exit == warpExit)
+		{
+			game.setScene(new BattleScene(game, "warp"));
+		}
 	}
 
 	@Override
@@ -180,6 +179,13 @@ public class ForrestScene extends ZeldaScene
 			moveScene(1, 1);
 			game.getLink().setXHardCore(135);
 			game.getLink().setYHardCore(31);
+		}
+
+        if(entrance.equals("BattleScene"))
+		{
+			moveScene(10, 1);
+			game.getLink().setXHardCore(382);
+			game.getLink().setYHardCore(131);
 		}
 	}
 }
