@@ -63,7 +63,7 @@ public class DungeonScene extends ZeldaScene
 	{
         if (exit == zeldaExit)
 		{
-			game.setScene(new CreditScene(game, "ForrestScene1"));
+			game.setScene(new CreditScene(game));
 		}
     }
 
