@@ -16,7 +16,7 @@ import zelda.karacter.Karacter;
 public class ArmosKnight extends Karacter implements Hittable
 {
     protected Behavior behavior;
-    protected long inputInterval = 50;
+    protected long inputInterval = 40;
     protected long lastInput = System.currentTimeMillis();
     protected long lastHit = System.currentTimeMillis();
 
@@ -43,6 +43,7 @@ public class ArmosKnight extends Karacter implements Hittable
         state = new AttackState(this);
 
         behavior = new AttackBehavior(this);
+
     }
 
     public void hitBy(Weapon weapon)
