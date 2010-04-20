@@ -48,7 +48,7 @@ public class ArmosKnight extends Karacter implements Hittable
 
         sprite.setSprite(spriteLoc.get("1"));
 
-        health = 35;
+        health = 30;
 
         state = new AttackState(this);
 
@@ -58,7 +58,7 @@ public class ArmosKnight extends Karacter implements Hittable
 
     public void hitBy(Weapon weapon)
     {
-        if (health >= 1)
+        if (health >= 25)
         {
             game.playFx("sounds/enemyHit.mp3");
         }

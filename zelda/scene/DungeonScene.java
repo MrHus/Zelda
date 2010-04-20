@@ -14,6 +14,7 @@ public class DungeonScene extends ZeldaScene
 
     private Rectangle zeldaExit = new Rectangle(351, 158, 20, 10);
 
+
     public DungeonScene(Game game, String entrance)
 	{
         super(game, "images/kerker.png", "DungeonScene");
@@ -35,15 +36,15 @@ public class DungeonScene extends ZeldaScene
 
         table = new Polygon(fxpos, fypos, fypos.length);
 
-        int[] rxpos = {77, 99, 100, 80};
-        int[] rypos = {124, 125, 117, 116};
-
-        door = new Polygon(rxpos, rypos, rypos.length);
+//        int[] rxpos = {77, 99, 100, 80};
+//        int[] rypos = {124, 125, 117, 116};
+//
+//        door = new Polygon(rxpos, rypos, rypos.length);
 
         solids.add(wall2);
         solids.add(wall1);
         solids.add(table);
-        solids.add(door);
+//        solids.add(door);
 
         gameObjects.add(game.getLink());
 

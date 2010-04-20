@@ -21,7 +21,7 @@ public class TransState extends KaracterState
     {
         super(soldier);
 		name = "TransState";
-        karacter.setAnimationInterval(10);
+        karacter.setAnimationInterval(40);
 
         this.direction = direction;
     }
