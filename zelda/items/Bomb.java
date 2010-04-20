@@ -28,6 +28,7 @@ public class Bomb extends GObject
     public Bomb(Game game, int x, int y)
     {
         super(game, x, y, 13, 16, "images/bombs.png");
+		
         spriteLoc.put("bomb1", new Rectangle(0, 0, 13, 16));
         spriteLoc.put("bomb2", new Rectangle(13, 0, 13, 16));
         spriteLoc.put("bomb3", new Rectangle(26, 0, 13, 16));
