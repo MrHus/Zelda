@@ -10,6 +10,12 @@ import java.net.URL;
 import zelda.Main;
 import zelda.link.Link;
 import zelda.menu.MainMenu;
+import zelda.scene.CastleBasement;
+import zelda.scene.CastleScene;
+import zelda.scene.Dungeon;
+import zelda.scene.ForrestScene;
+import zelda.scene.HiddenScene;
+import zelda.scene.HyruleScene;
 import zelda.scene.HouseScene;
 
 /**
@@ -47,9 +53,8 @@ public class Game
     public Game()
 	{
         link = new Link(this, 100, 100);
-
 		scene = new MainMenu(this);
-	}
+    }
 
 	public void quit()
 	{
@@ -140,6 +145,31 @@ public class Game
 		{
 			scn = new HouseScene(this, "GameStart");
 		}
+
+        if(sceneName.equals("HyruleScene"))
+		{
+			scn = new HyruleScene(this, "HouseScene");
+		}
+
+        if(sceneName.equals("HiddenScene"))
+		{
+			scn = new HiddenScene(this, "HyruleSceneHatch");
+		}
+        
+        if(sceneName.equals("ForrestScene"))
+        {
+            scn = new ForrestScene(this, "HouseScene");
+        }
+
+        if (sceneName.equals("Dungeon"))
+        {
+            scn = new Dungeon(this, "GameStart");
+        }
+
+        if (sceneName.equals("CastleScene"))
+        {
+            scn = new CastleScene(this, "HyruleScene");
+        }
 
 		return scn;
 	}

@@ -10,7 +10,7 @@ import zelda.karacter.KaracterState;
  */
 public class TransState extends KaracterState
 {
-     private final String[] animation = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    private final String[] animation = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
     private Direction direction;
 
@@ -26,25 +26,25 @@ public class TransState extends KaracterState
     public void left()
 	{
         karacter.setAnimation(animation);
-		karacter.setX(karacter.getX() + 4);
+		karacter.setX(karacter.getX() + 8);
 	}
 
 	public void right()
 	{
         karacter.setAnimation(animation);
-		karacter.setX(karacter.getX() - 4);
+		karacter.setX(karacter.getX() - 8);
 	}
 
 	public void up()
 	{
         karacter.setAnimation(animation);
-        karacter.setY(karacter.getY() + 4);
+        karacter.setY(karacter.getY() + 8);
 	}
 
 	public void down()
 	{
         karacter.setAnimation(animation);
-		karacter.setY(karacter.getY() - 4);
+		karacter.setY(karacter.getY() - 8);
 	}
 
     @Override

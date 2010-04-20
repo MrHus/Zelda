@@ -17,7 +17,7 @@ public class GhostSoldier extends Soldier implements Hittable
     {
         super(game, x, y, direction, "images/boss.png");
         behavior = new AttackBehavior(this);
-        health = 25;
+        health = 30;
     }
 
     public void hitBy(Weapon weapon)
